@@ -23,9 +23,9 @@ void ROC()
     float PT400CS = 0.3807;
     float PT650CS = 0.03711;
 
-    TFile *Mx2_1 = new TFile("tmpMx2_1.root");
-    TFile *Mx2_50 = new TFile("tmpMx2_50.root");
-    TFile *Mx2_150 = new TFile("tmpMx2_150.root");
+    TFile *Mx2_1 = new TFile("test1nb.root");
+    TFile *Mx2_50 = new TFile("test50nb.root");
+    TFile *Mx2_150 = new TFile("test150nb.root");
     TFile *DYHT70 = new TFile("tmpHT70_100.root");
     TFile *DYHT100 = new TFile("tmpHT100_200.root");
     TFile *DYHT200 = new TFile("tmpHT200_400.root");
@@ -131,9 +131,9 @@ void ROC()
     //============
     //  ROC
     //============
-    double nSigEvent = Mx2_150_nT->Integral();
+    double nSigEvent = Mx2_1_nT->Integral();
     double nBgEvent = HT70_nT->Integral();
-    int nBin = Mx2_150_nT->GetNbinsX();
+    int nBin = Mx2_1_nT->GetNbinsX();
     cout << nBin << endl;
     cout << "nSigEvent = " << nSigEvent << endl;
     cout << "nBgEvent = " << nBgEvent << endl;
@@ -153,7 +153,7 @@ void ROC()
     double event[2][2] = {0, 0, 0, 0};
     for (int i = 0; i < nBin; i++)
     {
-        event[0][0] += Mx2_150_nT->GetBinContent(i + 1); //from 0 to end for sig
+        event[0][0] += Mx2_1_nT->GetBinContent(i + 1); //from 0 to end for sig
         event[0][1] += HT70_nT->GetBinContent(i + 1);
         effs[0].push_back(event[0][0] / nSigEvent); //(sig/other)
         //effs[1].push_back(event[1][1] / nSigEvent);
