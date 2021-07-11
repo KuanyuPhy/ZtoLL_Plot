@@ -23,7 +23,7 @@ void ROC()
     float PT400CS = 0.3807;
     float PT650CS = 0.03711;
 
-    TFile *Mx2_1 = new TFile("test1nb.root");
+    TFile *Mx2_1 = new TFile("./test1nb.root");
     TFile *Mx2_50 = new TFile("test50nb.root");
     TFile *Mx2_150 = new TFile("test150nb.root");
     TFile *DYHT70 = new TFile("tmpHT70_100.root");
