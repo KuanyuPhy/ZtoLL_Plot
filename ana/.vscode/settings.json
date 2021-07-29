@@ -2,6 +2,10 @@
     "files.associations": {
         "ROC.C": "cpp",
         "Compare_ROC.C": "cpp",
-        "punzi.C": "cpp"
+        "punzi.C": "cpp",
+        "correlate_plot.C": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "Draw.C": "cpp"
     }
 }

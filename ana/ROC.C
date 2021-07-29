@@ -23,9 +23,11 @@ void ROC()
     float PT400CS = 0.3807;
     float PT650CS = 0.03711;
 
-    TFile *Mx2_1 = new TFile("./test1nb.root");
-    TFile *Mx2_50 = new TFile("test50nb.root");
-    TFile *Mx2_150 = new TFile("test150nb.root");
+    TFile *Mx2_1 = new TFile("./../../root_file/test/test1_2.root");
+    TFile *Mx2_50 = new TFile("./../../root_file/test/test50_2.root");
+    TFile *Mx2_150 = new TFile("./../../root_file/test/test150_2.root");
+    
+    /*
     TFile *DYHT70 = new TFile("tmpHT70_100.root");
     TFile *DYHT100 = new TFile("tmpHT100_200.root");
     TFile *DYHT200 = new TFile("tmpHT200_400.root");
@@ -34,47 +36,52 @@ void ROC()
     TFile *DYHT800 = new TFile("tmpHT800_1200.root");
     TFile *DYHT1200 = new TFile("tmpHT1200_2500.root");
     TFile *DYHT2500 = new TFile("tmpHT2500_Inf.root");
+    */
 
-    TFile *DYpT50 = new TFile("tmppt50_100.root");
-    TFile *DYpT100 = new TFile("tmppt100_250.root");
-    TFile *DYpT250 = new TFile("tmppt250_400.root");
-    TFile *DYpT400 = new TFile("tmppt400_650.root");
-    TFile *DYpT650 = new TFile("tmppt650_Inf.root");
+    TFile *DYpT50 = new TFile("./../../root_file/test/test_pt50.root");
+    TFile *DYpT100 = new TFile("./../../root_file/test/test_pt100.root");
+    TFile *DYpT250 = new TFile("./../../root_file/test/test_pt250.root");
+    TFile *DYpT400 = new TFile("./../../root_file/test/test_pt400.root");
+    TFile *DYpT650 = new TFile("./../../root_file/test/test_pt650.root");
 
-    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_aph1"));
-    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("h_aph1"));
-    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("h_aph1"));
+    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_aphmax"));
+    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("h_aphmax"));
+    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("h_aphmax"));
 
-    TH1D *HT70_nT = ((TH1D *)DYHT70->Get("h_aph1"));
+    /*
+    TH1D *HT70_nT = ((TH1D *)DYHT70->Get("h_aphmax"));
     TH1D *HT70_evt = ((TH1D *)DYHT70->Get("h_event"));
 
-    TH1D *HT100_nT = ((TH1D *)DYHT100->Get("h_aph1"));
+    TH1D *HT100_nT = ((TH1D *)DYHT100->Get("h_aphmax"));
     TH1D *HT100_evt = ((TH1D *)DYHT100->Get("h_event"));
 
-    TH1D *HT200_nT = ((TH1D *)DYHT200->Get("h_aph1"));
+    TH1D *HT200_nT = ((TH1D *)DYHT200->Get("h_aphmax"));
     TH1D *HT200_evt = ((TH1D *)DYHT200->Get("h_event"));
-    TH1D *HT400_nT = ((TH1D *)DYHT400->Get("h_aph1"));
+    TH1D *HT400_nT = ((TH1D *)DYHT400->Get("h_aphmax"));
     TH1D *HT400_evt = ((TH1D *)DYHT400->Get("h_event"));
-    TH1D *HT600_nT = ((TH1D *)DYHT600->Get("h_aph1"));
+    TH1D *HT600_nT = ((TH1D *)DYHT600->Get("h_aphmax"));
     TH1D *HT600_evt = ((TH1D *)DYHT600->Get("h_event"));
-    TH1D *HT800_nT = ((TH1D *)DYHT800->Get("h_aph1"));
+    TH1D *HT800_nT = ((TH1D *)DYHT800->Get("h_aphmax"));
     TH1D *HT800_evt = ((TH1D *)DYHT800->Get("h_event"));
-    TH1D *HT1200_nT = ((TH1D *)DYHT1200->Get("h_aph1"));
+    TH1D *HT1200_nT = ((TH1D *)DYHT1200->Get("h_aphmax"));
     TH1D *HT1200_evt = ((TH1D *)DYHT1200->Get("h_event"));
-    TH1D *HT2500_nT = ((TH1D *)DYHT2500->Get("h_aph1"));
+    TH1D *HT2500_nT = ((TH1D *)DYHT2500->Get("h_aphmax"));
     TH1D *HT2500_evt = ((TH1D *)DYHT2500->Get("h_event"));
+    */
 
-    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_aph1"));
+    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_aphmax"));
     TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
-    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_aph1"));
+    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_aphmax"));
     TH1D *DYPT100_sumW = ((TH1D *)DYpT100->Get("h_SumWeight"));
-    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_aph1"));
+    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_aphmax"));
     TH1D *DYPT250_sumW = ((TH1D *)DYpT250->Get("h_SumWeight"));
-    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_aph1"));
+    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_aphmax"));
     TH1D *DYPT400_sumW = ((TH1D *)DYpT400->Get("h_SumWeight"));
-    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_aph1"));
+    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_aphmax"));
     TH1D *DYPT650_sumW = ((TH1D *)DYpT650->Get("h_SumWeight"));
-
+    // Create, fill and project a 2D histogram.
+    TH2F *h2 = new TH2F("h2","",100,-10,10,100,-10,10);
+/*
     double HT70_event = HT70_evt->GetEntries();
     HT70_nT->Scale(HT70CS / HT70_event);
 
@@ -98,6 +105,7 @@ void ROC()
 
     double HT2500_event = HT2500_evt->GetEntries();
     HT2500_nT->Scale(HT2500CS / HT2500_event);
+*/
 
     double DYPT50_SW = DYPT50_sumW->GetBinContent(1);
     DYPT50_nT->Scale(PT50CS / DYPT50_SW);
@@ -119,6 +127,7 @@ void ROC()
     DYPT50_nT->Add(DYPT400_nT);
     DYPT50_nT->Add(DYPT650_nT);
 
+/*
     HT70_nT->Add(HT100_nT);
     HT70_nT->Add(HT200_nT);
     HT70_nT->Add(HT400_nT);
@@ -127,13 +136,15 @@ void ROC()
     HT70_nT->Add(HT1200_nT);
     HT70_nT->Add(HT2500_nT);
 
+*/
     //HT70_nT->Draw();
     //============
     //  ROC
     //============
-    double nSigEvent = Mx2_1_nT->Integral();
-    double nBgEvent = HT70_nT->Integral();
-    int nBin = Mx2_1_nT->GetNbinsX();
+
+    double nSigEvent = Mx2_50_nT->Integral();
+    double nBgEvent = DYPT50_nT->Integral();
+    int nBin = Mx2_50_nT->GetNbinsX();
     cout << nBin << endl;
     cout << "nSigEvent = " << nSigEvent << endl;
     cout << "nBgEvent = " << nBgEvent << endl;
@@ -153,13 +164,13 @@ void ROC()
     double event[2][2] = {0, 0, 0, 0};
     for (int i = 0; i < nBin; i++)
     {
-        event[0][0] += Mx2_1_nT->GetBinContent(i + 1); //from 0 to end for sig
-        event[0][1] += HT70_nT->GetBinContent(i + 1);
+        event[0][0] += Mx2_50_nT->GetBinContent(i ); //from 0 to end for sig
+        event[0][1] += DYPT50_nT->GetBinContent(i );
         effs[0].push_back(event[0][0] / nSigEvent); //(sig/other)
         //effs[1].push_back(event[1][1] / nSigEvent);
         effb[0].push_back(event[0][1] / nBgEvent);
         //effb[1].push_back(event[1][0] / nBgEvent);
-        //cout << " event " << event[0][1] << endl;
+        //cout<<"i = "<<i << " event " << event[0][0] << endl;
         //<< ": nBgEvent " << nBgEvent << ": EFFB " << effb[0] << " : " << i << endl;
         cout << " effs " << effs[0][i] << endl;
         cout << " effb " << effb[0][i] << endl;
@@ -169,13 +180,14 @@ void ROC()
 
     for (int i = 0; i < nBin; i++)
     {
-
         Teffs[i] = effs[0][i];
         Teffb[i] = 1 - effb[0][i];
         cout << Teffs[i] << "  " << Teffb[i] << "  " << endl;
+        //2->Fill(Teffs[i],Teffb[i]);
     }
     auto c1 = new TCanvas();
-    TGraph *sigEff_vs_bkgEff = new TGraph(50, Teffs, Teffb);
+    //h2->Draw();
+    TGraph *sigEff_vs_bkgEff = new TGraph(100, Teffs, Teffb);
     //sigEff_vs_bkgEff->SetMaximum(1.2);
     //sigEff_vs_bkgEff->Draw("ap");
     sigEff_vs_bkgEff->SetTitle("");
@@ -192,6 +204,7 @@ void ROC()
     //sigEff_vs_bkgEff->GetHistogram()->SetMaximum(1.0); // along
     //sigEff_vs_bkgEff->GetHistogram()->SetMinimum(0.);
     //sigEff_vs_bkgEff->SetLineWidth(1508);
+    //sigEff_vs_bkgEff->Draw("");
     sigEff_vs_bkgEff->Draw("AC*");
-    //sigEff_vs_bkgEff->Draw("C");
+
 }

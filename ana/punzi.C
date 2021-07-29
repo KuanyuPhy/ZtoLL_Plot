@@ -10,7 +10,7 @@ using namespace std;
 
 //define punzi_eq
 double punzi(double sigeff, double bg){
-	return sigeff/(1+TMath::Power(bg,0.5));
+	return sigeff/(1+TMath::Power(abs(bg),0.5));
 } 
 
 void punzi()
@@ -145,9 +145,13 @@ void punzi()
     //============
     //  Punzi
     //============
-    double nSigEvent = Mx2_50_nT->Integral();
+    //Mx2_1_nT->GetXaxis()->SetRangeUser(-4,4);
+    //DYPT50_nT->Draw("text");
+
+    
+    double nSigEvent = Mx2_1_nT->Integral();
     double nBgEvent = DYPT50_nT->Integral();
-    int nBin = Mx2_50_nT->GetNbinsX();
+    int nBin = Mx2_1_nT->GetNbinsX();
     cout << nBin << endl;
     cout << "nSigEvent = " << nSigEvent << endl;
     cout << "nBgEvent = " << nBgEvent << endl;
@@ -171,8 +175,8 @@ void punzi()
     double event[2][2] = {0, 0, 0, 0};
     for (int i = 0; i < nBin; i++)
     {
-        event[0][0] += Mx2_50_nT->GetBinContent(i + 1); //from 0 to end for sig
-        event[1][1] += Mx2_50_nT->GetBinContent(nBin-i-1);//from end to 0 -upper and lower
+        event[0][0] += Mx2_1_nT->GetBinContent(i + 1); //from 0 to end for sig
+        event[1][1] += Mx2_1_nT->GetBinContent(nBin-i-1);//from end to 0 -upper and lower
         event[0][1] += DYPT50_nT->GetBinContent(i + 1);
         event[1][0] += DYPT50_nT->GetBinContent(nBin-i-1);
         cout<<"bin= "<<i<<" event[1][0] = "<<event[1][0]<<endl;
@@ -186,28 +190,29 @@ void punzi()
         //cout << " effb " << effb[0][i] << endl;
         //punziList[0].push_back(punzi(event[0][0]/nSigEvent,event[0][1]));
   	  	punziList[1].push_back(punzi(event[1][1]/nSigEvent,event[1][0]));
+        //cout << "bin = "<<i << " punziList[1][i] = " <<punziList[1][i]<<endl;
     }
     //reverse(effs[1].begin(), effs[1].end());
     //reverse(effb[1].begin(), effb[1].end());
+
     reverse(punziList[1].begin(),punziList[1].end());
     for (int i = 0; i < nBin; i++)
     {
 
-        Teffs[i] = effs[0][i];
-        Teffb[i] = 1 - effb[0][i];
+        //Teffs[i] = effs[0][i];
+        //Teffb[i] = 1 - effb[0][i];
         //cout << Teffs[i] << "  " << Teffb[i] << "  " << endl;
         punzi_Net->SetBinContent(i,punziList[1][i]);
-        cout << "bin = "<<i << " punziList[1][i] = " <<punziList[1][i]<<endl;
     }
     float_t punz = 0 ; 
 	Int_t max_bin = 0;
-    punz = punzi_Net->GetMaximum();
-	max_bin = punzi_Net->GetMaximumBin();
-    cout << "punzi_maximum = "  << punz << endl;
-	cout << "punzi_max_bin = "  << max_bin-1 << endl;
+    //punz = punzi_Net->GetMaximum();
+	//max_bin = punzi_Net->GetMaximumBin();
+    //cout << "punzi_maximum = "  << punz << endl;
+	//cout << "punzi_max_bin = "  << max_bin-1 << endl;
     auto c1 = new TCanvas();
     
-    punzi_Net->GetXaxis()->SetTitle("particle net");
+    //punzi_Net->GetXaxis()->SetTitle("particle net");
   	punzi_Net->GetYaxis()->SetTitle("Punzi_significance");
   	punzi_Net->GetYaxis()->SetTitleOffset(1.4);
 	punzi_Net->SetLineColor(kRed);
