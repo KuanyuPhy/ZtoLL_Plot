@@ -21,9 +21,9 @@ void Draw_Compare_alpha()
     TFile *Mx2_50 = new TFile("./../../root_file/test/test50.root");
     TFile *Mx2_150 = new TFile("./../../root_file/test/test150.root");
 
-    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_aphmax"));
-    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("h_aphmax"));
-    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("h_aphmax"));
+    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_aphmin"));
+    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("h_aphmin"));
+    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("h_aphmin"));
     
     //----Input Background--------
     TFile *DYpT50 = new TFile("./../../root_file/test/test_pt50.root");
@@ -32,11 +32,11 @@ void Draw_Compare_alpha()
     TFile *DYpT400 = new TFile("./../../root_file/test/test_pt400.root");
     TFile *DYpT650 = new TFile("./../../root_file/test/test_pt650.root");
 
-    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_aphmax"));
-    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_aphmax"));
-    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_aphmax"));
-    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_aphmax"));
-    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_aphmax"));
+    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_aphmin"));
+    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_aphmin"));
+    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_aphmin"));
+    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_aphmin"));
+    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_aphmin"));
 
     TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
     TH1D *DYPT100_sumW = ((TH1D *)DYpT100->Get("h_SumWeight"));

@@ -1,0 +1,49 @@
+{
+//========= Macro generated from object: punzi_aphmin/
+//========= by ROOT version6.22/06
+   
+   TH1F *punzi_aphmin__1 = new TH1F("punzi_aphmin__1","",24,0,1.2);
+   punzi_aphmin__1->SetBinContent(0,0.281536);
+   punzi_aphmin__1->SetBinContent(1,0.269157);
+   punzi_aphmin__1->SetBinContent(2,0.25699);
+   punzi_aphmin__1->SetBinContent(3,0.246812);
+   punzi_aphmin__1->SetBinContent(4,0.24218);
+   punzi_aphmin__1->SetBinContent(5,0.235067);
+   punzi_aphmin__1->SetBinContent(6,0.225501);
+   punzi_aphmin__1->SetBinContent(7,0.215711);
+   punzi_aphmin__1->SetBinContent(8,0.207391);
+   punzi_aphmin__1->SetBinContent(9,0.202403);
+   punzi_aphmin__1->SetBinContent(10,0.200658);
+   punzi_aphmin__1->SetBinContent(11,0.193384);
+   punzi_aphmin__1->SetBinContent(12,0.186022);
+   punzi_aphmin__1->SetBinContent(13,0.180038);
+   punzi_aphmin__1->SetBinContent(14,0.171954);
+   punzi_aphmin__1->SetBinContent(15,0.162623);
+   punzi_aphmin__1->SetBinContent(16,0.154607);
+   punzi_aphmin__1->SetBinContent(17,0.148675);
+   punzi_aphmin__1->SetBinContent(18,0.143257);
+   punzi_aphmin__1->SetBinContent(19,0.144708);
+   punzi_aphmin__1->SetBinContent(20,0.167403);
+   punzi_aphmin__1->SetBinContent(21,0.167403);
+   punzi_aphmin__1->SetBinContent(22,0.167403);
+   punzi_aphmin__1->SetBinContent(23,0.167403);
+   punzi_aphmin__1->SetEntries(24);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#ff0000");
+   punzi_aphmin__1->SetLineColor(ci);
+   punzi_aphmin__1->SetLineWidth(2);
+   punzi_aphmin__1->GetXaxis()->SetTitle("alphamin");
+   punzi_aphmin__1->GetXaxis()->SetLabelFont(42);
+   punzi_aphmin__1->GetXaxis()->SetTitleOffset(1);
+   punzi_aphmin__1->GetXaxis()->SetTitleFont(42);
+   punzi_aphmin__1->GetYaxis()->SetTitle("Punzi_significance");
+   punzi_aphmin__1->GetYaxis()->SetLabelFont(42);
+   punzi_aphmin__1->GetYaxis()->SetTitleOffset(1.4);
+   punzi_aphmin__1->GetYaxis()->SetTitleFont(42);
+   punzi_aphmin__1->GetZaxis()->SetLabelFont(42);
+   punzi_aphmin__1->GetZaxis()->SetTitleOffset(1);
+   punzi_aphmin__1->GetZaxis()->SetTitleFont(42);
+   punzi_aphmin__1->Draw("");
+}

@@ -1,0 +1,44 @@
+{
+//========= Macro generated from object: punzi_met/
+//========= by ROOT version6.22/06
+   
+   TH1F *punzi_met__1 = new TH1F("punzi_met__1","",20,0,800);
+   punzi_met__1->SetBinContent(0,0.123698);
+   punzi_met__1->SetBinContent(1,0.123698);
+   punzi_met__1->SetBinContent(2,0.189783);
+   punzi_met__1->SetBinContent(3,0.305151);
+   punzi_met__1->SetBinContent(4,0.279567);
+   punzi_met__1->SetBinContent(5,0.160717);
+   punzi_met__1->SetBinContent(6,0.0700834);
+   punzi_met__1->SetBinContent(7,0.0413778);
+   punzi_met__1->SetBinContent(8,0.0234699);
+   punzi_met__1->SetBinContent(9,0.014242);
+   punzi_met__1->SetBinContent(10,0.0106941);
+   punzi_met__1->SetBinContent(11,0.0049929);
+   punzi_met__1->SetBinContent(12,0.00285367);
+   punzi_met__1->SetBinContent(13,0.00372817);
+   punzi_met__1->SetBinContent(14,0.00149378);
+   punzi_met__1->SetBinContent(15,0.00149414);
+   punzi_met__1->SetBinContent(16,0.00224257);
+   punzi_met__1->SetBinContent(17,0.00299105);
+   punzi_met__1->SetBinContent(18,0.000748132);
+   punzi_met__1->SetEntries(20);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#ff0000");
+   punzi_met__1->SetLineColor(ci);
+   punzi_met__1->SetLineWidth(2);
+   punzi_met__1->GetXaxis()->SetTitle("met");
+   punzi_met__1->GetXaxis()->SetLabelFont(42);
+   punzi_met__1->GetXaxis()->SetTitleOffset(1);
+   punzi_met__1->GetXaxis()->SetTitleFont(42);
+   punzi_met__1->GetYaxis()->SetTitle("Punzi_significance");
+   punzi_met__1->GetYaxis()->SetLabelFont(42);
+   punzi_met__1->GetYaxis()->SetTitleOffset(1.4);
+   punzi_met__1->GetYaxis()->SetTitleFont(42);
+   punzi_met__1->GetZaxis()->SetLabelFont(42);
+   punzi_met__1->GetZaxis()->SetTitleOffset(1);
+   punzi_met__1->GetZaxis()->SetTitleFont(42);
+   punzi_met__1->Draw("");
+}

@@ -1,0 +1,41 @@
+{
+//========= Macro generated from object: h_pt50_C/a histogram
+//========= by ROOT version6.22/06
+   
+   TH1F *h_pt50_C__8 = new TH1F("h_pt50_C__8","a histogram",10,0.8,1);
+   h_pt50_C__8->SetBinContent(1,7.36261e-07);
+   h_pt50_C__8->SetBinContent(2,2.86559e-06);
+   h_pt50_C__8->SetBinContent(3,3.11101e-06);
+   h_pt50_C__8->SetBinContent(4,4.09269e-06);
+   h_pt50_C__8->SetBinContent(5,3.60185e-06);
+   h_pt50_C__8->SetBinContent(6,9.81681e-07);
+   h_pt50_C__8->SetBinContent(7,9.81681e-07);
+   h_pt50_C__8->SetBinContent(8,2.4542e-07);
+   h_pt50_C__8->SetBinContent(9,3.19046e-06);
+   h_pt50_C__8->SetBinContent(10,5.07437e-06);
+   h_pt50_C__8->SetBinContent(11,-9.81681e-07);
+   h_pt50_C__8->SetBinError(1,4.2508e-07);
+   h_pt50_C__8->SetBinError(2,2.69943e-06);
+   h_pt50_C__8->SetBinError(3,2.68825e-06);
+   h_pt50_C__8->SetBinError(4,2.75464e-06);
+   h_pt50_C__8->SetBinError(5,2.68825e-06);
+   h_pt50_C__8->SetBinError(6,8.50161e-07);
+   h_pt50_C__8->SetBinError(7,9.18279e-07);
+   h_pt50_C__8->SetBinError(8,7.36261e-07);
+   h_pt50_C__8->SetBinError(9,1.06976e-06);
+   h_pt50_C__8->SetBinError(10,2.77642e-06);
+   h_pt50_C__8->SetBinError(11,6.94153e-07);
+   h_pt50_C__8->SetEntries(115);
+
+   ci = TColor::GetColor("#000099");
+   h_pt50_C__8->SetLineColor(ci);
+   h_pt50_C__8->GetXaxis()->SetLabelFont(42);
+   h_pt50_C__8->GetXaxis()->SetTitleOffset(1);
+   h_pt50_C__8->GetXaxis()->SetTitleFont(42);
+   h_pt50_C__8->GetYaxis()->SetLabelFont(42);
+   h_pt50_C__8->GetYaxis()->SetTitleFont(42);
+   h_pt50_C__8->GetZaxis()->SetLabelFont(42);
+   h_pt50_C__8->GetZaxis()->SetTitleOffset(1);
+   h_pt50_C__8->GetZaxis()->SetTitleFont(42);
+   h_pt50_C__8->Draw("");
+}

@@ -1,0 +1,38 @@
+{
+//========= Macro generated from object: punzi_met/
+//========= by ROOT version6.22/06
+   
+   TH1F *punzi_met__1 = new TH1F("punzi_met__1","",20,0,800);
+   punzi_met__1->SetBinContent(0,0.123698);
+   punzi_met__1->SetBinContent(1,0.123698);
+   punzi_met__1->SetBinContent(2,0.129929);
+   punzi_met__1->SetBinContent(3,0.115338);
+   punzi_met__1->SetBinContent(4,0.046975);
+   punzi_met__1->SetBinContent(5,0.030851);
+   punzi_met__1->SetBinContent(6,0.0118108);
+   punzi_met__1->SetBinContent(7,0.00915577);
+   punzi_met__1->SetBinContent(8,0.00821477);
+   punzi_met__1->SetBinContent(9,0.00456949);
+   punzi_met__1->SetBinContent(10,0.0036599);
+   punzi_met__1->SetBinContent(11,0.0018308);
+   punzi_met__1->SetBinContent(12,0.000915586);
+   punzi_met__1->SetEntries(20);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#ff0000");
+   punzi_met__1->SetLineColor(ci);
+   punzi_met__1->SetLineWidth(2);
+   punzi_met__1->GetXaxis()->SetTitle("met");
+   punzi_met__1->GetXaxis()->SetLabelFont(42);
+   punzi_met__1->GetXaxis()->SetTitleOffset(1);
+   punzi_met__1->GetXaxis()->SetTitleFont(42);
+   punzi_met__1->GetYaxis()->SetTitle("Punzi_significance");
+   punzi_met__1->GetYaxis()->SetLabelFont(42);
+   punzi_met__1->GetYaxis()->SetTitleOffset(1.4);
+   punzi_met__1->GetYaxis()->SetTitleFont(42);
+   punzi_met__1->GetZaxis()->SetLabelFont(42);
+   punzi_met__1->GetZaxis()->SetTitleOffset(1);
+   punzi_met__1->GetZaxis()->SetTitleFont(42);
+   punzi_met__1->Draw("");
+}

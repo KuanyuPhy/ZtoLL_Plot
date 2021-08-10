@@ -6,6 +6,7 @@
         "correlate_plot.C": "cpp",
         "iostream": "cpp",
         "ostream": "cpp",
-        "Draw.C": "cpp"
+        "Draw.C": "cpp",
+        "Draw_Compare_alpha.C": "cpp"
     }
 }
