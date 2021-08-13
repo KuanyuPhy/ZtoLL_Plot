@@ -122,23 +122,23 @@ void correlate_plot(){
 
     //TH2F *h_A = new ;
 
-    TH2D *h_pt50 = new TH2D("h_pt50","",80,0.,1000.,80,0.,1.);
+    TH2D *h_pt50 = new TH2D("h_pt50","",80,0.,1.,80,0.,1000.);
     h_pt50->Sumw2();
-    h_pt50->GetXaxis()->SetTitle("Met");
-    h_pt50->GetYaxis()->SetTitle("alphamin");
-    TH2D *h_pt100 = new TH2D("h_pt100","",80,0.,1000.,80,0.,1.);
+    h_pt50->GetXaxis()->SetTitle("alphamin");
+    h_pt50->GetYaxis()->SetTitle("Met");
+    TH2D *h_pt100 = new TH2D("h_pt100","",80,0.,1.,80,0.,1000.);
     h_pt100->Sumw2();
     h_pt100->GetXaxis()->SetTitle("Met");
     h_pt100->GetYaxis()->SetTitle("alphamin");
-    TH2D *h_pt250 = new TH2D("h_pt250","",80,0.,1000.,80,0.,1.);
+    TH2D *h_pt250 = new TH2D("h_pt250","",80,0.,1.,80,0.,1000.);
     h_pt250->Sumw2();
     h_pt250->GetXaxis()->SetTitle("Met");
     h_pt250->GetYaxis()->SetTitle("alphamin");
-    TH2D *h_pt400 = new TH2D("h_pt400","",80,0.,1000.,80,0.,1.);
+    TH2D *h_pt400 = new TH2D("h_pt400","",80,0.,1.,80,0.,1000.);
     h_pt400->Sumw2();
     h_pt400->GetXaxis()->SetTitle("Met");
     h_pt400->GetYaxis()->SetTitle("alphamin");
-    TH2D *h_pt650 = new TH2D("h_pt650","",80,0.,1000.,80,0.,1.);
+    TH2D *h_pt650 = new TH2D("h_pt650","",80,0.,1.,80,0.,1000.);
     h_pt650->Sumw2();
     h_pt650->GetXaxis()->SetTitle("Met");
     h_pt650->GetYaxis()->SetTitle("alphamin");
@@ -162,7 +162,7 @@ void correlate_plot(){
     for(int evt=0; evt < T_event->GetEntries(); evt++)
     {
         T_event->GetEntry(evt);
-        h_pt50->Fill(f_pt50_Met,f_pt50_alphamin,I_pt50_weight);
+        h_pt50->Fill(f_pt50_alphamin,f_pt50_Met,I_pt50_weight);
     }
     h_pt50->Scale(344.3 / DYPT50_SW);
 
@@ -174,7 +174,7 @@ void correlate_plot(){
     for(int evt=0; evt < T_event1->GetEntries(); evt++)
     {
         T_event1->GetEntry(evt);
-        h_pt100->Fill(f_pt100_Met,f_pt100_alphamin,I_pt100_weight);
+        h_pt100->Fill(f_pt100_alphamin,f_pt100_Met,I_pt100_weight);
     }
     h_pt100->Scale(80.64 / DYPT100_SW);
 
@@ -187,7 +187,7 @@ void correlate_plot(){
     for(int evt=0; evt < T_event2->GetEntries(); evt++)
     {
         T_event2->GetEntry(evt);
-        h_pt250->Fill(f_pt250_Met,f_pt250_alphamin,I_pt250_weight);
+        h_pt250->Fill(f_pt250_alphamin,f_pt250_Met,I_pt250_weight);
     }
     h_pt250->Scale(2.955 / DYPT250_SW);
 
@@ -199,7 +199,7 @@ void correlate_plot(){
     for(int evt=0; evt < T_event3->GetEntries(); evt++)
     {
         T_event3->GetEntry(evt);
-        h_pt400->Fill(f_pt400_Met,f_pt400_alphamin,I_pt400_weight);
+        h_pt400->Fill(f_pt400_alphamin,f_pt400_Met,I_pt400_weight);
     }
     h_pt400->Scale(0.3807  / DYPT400_SW);
 
@@ -211,7 +211,8 @@ void correlate_plot(){
     for(int evt=0; evt < T_event4->GetEntries(); evt++)
     {
         T_event4->GetEntry(evt);
-        h_pt650->Fill(f_pt650_Met,f_pt650_alphamin,I_pt650_weight);
+        h_pt650->Fill(f_pt650_alphamin,f_pt650_Met,I_pt650_weight);
+        
     }
     h_pt650->Scale(0.03711 / DYPT650_SW);
 

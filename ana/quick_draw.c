@@ -24,19 +24,19 @@ void quick_draw()
     TFile *DYpT400 = new TFile("./../../root_file/test/test_pt400.root");
     TFile *DYpT650 = new TFile("./../../root_file/test/test_pt650.root");
 
-    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("hmet"));
-    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("hmet"));
-    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("hmet"));
+    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_aphmin"));
+    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("h_aphmin"));
+    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("h_aphmin"));
 
-    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("hmet"));
+    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_aphmin"));
     TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
-    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("hmet"));
+    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_aphmin"));
     TH1D *DYPT100_sumW = ((TH1D *)DYpT100->Get("h_SumWeight"));
-    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("hmet"));
+    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_aphmin"));
     TH1D *DYPT250_sumW = ((TH1D *)DYpT250->Get("h_SumWeight"));
-    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("hmet"));
+    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_aphmin"));
     TH1D *DYPT400_sumW = ((TH1D *)DYpT400->Get("h_SumWeight"));
-    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("hmet"));
+    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_aphmin"));
     TH1D *DYPT650_sumW = ((TH1D *)DYpT650->Get("h_SumWeight"));
     
     
@@ -87,14 +87,14 @@ void quick_draw()
     //Mx2_1_nT->SetXTitle("NTracks per Jet");
     //Mx2_1_nT->SetXTitle("Numbers of Thin Jet");
     //Mx2_1_nT->SetXTitle("Numbers of electrons");
-    //Mx2_1_nT->GetXaxis()->SetBinLabel(1,"0");
-    //Mx2_1_nT->GetXaxis()->SetBinLabel(2,"1");
-    //Mx2_1_nT->GetXaxis()->SetBinLabel(3,"2");
-    //Mx2_1_nT->GetXaxis()->SetBinLabel(4,"3");
-    //Mx2_1_nT->GetXaxis()->SetBinLabel(5,"4");
-    //Mx2_1_nT->GetXaxis()->SetBinLabel(6,"5");
-    //Mx2_1_nT->GetXaxis()->SetBinLabel(7,"6");
-    //Mx2_1_nT->GetXaxis()->SetBinLabel(8,"7");
+    //DYPT50_nT->GetXaxis()->SetBinLabel(1,"0");
+    //DYPT50_nT->GetXaxis()->SetBinLabel(2,"1");
+    //DYPT50_nT->GetXaxis()->SetBinLabel(3,"2");
+    //DYPT50_nT->GetXaxis()->SetBinLabel(4,"3");
+    //DYPT50_nT->GetXaxis()->SetBinLabel(5,"4");
+    //DYPT50_nT->GetXaxis()->SetBinLabel(6,"5");
+    //DYPT50_nT->GetXaxis()->SetBinLabel(7,"6");
+    //DYPT50_nT->GetXaxis()->SetBinLabel(8,"7");
     //Mx2_1_nT->GetXaxis()->SetBinLabel(9,"8");
     //Mx2_1_nT->GetXaxis()->SetBinLabel(10,"9");    
     //Mx2_1_nT->GetXaxis()->SetRangeUser(0, 5);
@@ -104,15 +104,15 @@ void quick_draw()
     //Mx2_150_nT->GetXaxis()->SetRangeUser(-3, 5);
     //DYPT50_nT->GetXaxis()->SetRangeUser(-1.5, 5);
 
-    DYPT50_nT->DrawNormalized("hist");
+    DYPT50_nT->Draw("hist");
     int nBin = Mx2_150_nT->GetNbinsX();
     //cout << nBin << endl;
     double pp = DYPT50_nT->GetBinContent(75);
     //cout<<pp<<endl;
    
-    Mx2_50_nT->DrawNormalized("hist&&same");
-    Mx2_1_nT->DrawNormalized("hist&&same");
-    Mx2_150_nT->DrawNormalized("hist&&same");
+    //Mx2_50_nT->DrawNormalized("hist&&same");
+    //Mx2_1_nT->DrawNormalized("hist&&same");
+    //Mx2_150_nT->DrawNormalized("hist&&same");
     
     //DYPT50_nT->DrawNormalized("hist&&same");
     //Mx2_1_nT->DrawNormalized("hist&&same");
@@ -123,13 +123,13 @@ void quick_draw()
     TLegend *l2 = new TLegend(0.60, 0.55, 0.90, 0.90);
     l2->SetBorderSize(0);
     l2->SetTextSize(0.04);
-    l2->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
-    l2->AddEntry(Mx2_150_nT, "ctau=1mm m_{x^{2}}=150", "l");
-    l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
+    //l2->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
+    //l2->AddEntry(Mx2_150_nT, "ctau=1mm m_{x^{2}}=150", "l");
+    //l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
     l2->AddEntry(DYPT50_nT, "DYJets_pTBin", "l");
 
     l2->Draw();
     c1->SetLogy();
-    //c1->SaveAs("hmet.png");
+    //c1->SaveAs("h_aphmin.png");
 
 }
