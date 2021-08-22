@@ -6,7 +6,7 @@
 #include <TH1D.h>
 #include <TAttLine.h>
 #include <TStyle.h>
-#include "Cross_section.h"
+#include "./lib/Cross_section.h"
 using namespace std;
 void quick_draw()
 {
@@ -24,19 +24,19 @@ void quick_draw()
     TFile *DYpT400 = new TFile("./../../root_file/test/test_pt400.root");
     TFile *DYpT650 = new TFile("./../../root_file/test/test_pt650.root");
 
-    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_aphmin"));
-    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("h_aphmin"));
-    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("h_aphmin"));
+    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_mt2"));
+    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("h_mt2"));
+    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("h_mt2"));
 
-    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_aphmin"));
+    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_mt2"));
     TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
-    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_aphmin"));
+    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_mt2"));
     TH1D *DYPT100_sumW = ((TH1D *)DYpT100->Get("h_SumWeight"));
-    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_aphmin"));
+    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_mt2"));
     TH1D *DYPT250_sumW = ((TH1D *)DYpT250->Get("h_SumWeight"));
-    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_aphmin"));
+    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_mt2"));
     TH1D *DYPT400_sumW = ((TH1D *)DYpT400->Get("h_SumWeight"));
-    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_aphmin"));
+    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_mt2"));
     TH1D *DYPT650_sumW = ((TH1D *)DYpT650->Get("h_SumWeight"));
     
     
@@ -46,11 +46,11 @@ void quick_draw()
     double DYPT400_SW = DYPT400_sumW->GetBinContent(1);
     double DYPT650_SW = DYPT650_sumW->GetBinContent(1);
 
-    DYPT50_nT->Scale(PT50CS / DYPT50_SW);   
-    DYPT100_nT->Scale(PT100CS / DYPT100_SW);
-    DYPT250_nT->Scale(PT250CS / DYPT250_SW);
-    DYPT400_nT->Scale(PT400CS / DYPT400_SW);
-    DYPT650_nT->Scale(PT650CS / DYPT650_SW);
+    DYPT50_nT->Scale(GlobalConstants::PT50CS / DYPT50_SW);   
+    DYPT100_nT->Scale(GlobalConstants::PT100CS / DYPT100_SW);
+    DYPT250_nT->Scale(GlobalConstants::PT250CS / DYPT250_SW);
+    DYPT400_nT->Scale(GlobalConstants::PT400CS / DYPT400_SW);
+    DYPT650_nT->Scale(GlobalConstants::PT650CS / DYPT650_SW);
     
 
     DYPT50_nT->Add(DYPT100_nT);
@@ -83,6 +83,7 @@ void quick_draw()
     Mx2_50_nT->SetYTitle("Events");
     Mx2_50_nT->GetYaxis()->SetTitleOffset(1);
     //DYPT50_nT->SetTitle("IP^{3D}_{sig}");
+    //DYPT50_nT->SetTitle("alphamin<0.2");
     //Mx2_1_nT->SetXTitle("pt");
     //Mx2_1_nT->SetXTitle("NTracks per Jet");
     //Mx2_1_nT->SetXTitle("Numbers of Thin Jet");
@@ -104,15 +105,15 @@ void quick_draw()
     //Mx2_150_nT->GetXaxis()->SetRangeUser(-3, 5);
     //DYPT50_nT->GetXaxis()->SetRangeUser(-1.5, 5);
 
-    DYPT50_nT->Draw("hist");
+    DYPT50_nT->DrawNormalized("hist");
     int nBin = Mx2_150_nT->GetNbinsX();
     //cout << nBin << endl;
     double pp = DYPT50_nT->GetBinContent(75);
     //cout<<pp<<endl;
    
-    //Mx2_50_nT->DrawNormalized("hist&&same");
-    //Mx2_1_nT->DrawNormalized("hist&&same");
-    //Mx2_150_nT->DrawNormalized("hist&&same");
+    Mx2_50_nT->DrawNormalized("hist&&same");
+    Mx2_1_nT->DrawNormalized("hist&&same");
+    Mx2_150_nT->DrawNormalized("hist&&same");
     
     //DYPT50_nT->DrawNormalized("hist&&same");
     //Mx2_1_nT->DrawNormalized("hist&&same");
@@ -123,13 +124,13 @@ void quick_draw()
     TLegend *l2 = new TLegend(0.60, 0.55, 0.90, 0.90);
     l2->SetBorderSize(0);
     l2->SetTextSize(0.04);
-    //l2->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
-    //l2->AddEntry(Mx2_150_nT, "ctau=1mm m_{x^{2}}=150", "l");
-    //l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
+    l2->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
+    l2->AddEntry(Mx2_150_nT, "ctau=1mm m_{x^{2}}=150", "l");
+    l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
     l2->AddEntry(DYPT50_nT, "DYJets_pTBin", "l");
 
     l2->Draw();
-    c1->SetLogy();
-    //c1->SaveAs("h_aphmin.png");
+    //c1->SetLogy();
+    //c1->SaveAs("h_mt2.png");
 
 }

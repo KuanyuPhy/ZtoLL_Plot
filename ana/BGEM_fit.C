@@ -59,11 +59,41 @@ void BGEM_fit()
     TH1F *h_pt50_D_alphamin = ((TH1F *)ABCD->Get("h_pt50_D_alphamin"));
     TH1F *h_pt50_D_met = ((TH1F *)ABCD->Get("h_pt50_D_met"));
 
-    h_pt50_B_alphamin->Divide(h_pt50_D_alphamin);
-    h_pt50_B_alphamin->Draw();
+    TH1F *h_pt50A_aphmin = ((TH1F *)ABCD->Get("h_pt50A_aphmin"));
+    TH1F *h_pt50B_aphmin = ((TH1F *)ABCD->Get("h_pt50B_aphmin"));
 
-    float alpma_xmin = h_pt50_A_alphamin->GetXaxis()->GetXmin();
-    float alpma_xax = h_pt50_A_alphamin->GetXaxis()->GetXmax();
+    TH1F *h_pt50A_met = ((TH1F *)ABCD->Get("h_pt50A_met"));
+    TH1F *h_pt50B_met = ((TH1F *)ABCD->Get("h_pt50B_met"));    
+
+    h_pt50A_aphmin->Divide(h_pt50B_aphmin);
+    //h_pt50A_aphmin->Draw();
+
+    h_pt50A_met->Divide(h_pt50B_met);
+    //h_pt50A_met->GetXaxis()->SetRangeUser(0,750);
+    h_pt50A_met->Draw();
+
+    float metAB_xmin = h_pt50A_met->GetXaxis()->GetXmin();
+    float metAB_xax = h_pt50A_met->GetXaxis()->GetXmax();
+    TF1 *f2 = new TF1("f2", "expo(2)", metAB_xmin, metAB_xax);
+    gStyle->SetOptFit(1111);
+    h_pt50A_met->Fit("f2", "LFM");
+
+    float alpmaAB_xmin = h_pt50A_aphmin->GetXaxis()->GetXmin();
+    float alpmaAB_xax = h_pt50A_aphmin->GetXaxis()->GetXmax();
+
+    TF1 *f1 = new TF1("f1", "expo", alpmaAB_xmin, alpmaAB_xax);
+    gStyle->SetOptFit(1111);
+    h_pt50A_aphmin->SetMarkerColor(kBlack);
+    f1->SetLineStyle(kSolid);
+    h_pt50A_aphmin->Fit("f1", "LFM");
+    
+
+
+    //h_pt50_B_alphamin->Divide(h_pt50_D_alphamin);
+    //h_pt50_B_alphamin->Draw();
+
+    //float alpma_xmin = h_pt50_A_alphamin->GetXaxis()->GetXmin();
+    //float alpma_xax = h_pt50_A_alphamin->GetXaxis()->GetXmax();
 
     //TCanvas *c1 = new TCanvas("Simfit", "Simultaneous fit of two histograms",10, 10, 700, 700);
     //c1->Divide(1, 2);
@@ -71,17 +101,17 @@ void BGEM_fit()
 
     //gStyle->SetOptFit(1111);
 
-    TF1 *f1 = new TF1("f1", "pol6", alpma_xmin, alpma_xax);
+    //TF1 *f1 = new TF1("f1", "pol6", alpma_xmin, alpma_xax);
 
-    h_pt50_C_met->Divide(h_pt50_D_met);
+    //h_pt50_C_met->Divide(h_pt50_D_met);
 
     //h_pt50_A_alphamin->Fit("f1", "LFM");
 
     //h_pt50_C_met->Draw();
 
-    float met_xmin = h_pt50_C_met->GetXaxis()->GetXmin();
-    float met_xax = h_pt50_C_met->GetXaxis()->GetXmax();
-    TF1 *f2 = new TF1("f2", "expo+pol2", met_xmin, met_xax);
+    //float met_xmin = h_pt50_C_met->GetXaxis()->GetXmin();
+    //float met_xax = h_pt50_C_met->GetXaxis()->GetXmax();
+    //TF1 *f2 = new TF1("f2", "expo+pol2", met_xmin, met_xax);
     //TF1 *f2 = new TF1("f2", "x*sin(x) ", met_xmin, met_xax);
 
     //c1->cd(2);
