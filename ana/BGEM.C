@@ -20,15 +20,15 @@ using namespace RooFit;
 void BGEM(){
 
 
-    TFile *Mx2_1 = new TFile("./../../root_file/test/test1.root");
-    TFile *Mx2_50 = new TFile("./../../root_file/test/test50.root");
-    TFile *Mx2_150 = new TFile("./../../root_file/test/test150.root");
+    TFile *Mx2_1 = new TFile("./../../root_file/Ztoee/test1.root");
+    TFile *Mx2_50 = new TFile("./../../root_file/Ztoee/test50.root");
+    TFile *Mx2_150 = new TFile("./../../root_file/Ztoee/test150.root");
     
-    TFile *DYpT50 = new TFile("./../../root_file/test/test_pt50.root");
-    TFile *DYpT100 = new TFile("./../../root_file/test/test_pt100.root");
-    TFile *DYpT250 = new TFile("./../../root_file/test/test_pt250.root");
-    TFile *DYpT400 = new TFile("./../../root_file/test/test_pt400.root");
-    TFile *DYpT650 = new TFile("./../../root_file/test/test_pt650.root");
+    TFile *DYpT50 = new TFile("./../../root_file/Ztoee/test_pt50.root");
+    TFile *DYpT100 = new TFile("./../../root_file/Ztoee/test_pt100.root");
+    TFile *DYpT250 = new TFile("./../../root_file/Ztoee/test_pt250.root");
+    TFile *DYpT400 = new TFile("./../../root_file/Ztoee/test_pt400.root");
+    TFile *DYpT650 = new TFile("./../../root_file/Ztoee/test_pt650.root");
 
 
     TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
@@ -98,121 +98,121 @@ void BGEM(){
     TH1F* h_pt50_A_alphamin = new TH1F("h_pt50_A_alphamin","",40,0.01,1.0);
     h_pt50_A_alphamin->Sumw2();
 
-    TH1F* h_pt50_A_met = new TH1F("h_pt50_A_met","",20,90.,1000.);
+    TH1F* h_pt50_A_met = new TH1F("h_pt50_A_met","",40,90.,1000.);
     h_pt50_A_met->Sumw2();
 
     TH1F* h_pt100_A_alphamin = new TH1F("h_pt100_A_alphamin","",40,0.01,1.0);
     h_pt100_A_alphamin->Sumw2();
     
-    TH1F* h_pt100_A_met = new TH1F("h_pt100_A_met","",20,90.,1000.);
+    TH1F* h_pt100_A_met = new TH1F("h_pt100_A_met","",40,90.,1000.);
     h_pt100_A_met->Sumw2();
     
     TH1F* h_pt250_A_alphamin = new TH1F("h_pt250_A_alphamin","",40,0.01,1.0);
     h_pt250_A_alphamin->Sumw2();
 
-    TH1F* h_pt250_A_met = new TH1F("h_pt250_A_met","",20,90.,1000.);
+    TH1F* h_pt250_A_met = new TH1F("h_pt250_A_met","",40,90.,1000.);
     h_pt250_A_met->Sumw2();
     
     TH1F* h_pt400_A_alphamin = new TH1F("h_pt400_A_alphamin","",40,0.01,1.0);
     h_pt400_A_alphamin->Sumw2();
 
-    TH1F* h_pt400_A_met = new TH1F("h_pt400_A_met","",20,90.,1000.);
+    TH1F* h_pt400_A_met = new TH1F("h_pt400_A_met","",40,90.,1000.);
     h_pt400_A_met->Sumw2();
     
     TH1F* h_pt650_A_alphamin = new TH1F("h_pt650_A_alphamin","",40,0.01,1.0);
     h_pt650_A_alphamin->Sumw2();
 
-    TH1F* h_pt650_A_met = new TH1F("h_pt650_A_met","",20,90.,1000.);
+    TH1F* h_pt650_A_met = new TH1F("h_pt650_A_met","",40,90.,1000.);
     h_pt650_A_met->Sumw2();
 
     TH1F* h_pt50_B_alphamin = new TH1F("h_pt50_B_alphamin","",40,0.0,0.05);
     h_pt50_B_alphamin->Sumw2();
 
-    TH1F* h_pt50_B_met = new TH1F("h_pt50_B_met","",20,90.,1000.);
+    TH1F* h_pt50_B_met = new TH1F("h_pt50_B_met","",40,90.,1000.);
     h_pt50_B_met->Sumw2();
 
     TH1F* h_pt100_B_alphamin = new TH1F("h_pt100_B_alphamin","",40,0.0,0.05);
     h_pt100_B_alphamin->Sumw2();
 
-    TH1F* h_pt100_B_met = new TH1F("h_pt100_B_met","",20,90.,1000.);
+    TH1F* h_pt100_B_met = new TH1F("h_pt100_B_met","",40,90.,1000.);
     h_pt100_B_met->Sumw2();
 
     TH1F* h_pt250_B_alphamin = new TH1F("h_pt250_B_alphamin","",40,0.0,0.05);
     h_pt250_B_alphamin->Sumw2();
 
-    TH1F* h_pt250_B_met = new TH1F("h_pt250_B_met","",20,90.,1000.);
+    TH1F* h_pt250_B_met = new TH1F("h_pt250_B_met","",40,90.,1000.);
     h_pt250_B_met->Sumw2();
 
     TH1F* h_pt400_B_alphamin = new TH1F("h_pt400_B_alphamin","",40,0.0,0.05);
     h_pt400_B_alphamin->Sumw2();
 
-    TH1F* h_pt400_B_met = new TH1F("h_pt400_B_met","",20,90.,1000.);
+    TH1F* h_pt400_B_met = new TH1F("h_pt400_B_met","",40,90.,1000.);
     h_pt400_B_met->Sumw2();
 
     TH1F* h_pt650_B_alphamin = new TH1F("h_pt650_B_alphamin","",40,0.0,0.05);
     h_pt650_B_alphamin->Sumw2();
 
-    TH1F* h_pt650_B_met = new TH1F("h_pt650_B_met","",20,90.,1000.);
+    TH1F* h_pt650_B_met = new TH1F("h_pt650_B_met","",40,90.,1000.);
     h_pt650_B_met->Sumw2();   
 
     TH1F* h_pt50_C_alphamin = new TH1F("h_pt50_C_alphamin","",40,0.01,1.0);
     h_pt50_C_alphamin->Sumw2();
 
-    TH1F* h_pt50_C_met = new TH1F("h_pt50_C_met","",20,0.,90.);
+    TH1F* h_pt50_C_met = new TH1F("h_pt50_C_met","",40,0.,90.);
     h_pt50_C_met->Sumw2();
 
     TH1F* h_pt100_C_alphamin = new TH1F("h_pt100_C_alphamin","",40,0.01,1.0);
     h_pt100_C_alphamin->Sumw2();
 
-    TH1F* h_pt100_C_met = new TH1F("h_pt100_C_met","",20,0.,90.);
+    TH1F* h_pt100_C_met = new TH1F("h_pt100_C_met","",40,0.,90.);
     h_pt100_C_met->Sumw2();
 
     TH1F* h_pt250_C_alphamin = new TH1F("h_pt250_C_alphamin","",40,0.01,1.0);
     h_pt250_C_alphamin->Sumw2();
 
-    TH1F* h_pt250_C_met = new TH1F("h_pt250_C_met","",20,0.,90.);
+    TH1F* h_pt250_C_met = new TH1F("h_pt250_C_met","",40,0.,90.);
     h_pt250_C_met->Sumw2();
     
     TH1F* h_pt400_C_alphamin = new TH1F("h_pt400_C_alphamin","",40,0.01,1.0);
     h_pt400_C_alphamin->Sumw2();
 
-    TH1F* h_pt400_C_met = new TH1F("h_pt400_C_met","",20,0.,90.);
+    TH1F* h_pt400_C_met = new TH1F("h_pt400_C_met","",40,0.,90.);
     h_pt400_C_met->Sumw2();
 
     TH1F* h_pt650_C_alphamin = new TH1F("h_pt650_C_alphamin","",40,0.01,1.0);
     h_pt650_C_alphamin->Sumw2();
 
-    TH1F* h_pt650_C_met = new TH1F("h_pt650_C_met","",20,0.,90.);
+    TH1F* h_pt650_C_met = new TH1F("h_pt650_C_met","",40,0.,90.);
     h_pt650_C_met->Sumw2();   
 
     TH1F* h_pt50_D_alphamin = new TH1F("h_pt50_D_alphamin","",40,0.0,0.05);
     h_pt50_D_alphamin->Sumw2();
 
-    TH1F* h_pt50_D_met = new TH1F("h_pt50_D_met","",20,0.,90.);
+    TH1F* h_pt50_D_met = new TH1F("h_pt50_D_met","",40,0.,90.);
     h_pt50_D_met->Sumw2();
 
     TH1F* h_pt100_D_alphamin = new TH1F("h_pt100_D_alphamin","",40,0.0,0.05);
     h_pt100_D_alphamin->Sumw2();
 
-    TH1F* h_pt100_D_met = new TH1F("h_pt100_D_met","",20,0.,90.);
+    TH1F* h_pt100_D_met = new TH1F("h_pt100_D_met","",40,0.,90.);
     h_pt100_D_met->Sumw2();
 
     TH1F* h_pt250_D_alphamin = new TH1F("h_pt250_D_alphamin","",40,0.0,0.05);
     h_pt250_D_alphamin->Sumw2();
 
-    TH1F* h_pt250_D_met = new TH1F("h_pt250_D_met","",20,0.,90.);
+    TH1F* h_pt250_D_met = new TH1F("h_pt250_D_met","",40,0.,90.);
     h_pt250_D_met->Sumw2();
 
     TH1F* h_pt400_D_alphamin = new TH1F("h_pt400_D_alphamin","",40,0.0,0.05);
     h_pt400_D_alphamin->Sumw2();
 
-    TH1F* h_pt400_D_met = new TH1F("h_pt400_D_met","",20,0.,90.);
+    TH1F* h_pt400_D_met = new TH1F("h_pt400_D_met","",40,0.,90.);
     h_pt400_D_met->Sumw2();
 
     TH1F* h_pt650_D_alphamin = new TH1F("h_pt650_D_alphamin","",40,0.0,0.05);
     h_pt650_D_alphamin->Sumw2();
 
-    TH1F* h_pt650_D_met = new TH1F("h_pt650_D_met","",20,0.,90.);
+    TH1F* h_pt650_D_met = new TH1F("h_pt650_D_met","",40,0.,90.);
     h_pt650_D_met->Sumw2();
 
 
@@ -533,17 +533,17 @@ void BGEM(){
     h_pt650B_aphmin->Scale(0.03711 / DYPT650_SW);
 
 
-    h_pt50A_met->Scale(344.3 / DYPT50_SW);
-    h_pt100A_met->Scale(80.64 / DYPT100_SW);
-    h_pt250A_met->Scale(2.955 / DYPT250_SW);
-    h_pt400A_met->Scale(0.3807  / DYPT400_SW);
-    h_pt650A_met->Scale(0.03711 / DYPT650_SW);
+    //h_pt50A_met->Scale(344.3 / DYPT50_SW);
+    //h_pt100A_met->Scale(80.64 / DYPT100_SW);
+    //h_pt250A_met->Scale(2.955 / DYPT250_SW);
+    //h_pt400A_met->Scale(0.3807  / DYPT400_SW);
+    //h_pt650A_met->Scale(0.03711 / DYPT650_SW);
 
-    h_pt50B_met->Scale(344.3 / DYPT50_SW);
-    h_pt100B_met->Scale(80.64 / DYPT100_SW);
-    h_pt250B_met->Scale(2.955 / DYPT250_SW);
-    h_pt400B_met->Scale(0.3807  / DYPT400_SW);
-    h_pt650B_met->Scale(0.03711 / DYPT650_SW);
+    //h_pt50B_met->Scale(344.3 / DYPT50_SW);
+    //h_pt100B_met->Scale(80.64 / DYPT100_SW);
+    //h_pt250B_met->Scale(2.955 / DYPT250_SW);
+    //h_pt400B_met->Scale(0.3807  / DYPT400_SW);
+    //h_pt650B_met->Scale(0.03711 / DYPT650_SW);
 
 
     h_pt50A_aphmin->Add(h_pt100A_aphmin);
@@ -637,6 +637,13 @@ void BGEM(){
     h_pt50_C_met = (TH1F*)gDirectory->Get("h_pt50_C_met");
     h_pt50_D_met = (TH1F*)gDirectory->Get("h_pt50_D_met");
 
+    auto *c1 = new TCanvas("c1","c1");
+    //TCanvas *c1 = new TCanvas("", "",10, 10, 700, 700);
+    c1->Divide(2, 1);
+    c1->cd(1);
+    h_pt50A_aphmin->Draw();
+    c1->cd(2);
+    h_pt50B_aphmin->Draw();
     //h_pt50_A_alphamin->Draw();
 
     TFile *outFile = new TFile("./../../ABCD.root", "RECREATE");

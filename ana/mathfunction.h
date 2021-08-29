@@ -2,20 +2,13 @@
 #include <TTree.h>
 class mathfunction
 {
-    public:
+public:
+    TFile *T_File;
+    TTree *T_OBject;
 
-        TFile *T_File;
-        TTree *T_OBject;
+    UInt_t total_n;
 
-        UInt_t total_n;
-        Float_t sumx, sumy, sumxy, sumxsq, sumysq; 
-        TBranch *h_I_nJets;
-        TBranch *h_f_alphamin;
-        TBranch *h_f_Met;
-        float get_correlation()
-        {
-            
-        }
-    
+    Float_t *GetPtrX(const char* bname){return (Float_t*)}
+    Float_t *GetPtrY(const char* bname){return (Float_t*)}
+    TObject*
 }
-

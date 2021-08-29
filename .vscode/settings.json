@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "BGEM.C": "cpp",
+        "BGEM_fit.C": "cpp",
+        "correlate_plot.C": "cpp",
+        "ROC.C": "cpp"
+    }
+}

@@ -11,7 +11,7 @@
 #include <TLatex.h>
 #include <TAxis.h> 
 #include <TLine.h>
-#include "Cross_section.h"
+#include "./lib/Cross_section.h"
 
 /*
 float Linear_Correlation(TFile *T_File, TTree *T_OBject, int x, double y, float z)
@@ -122,6 +122,7 @@ void correlate_plot(){
 
     //TH2F *h_A = new ;
 
+/*
     TH2D *h_pt50 = new TH2D("h_pt50","",80,0.,1.,80,0.,1000.);
     h_pt50->Sumw2();
     h_pt50->GetXaxis()->SetTitle("alphamin");
@@ -142,7 +143,27 @@ void correlate_plot(){
     h_pt650->Sumw2();
     h_pt650->GetXaxis()->SetTitle("Met");
     h_pt650->GetYaxis()->SetTitle("alphamin");
-
+*/
+    TH2D *h_pt50 = new TH2D("h_pt50","",24,0.,1000.,24,0.,1.);
+    h_pt50->Sumw2();
+    h_pt50->GetXaxis()->SetTitle("Met");
+    h_pt50->GetYaxis()->SetTitle("alphamin");
+    TH2D *h_pt100 = new TH2D("h_pt100","",24,0.,1000.,24,0.,1.);
+    h_pt100->Sumw2();
+    h_pt100->GetXaxis()->SetTitle("Met");
+    h_pt100->GetYaxis()->SetTitle("alphamin");
+    TH2D *h_pt250 = new TH2D("h_pt250","",24,0.,1000.,24,0.,1.);
+    h_pt250->Sumw2();
+    h_pt250->GetXaxis()->SetTitle("Met");
+    h_pt250->GetYaxis()->SetTitle("alphamin");
+    TH2D *h_pt400 = new TH2D("h_pt400","",24,0.,1000.,24,0.,1.);
+    h_pt400->Sumw2();
+    h_pt400->GetXaxis()->SetTitle("Met");
+    h_pt400->GetYaxis()->SetTitle("alphamin");
+    TH2D *h_pt650 = new TH2D("h_pt650","",24,0.,1000.,24,0.,1.);
+    h_pt650->Sumw2();
+    h_pt650->GetXaxis()->SetTitle("Met");
+    h_pt650->GetYaxis()->SetTitle("alphamin");
 
     double f_pt50_alphamin, f_pt100_alphamin, f_pt250_alphamin,f_pt400_alphamin,f_pt650_alphamin;
     float f_pt50_Met, f_pt100_Met, f_pt250_Met, f_pt400_Met, f_pt650_Met;
@@ -156,15 +177,17 @@ void correlate_plot(){
     T_event->SetBranchAddress("I_weight",&I_pt50_weight);
 
     TH2F *h2 = new TH2F("h2","",80,0.,800.,80,0.,1.);
+    //TH2F *h2 = new TH2F("h2","",80,0.,1.,80,0.,800.);
 
     //T_event->Draw("f_alphamin:f_Met");
 
     for(int evt=0; evt < T_event->GetEntries(); evt++)
     {
         T_event->GetEntry(evt);
-        h_pt50->Fill(f_pt50_alphamin,f_pt50_Met,I_pt50_weight);
+        //h_pt50->Fill(f_pt50_alphamin,f_pt50_Met,I_pt50_weight);
+        h_pt50->Fill(f_pt50_Met,f_pt50_alphamin,I_pt50_weight);
     }
-    h_pt50->Scale(344.3 / DYPT50_SW);
+    h_pt50->Scale(GlobalConstants::PT50CS / DYPT50_SW);
 
     TTree *T_event1;
     DYpT100->GetObject("T_event",T_event1);
@@ -174,9 +197,10 @@ void correlate_plot(){
     for(int evt=0; evt < T_event1->GetEntries(); evt++)
     {
         T_event1->GetEntry(evt);
-        h_pt100->Fill(f_pt100_alphamin,f_pt100_Met,I_pt100_weight);
+        //h_pt100->Fill(f_pt100_alphamin,f_pt100_Met,I_pt100_weight);
+        h_pt100->Fill(f_pt100_Met,f_pt100_alphamin,I_pt100_weight);
     }
-    h_pt100->Scale(80.64 / DYPT100_SW);
+    h_pt100->Scale(GlobalConstants::PT100CS / DYPT100_SW);
 
     TTree *T_event2;
     DYpT250->GetObject("T_event",T_event2);
@@ -187,9 +211,10 @@ void correlate_plot(){
     for(int evt=0; evt < T_event2->GetEntries(); evt++)
     {
         T_event2->GetEntry(evt);
-        h_pt250->Fill(f_pt250_alphamin,f_pt250_Met,I_pt250_weight);
+        //h_pt250->Fill(f_pt250_alphamin,f_pt250_Met,I_pt250_weight);
+        h_pt250->Fill(f_pt250_Met,f_pt250_alphamin,I_pt250_weight);
     }
-    h_pt250->Scale(2.955 / DYPT250_SW);
+    h_pt250->Scale(GlobalConstants::PT250CS / DYPT250_SW);
 
     TTree *T_event3;
     DYpT400->GetObject("T_event",T_event3);
@@ -199,9 +224,10 @@ void correlate_plot(){
     for(int evt=0; evt < T_event3->GetEntries(); evt++)
     {
         T_event3->GetEntry(evt);
-        h_pt400->Fill(f_pt400_alphamin,f_pt400_Met,I_pt400_weight);
+        //h_pt400->Fill(f_pt400_alphamin,f_pt400_Met,I_pt400_weight);
+        h_pt400->Fill(f_pt400_Met,f_pt400_alphamin,I_pt400_weight);
     }
-    h_pt400->Scale(0.3807  / DYPT400_SW);
+    h_pt400->Scale(GlobalConstants::PT400CS  / DYPT400_SW);
 
     TTree *T_event4;
     DYpT650->GetObject("T_event",T_event4);
@@ -211,10 +237,10 @@ void correlate_plot(){
     for(int evt=0; evt < T_event4->GetEntries(); evt++)
     {
         T_event4->GetEntry(evt);
-        h_pt650->Fill(f_pt650_alphamin,f_pt650_Met,I_pt650_weight);
-        
+        //h_pt650->Fill(f_pt650_alphamin,f_pt650_Met,I_pt650_weight);
+        h_pt650->Fill(f_pt650_Met,f_pt650_alphamin,I_pt650_weight);
     }
-    h_pt650->Scale(0.03711 / DYPT650_SW);
+    h_pt650->Scale(GlobalConstants::PT650CS / DYPT650_SW);
 
     h_pt50->Add(h_pt100);
     h_pt50->Add(h_pt250);

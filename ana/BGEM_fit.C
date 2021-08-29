@@ -70,23 +70,27 @@ void BGEM_fit()
 
     h_pt50A_met->Divide(h_pt50B_met);
     //h_pt50A_met->GetXaxis()->SetRangeUser(0,750);
+    int nBin = h_pt50A_met->GetNbinsX();
+    cout << nBin << endl;
     h_pt50A_met->Draw();
 
+/*
     float metAB_xmin = h_pt50A_met->GetXaxis()->GetXmin();
     float metAB_xax = h_pt50A_met->GetXaxis()->GetXmax();
-    TF1 *f2 = new TF1("f2", "expo(2)", metAB_xmin, metAB_xax);
+    TF1 *f2 = new TF1("f2", "expo", metAB_xmin, metAB_xax);
     gStyle->SetOptFit(1111);
-    h_pt50A_met->Fit("f2", "LFM");
+    h_pt50A_met->Fit("f2", "IMF");
+*/
 
     float alpmaAB_xmin = h_pt50A_aphmin->GetXaxis()->GetXmin();
     float alpmaAB_xax = h_pt50A_aphmin->GetXaxis()->GetXmax();
 
-    TF1 *f1 = new TF1("f1", "expo", alpmaAB_xmin, alpmaAB_xax);
+    TF1 *f1 = new TF1("f1", "pol6", alpmaAB_xmin, alpmaAB_xax);
     gStyle->SetOptFit(1111);
     h_pt50A_aphmin->SetMarkerColor(kBlack);
     f1->SetLineStyle(kSolid);
-    h_pt50A_aphmin->Fit("f1", "LFM");
-    
+    h_pt50A_aphmin->Fit("f1", "LMF");
+
 
 
     //h_pt50_B_alphamin->Divide(h_pt50_D_alphamin);
