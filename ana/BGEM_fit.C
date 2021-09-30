@@ -12,6 +12,7 @@
 #include <TLine.h>
 #include "RooRealVar.h"
 #include "RooDataSet.h"
+#include "setNCUStyle.C"
 
 using namespace RooFit;
 //#include "TRooH1D.h"
@@ -30,26 +31,21 @@ Double_t lorentzianPeak(Double_t *x, Double_t *par)
                                                               (x[0] - par[2]) * (x[0] - par[2]) + .25 * par[1] * par[1]);
 }
 
-// Sum of background and peak function
-Double_t fitFunction(Double_t *x, Double_t *par)
-{
-    return background(x, par) + lorentzianPeak(x, &par[3]);
-}
 
 void BGEM_fit()
 {
+    setNCUStyle(true);
+    TFile *ABCD = new TFile("./../../ABCD_HT.root");
 
-    TFile *ABCD = new TFile("./../../ABCD.root");
+    TH1F *h_ht70A_aphmin = ((TH1F *)ABCD->Get("h_ht70A_aphmin"));
+    h_ht70A_aphmin->GetXaxis()->SetTitle("alphamin");
 
-    TH1F *h_pt50_A_alphamin = ((TH1F *)ABCD->Get("h_pt50_A_alphamin"));
-    h_pt50_A_alphamin->GetXaxis()->SetTitle("alphamin");
+    //TH1F *h_ht70A_met = ((TH1F *)ABCD->Get("h_ht70A_met"));
+    
 
-    TH1F *h_pt50_A_met = ((TH1F *)ABCD->Get("h_pt50_A_met"));
-    h_pt50_A_met->GetXaxis()->SetTitle("Met");
-
-    TH1F *h_pt50_B_alphamin = ((TH1F *)ABCD->Get("h_pt50_B_alphamin"));
-    h_pt50_B_alphamin->GetXaxis()->SetTitle("alphamin");
-
+    TH1F *h_ht70B_aphmin = ((TH1F *)ABCD->Get("h_ht70B_aphmin"));
+    h_ht70B_aphmin->GetXaxis()->SetTitle("alphamin");
+/*
     TH1F *h_pt50_B_met = ((TH1F *)ABCD->Get("h_pt50_B_met"));
     h_pt50_B_met->GetXaxis()->SetTitle("Met");
 
@@ -58,38 +54,44 @@ void BGEM_fit()
 
     TH1F *h_pt50_D_alphamin = ((TH1F *)ABCD->Get("h_pt50_D_alphamin"));
     TH1F *h_pt50_D_met = ((TH1F *)ABCD->Get("h_pt50_D_met"));
-
-    TH1F *h_pt50A_aphmin = ((TH1F *)ABCD->Get("h_pt50A_aphmin"));
-    TH1F *h_pt50B_aphmin = ((TH1F *)ABCD->Get("h_pt50B_aphmin"));
-
-    TH1F *h_pt50A_met = ((TH1F *)ABCD->Get("h_pt50A_met"));
-    TH1F *h_pt50B_met = ((TH1F *)ABCD->Get("h_pt50B_met"));    
-
-    h_pt50A_aphmin->Divide(h_pt50B_aphmin);
-    //h_pt50A_aphmin->Draw();
-
-    h_pt50A_met->Divide(h_pt50B_met);
-    //h_pt50A_met->GetXaxis()->SetRangeUser(0,750);
-    int nBin = h_pt50A_met->GetNbinsX();
-    cout << nBin << endl;
-    h_pt50A_met->Draw();
-
-/*
-    float metAB_xmin = h_pt50A_met->GetXaxis()->GetXmin();
-    float metAB_xax = h_pt50A_met->GetXaxis()->GetXmax();
-    TF1 *f2 = new TF1("f2", "expo", metAB_xmin, metAB_xax);
-    gStyle->SetOptFit(1111);
-    h_pt50A_met->Fit("f2", "IMF");
 */
+    //TH1F *h_ht70A_aphmin = ((TH1F *)ABCD->Get("h_ht70A_aphmin"));
+    //TH1F *h_pt50B_aphmin = ((TH1F *)ABCD->Get("h_pt50B_aphmin"));
 
-    float alpmaAB_xmin = h_pt50A_aphmin->GetXaxis()->GetXmin();
-    float alpmaAB_xax = h_pt50A_aphmin->GetXaxis()->GetXmax();
+    TH1F *h_ht70A_met = ((TH1F *)ABCD->Get("h_ht70A_met"));
+    h_ht70A_met->SetTitle("ratio of Met");
+    h_ht70A_met->GetXaxis()->SetTitle("Met");
+    h_ht70A_met->GetXaxis()->SetLabelSize(0.03);
+    h_ht70A_met->GetYaxis()->SetLabelSize(0.03);
+    TH1F *h_ht70B_met = ((TH1F *)ABCD->Get("h_ht70B_met"));    
 
-    TF1 *f1 = new TF1("f1", "pol6", alpmaAB_xmin, alpmaAB_xax);
+    //h_ht70A_aphmin->Divide(h_ht70B_aphmin);
+    //h_ht70A_aphmin->Draw();
+
+    h_ht70A_met->Divide(h_ht70B_met);
+    //h_pt50A_met->GetXaxis()->SetRangeUser(0,750);
+    int nBin = h_ht70A_met->GetNbinsX();
+    cout << nBin << endl;
+    h_ht70A_met->Draw();
+
+
+    float metAB_xmin = h_ht70A_met->GetXaxis()->GetXmin();
+    float metAB_xax = h_ht70A_met->GetXaxis()->GetXmax();
+    TF1 *f2 = new TF1("f2", "landau", metAB_xmin, metAB_xax);
+    gStyle->SetOptFit(0001111);
+    h_ht70A_met->Fit("f2", "IMF");
+
+    c1->SetLogy();
+
+
+    float alpmaAB_xmin = h_ht70A_aphmin->GetXaxis()->GetXmin();
+    float alpmaAB_xax = h_ht70A_aphmin->GetXaxis()->GetXmax();
+
+    TF1 *f1 = new TF1("f1", "expo(3)*pol3", alpmaAB_xmin, alpmaAB_xax);
     gStyle->SetOptFit(1111);
-    h_pt50A_aphmin->SetMarkerColor(kBlack);
+    h_ht70A_aphmin->SetMarkerColor(kBlack);
     f1->SetLineStyle(kSolid);
-    h_pt50A_aphmin->Fit("f1", "LMF");
+    //h_ht70A_aphmin->Fit("f1", "IMF");
 
 
 
@@ -121,4 +123,5 @@ void BGEM_fit()
     //c1->cd(2);
 
     //h_pt50_C_met->Fit("f2", "LFM");
+
 }

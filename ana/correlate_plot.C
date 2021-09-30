@@ -11,7 +11,7 @@
 #include <TLatex.h>
 #include <TAxis.h> 
 #include <TLine.h>
-#include "./lib/Cross_section.h"
+//#include "./lib/Cross_section.h"
 
 /*
 float Linear_Correlation(TFile *T_File, TTree *T_OBject, int x, double y, float z)
@@ -50,16 +50,13 @@ float Linear_Correlation(TFile *T_File, TTree *T_OBject, int x, double y, float 
 
 void correlate_plot(){
 
-/*
-    TFile *Mx2_1 = new TFile("./../../root_file/test/tmpMx2_1.root");
-    TFile *Mx2_50 = new TFile("./../../root_file/test/tmpMx2_50.root");
-    TFile *Mx2_150 = new TFile("./../../root_file/test/tmpMx2_150.root");
+
+    //TFile *Mx2_1 = new TFile("./../../root_file/test/tmpMx2_1.root");
+    //TFile *Mx2_50 = new TFile("./../../root_file/test/tmpMx2_50.root");
+    //TFile *Mx2_150 = new TFile("./../../root_file/test/tmpMx2_150.root");
     
-    TFile *DYpT50 = new TFile("./../../root_file/test/test_pt50.root");
+    TFile *DYpT50 = new TFile("./../../root_file/Ztoee/DYHTCo/DYHT_cf.root");
     
-
-
-
     //Linear_Correlation(DYpT50,BDT_variables,I_nJets,f_alphamin,f_Met);
 
 
@@ -68,7 +65,7 @@ void correlate_plot(){
     float f_Met;
 
     TTree *T_event;
-    Mx2_150->GetObject("T_event",T_event);
+    DYpT50->GetObject("T_event",T_event);
     T_event->SetBranchAddress("I_nJets",&I_nJets);
     T_event->SetBranchAddress("f_alphamin",&f_alphamin);
     T_event->SetBranchAddress("f_Met",&f_Met);
@@ -99,13 +96,14 @@ void correlate_plot(){
 
         cout << "Linear Correlation for all = " << abs(numerator / denominator) << endl;
         //cout << "root Correlation for de and mbc = " << correlation(I_nJets, f_alphamin) << endl;
-*/
 
-    TFile *DYpT50 = new TFile("./../../root_file/test/test_pt50.root");
-    TFile *DYpT100 = new TFile("./../../root_file/test/test_pt100.root");
-    TFile *DYpT250 = new TFile("./../../root_file/test/test_pt250.root");
-    TFile *DYpT400 = new TFile("./../../root_file/test/test_pt400.root");
-    TFile *DYpT650 = new TFile("./../../root_file/test/test_pt650.root");
+
+/*
+    TFile *DYpT50 = new TFile("./../../root_file/Ztoee/test_pt50.root");
+    TFile *DYpT100 = new TFile("./../../root_file/Ztoee/test_pt100.root");
+    TFile *DYpT250 = new TFile("./../../root_file/Ztoee/test_pt250.root");
+    TFile *DYpT400 = new TFile("./../../root_file/Ztoee/test_pt400.root");
+    TFile *DYpT650 = new TFile("./../../root_file/Ztoee/test_pt650.root");
 
     TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
     TH1D *DYPT100_sumW = ((TH1D *)DYpT100->Get("h_SumWeight"));
@@ -119,31 +117,6 @@ void correlate_plot(){
     double DYPT400_SW = DYPT400_sumW->GetBinContent(1);
     double DYPT650_SW = DYPT650_sumW->GetBinContent(1);
 
-
-    //TH2F *h_A = new ;
-
-/*
-    TH2D *h_pt50 = new TH2D("h_pt50","",80,0.,1.,80,0.,1000.);
-    h_pt50->Sumw2();
-    h_pt50->GetXaxis()->SetTitle("alphamin");
-    h_pt50->GetYaxis()->SetTitle("Met");
-    TH2D *h_pt100 = new TH2D("h_pt100","",80,0.,1.,80,0.,1000.);
-    h_pt100->Sumw2();
-    h_pt100->GetXaxis()->SetTitle("Met");
-    h_pt100->GetYaxis()->SetTitle("alphamin");
-    TH2D *h_pt250 = new TH2D("h_pt250","",80,0.,1.,80,0.,1000.);
-    h_pt250->Sumw2();
-    h_pt250->GetXaxis()->SetTitle("Met");
-    h_pt250->GetYaxis()->SetTitle("alphamin");
-    TH2D *h_pt400 = new TH2D("h_pt400","",80,0.,1.,80,0.,1000.);
-    h_pt400->Sumw2();
-    h_pt400->GetXaxis()->SetTitle("Met");
-    h_pt400->GetYaxis()->SetTitle("alphamin");
-    TH2D *h_pt650 = new TH2D("h_pt650","",80,0.,1.,80,0.,1000.);
-    h_pt650->Sumw2();
-    h_pt650->GetXaxis()->SetTitle("Met");
-    h_pt650->GetYaxis()->SetTitle("alphamin");
-*/
     TH2D *h_pt50 = new TH2D("h_pt50","",24,0.,1000.,24,0.,1.);
     h_pt50->Sumw2();
     h_pt50->GetXaxis()->SetTitle("Met");
@@ -248,5 +221,6 @@ void correlate_plot(){
     h_pt50->Add(h_pt650);
 
     h_pt50->Draw("COLZ");
+*/
 }
 

@@ -3,6 +3,18 @@
         "BGEM.C": "cpp",
         "BGEM_fit.C": "cpp",
         "correlate_plot.C": "cpp",
-        "ROC.C": "cpp"
+        "ROC.C": "cpp",
+        "Compare_ROC.C": "cpp",
+        "Draw_Compare_alpha.C": "cpp",
+        "BGEM_HT.C": "cpp",
+        "setNCUStyle.C": "cpp",
+        "lep_eff.C": "cpp",
+        "punzi.C": "cpp",
+        "vector": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "ostream": "cpp",
+        "Cross_section.C": "cpp",
+        "cross_section.h": "c"
     }
 }
