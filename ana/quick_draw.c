@@ -36,9 +36,9 @@ void quick_draw()
 
 
 
-    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("hmet"));
-    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("hmet"));
-    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("hmet"));
+    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("dilepton_pT"));
+    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("dilepton_pT"));
+    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("dilepton_pT"));
 
     TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("hmet"));
     TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
@@ -170,9 +170,10 @@ void quick_draw()
     double pp = DYPT50_nT->Integral();
     cout<<pp<<endl;
     
-    DYHT70_nT->DrawNormalized("hist&&same");
-    Mx2_50_nT->DrawNormalized("hist&&same");
+    //DYHT70_nT->DrawNormalized("hist&&same");
+    
     Mx2_1_nT->DrawNormalized("hist&&same");
+    Mx2_50_nT->DrawNormalized("hist&&same");
     Mx2_150_nT->DrawNormalized("hist&&same");
 
 
@@ -187,12 +188,12 @@ void quick_draw()
     l2->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
     l2->AddEntry(Mx2_150_nT, "ctau=1mm m_{x^{2}}=150", "l");
     l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
-    l2->AddEntry(DYHT70_nT, "DYHT", "l");
+    //l2->AddEntry(DYHT70_nT, "DYHT", "l");
     //l2->AddEntry(DYPT50_nT, "DYJets_pTBin", "l");
 
 
     l2->Draw();
-    c1->SetLogy();
+    //c1->SetLogy();
     //c1->SaveAs("hmet;1.png");
 
 }
