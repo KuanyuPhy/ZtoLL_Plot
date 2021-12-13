@@ -35,15 +35,16 @@ void lep_eff()
     effs.clear();
     signpass.clear();
 
-    int nBin = Mx2_1_npass->GetNbinsX();
+    int nBin = Mx2_50_npass->GetNbinsX();
     for (int i = 0; i < nBin; i++)
     {
         //signpass[i] =  
-        cout <<"i = "<<i<< "eff = "<<effsigg(Mx2_1_npass->GetBinContent(i+1),event_Mx2_1)<<endl;
+        //cout <<"i = "<<i<< "eff = "<<effsigg(Mx2_150_npass->GetBinContent(i+1),event_Mx2_150)<<endl;
+        cout <<Mx2_1_npass->GetBinContent(i+1)<<endl;
         //npass[i] = Mx2_1_npass->GetBinContent(3);
     }
 
     //double event_Mx2_1
 
-    cout << "ee event = "<<event_Mx2_1<<endl;
+    cout << "ee event = "<<event_Mx2_150<<endl;
 }

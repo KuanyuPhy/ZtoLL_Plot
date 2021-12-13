@@ -36,7 +36,9 @@ void quick_data_draw()
     TFile *data_DouEG = new TFile("./../../root_file/data/data_DouEG.root");
     TFile *data_DouMu = new TFile("./../../root_file/data/data_DouMu.root");
     TFile *data_SigE = new TFile("./../../root_file/data/data_SigE.root");
+    TFile *data_SigE_v2 = new TFile("./../../ZtoLL_Plot/ana/new.root");
     TFile *data_SigMu = new TFile("./../../root_file/data/data_SigMu.root");
+
 
 
     TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_aphmin"));
@@ -98,6 +100,33 @@ void quick_data_draw()
     //DYPT650_nT->Scale(GlobalConstants::PT650CS / DYPT650_SW);
     cout<<DYHT70_totevt<<endl;
 
+    TH1F *h_aphmin_Se = new TH1F("h_aphmin_Se", "", 24, 0, 1.2);
+    h_aphmin_Se->SetXTitle("aphmin");
+    h_aphmin_Se->SetYTitle("Number of Events");
+    h_aphmin_Se->Sumw2();
+
+    TH1F *hmet_Se = new TH1F("hmet_Se", "", 20, 0, 800);
+    hmet_Se->GetYaxis()->SetTitle("Number of Events");
+    hmet_Se->SetXTitle("#slash{E}_{T}");
+    hmet_Se->Sumw2();
+
+
+    TTree *SigEe_tree;
+    float_t SigEe_Met;
+    Double_t SigEe_alphamin;
+
+    data_SigE_v2->GetObject("h1", SigEe_tree);
+    SigEe_tree->SetBranchAddress("new_Met", &SigEe_Met);
+    SigEe_tree->SetBranchAddress("new_alphamin", &SigEe_alphamin);
+
+    Int_t total_n = (Int_t)SigEe_tree->GetEntries();
+    for (Int_t k = 0; k < total_n; k++)
+    {
+        SigEe_tree->GetEntry(k);
+        h_aphmin_Se->Fill(SigEe_alphamin);
+    }
+    h_aphmin_Se->Draw("hist");
+    //h_aphmin_Se->GetYaxis()->SetTitleSize(10);
 
     Mx2_1_nT->Scale(5.785);
     Mx2_50_nT->Scale(5.785);
@@ -148,13 +177,14 @@ void quick_data_draw()
 
     data_DouEG_nT->SetLineWidth(2);
     data_DouEG_nT->SetLineColor(kGreen+4);
+    data_DouEG_nT->SetYTitle("Number of Events");
     //data_DouEG_nT->SetFillColor(kGreen+4);
 
     data_DouMu_nT->SetLineWidth(2);
     data_DouMu_nT->SetLineColor(kOrange-3);
     //data_DouMu_nT->SetFillColor(kOrange-3);
-    data_SigE_nT->SetLineWidth(2);
-    data_SigE_nT->SetLineColor(kBlue-6);
+    h_aphmin_Se->SetLineWidth(2);
+    h_aphmin_Se->SetLineColor(kBlue-6);
     //data_SigE_nT->SetFillColor(kBlue-6);
     data_SigMu_nT->SetLineWidth(2);
     data_SigMu_nT->SetLineColor(kOrange+4);
@@ -197,11 +227,11 @@ void quick_data_draw()
     cout<<pp<<endl;
     
 
-    Mx2_50_nT->DrawNormalized("hist&&same");
-    Mx2_1_nT->DrawNormalized("hist&&same");
-    Mx2_150_nT->DrawNormalized("hist&&same");
-    DYHT70_nT->DrawNormalized("hist&&same");
-    //data_DouEG_nT->DrawNormalized("hist&&same");
+    //Mx2_50_nT->DrawNormalized("hist&&same");
+    //Mx2_1_nT->DrawNormalized("hist&&same");
+    //Mx2_150_nT->DrawNormalized("hist&&same");
+    //DYHT70_nT->DrawNormalized("hist&&same");
+    //data_DouEG_nT->Draw("hist&&same");
     //data_DouMu_nT->DrawNormalized("hist&&same");
     //data_SigE_nT->DrawNormalized("hist&&same");
     //data_SigMu_nT->DrawNormalized("hist&&same");
@@ -212,13 +242,13 @@ void quick_data_draw()
     TLegend *l2 = new TLegend(0.60, 0.55, 0.90, 0.90);
     l2->SetBorderSize(0);
     l2->SetTextSize(0.03);
-    l2->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
-    l2->AddEntry(Mx2_150_nT, "ctau=1mm m_{x^{2}}=150", "l");
-    l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
-    l2->AddEntry(DYHT70_nT, "DYHT", "l");
+    //l2->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
+    //l2->AddEntry(Mx2_150_nT, "ctau=1mm m_{x^{2}}=150", "l");
+    //l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
+    //l2->AddEntry(DYHT70_nT, "DYHT", "l");
     //l2->AddEntry(data_DouEG_nT, "data_DoubleEG", "l");
     //l2->AddEntry(data_DouMu_nT, "data_DoubleMuon", "l");
-    //l2->AddEntry(data_SigE_nT, "data_SingleElectron", "l");
+    l2->AddEntry(h_aphmin_Se, "data_SingleElectron", "l");
     //l2->AddEntry(data_SigMu_nT, "data_SingleMuon", "l");
     //l2->AddEntry(DYPT50_nT, "DYJets_pTBin", "l");
 

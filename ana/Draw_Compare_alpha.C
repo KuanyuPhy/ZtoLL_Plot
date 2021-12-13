@@ -6,100 +6,112 @@
 #include <TH1D.h>
 #include <TAttLine.h>
 #include <TStyle.h>
-
-#include "Cross_section.h"
+#include "./lib/Cross_section.h"
 using namespace std;
 
 void Draw_Compare_alpha()
 {
+
+    //SetColor
+    Int_t KIKYO = TColor::GetFreeColorIndex();
+    TColor *KIKYO_color = new TColor(KIKYO,0.42,0.30,0.61);
+
     //-------Cross Section--------
     //  ex Pt-100To250 use PT100CS
     //----------------------------
     auto c1 = new TCanvas("c", "BPRE");
     //----Input Signal-------
-    TFile *Mx2_1 = new TFile("./../../root_file/test/test1.root");
-    TFile *Mx2_50 = new TFile("./../../root_file/test/test50.root");
-    TFile *Mx2_150 = new TFile("./../../root_file/test/test150.root");
+    TFile *Mx2_1 = new TFile("./../../root_file/Ztoee/Mx2_1.root");
+    TFile *Mx2_50 = new TFile("./../../root_file/Ztoee/Mx2_50.root");
+    TFile *Mx2_150 = new TFile("./../../root_file/Ztoee/Mx2_150.root");
 
-    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("h_aphmin"));
-    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("h_aphmin"));
-    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("h_aphmin"));
+    TH1D *Mx2_1_alphamin = ((TH1D *)Mx2_1->Get("Event_Variable/h_aphmin"));
+    TH1D *Mx2_50_alphamin = ((TH1D *)Mx2_50->Get("Event_Variable/h_aphmin"));
+    TH1D *Mx2_150_alphamin = ((TH1D *)Mx2_150->Get("Event_Variable/h_aphmin"));
+    TH1D *Mx2_1_met = ((TH1D *)Mx2_1->Get("Event_Variable/hmet"));
+    TH1D *Mx2_50_met = ((TH1D *)Mx2_50->Get("Event_Variable/hmet"));
+    TH1D *Mx2_150_met = ((TH1D *)Mx2_150->Get("Event_Variable/hmet"));
     
     //----Input Background--------
-    TFile *DYpT50 = new TFile("./../../root_file/test/test_pt50.root");
-    TFile *DYpT100 = new TFile("./../../root_file/test/test_pt100.root");
-    TFile *DYpT250 = new TFile("./../../root_file/test/test_pt250.root");
-    TFile *DYpT400 = new TFile("./../../root_file/test/test_pt400.root");
-    TFile *DYpT650 = new TFile("./../../root_file/test/test_pt650.root");
-
-    TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_aphmin"));
-    TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_aphmin"));
-    TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_aphmin"));
-    TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_aphmin"));
-    TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_aphmin"));
-
-    TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
-    TH1D *DYPT100_sumW = ((TH1D *)DYpT100->Get("h_SumWeight"));
-    TH1D *DYPT250_sumW = ((TH1D *)DYpT250->Get("h_SumWeight"));
-    TH1D *DYPT400_sumW = ((TH1D *)DYpT400->Get("h_SumWeight"));
-    TH1D *DYPT650_sumW = ((TH1D *)DYpT650->Get("h_SumWeight"));
-
-    double DYPT50_SW = DYPT50_sumW->GetBinContent(1);
-    double DYPT100_SW = DYPT100_sumW->GetBinContent(1);
-    double DYPT250_SW = DYPT250_sumW->GetBinContent(1);
-    double DYPT400_SW = DYPT400_sumW->GetBinContent(1);
-    double DYPT650_SW = DYPT650_sumW->GetBinContent(1);
-
-    DYPT50_nT->Scale(PT50CS / DYPT50_SW);
-    DYPT100_nT->Scale(PT100CS / DYPT100_SW);
-    DYPT250_nT->Scale(PT250CS / DYPT250_SW);
-    DYPT400_nT->Scale(PT400CS / DYPT400_SW);
-    DYPT650_nT->Scale(PT650CS / DYPT650_SW);
-
-    DYPT50_nT->Add(DYPT100_nT);
-    DYPT50_nT->Add(DYPT250_nT);
-    DYPT50_nT->Add(DYPT400_nT);
-    DYPT50_nT->Add(DYPT650_nT);
-
+    TFile *DYHT = new TFile("./../../root_file/Ztoee/DYHT_All.root");
+    TH1F *DYHT_alpha = ((TH1F *)DYHT->Get("h_ht0_aphmin"));
+    TH1F *DYHT_met = ((TH1F *)DYHT->Get("h_ht0_met"));
 
     
-    Mx2_1_nT->SetLineStyle(7);
-    Mx2_50_nT->SetLineStyle(7);
-    Mx2_150_nT->SetLineStyle(7);
-    DYPT50_nT->SetLineStyle(7);
+    Mx2_1_alphamin->SetLineStyle(7);
+    Mx2_50_alphamin->SetLineStyle(7);
+    Mx2_150_alphamin->SetLineStyle(7);
+    DYHT_alpha->SetLineStyle(7);
 
-    Mx2_1_nT->SetLineWidth(2);
-    Mx2_50_nT->SetLineWidth(2);
-    Mx2_150_nT->SetLineWidth(2);
-    DYPT50_nT->SetLineWidth(2);
+    Mx2_1_alphamin->SetLineWidth(2);
+    Mx2_50_alphamin->SetLineWidth(2);
+    Mx2_150_alphamin->SetLineWidth(2);
+    DYHT_alpha->SetLineWidth(2);
 
-    Mx2_1_nT->SetLineColor(kRed);
-    Mx2_50_nT->SetLineColor(kBlue);
-    Mx2_150_nT->SetLineColor(kBlack);
-    DYPT50_nT->SetLineColor(kViolet);
-    DYPT50_nT->SetFillColor(kViolet);
+    Mx2_1_alphamin->SetLineColor(kRed);
+    Mx2_50_alphamin->SetLineColor(kBlue);
+    Mx2_150_alphamin->SetLineColor(kBlack);
+    DYHT_alpha->SetLineColor(kViolet);
+    DYHT_alpha->SetFillColor(kViolet);
+    DYHT_alpha->SetFillStyle(3003);
 
-    c1->Divide(2,2);
+    //DYHT_met->SetFillStyle(3004);
+    
+
+    c1->Divide(2,1);
     c1->cd(1);
-    Mx2_1_nT->SetStats(0);
-    Mx2_1_nT->SetYTitle("N events");
-    Mx2_1_nT->Draw();
+    Mx2_50_alphamin->SetStats(0);
+    Mx2_50_alphamin->SetYTitle("N events/Normalized");
+    Mx2_50_alphamin->SetXTitle("Alphamin");
+    //Mx2_1_nT->GetYaxis()->SetRangeUser(0,1);
+    Mx2_50_alphamin->DrawNormalized("hist");
+    Mx2_1_alphamin->DrawNormalized("hist&&same");
+    Mx2_150_alphamin->DrawNormalized("hist&&same");
+    DYHT_alpha->DrawNormalized("hist&&same");
     TLegend *l1 = new TLegend(0.20, 0.55, 0.70, 0.8);
     l1->SetBorderSize(0);
     l1->SetTextSize(0.04);
-    l1->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
+    l1->AddEntry(Mx2_1_alphamin, "ctau=1mm m_{x^{2}}=1", "l");
+    l1->AddEntry(Mx2_50_alphamin, "ctau=10mm m_{x^{2}}=50", "l");
+    l1->AddEntry(Mx2_150_alphamin, "ctau=1mm m_{x^{2}}=150", "l");
+    l1->AddEntry(DYHT_alpha, "DYHT", "l");
     l1->Draw();
 
     c1->cd(2);
-    Mx2_50_nT->SetStats(0);
-    Mx2_50_nT->SetYTitle("N events");
-    Mx2_50_nT->Draw();
+
+    Mx2_1_met->SetLineStyle(7);
+    Mx2_50_met->SetLineStyle(7);
+    Mx2_150_met->SetLineStyle(7);
+    DYHT_met->SetLineStyle(7);
+
+    Mx2_1_met->SetLineWidth(2);
+    Mx2_50_met->SetLineWidth(2);
+    Mx2_150_met->SetLineWidth(2);
+    DYHT_met->SetLineWidth(2);
+
+    Mx2_1_met->SetLineColor(kRed);
+    Mx2_50_met->SetLineColor(kBlue);
+    Mx2_150_met->SetLineColor(kBlack);
+    DYHT_met->SetLineColor(kViolet);
+    DYHT_met->SetFillStyle(1001);
+
+    DYHT_met->SetStats(0);
+    DYHT_met->SetYTitle("N events/Normalized");
+    DYHT_met->SetXTitle("Met");
+    DYHT_met->DrawNormalized("hist");
+    Mx2_1_met->DrawNormalized("hist&&same");
+    Mx2_150_met->DrawNormalized("hist&&same");
+    Mx2_50_met->DrawNormalized("hist&&same");
     TLegend *l2 = new TLegend(0.20, 0.55, 0.70, 0.8);
     l2->SetBorderSize(0);
     l2->SetTextSize(0.04);
-    l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
+    l2->AddEntry(Mx2_1_met, "ctau=1mm m_{x^{2}}=1", "l");
+    l2->AddEntry(Mx2_50_met, "ctau=10mm m_{x^{2}}=50", "l");
+    l2->AddEntry(Mx2_150_met, "ctau=1mm m_{x^{2}}=150", "l");
+    l2->AddEntry(DYHT_met, "DYHT", "l");
     l2->Draw();
 
+    /*
     c1->cd(3);
     Mx2_150_nT->SetStats(0);
     Mx2_150_nT->SetYTitle("N events");
@@ -121,5 +133,5 @@ void Draw_Compare_alpha()
     l4->SetTextSize(0.04);
     l4->AddEntry(DYPT50_nT, "DYJets_pTBin", "l");
     l4->Draw();
-
+*/
 }
