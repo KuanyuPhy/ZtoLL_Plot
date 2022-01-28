@@ -11,6 +11,9 @@
 using namespace std;
 void quick_BKG_all()
 {
+
+    setNCUStyle(true);
+
     // SetColor
     Int_t KIKYO = TColor::GetFreeColorIndex();
     TColor *KIKYO_color = new TColor(KIKYO, 0.42, 0.30, 0.61);
@@ -77,88 +80,104 @@ void quick_BKG_all()
     // ggZZ_Met->Add(qqWW_Met);
     // ggZZ_Met->Add(qqWZ_Met);
     // ggZZ_Met->Add(qqZZ_Met);
-    cout << "ggZZ_Met = " << ggZZ_Met->Integral() << endl;
+    // cout << "ggZZ_Met = " << ggZZ_Met->Integral() << endl;
     // ggZZ_Met->Add(qqZZ_Met);
 
-    c1->Divide(3, 4);
-    c1->cd(1);
-    DYHT_Alphamin->SetTitle("DYHT");
-    DYHT_Met->SetTitle("DYHT");
-    DYHT_Alphamin->GetYaxis()->SetTitle("Event/Normalized");
-    DYHT_Met->GetYaxis()->SetTitle("Event/Normalized");
-    DYHT_Met->GetXaxis()->SetTitle("Met");
-    DYHT_Alphamin->SetFillColor(JINZAMOMI);
-    DYHT_Met->SetFillColor(JINZAMOMI);
-    // DYHT_Alphamin->DrawNormalized("hist");
-    DYHT_Met->Draw("hist");
-    // cout << "DYHT_Alphamin = " << DYHT_Met->Integral() << endl;
-    c1->cd(2);
-    Top_Alphamin->SetTitle("Top");
-    Top_Met->SetTitle("Top");
+    //======
+    // Draw Color
+    //======
+    DYHT_Alphamin->SetFillColor(HIWAMOEGI);
+    
+    DYHT_Met->SetFillColor(HIWAMOEGI);
     Top_Alphamin->SetFillColor(KIKYO);
     Top_Met->SetFillColor(KIKYO);
-    // Top_Alphamin->DrawNormalized("hist&&same");
-    Top_Met->Draw("hist&&same");
-    c1->cd(3);
-    ggZZ_Met->SetTitle("ggZZ");
     ggZZ_Alphamin->SetFillColor(KON);
     ggZZ_Met->SetFillColor(KON);
-    // ggZZ_Alphamin->DrawNormalized("hist&&same");
-    ggZZ_Met->Draw("hist&&same");
-    c1->cd(4);
-    ggWW_Alphamin->SetFillColor(HIWAMOEGI);
-    qqWW_Met->SetFillColor(HIWAMOEGI);
-    //ggWW_Alphamin->DrawNormalized("hist&&same");
-    qqWW_Met->Draw("hist&&same");
-    c1->cd(5);
+    qqWW_Alphamin->SetFillColor(JINZAMOMI);
+    qqWW_Met->SetFillColor(JINZAMOMI);
     ggWW_Alphamin->SetFillColor(KARACHA);
     ggWW_Met->SetFillColor(KARACHA);
-    // qqWW_Alphamin->DrawNormalized("hist&&same");
-    ggWW_Met->Draw("hist&&same");
-    c1->cd(6);
     qqWZ_Alphamin->SetFillColor(BENIUKON);
     qqWZ_Met->SetFillColor(BENIUKON);
-    // qqWZ_Alphamin->DrawNormalized("hist&&same");
-    qqWZ_Met->Draw("hist&&same");
-    c1->cd(7);
-    // qqZZ_Alphamin->SetFillColor(SHIRACHA);
+    qqZZ_Alphamin->SetFillColor(SHIRACHA);
     qqZZ_Met->SetFillColor(SHIRACHA);
-    //// qqZZ_Alphamin->DrawNormalized("hist&&same");
-    qqZZ_Met->Draw("hist&&same");
-    c1->cd(8);
     WWZ_Alphamin->SetFillColor(KARIYASU);
     WWZ_Met->SetFillColor(KARIYASU);
-    // WWZ_Alphamin->DrawNormalized("hist&&same");
-    WWZ_Met->Draw("hist&&same");
-    cout << "WWZ_Met = " << WWZ_Met->Integral() << endl;
-    c1->cd(9);
     WZZ_Alphamin->SetFillColor(MIZUASAGI);
     WZZ_Met->SetFillColor(MIZUASAGI);
-    // WZZ_Alphamin->DrawNormalized("hist&&same");
-    WZZ_Met->Draw("hist&&same");
-    cout << "WZZ_Alphamin = " << WZZ_Met->Integral() << endl;
-    c1->cd(10);
     ZZZ_Alphamin->SetFillColor(MATSUBA);
     ZZZ_Met->SetFillColor(MATSUBA);
-    ZZZ_Met->Draw("hist&&same");
-    //  ZZZ_Alphamin->DrawNormalized("hist&&same");
-    //cout << "ZZZ_Alphamin = " << ZZZ_Met->Integral() << endl;
-    c1->SaveAs("2016MetBG.pdf");
-    // c2->cd();
-    //THStack *hs = new THStack("hs", "");
-    //hs->Add(Top_Met);
-    //hs->Add(DYHT_Met);
-    //hs->Add(ggZZ_Met);
-    //hs->Add(ggWW_Met);
-    //hs->Add(qqWW_Met);
-    //hs->Add(qqWZ_Met);
-    //hs->Add(qqZZ_Met);
-    //hs->Add(WWZ_Met);
-    //hs->Add(ZZZ_Met);
-    //hs->Add(ZZZ_Met);
-    //hs->Draw("hist ");
 
     /*
+        c1->Divide(3, 4);
+        c1->cd(1);
+        DYHT_Alphamin->SetTitle("DYHT");
+        DYHT_Met->SetTitle("DYHT");
+        DYHT_Alphamin->GetYaxis()->SetTitle("Event/Normalized");
+        DYHT_Met->GetYaxis()->SetTitle("Event/Normalized");
+        DYHT_Met->GetXaxis()->SetTitle("Met");
+        // DYHT_Alphamin->DrawNormalized("hist");
+        DYHT_Met->Draw("hist");
+        // cout << "DYHT_Alphamin = " << DYHT_Met->Integral() << endl;
+        c1->cd(2);
+        Top_Alphamin->SetTitle("Top");
+        Top_Met->SetTitle("Top");
+        // Top_Alphamin->DrawNormalized("hist&&same");
+        Top_Met->Draw("hist&&same");
+        c1->cd(3);
+        ggZZ_Met->SetTitle("ggZZ");
+        // ggZZ_Alphamin->DrawNormalized("hist&&same");
+        ggZZ_Met->Draw("hist&&same");
+        c1->cd(4);
+
+        //ggWW_Alphamin->DrawNormalized("hist&&same");
+        qqWW_Met->Draw("hist&&same");
+        c1->cd(5);
+
+        // qqWW_Alphamin->DrawNormalized("hist&&same");
+        ggWW_Met->Draw("hist&&same");
+        c1->cd(6);
+
+        // qqWZ_Alphamin->DrawNormalized("hist&&same");
+        qqWZ_Met->Draw("hist&&same");
+        c1->cd(7);
+
+        //// qqZZ_Alphamin->DrawNormalized("hist&&same");
+        qqZZ_Met->Draw("hist&&same");
+        c1->cd(8);
+
+        // WWZ_Alphamin->DrawNormalized("hist&&same");
+        WWZ_Met->Draw("hist&&same");
+        cout << "WWZ_Met = " << WWZ_Met->Integral() << endl;
+        c1->cd(9);
+
+        // WZZ_Alphamin->DrawNormalized("hist&&same");
+        WZZ_Met->Draw("hist&&same");
+        cout << "WZZ_Alphamin = " << WZZ_Met->Integral() << endl;
+        c1->cd(10);
+
+        ZZZ_Met->Draw("hist&&same");
+        //  ZZZ_Alphamin->DrawNormalized("hist&&same");
+        //cout << "ZZZ_Alphamin = " << ZZZ_Met->Integral() << endl;
+        c1->SaveAs("2016MetBG.pdf");
+    */
+    // c2->cd();
+    THStack *hs = new THStack("hs", "");
+    hs->Add(Top_Met);
+    hs->Add(DYHT_Met);
+    hs->Add(ggZZ_Met);
+    hs->Add(ggWW_Met);
+    hs->Add(qqWW_Met);
+    hs->Add(qqWZ_Met);
+    hs->Add(qqZZ_Met);
+    hs->Add(WWZ_Met);
+    hs->Add(ZZZ_Met);
+    hs->Add(ZZZ_Met);
+    hs->Draw("hist");
+
+    c1->SetLogy();
+
+    
     TLegend *l1 = new TLegend(0.20, 0.55, 0.70, 0.8);
     l1->SetBorderSize(0);
     l1->SetTextSize(0.04);
@@ -173,6 +192,16 @@ void quick_BKG_all()
     l1->AddEntry(WZZ_Alphamin, "WZZ", "f");
     l1->AddEntry(ZZZ_Alphamin, "ZZZ", "f");
     l1->Draw();
-    */
 
+    TLatex CMS;
+    CMS.DrawLatex(100, 99999, "CMS");
+    TLatex Sim;
+    Sim.SetTextFont(12);
+    Sim.DrawLatex(220, 99999, "Simulation");
+
+    TLatex Energy;
+    Energy.SetTextFont(12);
+    Energy.SetTextSize(0.03);
+    Energy.DrawLatex(700, 2000000, "(13TeV)");
+    
 }

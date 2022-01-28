@@ -14,14 +14,6 @@
 #include "RooDataSet.h"
 #include "./lib/Cross_section.h"
 using namespace RooFit;
-//#include "TRooH1D.h"
-//#include "Cross_section.h"
-
-Double_t background(Double_t x)
-{
-    Double_t weight = (TMath::Exp(3.71 + (-0.01068) * x) + 0.144);
-    return weight;
-}
 
 void BGEM_HT()
 {
@@ -61,7 +53,7 @@ void BGEM_HT()
 
     int HT0_70_event = h_HT_eventCout->GetBinContent(2);
     int HT70_100_event = h_HT_eventCout->GetBinContent(3);
-    //cout << HT70_100_event<<endl;
+    // cout << HT70_100_event<<endl;
     int HT100_200_event = h_HT_eventCout->GetBinContent(4);
     int HT200_400_event = h_HT_eventCout->GetBinContent(5);
     int HT400_600_event = h_HT_eventCout->GetBinContent(6);
@@ -122,58 +114,58 @@ void BGEM_HT()
 
     TTree *h1 = new TTree("h1", "Tree");
     h1->Branch("f_Ratio", &f_Ratio);
-    //Double_t nbins[16] = {0.0,15 ,30, 55., 80., 100., 130., 175, 225., 275., 350, 450, 550, 750, 1000,5000};
-    Double_t nbins[13] ={0.0, 30, 55., 80.,100. ,130. ,175 ,225., 300., 400 , 500,600, 800}; 
+    // Double_t nbins[16] = {0.0,15 ,30, 55., 80., 100., 130., 175, 225., 275., 350, 450, 550, 750, 1000,5000};
+    Double_t nbins[13] = {0.0, 30, 55., 80., 100., 130., 175, 225., 300., 400, 500, 600, 800};
 
-    //Double_t nbins[11]= {0.0,15,30 ,50,70,100,200,400,600,800,5000};
+    // Double_t nbins[11]= {0.0,15,30 ,50,70,100,200,400,600,800,5000};
     Int_t nnbins = (sizeof(nbins) / sizeof(*nbins)) - 1;
 
     // nnbins, nbins
 
     // DYHT
-    TH1F *h_ht0A_met = new TH1F("h_ht0A_met", "", nnbins, nbins);
+    TH1F *h_ht0A_met = new TH1F("h_ht0A_met", "HT0-70", nnbins, nbins);
     h_ht0A_met->Sumw2();
-    TH1F *h_ht0B_met = new TH1F("h_ht0B_met", "", nnbins, nbins);
+    TH1F *h_ht0B_met = new TH1F("h_ht0B_met", "HT0-70", nnbins, nbins);
     h_ht0B_met->Sumw2();
 
-    TH1F *h_ht70A_met = new TH1F("h_ht70A_met", "", nnbins, nbins);
+    TH1F *h_ht70A_met = new TH1F("h_ht70A_met", "HT70-100", nnbins, nbins);
     h_ht70A_met->Sumw2();
-    TH1F *h_ht70B_met = new TH1F("h_ht70B_met", "", nnbins, nbins);
+    TH1F *h_ht70B_met = new TH1F("h_ht70B_met", "HT70-100", nnbins, nbins);
     h_ht70B_met->Sumw2();
 
-    TH1F *h_ht100A_met = new TH1F("h_ht100A_met", "", nnbins, nbins);
+    TH1F *h_ht100A_met = new TH1F("h_ht100A_met", "HT100-200", nnbins, nbins);
     h_ht100A_met->Sumw2();
-    TH1F *h_ht100B_met = new TH1F("h_ht100B_met", "", nnbins, nbins);
+    TH1F *h_ht100B_met = new TH1F("h_ht100B_met", "HT100-200", nnbins, nbins);
     h_ht100B_met->Sumw2();
 
-    TH1F *h_ht200A_met = new TH1F("h_ht200A_met", "", nnbins, nbins);
+    TH1F *h_ht200A_met = new TH1F("h_ht200A_met", "HT200-400", nnbins, nbins);
     h_ht200A_met->Sumw2();
-    TH1F *h_ht200B_met = new TH1F("h_ht200B_met", "", nnbins, nbins);
+    TH1F *h_ht200B_met = new TH1F("h_ht200B_met", "HT200-400", nnbins, nbins);
     h_ht200B_met->Sumw2();
 
-    TH1F *h_ht400A_met = new TH1F("h_ht400A_met", "", nnbins, nbins);
+    TH1F *h_ht400A_met = new TH1F("h_ht400A_met", "HT400-600", nnbins, nbins);
     h_ht400A_met->Sumw2();
-    TH1F *h_ht400B_met = new TH1F("h_ht400B_met", "", nnbins, nbins);
+    TH1F *h_ht400B_met = new TH1F("h_ht400B_met", "HT400-600", nnbins, nbins);
     h_ht400B_met->Sumw2();
 
-    TH1F *h_ht600A_met = new TH1F("h_ht600A_met", "", nnbins, nbins);
+    TH1F *h_ht600A_met = new TH1F("h_ht600A_met", "HT600-800", nnbins, nbins);
     h_ht600A_met->Sumw2();
-    TH1F *h_ht600B_met = new TH1F("h_ht600B_met", "", nnbins, nbins);
+    TH1F *h_ht600B_met = new TH1F("h_ht600B_met", "HT600-800", nnbins, nbins);
     h_ht600B_met->Sumw2();
 
-    TH1F *h_ht800A_met = new TH1F("h_ht800A_met", "", nnbins, nbins);
+    TH1F *h_ht800A_met = new TH1F("h_ht800A_met", "HT800-1200", nnbins, nbins);
     h_ht800A_met->Sumw2();
-    TH1F *h_ht800B_met = new TH1F("h_ht800B_met", "", nnbins, nbins);
+    TH1F *h_ht800B_met = new TH1F("h_ht800B_met", "HT800-1200", nnbins, nbins);
     h_ht800B_met->Sumw2();
 
-    TH1F *h_ht1200A_met = new TH1F("h_ht1200A_met", "", nnbins, nbins);
+    TH1F *h_ht1200A_met = new TH1F("h_ht1200A_met", "HT1200-2500", nnbins, nbins);
     h_ht1200A_met->Sumw2();
-    TH1F *h_ht1200B_met = new TH1F("h_ht1200B_met", "", nnbins, nbins);
+    TH1F *h_ht1200B_met = new TH1F("h_ht1200B_met", "HT1200-2500", nnbins, nbins);
     h_ht1200B_met->Sumw2();
 
-    TH1F *h_ht2500A_met = new TH1F("h_ht2500A_met", "", nnbins, nbins);
+    TH1F *h_ht2500A_met = new TH1F("h_ht2500A_met", "HT2500-Inf", nnbins, nbins);
     h_ht2500A_met->Sumw2();
-    TH1F *h_ht2500B_met = new TH1F("h_ht2500B_met", "", nnbins, nbins);
+    TH1F *h_ht2500B_met = new TH1F("h_ht2500B_met", "HT2500-Inf", nnbins, nbins);
     h_ht2500B_met->Sumw2();
 
     // DYHT
@@ -219,20 +211,27 @@ void BGEM_HT()
 
     float_t HT;
 
-    Double_t f_ht70_alphamin, f_ht100_alphamin, f_ht200_alphamin, f_ht400_alphamin,
+    Double_t f_ht0_alphamin, f_ht70_alphamin, f_ht100_alphamin, f_ht200_alphamin, f_ht400_alphamin,
         f_ht600_alphamin, f_ht800_alphamin, f_ht1200_alphamin, f_ht2500_alphamin;
-    float_t f_ht70_Met, f_ht100_Met, f_ht200_Met, f_ht400_Met, f_ht600_Met, f_ht800_Met,
+
+    float_t f_ht0_Met, f_ht70_Met, f_ht100_Met, f_ht200_Met, f_ht400_Met, f_ht600_Met, f_ht800_Met,
         f_ht1200_Met, f_ht2500_Met;
-    Int_t I_ht70_weight, I_ht100_weight, I_ht200_weight, I_ht400_weight, I_ht600_weight,
+
+    Int_t I_ht0_weight, I_ht70_weight, I_ht100_weight, I_ht200_weight, I_ht400_weight, I_ht600_weight,
         I_ht800_weight, I_ht1200_weight, I_ht2500_weight;
 
-    float_t HT0met;
+    float_t f_ht0_dilpPT, f_ht70_dilpPT, f_ht100_dilpPT, f_ht200_dilpPT, f_ht400_dilpPT, f_ht600_dilpPT,
+        f_ht800_dilpPT, f_ht1200_dilpPT, f_ht2500_dilpPT;
 
-    Double_t HT0alphamin;
-    Int_t HT0eventWeight;
+    Int_t I_ht0_nThinJets, I_ht70_nThinJets, I_ht100_nThinJets, I_ht200_nThinJets, I_ht400_nThinJets,
+        I_ht600_nThinJets, I_ht800_nThinJets, I_ht1200_nThinJets, I_ht2500_nThinJets;
+    Int_t I_ht0_leadJetflavor, I_ht70_leadJetflavor, I_ht100_leadJetflavor, I_ht200_leadJetflavor, I_ht400_leadJetflavor,
+        I_ht600_leadJetflavor, I_ht800_leadJetflavor, I_ht1200_leadJetflavor, I_ht2500_leadJetflavor;
+    Int_t I_ht0_minJetflavor, I_ht70_minJetflavor, I_ht100_minJetflavor, I_ht200_minJetflavor, I_ht400_minJetflavor,
+        I_ht600_minJetflavor, I_ht800_minJetflavor, I_ht1200_minJetflavor, I_ht2500_minJetflavor;
 
-    int I_ht70_nThinJets, I_ht100_nThinJets, I_ht200_nThinJets, I_ht400_nThinJets, I_ht600_nThinJets, I_ht800_nThinJets, I_ht1200_nThinJets, I_ht2500_nThinJets;
-
+    float alphaminupbound = 100;
+    float alphaminlowerbound = 0.3;
     // Define the HTWeight
 
     float HT0Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT0CS / (HT0_70_event)) * 1000;
@@ -246,183 +245,191 @@ void BGEM_HT()
     float HT2500Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT2500CS / (DYHT2500_totevt + HT2500_Inf_event)) * 1000;
     TTree *T_event;
     DYincli->GetObject("T_event", T_event);
-    T_event->SetBranchAddress("I_weight", &HT0eventWeight);
-    T_event->SetBranchAddress("f_alphamin", &HT0alphamin);
-    T_event->SetBranchAddress("f_Met", &HT0met);
+    T_event->SetBranchAddress("I_weight", &I_ht0_weight);
+    T_event->SetBranchAddress("f_alphamin", &f_ht0_alphamin);
+    T_event->SetBranchAddress("f_Met", &f_ht0_Met);
+    T_event->SetBranchAddress("I_nThinJets", &I_ht0_nThinJets);
+    T_event->SetBranchAddress("f_dileptonPT", &f_ht0_dilpPT);
     T_event->SetBranchAddress("f_HT", &HT);
+    T_event->SetBranchAddress("I_minJetflavor", &I_ht0_minJetflavor);
     for (int evt = 0; evt < T_event->GetEntries(); evt++)
     {
         T_event->GetEntry(evt);
-        if (HT < 70)
+        if (I_ht0_nThinJets < 2)
+            continue;
+        if (I_ht0_minJetflavor == 0)
         {
-            if (HT0met > 160)
+            if (HT < 70)
             {
-                h_ht0A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT0Weight);
+                if (f_ht0_Met > 160)
+                {
+                    h_ht0A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT0Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht0B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT0Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht0A_met->Fill(f_ht0_Met, I_ht0_weight * HT0Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht0B_met->Fill(f_ht0_Met, I_ht0_weight * HT0Weight);
+                }
             }
-            if (HT0met < 100)
+            else if (HT >= 70 && HT < 100)
             {
-                h_ht0B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT0Weight);
+
+                if (f_ht0_Met > 160)
+                {
+                    h_ht70A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT70Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht70B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT70Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht70A_met->Fill(f_ht0_Met, I_ht0_weight * HT70Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht70B_met->Fill(f_ht0_Met, I_ht0_weight * HT70Weight);
+                }
             }
-            if (HT0alphamin > 0.3)
+            else if (HT >= 100 && HT < 200)
             {
-                h_ht0A_met->Fill(HT0met, HT0eventWeight * HT0Weight);
+                if (f_ht0_Met > 160)
+                {
+                    h_ht100A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT100Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht100B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT100Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht100A_met->Fill(f_ht0_Met, I_ht0_weight * HT100Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht100B_met->Fill(f_ht0_Met, I_ht0_weight * HT100Weight);
+                }
             }
-            if (HT0alphamin < 0.1)
+            else if (HT >= 200 && HT < 400)
             {
-                h_ht0B_met->Fill(HT0met, HT0eventWeight * HT0Weight);
+                if (f_ht0_Met > 160)
+                {
+                    h_ht200A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT200Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht200B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT200Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht200A_met->Fill(f_ht0_Met, I_ht0_weight * HT200Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht200B_met->Fill(f_ht0_Met, I_ht0_weight * HT200Weight);
+                }
             }
-        }
-        else if (HT > 70 && HT < 100)
-        {
-            if (HT0met > 160)
+            else if (HT >= 400 && HT < 600)
             {
-                h_ht70A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT70Weight);
+                if (f_ht0_Met > 160)
+                {
+                    h_ht400A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT400Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht400B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT400Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht400A_met->Fill(f_ht0_Met, I_ht0_weight * HT400Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht400B_met->Fill(f_ht0_Met, I_ht0_weight * HT400Weight);
+                }
             }
-            if (HT0met < 100)
+            else if (HT >= 600 && HT < 800)
             {
-                h_ht70B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT70Weight);
+                if (f_ht0_Met > 160)
+                {
+                    h_ht600A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT600Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht600B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT600Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht600A_met->Fill(f_ht0_Met, I_ht0_weight * HT600Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht600B_met->Fill(f_ht0_Met, I_ht0_weight * HT600Weight);
+                }
             }
-            if (HT0alphamin > 0.3)
+            else if (HT >= 800 && HT < 1200)
             {
-                h_ht70A_met->Fill(HT0met, HT0eventWeight * HT70Weight);
-                //cout << "HT0met"<<HT70Weight <<endl;
+                if (f_ht0_Met > 160)
+                {
+                    h_ht800A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT800Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht800B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT800Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht800A_met->Fill(f_ht0_Met, I_ht0_weight * HT800Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht800B_met->Fill(f_ht0_Met, I_ht0_weight * HT800Weight);
+                }
             }
-            if (HT0alphamin < 0.1)
+            else if (HT >= 1200 && HT < 2500)
             {
-                h_ht70B_met->Fill(HT0met, HT0eventWeight * HT70Weight);
+                if (f_ht0_Met > 160)
+                {
+                    h_ht1200A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT1200Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht1200B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT1200Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht1200A_met->Fill(f_ht0_Met, I_ht0_weight * HT1200Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht1200B_met->Fill(f_ht0_Met, I_ht0_weight * HT1200Weight);
+                }
             }
-        }
-        else if (HT > 100 && HT < 200)
-        {
-            if (HT0met > 160)
+            else if (HT >= 2500)
             {
-                h_ht100A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT100Weight);
-            }
-            if (HT0met < 100)
-            {
-                h_ht100B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT100Weight);
-            }
-            if (HT0alphamin > 0.3)
-            {
-                h_ht100A_met->Fill(HT0met, HT0eventWeight * HT100Weight);
-            }
-            if (HT0alphamin < 0.1)
-            {
-                h_ht100B_met->Fill(HT0met, HT0eventWeight * HT100Weight);
-            }
-        }
-        else if (HT > 200 && HT < 400)
-        {
-            if (HT0met > 160)
-            {
-                h_ht200A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT200Weight);
-            }
-            if (HT0met < 100)
-            {
-                h_ht200B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT200Weight);
-            }
-            if (HT0alphamin > 0.3)
-            {
-                h_ht200A_met->Fill(HT0met, HT0eventWeight * HT200Weight);
-            }
-            if (HT0alphamin < 0.1)
-            {
-                h_ht200B_met->Fill(HT0met, HT0eventWeight * HT200Weight);
-            }
-        }
-        else if (HT > 400 && HT < 600)
-        {
-            if (HT0met > 160)
-            {
-                h_ht400A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT400Weight);
-            }
-            if (HT0met < 100)
-            {
-                h_ht400B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT400Weight);
-            }
-            if (HT0alphamin > 0.3)
-            {
-                h_ht400A_met->Fill(HT0met, HT0eventWeight * HT400Weight);
-            }
-            if (HT0alphamin < 0.1)
-            {
-                h_ht400B_met->Fill(HT0met, HT0eventWeight * HT400Weight);
-            }
-        }
-        else if (HT > 600 && HT < 800)
-        {
-            if (HT0met > 160)
-            {
-                h_ht600A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT600Weight);
-            }
-            if (HT0met < 100)
-            {
-                h_ht600B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT600Weight);
-            }
-            if (HT0alphamin > 0.3)
-            {
-                h_ht600A_met->Fill(HT0met, HT0eventWeight * HT600Weight);
-            }
-            if (HT0alphamin < 0.1)
-            {
-                h_ht600B_met->Fill(HT0met, HT0eventWeight * HT600Weight);
-            }
-        }
-        else if (HT > 800 && HT < 1200)
-        {
-            if (HT0met > 160)
-            {
-                h_ht800A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT800Weight);
-            }
-            if (HT0met < 100)
-            {
-                h_ht800B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT800Weight);
-            }
-            if (HT0alphamin > 0.3)
-            {
-                h_ht800A_met->Fill(HT0met, HT0eventWeight * HT800Weight);
-            }
-            if (HT0alphamin < 0.1)
-            {
-                h_ht800B_met->Fill(HT0met, HT0eventWeight * HT800Weight);
-            }
-        }
-        else if (HT > 1200 && HT < 2500)
-        {
-            if (HT0met > 160)
-            {
-                h_ht1200A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT1200Weight);
-            }
-            if (HT0met < 100)
-            {
-                h_ht1200B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT1200Weight);
-            }
-            if (HT0alphamin > 0.3)
-            {
-                h_ht1200A_met->Fill(HT0met, HT0eventWeight * HT1200Weight);
-            }
-            if (HT0alphamin < 0.1)
-            {
-                h_ht1200B_met->Fill(HT0met, HT0eventWeight * HT1200Weight);
-            }
-        }
-        else if (HT > 2500)
-        {
-            if (HT0met > 160)
-            {
-                h_ht2500A_aphmin->Fill(HT0alphamin, HT0eventWeight * HT2500Weight);
-            }
-            if (HT0met < 100)
-            {
-                h_ht2500B_aphmin->Fill(HT0alphamin, HT0eventWeight * HT2500Weight);
-            }
-            if (HT0alphamin > 0.3)
-            {
-                h_ht2500A_met->Fill(HT0met, HT0eventWeight * HT2500Weight);
-            }
-            if (HT0alphamin < 0.1)
-            {
-                h_ht2500B_met->Fill(HT0met, HT0eventWeight * HT2500Weight);
+                if (f_ht0_Met > 160)
+                {
+                    h_ht2500A_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT2500Weight);
+                }
+                if (f_ht0_Met < 100)
+                {
+                    h_ht2500B_aphmin->Fill(f_ht0_alphamin, I_ht0_weight * HT2500Weight);
+                }
+                if (alphaminupbound > f_ht0_alphamin && f_ht0_alphamin > alphaminlowerbound)
+                {
+                    h_ht2500A_met->Fill(f_ht0_Met, I_ht0_weight * HT2500Weight);
+                }
+                if (f_ht0_alphamin < 0.1)
+                {
+                    h_ht2500B_met->Fill(f_ht0_Met, I_ht0_weight * HT2500Weight);
+                }
             }
         }
     }
@@ -433,25 +440,32 @@ void BGEM_HT()
     T_event1->SetBranchAddress("f_alphamin", &f_ht100_alphamin);
     T_event1->SetBranchAddress("f_Met", &f_ht100_Met);
     T_event1->SetBranchAddress("I_weight", &I_ht100_weight);
+    T_event1->SetBranchAddress("f_dileptonPT", &f_ht100_dilpPT);
     T_event1->SetBranchAddress("I_nThinJets", &I_ht100_nThinJets);
+    T_event1->SetBranchAddress("I_minJetflavor", &I_ht100_minJetflavor);
     for (int evt = 0; evt < T_event1->GetEntries(); evt++)
     {
         T_event1->GetEntry(evt);
-        if (f_ht100_Met > 160)
+        if (I_ht100_nThinJets < 2)
+            continue;
+        if (I_ht100_minJetflavor == 0)
         {
-            h_ht100A_aphmin->Fill(f_ht100_alphamin, I_ht100_weight * HT100Weight);
-        }
-        if (f_ht100_Met < 100)
-        {
-            h_ht100B_aphmin->Fill(f_ht100_alphamin, I_ht100_weight * HT100Weight);
-        }
-        if (f_ht100_alphamin > 0.3)
-        {
-            h_ht100A_met->Fill(f_ht100_Met, I_ht100_weight * HT100Weight);
-        }
-        if (f_ht100_alphamin < 0.1)
-        {
-            h_ht100B_met->Fill(f_ht100_Met, I_ht100_weight * HT100Weight);
+            if (f_ht100_Met > 160)
+            {
+                h_ht100A_aphmin->Fill(f_ht100_alphamin, I_ht100_weight * HT100Weight);
+            }
+            if (f_ht100_Met < 100)
+            {
+                h_ht100B_aphmin->Fill(f_ht100_alphamin, I_ht100_weight * HT100Weight);
+            }
+            if (alphaminupbound > f_ht100_alphamin && f_ht100_alphamin > alphaminlowerbound)
+            {
+                h_ht100A_met->Fill(f_ht100_Met, I_ht100_weight * HT100Weight);
+            }
+            if (f_ht100_alphamin < 0.1)
+            {
+                h_ht100B_met->Fill(f_ht100_Met, I_ht100_weight * HT100Weight);
+            }
         }
     }
 
@@ -460,25 +474,32 @@ void BGEM_HT()
     T_event2->SetBranchAddress("f_alphamin", &f_ht200_alphamin);
     T_event2->SetBranchAddress("f_Met", &f_ht200_Met);
     T_event2->SetBranchAddress("I_weight", &I_ht200_weight);
+    T_event2->SetBranchAddress("f_dileptonPT", &f_ht200_dilpPT);
     T_event2->SetBranchAddress("I_nThinJets", &I_ht200_nThinJets);
+    T_event2->SetBranchAddress("I_minJetflavor", &I_ht200_minJetflavor);
     for (int evt = 0; evt < T_event2->GetEntries(); evt++)
     {
         T_event2->GetEntry(evt);
-        if (f_ht200_Met > 160)
+        if (I_ht200_nThinJets < 2)
+            continue;
+        if (I_ht200_minJetflavor == 4 || I_ht200_minJetflavor == 0)
         {
-            h_ht200A_aphmin->Fill(f_ht200_alphamin, I_ht200_weight * HT200Weight);
-        }
-        if (f_ht200_Met < 100)
-        {
-            h_ht200B_aphmin->Fill(f_ht200_alphamin, I_ht200_weight * HT200Weight);
-        }
-        if (f_ht200_alphamin > 0.3)
-        {
-            h_ht200A_met->Fill(f_ht200_Met, I_ht200_weight * HT200Weight);
-        }
-        if (f_ht200_alphamin < 0.1)
-        {
-            h_ht200B_met->Fill(f_ht200_Met, I_ht200_weight * HT200Weight);
+            if (f_ht200_Met > 160)
+            {
+                h_ht200A_aphmin->Fill(f_ht200_alphamin, I_ht200_weight * HT200Weight);
+            }
+            if (f_ht200_Met < 100)
+            {
+                h_ht200B_aphmin->Fill(f_ht200_alphamin, I_ht200_weight * HT200Weight);
+            }
+            if (alphaminupbound > f_ht200_alphamin && f_ht200_alphamin > alphaminlowerbound)
+            {
+                h_ht200A_met->Fill(f_ht200_Met, I_ht200_weight * HT200Weight);
+            }
+            if (f_ht200_alphamin < 0.1)
+            {
+                h_ht200B_met->Fill(f_ht200_Met, I_ht200_weight * HT200Weight);
+            }
         }
     }
 
@@ -487,25 +508,32 @@ void BGEM_HT()
     T_event3->SetBranchAddress("f_alphamin", &f_ht400_alphamin);
     T_event3->SetBranchAddress("f_Met", &f_ht400_Met);
     T_event3->SetBranchAddress("I_weight", &I_ht400_weight);
+    T_event3->SetBranchAddress("f_dileptonPT", &f_ht400_dilpPT);
     T_event3->SetBranchAddress("I_nThinJets", &I_ht400_nThinJets);
+    T_event3->SetBranchAddress("I_minJetflavor", &I_ht400_minJetflavor);
     for (int evt = 0; evt < T_event3->GetEntries(); evt++)
     {
         T_event3->GetEntry(evt);
-        if (f_ht400_Met > 160)
+        if (I_ht400_nThinJets < 2)
+            continue;
+        if (I_ht400_minJetflavor == 0)
         {
-            h_ht400A_aphmin->Fill(f_ht400_alphamin, I_ht400_weight * HT400Weight);
-        }
-        if (f_ht400_Met < 100)
-        {
-            h_ht400B_aphmin->Fill(f_ht400_alphamin, I_ht400_weight * HT400Weight);
-        }
-        if (f_ht400_alphamin > 0.3)
-        {
-            h_ht400A_met->Fill(f_ht400_Met, I_ht400_weight * HT400Weight);
-        }
-        if (f_ht400_alphamin < 0.1)
-        {
-            h_ht400B_met->Fill(f_ht400_Met, I_ht400_weight * HT400Weight);
+            if (f_ht400_Met > 160)
+            {
+                h_ht400A_aphmin->Fill(f_ht400_alphamin, I_ht400_weight * HT400Weight);
+            }
+            if (f_ht400_Met < 100)
+            {
+                h_ht400B_aphmin->Fill(f_ht400_alphamin, I_ht400_weight * HT400Weight);
+            }
+            if (alphaminupbound > f_ht400_alphamin && f_ht400_alphamin > alphaminlowerbound)
+            {
+                h_ht400A_met->Fill(f_ht400_Met, I_ht400_weight * HT400Weight);
+            }
+            if (f_ht400_alphamin < 0.1)
+            {
+                h_ht400B_met->Fill(f_ht400_Met, I_ht400_weight * HT400Weight);
+            }
         }
     }
 
@@ -514,25 +542,32 @@ void BGEM_HT()
     T_event4->SetBranchAddress("f_alphamin", &f_ht600_alphamin);
     T_event4->SetBranchAddress("f_Met", &f_ht600_Met);
     T_event4->SetBranchAddress("I_weight", &I_ht600_weight);
+    T_event4->SetBranchAddress("f_dileptonPT", &f_ht600_dilpPT);
     T_event4->SetBranchAddress("I_nThinJets", &I_ht600_nThinJets);
+    T_event4->SetBranchAddress("I_minJetflavor", &I_ht600_minJetflavor);
     for (int evt = 0; evt < T_event4->GetEntries(); evt++)
     {
         T_event4->GetEntry(evt);
-        if (f_ht600_Met > 160)
+        if (I_ht600_nThinJets < 2)
+            continue;
+        if (I_ht600_minJetflavor == 0)
         {
-            h_ht600A_aphmin->Fill(f_ht600_alphamin, I_ht600_weight * HT600Weight);
-        }
-        if (f_ht600_Met < 100)
-        {
-            h_ht600B_aphmin->Fill(f_ht600_alphamin, I_ht600_weight * HT600Weight);
-        }
-        if (f_ht600_alphamin > 0.3)
-        {
-            h_ht600A_met->Fill(f_ht600_Met, I_ht600_weight * HT600Weight);
-        }
-        if (f_ht600_alphamin < 0.1)
-        {
-            h_ht600B_met->Fill(f_ht600_Met, I_ht600_weight * HT600Weight);
+            if (f_ht600_Met > 160)
+            {
+                h_ht600A_aphmin->Fill(f_ht600_alphamin, I_ht600_weight * HT600Weight);
+            }
+            if (f_ht600_Met < 100)
+            {
+                h_ht600B_aphmin->Fill(f_ht600_alphamin, I_ht600_weight * HT600Weight);
+            }
+            if (alphaminupbound > f_ht600_alphamin && f_ht600_alphamin > alphaminlowerbound)
+            {
+                h_ht600A_met->Fill(f_ht600_Met, I_ht600_weight * HT600Weight);
+            }
+            if (f_ht600_alphamin < 0.1)
+            {
+                h_ht600B_met->Fill(f_ht600_Met, I_ht600_weight * HT600Weight);
+            }
         }
     }
 
@@ -541,25 +576,32 @@ void BGEM_HT()
     T_event5->SetBranchAddress("f_alphamin", &f_ht800_alphamin);
     T_event5->SetBranchAddress("f_Met", &f_ht800_Met);
     T_event5->SetBranchAddress("I_weight", &I_ht800_weight);
+    T_event5->SetBranchAddress("f_dileptonPT", &f_ht800_dilpPT);
     T_event5->SetBranchAddress("I_nThinJets", &I_ht800_nThinJets);
+    T_event5->SetBranchAddress("I_minJetflavor", &I_ht800_minJetflavor);
     for (int evt = 0; evt < T_event5->GetEntries(); evt++)
     {
         T_event5->GetEntry(evt);
-        if (f_ht800_Met > 160)
+        if (I_ht800_nThinJets < 2)
+            continue;
+        if (I_ht800_minJetflavor == 0)
         {
-            h_ht800A_aphmin->Fill(f_ht800_alphamin, I_ht800_weight * HT800Weight);
-        }
-        if (f_ht800_Met < 100)
-        {
-            h_ht800B_aphmin->Fill(f_ht800_alphamin, I_ht800_weight * HT800Weight);
-        }
-        if (f_ht800_alphamin > 0.3)
-        {
-            h_ht800A_met->Fill(f_ht800_Met, I_ht800_weight * HT800Weight);
-        }
-        if (f_ht800_alphamin < 0.1)
-        {
-            h_ht800B_met->Fill(f_ht800_Met, I_ht800_weight * HT800Weight);
+            if (f_ht800_Met > 160)
+            {
+                h_ht800A_aphmin->Fill(f_ht800_alphamin, I_ht800_weight * HT800Weight);
+            }
+            if (f_ht800_Met < 100)
+            {
+                h_ht800B_aphmin->Fill(f_ht800_alphamin, I_ht800_weight * HT800Weight);
+            }
+            if (alphaminupbound > f_ht800_alphamin && f_ht800_alphamin > alphaminlowerbound)
+            {
+                h_ht800A_met->Fill(f_ht800_Met, I_ht800_weight * HT800Weight);
+            }
+            if (f_ht800_alphamin < 0.1)
+            {
+                h_ht800B_met->Fill(f_ht800_Met, I_ht800_weight * HT800Weight);
+            }
         }
     }
 
@@ -568,25 +610,32 @@ void BGEM_HT()
     T_event6->SetBranchAddress("f_alphamin", &f_ht1200_alphamin);
     T_event6->SetBranchAddress("f_Met", &f_ht1200_Met);
     T_event6->SetBranchAddress("I_weight", &I_ht1200_weight);
+    T_event6->SetBranchAddress("f_dileptonPT", &f_ht1200_dilpPT);
     T_event6->SetBranchAddress("I_nThinJets", &I_ht1200_nThinJets);
+    T_event6->SetBranchAddress("I_minJetflavor", &I_ht1200_minJetflavor);
     for (int evt = 0; evt < T_event6->GetEntries(); evt++)
     {
         T_event6->GetEntry(evt);
-        if (f_ht1200_Met > 160)
+        if (I_ht1200_nThinJets < 2)
+            continue;
+        if ( I_ht1200_minJetflavor == 0)
         {
-            h_ht1200A_aphmin->Fill(f_ht1200_alphamin, I_ht1200_weight * HT1200Weight);
-        }
-        if (f_ht1200_Met < 100)
-        {
-            h_ht1200B_aphmin->Fill(f_ht1200_alphamin, I_ht1200_weight * HT1200Weight);
-        }
-        if (f_ht1200_alphamin > 0.3)
-        {
-            h_ht1200A_met->Fill(f_ht1200_Met, I_ht1200_weight * HT1200Weight);
-        }
-        if (f_ht1200_alphamin < 0.1)
-        {
-            h_ht1200B_met->Fill(f_ht1200_Met, I_ht1200_weight * HT1200Weight);
+            if (f_ht1200_Met > 160)
+            {
+                h_ht1200A_aphmin->Fill(f_ht1200_alphamin, I_ht1200_weight * HT1200Weight);
+            }
+            if (f_ht1200_Met < 100)
+            {
+                h_ht1200B_aphmin->Fill(f_ht1200_alphamin, I_ht1200_weight * HT1200Weight);
+            }
+            if (alphaminupbound > f_ht1200_alphamin && f_ht1200_alphamin > alphaminlowerbound)
+            {
+                h_ht1200A_met->Fill(f_ht1200_Met, I_ht1200_weight * HT1200Weight);
+            }
+            if (f_ht1200_alphamin < 0.1)
+            {
+                h_ht1200B_met->Fill(f_ht1200_Met, I_ht1200_weight * HT1200Weight);
+            }
         }
     }
 
@@ -595,119 +644,124 @@ void BGEM_HT()
     T_event7->SetBranchAddress("f_alphamin", &f_ht2500_alphamin);
     T_event7->SetBranchAddress("f_Met", &f_ht2500_Met);
     T_event7->SetBranchAddress("I_weight", &I_ht2500_weight);
+    T_event7->SetBranchAddress("f_dileptonPT", &f_ht2500_dilpPT);
     T_event7->SetBranchAddress("I_nThinJets", &I_ht2500_nThinJets);
+    T_event7->SetBranchAddress("I_minJetflavor", &I_ht2500_minJetflavor);
     for (int evt = 0; evt < T_event7->GetEntries(); evt++)
     {
         T_event7->GetEntry(evt);
-        if (f_ht2500_Met > 160)
+        if (I_ht2500_nThinJets < 2)
+            continue;
+        if (I_ht2500_minJetflavor == 0)
         {
-            h_ht2500A_aphmin->Fill(f_ht2500_alphamin, I_ht2500_weight * HT2500Weight);
-        }
-        if (f_ht2500_Met < 100)
-        {
-            h_ht2500B_aphmin->Fill(f_ht2500_alphamin, I_ht2500_weight * HT2500Weight);
-        }
-        if (f_ht2500_alphamin > 0.3)
-        {
-            h_ht2500A_met->Fill(f_ht2500_Met, I_ht2500_weight * HT2500Weight);
-        }
-        if (f_ht2500_alphamin < 0.1)
-        {
-            h_ht2500B_met->Fill(f_ht2500_Met, I_ht2500_weight * HT2500Weight);
+            if (f_ht2500_Met > 160)
+            {
+                h_ht2500A_aphmin->Fill(f_ht2500_alphamin, I_ht2500_weight * HT2500Weight);
+            }
+            if (f_ht2500_Met < 100)
+            {
+                h_ht2500B_aphmin->Fill(f_ht2500_alphamin, I_ht2500_weight * HT2500Weight);
+            }
+            if (alphaminupbound > f_ht2500_alphamin && f_ht2500_alphamin > alphaminlowerbound)
+            {
+                h_ht2500A_met->Fill(f_ht2500_Met, I_ht2500_weight * HT2500Weight);
+            }
+            if (f_ht2500_alphamin < 0.1)
+            {
+                h_ht2500B_met->Fill(f_ht2500_Met, I_ht2500_weight * HT2500Weight);
+            }
         }
     }
 
-    //c1->Divide(3, 4);
-    //c1->cd(1);
-    //h_ht0B_met->Draw();
-    //c1->cd(2);
-    //h_ht70A_met->Draw();
-    //c1->cd(3);
-    //h_ht100A_met->Draw();
-    //c1->cd(3);
-    //h_ht200A_met->Draw();
+    TH1F *h_DYHT_met_A = (TH1F *)h_ht0A_met->Clone("h_DYHT_met_A");
+    TH1F *h_DYHT_met_B = (TH1F *)h_ht0B_met->Clone("h_DYHT_met_B");
 
-    
-        h_ht0A_aphmin->Add(h_ht70A_aphmin);
-        h_ht0A_aphmin->Add(h_ht100A_aphmin);
-        h_ht0A_aphmin->Add(h_ht200A_aphmin);
-        h_ht0A_aphmin->Add(h_ht400A_aphmin);
-        h_ht0A_aphmin->Add(h_ht600A_aphmin);
-        h_ht0A_aphmin->Add(h_ht800A_aphmin);
-        h_ht0A_aphmin->Add(h_ht1200A_aphmin);
-        h_ht0A_aphmin->Add(h_ht2500A_aphmin);
+    TH1F *h_DYHT_alphamin_A = (TH1F *)h_ht0A_aphmin->Clone("h_DYHT_alphamin_A");
+    TH1F *h_DYHT_alphamin_B = (TH1F *)h_ht0B_aphmin->Clone("h_DYHT_alphamin_B");
 
-        h_ht0B_aphmin->Add(h_ht70B_aphmin);
-        h_ht0B_aphmin->Add(h_ht100B_aphmin);
-        h_ht0B_aphmin->Add(h_ht200B_aphmin);
-        h_ht0B_aphmin->Add(h_ht400B_aphmin);
-        h_ht0B_aphmin->Add(h_ht600B_aphmin);
-        h_ht0B_aphmin->Add(h_ht800B_aphmin);
-        h_ht0B_aphmin->Add(h_ht1200B_aphmin);
-        h_ht0B_aphmin->Add(h_ht2500B_aphmin);
+    // c1->Divide(3, 4);
+    // c1->cd(1);
+    // h_ht0B_met->Draw();
+    // c1->cd(2);
+    // h_ht70A_met->Draw();
+    // c1->cd(3);
+    // h_ht100A_met->Draw();
+    // c1->cd(3);
+    // h_ht200A_met->Draw();
 
-        h_ht0A_met->Add(h_ht70A_met);
-        h_ht0A_met->Add(h_ht100A_met);
-        h_ht0A_met->Add(h_ht200A_met);
-        h_ht0A_met->Add(h_ht400A_met);
-        h_ht0A_met->Add(h_ht600A_met);
-        h_ht0A_met->Add(h_ht800A_met);
-        h_ht0A_met->Add(h_ht1200A_met);
-        h_ht0A_met->Add(h_ht2500A_met);
+    h_DYHT_alphamin_A->Add(h_ht70A_aphmin);
+    h_DYHT_alphamin_A->Add(h_ht100A_aphmin);
+    h_DYHT_alphamin_A->Add(h_ht200A_aphmin);
+    h_DYHT_alphamin_A->Add(h_ht400A_aphmin);
+    h_DYHT_alphamin_A->Add(h_ht600A_aphmin);
+    h_DYHT_alphamin_A->Add(h_ht800A_aphmin);
+    h_DYHT_alphamin_A->Add(h_ht1200A_aphmin);
+    h_DYHT_alphamin_A->Add(h_ht2500A_aphmin);
 
-        h_ht0B_met->Add(h_ht70B_met);
-        h_ht0B_met->Add(h_ht100B_met);
-        h_ht0B_met->Add(h_ht200B_met);
-        h_ht0B_met->Add(h_ht400B_met);
-        h_ht0B_met->Add(h_ht600B_met);
-        h_ht0B_met->Add(h_ht800B_met);
-        h_ht0B_met->Add(h_ht1200B_met);
-        h_ht0B_met->Add(h_ht2500B_met);
-        //h_ht0B_met->Draw();
+    h_DYHT_alphamin_B->Add(h_ht70B_aphmin);
+    h_DYHT_alphamin_B->Add(h_ht100B_aphmin);
+    h_DYHT_alphamin_B->Add(h_ht200B_aphmin);
+    h_DYHT_alphamin_B->Add(h_ht400B_aphmin);
+    h_DYHT_alphamin_B->Add(h_ht600B_aphmin);
+    h_DYHT_alphamin_B->Add(h_ht800B_aphmin);
+    h_DYHT_alphamin_B->Add(h_ht1200B_aphmin);
+    h_DYHT_alphamin_B->Add(h_ht2500B_aphmin);
 
-        TH1F *h_ht0A_met_2 = (TH1F*)h_ht0A_met->Clone("h_ht0A_met_2");
-        h_ht0A_met_2->Divide(h_ht0B_met);
-        h_ht0A_met_2->Draw("text");
-        //h_ht0A_aphmin
-        for (int i = 0; i <h_ht0A_met_2->GetNbinsX(); i++)
-        {
-            f_Ratio=h_ht0A_met_2->GetBinContent(i+1);
-            h1->Fill();
-        }
+    h_DYHT_met_A->Add(h_ht70A_met);
+    h_DYHT_met_A->Add(h_ht100A_met);
+    h_DYHT_met_A->Add(h_ht200A_met);
+    h_DYHT_met_A->Add(h_ht400A_met);
+    h_DYHT_met_A->Add(h_ht600A_met);
+    h_DYHT_met_A->Add(h_ht800A_met);
+    h_DYHT_met_A->Add(h_ht1200A_met);
+    h_DYHT_met_A->Add(h_ht2500A_met);
 
+    h_DYHT_met_B->Add(h_ht70B_met);
+    h_DYHT_met_B->Add(h_ht100B_met);
+    h_DYHT_met_B->Add(h_ht200B_met);
+    h_DYHT_met_B->Add(h_ht400B_met);
+    h_DYHT_met_B->Add(h_ht600B_met);
+    h_DYHT_met_B->Add(h_ht800B_met);
+    h_DYHT_met_B->Add(h_ht1200B_met);
+    h_DYHT_met_B->Add(h_ht2500B_met);
 
-        h_ht0A_met = (TH1F *)gDirectory->Get("h_ht0A_met");
-        h_ht0B_met = (TH1F *)gDirectory->Get("h_ht0B_met");
+    TH1F *h_DYHT_met_Ratio = (TH1F *)h_DYHT_met_A->Clone("h_DYHT_met_Ratio");
+    h_DYHT_met_Ratio->Divide(h_DYHT_met_B);
 
+    TH1F *h_DYHT_alphmin_Ratio = (TH1F *)h_ht0A_aphmin->Clone("h_DYHT_alphmin_Ratio");
+    h_DYHT_alphmin_Ratio->Divide(h_ht0B_aphmin);
 
+    h_ht0A_met = (TH1F *)gDirectory->Get("h_ht0A_met");
+    h_ht0B_met = (TH1F *)gDirectory->Get("h_ht0B_met");
 
-        TFile *outFile = new TFile("./../../ABCD_HT.root", "RECREATE");
-        outFile->cd();
+    TFile *outFile = new TFile("./../../ABCD_HT.root", "RECREATE");
+    outFile->cd();
 
-        h_ht0A_met->Write();
-        h_ht0B_met->Write();
-        h_ht70A_met->Write();
-        h_ht70B_met->Write();
-        h_ht100A_met->Write();
-        h_ht100B_met->Write();
-        h_ht200A_met->Write();
-        h_ht200B_met->Write();
-        h_ht400A_met->Write();
-        h_ht400B_met->Write();
-        h_ht600A_met->Write();
-        h_ht600B_met->Write();
-        h_ht800A_met->Write();
-        h_ht800B_met->Write();
-        h_ht1200A_met->Write();
-        h_ht1200B_met->Write();
-        h_ht2500A_met->Write();
-        h_ht2500B_met->Write();
-        h_ht0A_aphmin->Write();
-        h_ht0B_aphmin->Write();
-        //h_ht70a_njet->Write();
-        h_ht0A_met_2->Write();
-
-        outFile->Close();
-
-    
+    h_ht0A_met->Write();
+    h_ht0B_met->Write();
+    h_ht70A_met->Write();
+    h_ht70B_met->Write();
+    h_ht100A_met->Write();
+    h_ht100B_met->Write();
+    h_ht200A_met->Write();
+    h_ht200B_met->Write();
+    h_ht400A_met->Write();
+    h_ht400B_met->Write();
+    h_ht600A_met->Write();
+    h_ht600B_met->Write();
+    h_ht800A_met->Write();
+    h_ht800B_met->Write();
+    h_ht1200A_met->Write();
+    h_ht1200B_met->Write();
+    h_ht2500A_met->Write();
+    h_ht2500B_met->Write();
+    h_DYHT_met_A->Write();
+    h_DYHT_met_B->Write();
+    h_DYHT_met_Ratio->Write();
+    h_DYHT_alphamin_A->Write();
+    h_DYHT_alphamin_B->Write();
+    h_DYHT_alphmin_Ratio->Write();
+    h_ht0A_aphmin->Write();
+    h_ht0B_aphmin->Write();
+    outFile->Close();
 }

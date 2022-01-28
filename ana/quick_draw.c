@@ -11,182 +11,295 @@
 using namespace std;
 void quick_draw()
 {
+
+    Int_t KON = TColor::GetFreeColorIndex();
+    TColor *KON_color = new TColor(KON, 0.06, 0.15, 0.25);
+    Int_t HIWAMOEGI = TColor::GetFreeColorIndex();
+    TColor *HIWAMOEGI_color = new TColor(HIWAMOEGI, 0.56, 0.71, 0.29);
+
+    Int_t KARACHA = TColor::GetFreeColorIndex();
+    TColor *KARACHA_color = new TColor(KARACHA, 0.71, 0.44, 0.34);
+
+    Int_t JINZAMOMI = TColor::GetFreeColorIndex();
+    TColor *JINZAMOMI_color = new TColor(JINZAMOMI, 0.92, 0.478, 0.46);
+
+    Int_t BENIUKON = TColor::GetFreeColorIndex();
+    TColor *BENIUKON_color = new TColor(BENIUKON, 0.913, 0.545, 0.16);
+
+    Int_t SHIRACHA = TColor::GetFreeColorIndex();
+    TColor *SHIRACHA_color = new TColor(SHIRACHA, 0.73, 0.623, 0.47);
+
+    Int_t KARIYASU = TColor::GetFreeColorIndex();
+    TColor *KARIYASU_color = new TColor(KARIYASU, 0.913, 0.803, 0.298);
+
+    Int_t MIZUASAGI = TColor::GetFreeColorIndex();
+    TColor *MIZUASAGI_color = new TColor(MIZUASAGI, 0.4, 0.729, 0.718);
+
+    Int_t MATSUBA = TColor::GetFreeColorIndex();
+    TColor *MATSUBA_color = new TColor(MATSUBA, 0.259, 0.376, 0.176);
+
     setNCUStyle(true);
-    auto c1 = new TCanvas("c", "BPRE");
 
     TFile *Mx2_1 = new TFile("./../../root_file/Ztoee/Mx2_1.root");
     TFile *Mx2_50 = new TFile("./../../root_file/Ztoee/Mx2_50.root");
     TFile *Mx2_150 = new TFile("./../../root_file/Ztoee/Mx2_150.root");
 
-    // TFile *DYpT50 = new TFile("./../../root_file/Ztoee/ee_pt50.root");
-    // TFile *DYpT100 = new TFile("./../../root_file/Ztoee/ee_pt100.root");
-    // TFile *DYpT250 = new TFile("./../../root_file/Ztoee/ee_pt250.root");
-    // TFile *DYpT400 = new TFile("./../../root_file/Ztoee/ee_pt400.root");
-    // TFile *DYpT650 = new TFile("./../../root_file/Ztoee/ee_pt650.root");
+    TFile *DYHT = new TFile("./../../root_file/Ztoee/DYHT_All.root");
+    TFile *Top = new TFile("./../../root_file/Ztoee/Top_All.root");
 
-    TFile *DYincli = new TFile("./../../root_file/Ztoee/ee_DYincli.root");
+    TH1F *DYHTleadeta = ((TH1F *)DYHT->Get("h_ht0_leadjeteta"));
+    TH1F *DYHTmineta = ((TH1F *)DYHT->Get("h_ht0_minjeteta"));
+    TH1F *DYHT_nJets = ((TH1F *)DYHT->Get("h_ht0_njet"));
+    TH1F *DYHT_Met = ((TH1F *)DYHT->Get("h_ht0_met"));
+    TH1F *DYHT_alphamin = ((TH1F *)DYHT->Get("h_ht0_aphmin"));
 
-    TFile *DYHT70 = new TFile("./../../root_file/Ztoee/ee_ht70.root");
-    TFile *DYHT100 = new TFile("./../../root_file/Ztoee/ee_ht100.root");
-    TFile *DYHT200 = new TFile("./../../root_file/Ztoee/ee_ht200.root");
-    TFile *DYHT400 = new TFile("./../../root_file/Ztoee/ee_ht400.root");
-    TFile *DYHT600 = new TFile("./../../root_file/Ztoee/ee_ht600.root");
-    TFile *DYHT800 = new TFile("./../../root_file/Ztoee/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("./../../root_file/Ztoee/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("./../../root_file/Ztoee/ee_ht2500.root");
+    TH1F *Top_quark_nThinJets = ((TH1F *)Top->Get("Top_quark_nThinJets"));
 
-    TH1D *Mx2_1_nT = ((TH1D *)Mx2_1->Get("Event_Variable/h_jet_n"));
-    TH1D *Mx2_50_nT = ((TH1D *)Mx2_50->Get("Event_Variable/h_jet_n"));
-    TH1D *Mx2_150_nT = ((TH1D *)Mx2_150->Get("Event_Variable/h_jet_n"));
+    // DYHT eta
+    TH1F *h_Mx1_jeteta = new TH1F("h_Mx1_jeteta", "leading jet eta", 100, -5, 5);
+    h_Mx1_jeteta->Sumw2();
+    TH1F *h_Mx50_jeteta = new TH1F("h_Mx50_jeteta", "leading jet eta", 100, -5, 5);
+    h_Mx50_jeteta->Sumw2();
+    TH1F *h_Mx150_jeteta = new TH1F("h_Mx150_jeteta", "leading jet eta", 100, -5, 5);
+    h_Mx150_jeteta->Sumw2();
 
-    // TH1D *DYPT50_nT = ((TH1D *)DYpT50->Get("h_jet_n"));
-    // TH1D *DYPT50_sumW = ((TH1D *)DYpT50->Get("h_SumWeight"));
-    // TH1D *DYPT100_nT = ((TH1D *)DYpT100->Get("h_jet_n"));
-    // TH1D *DYPT100_sumW = ((TH1D *)DYpT100->Get("h_SumWeight"));
-    // TH1D *DYPT250_nT = ((TH1D *)DYpT250->Get("h_jet_n"));
-    // TH1D *DYPT250_sumW = ((TH1D *)DYpT250->Get("h_SumWeight"));
-    // TH1D *DYPT400_nT = ((TH1D *)DYpT400->Get("h_jet_n"));
-    // TH1D *DYPT400_sumW = ((TH1D *)DYpT400->Get("h_SumWeight"));
-    // TH1D *DYPT650_nT = ((TH1D *)DYpT650->Get("h_jet_n"));
-    // TH1D *DYPT650_sumW = ((TH1D *)DYpT650->Get("h_SumWeight"));
+    // nJets
+    TH1F *h_Mx1_njet = new TH1F("h_Mx1_njet", "nJets", 15, 0, 15);
+    h_Mx1_njet->Sumw2();
+    TH1F *h_Mx50_njet = new TH1F("h_Mx50_njet", "nJets", 15, 0, 15);
+    h_Mx50_njet->Sumw2();
+    TH1F *h_Mx150_njet = new TH1F("h_Mx150_njet", "nJets", 15, 0, 15);
+    h_Mx150_njet->Sumw2();
 
-    TH1D *DYHT70_nT = ((TH1D *)DYHT70->Get("Event_Variable/h_jet_n"));
-    TH1D *DYHT100_nT = ((TH1D *)DYHT100->Get("Event_Variable/h_jet_n"));
-    TH1D *DYHT200_nT = ((TH1D *)DYHT200->Get("Event_Variable/h_jet_n"));
-    TH1D *DYHT400_nT = ((TH1D *)DYHT400->Get("Event_Variable/h_jet_n"));
-    TH1D *DYHT600_nT = ((TH1D *)DYHT600->Get("Event_Variable/h_jet_n"));
-    TH1D *DYHT800_nT = ((TH1D *)DYHT800->Get("Event_Variable/h_jet_n"));
-    TH1D *DYHT1200_nT = ((TH1D *)DYHT1200->Get("Event_Variable/h_jet_n"));
-    TH1D *DYHT2500_nT = ((TH1D *)DYHT2500->Get("Event_Variable/h_jet_n"));
+    // Met
+    TH1F *h_Mx1_Met = new TH1F("h_Mx1_Met", "Met", 20, 0, 800);
+    h_Mx1_Met->Sumw2();
+    TH1F *h_Mx50_Met = new TH1F("h_Mx50_Met", "Met", 20, 0, 800);
+    h_Mx50_Met->Sumw2();
+    TH1F *h_Mx150_Met = new TH1F("h_Mx150_Met", "Met", 20, 0, 800);
+    h_Mx150_Met->Sumw2();
 
-    TH1D *DYHT70_sumevt = ((TH1D *)DYHT70->Get("Event_Variable/h_event"));
-    TH1D *DYHT100_sumevt = ((TH1D *)DYHT100->Get("Event_Variable/h_event"));
-    TH1D *DYHT200_sumevt = ((TH1D *)DYHT200->Get("Event_Variable/h_event"));
-    TH1D *DYHT400_sumevt = ((TH1D *)DYHT400->Get("Event_Variable/h_event"));
-    TH1D *DYHT600_sumevt = ((TH1D *)DYHT600->Get("Event_Variable/h_event"));
-    TH1D *DYHT800_sumevt = ((TH1D *)DYHT800->Get("Event_Variable/h_event"));
-    TH1D *DYHT1200_sumevt = ((TH1D *)DYHT1200->Get("Event_Variable/h_event"));
-    TH1D *DYHT2500_sumevt = ((TH1D *)DYHT2500->Get("Event_Variable/h_event"));
+    TH1F *h_Mx1_alphamin = new TH1F("h_Mx1_alphamin", "", 24, 0, 1.2);
+    h_Mx1_alphamin->SetXTitle("alphamin");
+    h_Mx1_alphamin->SetYTitle("");
+    h_Mx1_alphamin->Sumw2();
 
-    //double DYPT50_SW = DYPT50_sumW->GetBinContent(1);
-    //double DYPT100_SW = DYPT100_sumW->GetBinContent(1);
-    //double DYPT250_SW = DYPT250_sumW->GetBinContent(1);
-    //double DYPT400_SW = DYPT400_sumW->GetBinContent(1);
-    //double DYPT650_SW = DYPT650_sumW->GetBinContent(1);
+    TH1F *h_Mx50_alphamin = new TH1F("h_Mx50_alphamin", "", 24, 0, 1.2);
+    h_Mx50_alphamin->SetXTitle("");
+    h_Mx50_alphamin->SetYTitle("");
+    h_Mx50_alphamin->Sumw2();
 
-    int DYHT70_totevt = DYHT70_sumevt->GetEntries();
-    int DYHT100_totevt = DYHT100_sumevt->GetEntries();
-    int DYHT200_totevt = DYHT200_sumevt->GetEntries();
-    int DYHT400_totevt = DYHT400_sumevt->GetEntries();
-    int DYHT600_totevt = DYHT600_sumevt->GetEntries();
-    int DYHT800_totevt = DYHT800_sumevt->GetEntries();
-    int DYHT1200_totevt = DYHT1200_sumevt->GetEntries();
-    int DYHT2500_totevt = DYHT2500_sumevt->GetEntries();
+    TH1F *h_Mx150_alphamin = new TH1F("h_Mx150_alphamin", "", 24, 0, 1.2);
+    h_Mx150_alphamin->SetXTitle("");
+    h_Mx150_alphamin->SetYTitle("");
+    h_Mx150_alphamin->Sumw2();
 
-    //DYPT50_nT->Scale(35.9 * (GlobalConstants::PT50CS / DYPT50_SW) * 1000);
-    //DYPT100_nT->Scale(35.9 * (GlobalConstants::PT100CS / DYPT100_SW) * 1000);
-    //DYPT250_nT->Scale(35.9 * (GlobalConstants::PT250CS / DYPT250_SW) * 1000);
-    //DYPT400_nT->Scale(35.9 * (GlobalConstants::PT400CS / DYPT400_SW) * 1000);
-    //DYPT650_nT->Scale(35.9 * (GlobalConstants::PT650CS / DYPT650_SW) * 1000);
+    Int_t I_Mx1_weight, I_Mx50_weight, I_Mx150_weight;
+    Int_t I_Mx1_nThinJets, I_Mx50_nThinJets, I_Mx150_nThinJets;
+    float_t f_Mx1_jeteta, f_Mx50_jeteta, f_Mx150_jeteta;
+    float_t f_Mx1_Met, f_Mx50_Met, f_Mx150_Met;
+    Double_t d_Mx1_alphamin, d_Mx50_alphamin, d_Mx150_alphamin;
 
-    DYHT70_nT->Scale((GlobalConstants::Lumi2016) * (GlobalConstants::HT70CS / DYHT70_totevt) * 1000);
-    DYHT100_nT->Scale((GlobalConstants::Lumi2016) * (GlobalConstants::HT100CS / DYHT100_totevt) * 1000);
-    DYHT200_nT->Scale((GlobalConstants::Lumi2016) * (GlobalConstants::HT200CS / DYHT200_totevt) * 1000);
-    DYHT400_nT->Scale((GlobalConstants::Lumi2016) * (GlobalConstants::HT400CS / DYHT400_totevt) * 1000);
-    DYHT600_nT->Scale((GlobalConstants::Lumi2016) * (GlobalConstants::HT600CS / DYHT600_totevt) * 1000);
-    DYHT800_nT->Scale((GlobalConstants::Lumi2016) * (GlobalConstants::HT800CS / DYHT800_totevt) * 1000);
-    DYHT1200_nT->Scale((GlobalConstants::Lumi2016) * (GlobalConstants::HT1200CS / DYHT1200_totevt) * 1000);
-    DYHT2500_nT->Scale((GlobalConstants::Lumi2016) * (GlobalConstants::HT2500CS / DYHT2500_totevt) * 1000);
+    TTree *Mx1_tree;
+    Mx2_1->GetObject("T_event", Mx1_tree);
+    Mx1_tree->SetBranchAddress("I_weight", &I_Mx1_weight);
+    Mx1_tree->SetBranchAddress("f_leadJeteta", &f_Mx1_jeteta);
+    Mx1_tree->SetBranchAddress("I_nThinJets", &I_Mx1_nThinJets);
+    Mx1_tree->SetBranchAddress("f_Met", &f_Mx1_Met);
+    Mx1_tree->SetBranchAddress("f_alphamin", &d_Mx1_alphamin);
 
-    //DYPT50_nT->Add(DYPT100_nT);
-    //DYPT50_nT->Add(DYPT250_nT);
-    //DYPT50_nT->Add(DYPT400_nT);
-    //DYPT50_nT->Add(DYPT650_nT);
+    for (int evt = 0; evt < Mx1_tree->GetEntries(); evt++)
+    {
+        Mx1_tree->GetEntry(evt);
+        if (I_Mx1_nThinJets < 2)
+            continue;
+        h_Mx1_jeteta->Fill(f_Mx1_jeteta, I_Mx1_weight);
+        h_Mx1_njet->Fill(I_Mx1_nThinJets, I_Mx1_weight);
+        h_Mx1_Met->Fill(f_Mx1_Met, I_Mx1_weight);
+        h_Mx1_alphamin->Fill(d_Mx1_alphamin, I_Mx1_weight);
+    }
+    TTree *Mx50_tree;
+    Mx2_50->GetObject("T_event", Mx50_tree);
+    Mx50_tree->SetBranchAddress("I_weight", &I_Mx50_weight);
+    Mx50_tree->SetBranchAddress("f_leadJeteta", &f_Mx50_jeteta);
+    Mx50_tree->SetBranchAddress("I_nThinJets", &I_Mx50_nThinJets);
+    Mx50_tree->SetBranchAddress("f_Met", &f_Mx50_Met);
+    Mx50_tree->SetBranchAddress("f_alphamin", &d_Mx50_alphamin);
+    for (int evt = 0; evt < Mx50_tree->GetEntries(); evt++)
+    {
+        Mx50_tree->GetEntry(evt);
+        if (I_Mx50_nThinJets < 2)
+            continue;
+        h_Mx50_jeteta->Fill(f_Mx50_jeteta, I_Mx50_weight);
+        h_Mx50_njet->Fill(I_Mx50_nThinJets, I_Mx50_weight);
+        h_Mx50_Met->Fill(f_Mx50_Met, I_Mx50_weight);
+        h_Mx50_alphamin->Fill(d_Mx50_alphamin, I_Mx50_weight);
+    }
+    TTree *Mx150_tree;
+    Mx2_150->GetObject("T_event", Mx150_tree);
+    Mx150_tree->SetBranchAddress("I_weight", &I_Mx150_weight);
+    Mx150_tree->SetBranchAddress("f_leadJeteta", &f_Mx150_jeteta);
+    Mx150_tree->SetBranchAddress("I_nThinJets", &I_Mx150_nThinJets);
+    Mx150_tree->SetBranchAddress("f_Met", &f_Mx150_Met);
+    Mx150_tree->SetBranchAddress("f_alphamin", &d_Mx150_alphamin);
+    for (int evt = 0; evt < Mx150_tree->GetEntries(); evt++)
+    {
+        Mx150_tree->GetEntry(evt);
+        if (I_Mx150_nThinJets < 2)
+            continue;
+        h_Mx150_jeteta->Fill(f_Mx150_jeteta, I_Mx150_weight);
+        h_Mx150_njet->Fill(I_Mx150_nThinJets, I_Mx150_weight);
+        h_Mx150_Met->Fill(f_Mx150_Met, I_Mx150_weight);
+        h_Mx150_alphamin->Fill(d_Mx150_alphamin, I_Mx150_weight);
+    }
 
-    DYHT70_nT->Add(DYHT100_nT);
-    DYHT70_nT->Add(DYHT200_nT);
-    DYHT70_nT->Add(DYHT400_nT);
-    DYHT70_nT->Add(DYHT600_nT);
-    DYHT70_nT->Add(DYHT800_nT);
-    DYHT70_nT->Add(DYHT1200_nT);
-    DYHT70_nT->Add(DYHT2500_nT);
+    h_Mx150_njet->SetLineStyle(7);
+    h_Mx1_njet->SetLineStyle(7);
+    h_Mx50_njet->SetLineStyle(7);
+    DYHT_nJets->SetLineStyle(7);
+    // DYHTeta_metcut->SetLineStyle(7);
 
-    Mx2_150_nT->SetLineStyle(7);
-    Mx2_1_nT->SetLineStyle(7);
-    Mx2_50_nT->SetLineStyle(7);
-    DYPT50_nT->SetLineStyle(7);
+    h_Mx1_njet->SetStats(0);
+    h_Mx1_njet->SetLineWidth(2);
+    h_Mx1_njet->SetLineColor(kRed);
+    h_Mx50_njet->SetLineWidth(2);
+    h_Mx50_njet->SetLineColor(kBlue);
+    h_Mx150_njet->SetLineWidth(2);
+    h_Mx150_njet->SetLineColor(kBlack);
 
-    Mx2_1_nT->SetStats(0);
-    Mx2_1_nT->SetLineWidth(2);
-    Mx2_1_nT->SetLineColor(kRed);
-    Mx2_50_nT->SetLineWidth(2);
-    Mx2_50_nT->SetLineColor(kBlue);
-    Mx2_150_nT->SetLineWidth(2);
-    Mx2_150_nT->SetLineColor(kBlack);
+    h_Mx1_Met->SetLineWidth(2);
+    h_Mx1_Met->SetLineColor(kRed);
+    h_Mx50_Met->SetLineWidth(2);
+    h_Mx50_Met->SetLineColor(kBlue);
+    h_Mx150_Met->SetLineWidth(2);
+    h_Mx150_Met->SetLineColor(kBlack);
 
-    DYHT70_nT->SetLineWidth(2);
-    DYHT70_nT->SetLineColor(kViolet);
-    DYHT70_nT->SetFillColor(kViolet);
-    DYHT70_nT->SetFillStyle(3003);
+    h_Mx1_alphamin->SetLineWidth(2);
+    h_Mx1_alphamin->SetLineColor(kRed);
+    h_Mx50_alphamin->SetLineWidth(2);
+    h_Mx50_alphamin->SetLineColor(kBlue);
+    h_Mx150_alphamin->SetLineWidth(2);
+    h_Mx150_alphamin->SetLineColor(kBlack);
 
-    // Mx2_1_nT->SetTitle("Rank");
-    Mx2_50_nT->SetYTitle("Events/Normalized");
-    Mx2_50_nT->GetYaxis()->SetTitleOffset(1.5);
-    // DYPT50_nT->SetTitle("IP^{3D}_{sig}");
-    DYPT50_nT->SetTitle("alphamin<0.2");
-    // Mx2_1_nT->SetXTitle("pt");
-    // Mx2_1_nT->SetXTitle("NTracks per Jet");
-    // Mx2_1_nT->SetXTitle("Numbers of Thin Jet");
-    // Mx2_1_nT->SetXTitle("Numbers of electrons");
+    DYHT_nJets->SetLineWidth(2);
+    DYHT_nJets->SetLineColor(HIWAMOEGI);
 
-    // for(int i=0;i<10;i++)
-    //{
-    //     DYPT50_nT->GetXaxis()->SetBinLabel(i+1,Form("%i"));
-    // }
-    // DYPT50_nT->GetXaxis()->SetBinLabel(1,"0");
-    // DYPT50_nT->GetXaxis()->SetBinLabel(2,"1");
-    // DYPT50_nT->GetXaxis()->SetBinLabel(3,"2");
-    // DYPT50_nT->GetXaxis()->SetBinLabel(4,"3");
-    // DYPT50_nT->GetXaxis()->SetBinLabel(5,"4");
-    // DYPT50_nT->GetXaxis()->SetBinLabel(6,"5");
-    // DYPT50_nT->GetXaxis()->SetBinLabel(7,"6");
-    // DYPT50_nT->GetXaxis()->SetBinLabel(8,"7");
-    // Mx2_1_nT->GetXaxis()->SetBinLabel(9,"8");
-    // Mx2_1_nT->GetXaxis()->SetBinLabel(10,"9");
-    // Mx2_1_nT->GetXaxis()->SetRangeUser(0, 5);
-    // Mx2_1_nT->GetXaxis()->SetRangeUser(-2, 5);
-    //
-    // DYHT70_nT->SetXTitle("log_{10}(IP^{3D}_{sig})");
-    // Mx2_150_nT->GetXaxis()->SetRangeUser(-3, 5);
-    // DYHT70_nT->GetYaxis()->SetRangeUser(0., 0.5);
+    DYHTmineta->SetLineWidth(2);
+    DYHTmineta->SetLineColor(MIZUASAGI);
 
-    // DYPT50_nT->DrawNormalized("hist");
-    int nBin = Mx2_150_nT->GetNbinsX();
-    // cout << nBin << endl;
-    double pp = DYPT50_nT->Integral();
-    cout << pp << endl;
-    Mx2_50_nT->DrawNormalized("hist");
-    DYHT70_nT->DrawNormalized("hist&&same");
+    DYHT_alphamin->SetLineWidth(2);
+    DYHT_alphamin->SetLineColor(HIWAMOEGI);
+    DYHT_alphamin->SetFillColor(HIWAMOEGI);
+    DYHT_alphamin->SetFillStyle(3001);
 
-    Mx2_1_nT->DrawNormalized("hist&&same");
+    DYHTleadeta->SetLineWidth(2);
+    DYHTleadeta->SetLineColor(HIWAMOEGI);
 
-    Mx2_150_nT->DrawNormalized("hist&&same");
+    DYHT_Met->SetLineWidth(2);
+    DYHT_Met->SetLineColor(HIWAMOEGI);
+    DYHT_Met->SetFillColor(HIWAMOEGI);
+    DYHT_Met->SetFillStyle(3001);
 
-    DYPT50_nT->DrawNormalized("hist&&same");
-    // Mx2_1_nT->DrawNormalized("hist&&same");
+    Top_quark_nThinJets->SetLineWidth(2);
+    Top_quark_nThinJets->SetLineColor(KON);
 
-    // DYPT50_nT->DrawNormalized("hist&&same");
+    auto c2 = new TCanvas("c", "BPRE");
+    // c2->Divide(2, 1);
+    // c2->cd(1);
+    DYHT_Met->SetTitle("MET");
+    h_Mx50_alphamin->GetYaxis()->SetTitle("N events /Normalized");
+    h_Mx50_alphamin->GetXaxis()->SetTitle("#alpha_{3D_{min}}");
+    h_Mx50_alphamin->GetXaxis()->SetTitleSize(0.04);
+    h_Mx50_alphamin->GetYaxis()->SetTitleOffset(1.5);
+    h_Mx50_alphamin->GetXaxis()->SetTitleOffset(1.4);
+    h_Mx50_alphamin->GetYaxis()->SetTitleSize(0.04);
+    DYHT_Met->GetXaxis()->SetTitle("Met");
+    h_Mx50_alphamin->DrawNormalized("hist");
+    h_Mx1_alphamin->DrawNormalized("hist&&same");
+    DYHT_alphamin->DrawNormalized("hist&&same");
 
+    // c2->cd(2);
+
+    h_Mx150_alphamin->DrawNormalized("hist&&same");
+
+    // Top_quark_nThinJets->Draw("hist&&text45");
+    // auto c1 = new TCanvas("c", "BPRE");
+
+    // DYHTleadeta->Draw("hist&&same");
+    // DYHTmineta->Draw("hist&&same");
+    TLegend *l1 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    l1->SetBorderSize(0);
+    l1->SetTextSize(0.03);
+    l1->AddEntry(h_Mx1_alphamin, "ctau=1mm m_{x^{2}}=1", "f");
+    l1->AddEntry(h_Mx50_alphamin, "ctau=10mm m_{x^{2}}=50", "f");
+    l1->AddEntry(h_Mx150_alphamin, "ctau=1mm m_{x^{2}}=150", "f");
+    l1->AddEntry(DYHT_alphamin, "Drell-Yan", "f");
+    l1->Draw();
+
+    TLatex CMS;
+    CMS.DrawLatex(0.1, 0.8, "CMS");
+    TLatex Sim;
+    Sim.SetTextFont(12);
+    Sim.DrawLatex(0.1, 0.75, "Simulation");
+
+    TLatex Energy;
+    Energy.SetTextFont(12);
+    Energy.SetTextSize(0.03);
+    Energy.DrawLatex(1, 0.99, "(13TeV)");
+
+    // DYHTeta->SetFillColor(kViolet);
+    //  DYHTeta->SetFillStyle(3003);
+
+    // h_Mx50_jeteta->SetYTitle("Events/Normalized");
+    // h_Mx50_jeteta->GetYaxis()->SetTitleOffset(1.5);
+
+    /*
+    auto c1 = new TCanvas("c", "BPRE");
+    c1->Divide(3, 2);
+    c1->cd(1);
+    TLegend *l1 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    l1->SetBorderSize(0);
+    l1->SetTextSize(0.03);
+    l1->AddEntry(h_Mx1_njet, "ctau=1mm m_{x^{2}}=1", "l");
+    h_Mx1_njet->Draw("hist&&text45");
+    l1->Draw();
+
+    c1->cd(2);
     TLegend *l2 = new TLegend(0.60, 0.55, 0.90, 0.90);
     l2->SetBorderSize(0);
     l2->SetTextSize(0.03);
-    l2->AddEntry(Mx2_1_nT, "ctau=1mm m_{x^{2}}=1", "l");
-    l2->AddEntry(Mx2_150_nT, "ctau=1mm m_{x^{2}}=150", "l");
-    l2->AddEntry(Mx2_50_nT, "ctau=10mm m_{x^{2}}=50", "l");
-    l2->AddEntry(DYHT70_nT, "DYHT", "l");
-    // l2->AddEntry(DYPT50_nT, "DYJets_pTBin", "l");
-
+    l2->AddEntry(h_Mx50_njet, "ctau=10mm m_{x^{2}}=50", "l");
+    h_Mx50_njet->Draw("hist&&text45");
     l2->Draw();
+
+    c1->cd(3);
+    TLegend *l3 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    l3->SetBorderSize(0);
+    l3->SetTextSize(0.03);
+    l3->AddEntry(h_Mx150_njet, "ctau=1mm m_{x^{2}}=150", "l");
+    h_Mx150_njet->Draw("hist&&text45");
+    l3->Draw();
+    */
+
+    // c1->cd(4);
+    // TLegend *l4 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    // l4->SetBorderSize(0);
+    // l4->SetTextSize(0.03);
+    // l4->AddEntry(DYHT_nJets, "DYHT", "l");
+    // DYHT_nJets->Draw("hist");
+    // l4->Draw();
+
+    // c1->cd(5);
+    // TLegend *l5 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    // l5->SetBorderSize(0);
+    // l5->SetTextSize(0.03);
+    // l5->AddEntry(DYHTeta_metcut, "DYHT(Met > 90)", "l");
+    // DYHTeta_metcut->Draw("hist");
+    // l5->Draw();
+
+    // l2->AddEntry(DYHTeta, "DYHT", "l");
+    //  l2->AddEntry(DYPT50_nT, "DYJets_pTBin", "l");
+
     // c1->SetLogy();
     // c1->SaveAs("h_jet_n;1.png");
 }

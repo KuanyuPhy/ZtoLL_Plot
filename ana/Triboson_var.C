@@ -57,34 +57,44 @@ void Triboson_var()
     TH1F *Triboson_ZZZ_met = new TH1F("Triboson_ZZZ_met", "", 20, 0, 800);
     Triboson_ZZZ_met->Sumw2();
 
+    TH1F *Triboson_WWZ_nThinJets = new TH1F("Triboson_WWZ_nThinJets", "", 15, 0, 15);
+    Triboson_WWZ_nThinJets->Sumw2();
+
+    TH1F *Triboson_WZZ_nThinJets = new TH1F("Triboson_WZZ_nThinJets", "", 15, 0, 15);
+    Triboson_WZZ_nThinJets->Sumw2();
+
+    TH1F *Triboson_ZZZ_nThinJets = new TH1F("Triboson_ZZZ_nThinJets", "", 15, 0, 15);
+    Triboson_ZZZ_nThinJets->Sumw2();
+
     Double_t f_WWZ_alphamin, f_WZZ_alphamin, f_ZZZ_alphamin;
 
     Float_t f_WWZ_met, f_WZZ_met, f_ZZZ_met;
 
     Int_t f_WWZ_weight, f_WZZ_weight, f_ZZZ_weight;
 
+    Int_t I_WWZ_nThinJets, I_WZZ_nThinJets, I_ZZZ_nThinJets;
     // Define the HTWeight
 
-    float WWZWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::WWZ_TuneCUETP8M1/(WWZ_totevt))*1000;
-     cout <<"WWZWeight = " <<WWZWeight << endl;
-    float WZZWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::WZZ_TuneCUETP8M1/(WZZ_totevt))*1000;
-     cout <<"WZZWeight = " <<WZZWeight << endl;
-    float ZZZWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::ZZZ_TuneCUETP8M1/(ZZZ_totevt))*1000;
-     cout <<"ZZZWeight = " <<ZZZWeight << endl;
-    // float WWZWeight = (GlobalConstants::WWZ_TuneCUETP8M1);
-    // float WZZWeight = (GlobalConstants::WZZ_TuneCUETP8M1);
-    // float ZZZWeight = (GlobalConstants::ZZZ_TuneCUETP8M1);
+    float WWZWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::WWZ_TuneCUETP8M1 / (WWZ_totevt)) * 1000;
+    float WZZWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::WZZ_TuneCUETP8M1 / (WZZ_totevt)) * 1000;
+    float ZZZWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::ZZZ_TuneCUETP8M1 / (ZZZ_totevt)) * 1000;
 
     TTree *T_event;
     Triboson_WWZ->GetObject("T_event", T_event);
     T_event->SetBranchAddress("f_alphamin", &f_WWZ_alphamin);
     T_event->SetBranchAddress("f_Met", &f_WWZ_met);
     T_event->SetBranchAddress("I_weight", &f_WWZ_weight);
+    T_event->SetBranchAddress("I_nThinJets", &I_WWZ_nThinJets);
     for (int evt = 0; evt < T_event->GetEntries(); evt++)
     {
         T_event->GetEntry(evt);
+        if (I_WWZ_nThinJets < 2)
+        {
+            continue;
+        }
         Triboson_WWZ_aphmin->Fill(f_WWZ_alphamin, f_WWZ_weight * WWZWeight);
         Triboson_WWZ_met->Fill(f_WWZ_met, f_WWZ_weight * WWZWeight);
+        Triboson_WWZ_nThinJets->Fill(I_WWZ_nThinJets, f_WWZ_weight * WWZWeight);
     }
 
     TTree *T_event1;
@@ -92,11 +102,17 @@ void Triboson_var()
     T_event1->SetBranchAddress("f_alphamin", &f_WZZ_alphamin);
     T_event1->SetBranchAddress("f_Met", &f_WZZ_met);
     T_event1->SetBranchAddress("I_weight", &f_WZZ_weight);
+    T_event1->SetBranchAddress("I_nThinJets", &I_WZZ_nThinJets);
     for (int evt = 0; evt < T_event1->GetEntries(); evt++)
     {
         T_event1->GetEntry(evt);
+        if (I_WZZ_nThinJets < 2)
+        {
+            continue;
+        }
         Triboson_WZZ_aphmin->Fill(f_WZZ_alphamin, f_WZZ_weight * WZZWeight);
         Triboson_WZZ_met->Fill(f_WZZ_met, f_WZZ_weight * WZZWeight);
+        Triboson_WZZ_nThinJets->Fill(I_WZZ_nThinJets, f_WZZ_weight * WZZWeight);
     }
 
     TTree *T_event2;
@@ -104,37 +120,44 @@ void Triboson_var()
     T_event2->SetBranchAddress("f_alphamin", &f_ZZZ_alphamin);
     T_event2->SetBranchAddress("f_Met", &f_ZZZ_met);
     T_event2->SetBranchAddress("I_weight", &f_ZZZ_weight);
+    T_event2->SetBranchAddress("I_nThinJets", &I_ZZZ_nThinJets);
     for (int evt = 0; evt < T_event2->GetEntries(); evt++)
     {
         T_event2->GetEntry(evt);
+        if (I_ZZZ_nThinJets < 2)
+        {
+            continue;
+        }
         Triboson_ZZZ_aphmin->Fill(f_ZZZ_alphamin, f_ZZZ_weight * ZZZWeight);
         Triboson_ZZZ_met->Fill(f_ZZZ_met, f_ZZZ_weight * ZZZWeight);
+        Triboson_ZZZ_nThinJets->Fill(I_ZZZ_nThinJets, f_ZZZ_weight * ZZZWeight);
     }
-
-    // h_Rpf = (TH1F*)h_sb->Clone("h_Rpf");
-    auto c1 = new TCanvas("c", "BPRE");
-    c1->Divide(2, 2);
-    c1->cd(1);
-    Triboson_WWZ_aphmin->SetTitle("WWZ");
-    Triboson_WWZ_met->SetTitle("WWZ");
-    Triboson_WWZ_aphmin->SetFillColor(KARACHA);
-    Triboson_WWZ_met->SetFillColor(KARACHA);
-    Triboson_WWZ_aphmin->Draw("hist");
-    // Triboson_WWZ_met->Draw("hist");
-    c1->cd(2);
-    Triboson_WZZ_aphmin->SetTitle("WZZ");
-    Triboson_WZZ_met->SetTitle("WZZ");
-    Triboson_WZZ_aphmin->SetFillColor(KARACHA);
-    Triboson_WZZ_met->SetFillColor(KARACHA);
-    Triboson_WZZ_aphmin->Draw("hist");
-    // Triboson_WZZ_met->Draw("hist");
-    c1->cd(3);
-    Triboson_ZZZ_aphmin->SetTitle("ZZZ");
-    Triboson_ZZZ_met->SetTitle("ZZZ");
-    Triboson_ZZZ_aphmin->SetFillColor(KARACHA);
-    Triboson_ZZZ_met->SetFillColor(KARACHA);
-    Triboson_ZZZ_aphmin->Draw("hist");
-    // Triboson_ZZZ_met->Draw("hist");
+    /*
+        // h_Rpf = (TH1F*)h_sb->Clone("h_Rpf");
+        auto c1 = new TCanvas("c", "BPRE");
+        c1->Divide(2, 2);
+        c1->cd(1);
+        Triboson_WWZ_aphmin->SetTitle("WWZ");
+        Triboson_WWZ_met->SetTitle("WWZ");
+        Triboson_WWZ_aphmin->SetFillColor(KARACHA);
+        Triboson_WWZ_met->SetFillColor(KARACHA);
+        Triboson_WWZ_aphmin->Draw("hist");
+        // Triboson_WWZ_met->Draw("hist");
+        c1->cd(2);
+        Triboson_WZZ_aphmin->SetTitle("WZZ");
+        Triboson_WZZ_met->SetTitle("WZZ");
+        Triboson_WZZ_aphmin->SetFillColor(KARACHA);
+        Triboson_WZZ_met->SetFillColor(KARACHA);
+        Triboson_WZZ_aphmin->Draw("hist");
+        // Triboson_WZZ_met->Draw("hist");
+        c1->cd(3);
+        Triboson_ZZZ_aphmin->SetTitle("ZZZ");
+        Triboson_ZZZ_met->SetTitle("ZZZ");
+        Triboson_ZZZ_aphmin->SetFillColor(KARACHA);
+        Triboson_ZZZ_met->SetFillColor(KARACHA);
+        Triboson_ZZZ_aphmin->Draw("hist");
+        // Triboson_ZZZ_met->Draw("hist");
+    */
 
     TFile *outFile = new TFile("./../../root_file/Ztoee/Triboson_All.root", "RECREATE");
     outFile->cd();
@@ -145,6 +168,10 @@ void Triboson_var()
     Triboson_WZZ_met->Write();
     Triboson_ZZZ_aphmin->Write();
     Triboson_ZZZ_met->Write();
+
+    Triboson_WWZ_nThinJets->Write();
+    Triboson_WZZ_nThinJets->Write();
+    Triboson_ZZZ_nThinJets->Write();
 
     outFile->Close();
 }

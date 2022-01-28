@@ -70,6 +70,24 @@
         "Triboson_var.C": "cpp",
         "Top_var.C": "cpp",
         "BGEM_Top.C": "cpp",
-        "Diboson_var.C": "cpp"
+        "Diboson_var.C": "cpp",
+        "BGEM_DY_fit.C": "cpp",
+        "BGEM_Top_fit.C": "cpp",
+        "quick_DY_draw.C": "cpp",
+        "quick_draw_DY_ration.C": "cpp",
+        "quick_Top_draw.C": "cpp",
+        "BGEM_Top_apply.C": "cpp",
+        "BGEM_HT_apply.C": "cpp",
+        "Top_split.C": "cpp",
+        "quick_3D_draw.C": "cpp",
+        "quick_2D_flavor_met.C": "cpp",
+        "quick_2D_plot.C": "cpp",
+        "quick_flavor.C": "cpp",
+        "Top_2D_plot.C": "cpp",
+        "HT_fakerate.C": "cpp",
+        "HT_flavor.C": "cpp",
+        "Top_flavor.C": "cpp",
+        "Top_fakerate.C": "cpp",
+        "compare_fake.C": "cpp"
     }
 }

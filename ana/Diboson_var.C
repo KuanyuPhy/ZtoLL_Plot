@@ -119,7 +119,7 @@ void Diboson_var()
 
     TH1F *diboson_qq_ZZ_4L_aphmin = new TH1F("diboson_qq_ZZ_4L_aphmin", "", 24, 0, 1.2);
     diboson_qq_ZZ_4L_aphmin->Sumw2();
-
+    // Met
     TH1F *diboson_gg_WW_2L2Nu_met = new TH1F("diboson_gg_WW_2L2Nu_met", "", 20, 0, 800);
     diboson_gg_WW_2L2Nu_met->Sumw2();
 
@@ -164,6 +164,51 @@ void Diboson_var()
 
     TH1F *diboson_qq_ZZ_4L_met = new TH1F("diboson_qq_ZZ_4L_met", "", 20, 0, 800);
     diboson_qq_ZZ_4L_met->Sumw2();
+    // nJets
+    TH1F *diboson_gg_WW_2L2Nu_nThinJets = new TH1F("diboson_gg_WW_2L2Nu_nThinJets", "", 15, 0, 15);
+    diboson_gg_WW_2L2Nu_nThinJets->Sumw2();
+
+    TH1F *diboson_gg_ZZ_2e2mu_nThinJets = new TH1F("diboson_gg_ZZ_2e2mu_nThinJets", "", 15, 0, 15);
+    diboson_gg_ZZ_2e2mu_nThinJets->Sumw2();
+
+    TH1F *diboson_gg_ZZ_2e2nu_nThinJets = new TH1F("diboson_gg_ZZ_2e2nu_nThinJets", "", 15, 0, 15);
+    diboson_gg_ZZ_2e2nu_nThinJets->Sumw2();
+
+    TH1F *diboson_gg_ZZ_2e2tau_nThinJets = new TH1F("diboson_gg_ZZ_2e2tau_nThinJets", "", 15, 0, 15);
+    diboson_gg_ZZ_2e2tau_nThinJets->Sumw2();
+
+    TH1F *diboson_gg_ZZ_2mu2nu_nThinJets = new TH1F("diboson_gg_ZZ_2mu2nu_nThinJets", "", 15, 0, 15);
+    diboson_gg_ZZ_2mu2nu_nThinJets->Sumw2();
+
+    TH1F *diboson_gg_ZZ_2mu2tau_nThinJets = new TH1F("diboson_gg_ZZ_2mu2tau_nThinJets", "", 15, 0, 15);
+    diboson_gg_ZZ_2mu2tau_nThinJets->Sumw2();
+
+    TH1F *diboson_gg_ZZ_4e_nThinJets = new TH1F("diboson_gg_ZZ_4e_nThinJets", "", 15, 0, 15);
+    diboson_gg_ZZ_4e_nThinJets->Sumw2();
+
+    TH1F *diboson_gg_ZZ_4mu_nThinJets = new TH1F("diboson_gg_ZZ_4mu_nThinJets", "", 15, 0, 15);
+    diboson_gg_ZZ_4mu_nThinJets->Sumw2();
+
+    TH1F *diboson_gg_ZZ_4tau_nThinJets = new TH1F("diboson_gg_ZZ_4tau_nThinJets", "", 15, 0, 15);
+    diboson_gg_ZZ_4tau_nThinJets->Sumw2();
+
+    TH1F *diboson_qq_WW_2L2Nu_nThinJets = new TH1F("diboson_qq_WW_2L2Nu_nThinJets", "", 15, 0, 15);
+    diboson_qq_WW_2L2Nu_nThinJets->Sumw2();
+
+    TH1F *diboson_qq_WZ_2L2Q_nThinJets = new TH1F("diboson_qq_WZ_2L2Q_nThinJets", "", 15, 0, 15);
+    diboson_qq_WZ_2L2Q_nThinJets->Sumw2();
+
+    TH1F *diboson_qq_WZ_3LNu_nThinJets = new TH1F("diboson_qq_WZ_3LNu_nThinJets", "", 15, 0, 15);
+    diboson_qq_WZ_3LNu_nThinJets->Sumw2();
+
+    TH1F *diboson_qq_ZZ_2L2Nu_nThinJets = new TH1F("diboson_qq_ZZ_2L2Nu_nThinJets", "", 15, 0, 15);
+    diboson_qq_ZZ_2L2Nu_nThinJets->Sumw2();
+
+    TH1F *diboson_qq_ZZ_2L2Q_nThinJets = new TH1F("diboson_qq_ZZ_2L2Q_nThinJets", "", 15, 0, 15);
+    diboson_qq_ZZ_2L2Q_nThinJets->Sumw2();
+
+    TH1F *diboson_qq_ZZ_4L_nThinJets = new TH1F("diboson_qq_ZZ_4L_nThinJets", "", 15, 0, 15);
+    diboson_qq_ZZ_4L_nThinJets->Sumw2();
 
     Double_t f_gg_ZZ_2e2mu_alphamin, f_gg_ZZ_2e2nu_alphamin, f_gg_ZZ_2e2tau_alphamin, f_gg_ZZ_2mu2nu_alphamin,
         f_gg_ZZ_2mu2tau_alphamin, f_gg_ZZ_4e_alphamin, f_gg_ZZ_4mu_alphamin, f_gg_ZZ_4tau_alphamin, f_gg_WW_2L2Nu_alphamin,
@@ -180,36 +225,45 @@ void Diboson_var()
         f_qq_WW_2L2Nu_weight, f_qq_WZ_2L2Q_weight, f_qq_WZ_3LNu_weight, f_qq_ZZ_2L2Nu_weight, f_qq_ZZ_2L2Q_weight,
         f_qq_ZZ_4L_weight;
 
+    Int_t f_gg_ZZ_2e2mu_nThinJets, f_gg_ZZ_2e2nu_nThinJets, f_gg_ZZ_2e2tau_nThinJets, f_gg_ZZ_2mu2nu_nThinJets,
+        f_gg_ZZ_2mu2tau_nThinJets, f_gg_ZZ_4e_nThinJets, f_gg_ZZ_4mu_nThinJets, f_gg_ZZ_4tau_nThinJets, f_gg_WW_2L2Nu_nThinJets,
+        f_qq_WW_2L2Nu_nThinJets, f_qq_WZ_2L2Q_nThinJets, f_qq_WZ_3LNu_nThinJets, f_qq_ZZ_2L2Nu_nThinJets, f_qq_ZZ_2L2Q_nThinJets,
+        f_qq_ZZ_4L_nThinJets;
+
     // Define the HTWeight
 
-    float diboson_gg_ZZ_2e2mu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2e2mu / (gg_ZZ_2e2mu_totevt))*1000;
-    float diboson_gg_ZZ_2e2nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2e2nu / (gg_ZZ_2e2nu_totevt))*1000;
-    float diboson_gg_ZZ_2e2tau_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2e2tau / (gg_ZZ_2e2tau_totevt))*1000;
-    float diboson_gg_ZZ_2mu2nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2mu2nu / (gg_ZZ_2mu2nu_totevt))*1000;
-    float diboson_gg_ZZ_2mu2tau_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2mu2tau / (gg_ZZ_2mu2tau_totevt))*1000;
-    float diboson_gg_ZZ_4e_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_4e / (gg_ZZ_4e_totevt))*1000;
-    float diboson_gg_ZZ_4mu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_4mu / (gg_ZZ_4mu_totevt))*1000;
-    float diboson_gg_ZZ_4tau_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_4tau / (gg_ZZ_4tau_totevt))*1000;
-    float diboson_gg_WW_2L2Nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_WW_2L2Nu / (gg_WW_2L2Nu_totevt))*1000;
-    float diboson_qq_WW_2L2Nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_ZZ_2L2Nu / (qq_WW_2L2Nu_totevt))*1000;
-    float diboson_qq_WZ_2L2Q_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_WZ_2L2Q / (qq_WZ_2L2Q_totevt))*1000;
-    float diboson_qq_WZ_3LNu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_WZ_3LNu / (qq_WZ_3LNu_totevt))*1000;
-    float diboson_qq_ZZ_2L2Nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_ZZ_2L2Nu / (qq_ZZ_2L2Nu_totevt))*1000;
-    float diboson_qq_ZZ_2L2Q_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_ZZ_2L2Q / (qq_ZZ_2L2Q_totevt))*1000;
-    float diboson_qq_ZZ_4L_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_ZZ_4L / (qq_ZZ_4L_totevt))*1000;
+    float diboson_gg_ZZ_2e2mu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2e2mu / (gg_ZZ_2e2mu_totevt)) * 1000;
+    float diboson_gg_ZZ_2e2nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2e2nu / (gg_ZZ_2e2nu_totevt)) * 1000;
+    float diboson_gg_ZZ_2e2tau_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2e2tau / (gg_ZZ_2e2tau_totevt)) * 1000;
+    float diboson_gg_ZZ_2mu2nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2mu2nu / (gg_ZZ_2mu2nu_totevt)) * 1000;
+    float diboson_gg_ZZ_2mu2tau_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_2mu2tau / (gg_ZZ_2mu2tau_totevt)) * 1000;
+    float diboson_gg_ZZ_4e_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_4e / (gg_ZZ_4e_totevt)) * 1000;
+    float diboson_gg_ZZ_4mu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_4mu / (gg_ZZ_4mu_totevt)) * 1000;
+    float diboson_gg_ZZ_4tau_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::gg_ZZ_4tau / (gg_ZZ_4tau_totevt)) * 1000;
+    float diboson_gg_WW_2L2Nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_WW_2L2Nu / (gg_WW_2L2Nu_totevt)) * 1000;
+    float diboson_qq_WW_2L2Nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_ZZ_2L2Nu / (qq_WW_2L2Nu_totevt)) * 1000;
+    float diboson_qq_WZ_2L2Q_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_WZ_2L2Q / (qq_WZ_2L2Q_totevt)) * 1000;
+    float diboson_qq_WZ_3LNu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_WZ_3LNu / (qq_WZ_3LNu_totevt)) * 1000;
+    float diboson_qq_ZZ_2L2Nu_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_ZZ_2L2Nu / (qq_ZZ_2L2Nu_totevt)) * 1000;
+    float diboson_qq_ZZ_2L2Q_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_ZZ_2L2Q / (qq_ZZ_2L2Q_totevt)) * 1000;
+    float diboson_qq_ZZ_4L_Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::qq_ZZ_4L / (qq_ZZ_4L_totevt)) * 1000;
 
     TTree *T_event;
     diboson_gg_ZZ_2e2mu->GetObject("T_event", T_event);
     T_event->SetBranchAddress("I_weight", &f_gg_ZZ_2e2mu_weight);
     T_event->SetBranchAddress("f_alphamin", &f_gg_ZZ_2e2mu_alphamin);
     T_event->SetBranchAddress("f_Met", &f_gg_ZZ_2e2mu_met);
+    T_event->SetBranchAddress("I_nThinJets", &f_gg_ZZ_2e2mu_nThinJets);
+
     for (int evt = 0; evt < T_event->GetEntries(); evt++)
     {
         T_event->GetEntry(evt);
+        if (f_gg_ZZ_2e2mu_nThinJets < 2)
+            continue;
+
         diboson_gg_ZZ_2e2mu_aphmin->Fill(f_gg_ZZ_2e2mu_alphamin, f_gg_ZZ_2e2mu_weight * diboson_gg_ZZ_2e2mu_Weight);
         diboson_gg_ZZ_2e2mu_met->Fill(f_gg_ZZ_2e2mu_met, f_gg_ZZ_2e2mu_weight * diboson_gg_ZZ_2e2mu_Weight);
-        // Top_quark_aphmin->Fill(f_tW_top_alphamin, f_tW_top_weight * ST_tW_topWeight);
-        // Top_quark_met->Fill(f_tW_top_met, f_tW_top_weight * ST_tW_topWeight);
+        diboson_gg_ZZ_2e2mu_nThinJets->Fill(f_gg_ZZ_2e2mu_nThinJets, f_gg_ZZ_2e2mu_weight * diboson_gg_ZZ_2e2mu_Weight);
     }
 
     TTree *T_event1;
@@ -217,11 +271,15 @@ void Diboson_var()
     T_event1->SetBranchAddress("f_alphamin", &f_gg_ZZ_2e2nu_alphamin);
     T_event1->SetBranchAddress("f_Met", &f_gg_ZZ_2e2nu_met);
     T_event1->SetBranchAddress("I_weight", &f_gg_ZZ_2e2nu_weight);
+    T_event1->SetBranchAddress("I_nThinJets", &f_gg_ZZ_2e2nu_nThinJets);
     for (int evt = 0; evt < T_event1->GetEntries(); evt++)
     {
         T_event1->GetEntry(evt);
+        if (f_gg_ZZ_2e2nu_nThinJets < 2)
+            continue;
         diboson_gg_ZZ_2e2nu_aphmin->Fill(f_gg_ZZ_2e2nu_alphamin, f_gg_ZZ_2e2nu_weight * diboson_gg_ZZ_2e2nu_Weight);
         diboson_gg_ZZ_2e2nu_met->Fill(f_gg_ZZ_2e2nu_met, f_gg_ZZ_2e2nu_weight * diboson_gg_ZZ_2e2nu_Weight);
+        diboson_gg_ZZ_2e2nu_nThinJets->Fill(f_gg_ZZ_2e2nu_nThinJets, f_gg_ZZ_2e2nu_weight * diboson_gg_ZZ_2e2nu_Weight);
     }
 
     TTree *T_event2;
@@ -229,11 +287,15 @@ void Diboson_var()
     T_event2->SetBranchAddress("f_alphamin", &f_gg_ZZ_2e2tau_alphamin);
     T_event2->SetBranchAddress("f_Met", &f_gg_ZZ_2e2tau_met);
     T_event2->SetBranchAddress("I_weight", &f_gg_ZZ_2e2tau_weight);
+    T_event2->SetBranchAddress("I_nThinJets", &f_gg_ZZ_2e2tau_nThinJets);
     for (int evt = 0; evt < T_event2->GetEntries(); evt++)
     {
         T_event2->GetEntry(evt);
+        if (f_gg_ZZ_2e2tau_nThinJets < 2)
+            continue;
         diboson_gg_ZZ_2e2tau_aphmin->Fill(f_gg_ZZ_2e2tau_alphamin, f_gg_ZZ_2e2tau_weight * diboson_gg_ZZ_2e2tau_Weight);
         diboson_gg_ZZ_2e2tau_met->Fill(f_gg_ZZ_2e2tau_met, f_gg_ZZ_2e2tau_weight * diboson_gg_ZZ_2e2tau_Weight);
+        diboson_gg_ZZ_2e2tau_nThinJets->Fill(f_gg_ZZ_2e2tau_nThinJets, f_gg_ZZ_2e2tau_weight * diboson_gg_ZZ_2e2tau_Weight);
     }
 
     TTree *T_event3;
@@ -241,11 +303,15 @@ void Diboson_var()
     T_event3->SetBranchAddress("f_alphamin", &f_gg_ZZ_2mu2nu_alphamin);
     T_event3->SetBranchAddress("f_Met", &f_gg_ZZ_2mu2nu_met);
     T_event3->SetBranchAddress("I_weight", &f_gg_ZZ_2mu2nu_weight);
+    T_event3->SetBranchAddress("I_nThinJets", &f_gg_ZZ_2mu2nu_nThinJets);
     for (int evt = 0; evt < T_event3->GetEntries(); evt++)
     {
         T_event3->GetEntry(evt);
+        if (f_gg_ZZ_2mu2nu_nThinJets < 2)
+            continue;
         diboson_gg_ZZ_2mu2nu_aphmin->Fill(f_gg_ZZ_2mu2nu_alphamin, f_gg_ZZ_2mu2nu_weight * diboson_gg_ZZ_2mu2nu_Weight);
         diboson_gg_ZZ_2mu2nu_met->Fill(f_gg_ZZ_2mu2nu_met, f_gg_ZZ_2mu2nu_weight * diboson_gg_ZZ_2mu2nu_Weight);
+        diboson_gg_ZZ_2mu2nu_nThinJets->Fill(f_gg_ZZ_2mu2nu_nThinJets, f_gg_ZZ_2mu2nu_weight * diboson_gg_ZZ_2mu2nu_Weight);
     }
 
     TTree *T_event4;
@@ -253,11 +319,15 @@ void Diboson_var()
     T_event4->SetBranchAddress("f_alphamin", &f_gg_ZZ_2mu2tau_alphamin);
     T_event4->SetBranchAddress("f_Met", &f_gg_ZZ_2mu2tau_met);
     T_event4->SetBranchAddress("I_weight", &f_gg_ZZ_2mu2tau_weight);
+    T_event4->SetBranchAddress("I_nThinJets", &f_gg_ZZ_2mu2tau_nThinJets);
     for (int evt = 0; evt < T_event4->GetEntries(); evt++)
     {
         T_event4->GetEntry(evt);
+        if (f_gg_ZZ_2mu2tau_nThinJets < 2)
+            continue;
         diboson_gg_ZZ_2mu2tau_aphmin->Fill(f_gg_ZZ_2mu2tau_alphamin, f_gg_ZZ_2mu2tau_weight * diboson_gg_ZZ_2mu2tau_Weight);
         diboson_gg_ZZ_2mu2tau_met->Fill(f_gg_ZZ_2mu2tau_met, f_gg_ZZ_2mu2tau_weight * diboson_gg_ZZ_2mu2tau_Weight);
+        diboson_gg_ZZ_2mu2tau_nThinJets->Fill(f_gg_ZZ_2mu2tau_nThinJets, f_gg_ZZ_2mu2tau_weight * diboson_gg_ZZ_2mu2tau_Weight);
     }
 
     TTree *T_event5;
@@ -265,11 +335,15 @@ void Diboson_var()
     T_event5->SetBranchAddress("f_alphamin", &f_gg_ZZ_4e_alphamin);
     T_event5->SetBranchAddress("f_Met", &f_gg_ZZ_4e_met);
     T_event5->SetBranchAddress("I_weight", &f_gg_ZZ_4e_weight);
+    T_event5->SetBranchAddress("I_nThinJets", &f_gg_ZZ_4e_nThinJets);
     for (int evt = 0; evt < T_event5->GetEntries(); evt++)
     {
         T_event5->GetEntry(evt);
+        if (f_gg_ZZ_4e_nThinJets < 2)
+            continue;
         diboson_gg_ZZ_4e_aphmin->Fill(f_gg_ZZ_4e_alphamin, f_gg_ZZ_4e_weight * diboson_gg_ZZ_4e_Weight);
         diboson_gg_ZZ_4e_met->Fill(f_gg_ZZ_4e_met, f_gg_ZZ_4e_weight * diboson_gg_ZZ_4e_Weight);
+        diboson_gg_ZZ_4e_nThinJets->Fill(f_gg_ZZ_4e_nThinJets, f_gg_ZZ_4e_weight * diboson_gg_ZZ_4e_Weight);
     }
 
     TTree *T_event6;
@@ -277,11 +351,15 @@ void Diboson_var()
     T_event6->SetBranchAddress("f_alphamin", &f_gg_ZZ_4mu_alphamin);
     T_event6->SetBranchAddress("f_Met", &f_gg_ZZ_4mu_met);
     T_event6->SetBranchAddress("I_weight", &f_gg_ZZ_4mu_weight);
+    T_event6->SetBranchAddress("I_nThinJets", &f_gg_ZZ_4mu_nThinJets);
     for (int evt = 0; evt < T_event6->GetEntries(); evt++)
     {
         T_event6->GetEntry(evt);
+        if (f_gg_ZZ_4mu_nThinJets < 2)
+            continue;
         diboson_gg_ZZ_4mu_aphmin->Fill(f_gg_ZZ_4mu_alphamin, f_gg_ZZ_4mu_weight * diboson_gg_ZZ_4mu_Weight);
         diboson_gg_ZZ_4mu_met->Fill(f_gg_ZZ_4mu_met, f_gg_ZZ_4mu_weight * diboson_gg_ZZ_4mu_Weight);
+        diboson_gg_ZZ_4mu_nThinJets->Fill(f_gg_ZZ_4mu_nThinJets, f_gg_ZZ_4mu_weight * diboson_gg_ZZ_4mu_Weight);
     }
 
     TTree *T_event7;
@@ -289,11 +367,15 @@ void Diboson_var()
     T_event7->SetBranchAddress("I_weight", &f_gg_ZZ_4tau_weight);
     T_event7->SetBranchAddress("f_alphamin", &f_gg_ZZ_4tau_alphamin);
     T_event7->SetBranchAddress("f_Met", &f_gg_ZZ_4tau_met);
+    T_event7->SetBranchAddress("I_nThinJets", &f_gg_ZZ_4tau_nThinJets);
     for (int evt = 0; evt < T_event7->GetEntries(); evt++)
     {
         T_event7->GetEntry(evt);
+        if (f_gg_ZZ_4tau_nThinJets < 2)
+            continue;
         diboson_gg_ZZ_4tau_aphmin->Fill(f_gg_ZZ_4tau_alphamin, f_gg_ZZ_4tau_weight * diboson_gg_ZZ_4tau_Weight);
         diboson_gg_ZZ_4tau_met->Fill(f_gg_ZZ_4tau_met, f_gg_ZZ_4tau_weight * diboson_gg_ZZ_4tau_Weight);
+        diboson_gg_ZZ_4tau_nThinJets->Fill(f_gg_ZZ_4tau_nThinJets, f_gg_ZZ_4tau_weight * diboson_gg_ZZ_4tau_Weight);
     }
 
     TTree *T_event8;
@@ -301,11 +383,15 @@ void Diboson_var()
     T_event8->SetBranchAddress("f_alphamin", &f_gg_WW_2L2Nu_alphamin);
     T_event8->SetBranchAddress("f_Met", &f_gg_WW_2L2Nu_met);
     T_event8->SetBranchAddress("I_weight", &f_gg_WW_2L2Nu_weight);
+    T_event8->SetBranchAddress("I_nThinJets", &f_gg_WW_2L2Nu_nThinJets);
     for (int evt = 0; evt < T_event8->GetEntries(); evt++)
     {
         T_event8->GetEntry(evt);
+        if (f_gg_WW_2L2Nu_nThinJets < 2)
+            continue;
         diboson_gg_WW_2L2Nu_aphmin->Fill(f_gg_WW_2L2Nu_alphamin, f_gg_WW_2L2Nu_weight * diboson_gg_WW_2L2Nu_Weight);
         diboson_gg_WW_2L2Nu_met->Fill(f_gg_WW_2L2Nu_met, f_gg_WW_2L2Nu_weight * diboson_gg_WW_2L2Nu_Weight);
+        diboson_gg_WW_2L2Nu_nThinJets->Fill(f_gg_WW_2L2Nu_nThinJets, f_gg_WW_2L2Nu_weight * diboson_gg_WW_2L2Nu_Weight);
     }
 
     TTree *T_event9;
@@ -313,11 +399,15 @@ void Diboson_var()
     T_event9->SetBranchAddress("f_alphamin", &f_qq_WW_2L2Nu_alphamin);
     T_event9->SetBranchAddress("f_Met", &f_qq_WW_2L2Nu_met);
     T_event9->SetBranchAddress("I_weight", &f_qq_WW_2L2Nu_weight);
+    T_event9->SetBranchAddress("I_nThinJets", &f_qq_WW_2L2Nu_nThinJets);
     for (int evt = 0; evt < T_event9->GetEntries(); evt++)
     {
         T_event9->GetEntry(evt);
+        if (f_qq_WW_2L2Nu_nThinJets < 2)
+            continue;
         diboson_qq_WW_2L2Nu_aphmin->Fill(f_qq_WW_2L2Nu_alphamin, f_qq_WW_2L2Nu_weight * diboson_qq_WW_2L2Nu_Weight);
         diboson_qq_WW_2L2Nu_met->Fill(f_qq_WW_2L2Nu_met, f_qq_WW_2L2Nu_weight * diboson_qq_WW_2L2Nu_Weight);
+        diboson_qq_WW_2L2Nu_nThinJets->Fill(f_qq_WW_2L2Nu_nThinJets, f_qq_WW_2L2Nu_weight * diboson_qq_WW_2L2Nu_Weight);
     }
 
     TTree *T_event10;
@@ -325,11 +415,15 @@ void Diboson_var()
     T_event10->SetBranchAddress("f_alphamin", &f_qq_WZ_2L2Q_alphamin);
     T_event10->SetBranchAddress("f_Met", &f_qq_WZ_2L2Q_met);
     T_event10->SetBranchAddress("I_weight", &f_qq_WZ_2L2Q_weight);
+    T_event10->SetBranchAddress("I_nThinJets", &f_qq_WZ_2L2Q_nThinJets);
     for (int evt = 0; evt < T_event10->GetEntries(); evt++)
     {
         T_event10->GetEntry(evt);
+        if (f_qq_WZ_2L2Q_nThinJets < 2)
+            continue;
         diboson_qq_WZ_2L2Q_aphmin->Fill(f_qq_WZ_2L2Q_alphamin, f_qq_WZ_2L2Q_weight * diboson_qq_WZ_2L2Q_Weight);
         diboson_qq_WZ_2L2Q_met->Fill(f_qq_WZ_2L2Q_met, f_qq_WZ_2L2Q_weight * diboson_qq_WZ_2L2Q_Weight);
+        diboson_qq_WZ_2L2Q_nThinJets->Fill(f_qq_WZ_2L2Q_nThinJets, f_qq_WZ_2L2Q_weight * diboson_qq_WZ_2L2Q_Weight);
     }
 
     TTree *T_event11;
@@ -337,11 +431,15 @@ void Diboson_var()
     T_event11->SetBranchAddress("f_alphamin", &f_qq_WZ_3LNu_alphamin);
     T_event11->SetBranchAddress("f_Met", &f_qq_WZ_3LNu_met);
     T_event11->SetBranchAddress("I_weight", &f_qq_WZ_3LNu_weight);
+    T_event11->SetBranchAddress("I_nThinJets", &f_qq_WZ_3LNu_nThinJets);
     for (int evt = 0; evt < T_event11->GetEntries(); evt++)
     {
         T_event11->GetEntry(evt);
+        if (f_qq_WZ_3LNu_nThinJets < 2)
+            continue;
         diboson_qq_WZ_3LNu_aphmin->Fill(f_qq_WZ_3LNu_alphamin, f_qq_WZ_3LNu_weight * diboson_qq_WZ_3LNu_Weight);
         diboson_qq_WZ_3LNu_met->Fill(f_qq_WZ_3LNu_met, f_qq_WZ_3LNu_weight * diboson_qq_WZ_3LNu_Weight);
+        diboson_qq_WZ_3LNu_nThinJets->Fill(f_qq_WZ_3LNu_nThinJets, f_qq_WZ_3LNu_weight * diboson_qq_WZ_3LNu_Weight);
     }
 
     TTree *T_event12;
@@ -349,11 +447,15 @@ void Diboson_var()
     T_event12->SetBranchAddress("f_alphamin", &f_qq_ZZ_2L2Nu_alphamin);
     T_event12->SetBranchAddress("f_Met", &f_qq_ZZ_2L2Nu_met);
     T_event12->SetBranchAddress("I_weight", &f_qq_ZZ_2L2Nu_weight);
+    T_event12->SetBranchAddress("I_nThinJets", &f_qq_ZZ_2L2Nu_nThinJets);
     for (int evt = 0; evt < T_event12->GetEntries(); evt++)
     {
         T_event12->GetEntry(evt);
+        if (f_qq_ZZ_2L2Nu_nThinJets < 2)
+            continue;
         diboson_qq_ZZ_2L2Nu_aphmin->Fill(f_qq_ZZ_2L2Nu_alphamin, f_qq_ZZ_2L2Nu_weight * diboson_qq_ZZ_2L2Nu_Weight);
         diboson_qq_ZZ_2L2Nu_met->Fill(f_qq_ZZ_2L2Nu_met, f_qq_ZZ_2L2Nu_weight * diboson_qq_ZZ_2L2Nu_Weight);
+        diboson_qq_ZZ_2L2Nu_nThinJets->Fill(f_qq_ZZ_2L2Nu_nThinJets, f_qq_ZZ_2L2Nu_weight * diboson_qq_ZZ_2L2Nu_Weight);
     }
 
     TTree *T_event13;
@@ -361,11 +463,15 @@ void Diboson_var()
     T_event13->SetBranchAddress("f_alphamin", &f_qq_ZZ_2L2Q_alphamin);
     T_event13->SetBranchAddress("f_Met", &f_qq_ZZ_2L2Q_met);
     T_event13->SetBranchAddress("I_weight", &f_qq_ZZ_2L2Q_weight);
+    T_event13->SetBranchAddress("I_nThinJets", &f_qq_ZZ_2L2Q_nThinJets);
     for (int evt = 0; evt < T_event13->GetEntries(); evt++)
     {
         T_event13->GetEntry(evt);
+        if (f_qq_ZZ_2L2Q_nThinJets < 2)
+            continue;
         diboson_qq_ZZ_2L2Q_aphmin->Fill(f_qq_ZZ_2L2Q_alphamin, f_qq_ZZ_2L2Q_weight * diboson_qq_ZZ_2L2Q_Weight);
         diboson_qq_ZZ_2L2Q_met->Fill(f_qq_ZZ_2L2Q_met, f_qq_ZZ_2L2Q_weight * diboson_qq_ZZ_2L2Q_Weight);
+        diboson_qq_ZZ_2L2Q_nThinJets->Fill(f_qq_ZZ_2L2Q_nThinJets, f_qq_ZZ_2L2Q_weight * diboson_qq_ZZ_2L2Q_Weight);
     }
 
     TTree *T_event14;
@@ -373,178 +479,218 @@ void Diboson_var()
     T_event14->SetBranchAddress("f_alphamin", &f_qq_ZZ_4L_alphamin);
     T_event14->SetBranchAddress("f_Met", &f_qq_ZZ_4L_met);
     T_event14->SetBranchAddress("I_weight", &f_qq_ZZ_4L_weight);
+    T_event14->SetBranchAddress("I_nThinJets", &f_qq_ZZ_4L_nThinJets);
     for (int evt = 0; evt < T_event14->GetEntries(); evt++)
     {
         T_event14->GetEntry(evt);
+        if (f_qq_ZZ_4L_nThinJets < 2)
+            continue;
         diboson_qq_ZZ_4L_aphmin->Fill(f_qq_ZZ_4L_alphamin, f_qq_ZZ_4L_weight * diboson_qq_ZZ_4L_Weight);
         diboson_qq_ZZ_4L_met->Fill(f_qq_ZZ_4L_met, f_qq_ZZ_4L_weight * diboson_qq_ZZ_4L_Weight);
+        diboson_qq_ZZ_4L_nThinJets->Fill(f_qq_ZZ_4L_nThinJets, f_qq_ZZ_4L_weight * diboson_qq_ZZ_4L_Weight);
     }
 
     auto c1 = new TCanvas("c", "BPRE");
-    c1->Divide(4, 4);
-    c1->cd(1);
-    diboson_gg_ZZ_2e2nu_met->SetTitle("gg_ZZ_2e2nu");
-    diboson_gg_ZZ_2e2mu_aphmin->SetTitle("gg_ZZ_2e2nu");
-    diboson_gg_ZZ_2e2nu_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_ZZ_2e2mu_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_ZZ_2e2nu_met->Draw("hist");
-    // diboson_gg_ZZ_2e2mu_aphmin->Draw("hist");
-    c1->cd(2);
-    diboson_gg_ZZ_2e2nu_aphmin->SetTitle("gg_ZZ_2e2nu");
-    diboson_gg_ZZ_2e2nu_met->SetTitle("gg_ZZ_2e2nu");
-    diboson_gg_ZZ_2e2nu_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_ZZ_2e2nu_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_ZZ_2e2nu_aphmin->Draw("hist");
-    diboson_gg_ZZ_2e2nu_met->Draw("hist");
-    c1->cd(3);
-    diboson_gg_ZZ_2e2tau_aphmin->SetTitle("gg_ZZ_2e2tau");
-    diboson_gg_ZZ_2e2tau_met->SetTitle("gg_ZZ_2e2tau");
-    diboson_gg_ZZ_2e2tau_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_ZZ_2e2tau_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_ZZ_2e2tau_aphmin->Draw("hist");
-    diboson_gg_ZZ_2e2tau_met->Draw("hist");
-    c1->cd(4);
-    diboson_gg_ZZ_2mu2nu_aphmin->SetTitle("gg_ZZ_2mu2nu");
-    diboson_gg_ZZ_2mu2nu_met->SetTitle("gg_ZZ_2mu2nu");
-    diboson_gg_ZZ_2mu2nu_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_ZZ_2mu2nu_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_ZZ_2mu2nu_aphmin->Draw("hist");
-    diboson_gg_ZZ_2mu2nu_met->Draw("hist");
-    c1->cd(5);
-    diboson_gg_ZZ_2mu2tau_aphmin->SetTitle("gg_ZZ_2mu2tau");
-    diboson_gg_ZZ_2mu2tau_met->SetTitle("gg_ZZ_2mu2tau");
-    diboson_gg_ZZ_2mu2tau_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_ZZ_2mu2tau_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_ZZ_2mu2tau_aphmin->Draw("hist");
-    diboson_gg_ZZ_2mu2tau_met->Draw("hist");
-    c1->cd(6);
-    diboson_gg_ZZ_4e_aphmin->SetTitle("gg_ZZ_4e");
-    diboson_gg_ZZ_4e_met->SetTitle("gg_ZZ_4e");
-    diboson_gg_ZZ_4e_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_ZZ_4e_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_ZZ_4e_aphmin->Draw("hist");
-    diboson_gg_ZZ_4e_met->Draw("hist");
-    c1->cd(7);
-    diboson_gg_ZZ_4mu_aphmin->SetTitle("gg_ZZ_4mu");
-    diboson_gg_ZZ_4mu_met->SetTitle("gg_ZZ_4mu");
-    diboson_gg_ZZ_4mu_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_ZZ_4mu_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_ZZ_4mu_aphmin->Draw("hist");
-    diboson_gg_ZZ_4mu_met->Draw("hist");
-    c1->cd(8);
-    diboson_gg_ZZ_4tau_aphmin->SetTitle("gg_ZZ_4tau");
-    diboson_gg_ZZ_4tau_met->SetTitle("gg_ZZ_4tau");
-    diboson_gg_ZZ_4tau_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_ZZ_4tau_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_ZZ_4tau_aphmin->Draw("hist");
-    diboson_gg_ZZ_4tau_met->Draw("hist");
-    c1->cd(9);
-    diboson_gg_WW_2L2Nu_aphmin->SetTitle("gg_WW_2L2Nu");
-    diboson_gg_WW_2L2Nu_met->SetTitle("gg_WW_2L2Nu");
-    diboson_gg_WW_2L2Nu_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_gg_WW_2L2Nu_met->SetFillColor(HIWAMOEGI);
-    // diboson_gg_WW_2L2Nu_aphmin->Draw("hist");
-    diboson_gg_WW_2L2Nu_met->Draw("hist");
-    c1->cd(10);
-    diboson_qq_WW_2L2Nu_aphmin->SetTitle("qq_WW_2L2Nu");
-    diboson_qq_WW_2L2Nu_met->SetTitle("qq_WW_2L2Nu");
-    diboson_qq_WW_2L2Nu_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_qq_WW_2L2Nu_met->SetFillColor(HIWAMOEGI);
-    // diboson_qq_WW_2L2Nu_aphmin->Draw("hist");
-    diboson_qq_WW_2L2Nu_met->Draw("hist");
-    c1->cd(11);
-    diboson_qq_WZ_2L2Q_aphmin->SetTitle("qq_WZ_2L2Q");
-    diboson_qq_WZ_2L2Q_met->SetTitle("qq_WZ_2L2Q");
-    diboson_qq_WZ_2L2Q_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_qq_WZ_2L2Q_met->SetFillColor(HIWAMOEGI);
-    // diboson_qq_WZ_2L2Q_aphmin->Draw("hist");
-    diboson_qq_WZ_2L2Q_met->Draw("hist");
-    c1->cd(12);
-    diboson_qq_WZ_3LNu_aphmin->SetTitle("qq_WZ_3LNu");
-    diboson_qq_WZ_3LNu_met->SetTitle("qq_WZ_3LNu");
-    diboson_qq_WZ_3LNu_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_qq_WZ_3LNu_met->SetFillColor(HIWAMOEGI);
-    // diboson_qq_WZ_3LNu_aphmin->Draw("hist");
-    diboson_qq_WZ_3LNu_met->Draw("hist");
-    c1->cd(13);
-    diboson_qq_ZZ_2L2Nu_aphmin->SetTitle("qq_ZZ_2L2Nu");
-    diboson_qq_ZZ_2L2Nu_met->SetTitle("qq_ZZ_2L2Nu");
-    diboson_qq_ZZ_2L2Nu_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_qq_ZZ_2L2Nu_met->SetFillColor(HIWAMOEGI);
-    // diboson_qq_ZZ_2L2Nu_aphmin->Draw("hist");
-    diboson_qq_ZZ_2L2Nu_met->Draw("hist");
-    c1->cd(14);
-    diboson_qq_ZZ_2L2Q_aphmin->SetTitle("qq_ZZ_2L2Q");
-    diboson_qq_ZZ_2L2Q_met->SetTitle("qq_ZZ_2L2Q");
-    diboson_qq_ZZ_2L2Q_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_qq_ZZ_2L2Q_met->SetFillColor(HIWAMOEGI);
-    // diboson_qq_ZZ_2L2Q_aphmin->Draw("hist");
-    diboson_qq_ZZ_2L2Q_met->Draw("hist");
-    c1->cd(15);
-    diboson_qq_ZZ_4L_aphmin->SetTitle("qq_ZZ_4L");
-    diboson_qq_ZZ_4L_met->SetTitle("qq_ZZ_4L");
-    diboson_qq_ZZ_4L_aphmin->SetFillColor(HIWAMOEGI);
-    diboson_qq_ZZ_4L_met->SetFillColor(HIWAMOEGI);
-    // diboson_qq_ZZ_4L_aphmin->Draw("hist");
-    diboson_qq_ZZ_4L_met->Draw("hist");
+    /*
+        c1->Divide(4, 4);
+        c1->cd(1);
+        diboson_gg_ZZ_2e2nu_met->SetTitle("gg_ZZ_2e2nu");
+        diboson_gg_ZZ_2e2mu_aphmin->SetTitle("gg_ZZ_2e2nu");
+        diboson_gg_ZZ_2e2nu_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2e2mu_aphmin->SetFillColor(HIWAMOEGI);
+        //diboson_gg_ZZ_2e2nu_met->Draw("hist");
+        diboson_gg_ZZ_2e2mu_aphmin->Draw("hist");
+        c1->cd(2);
+        diboson_gg_ZZ_2e2nu_aphmin->SetTitle("gg_ZZ_2e2nu");
+        diboson_gg_ZZ_2e2nu_met->SetTitle("gg_ZZ_2e2nu");
+        diboson_gg_ZZ_2e2nu_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2e2nu_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2e2nu_aphmin->Draw("hist");
+        //diboson_gg_ZZ_2e2nu_met->Draw("hist");
+        c1->cd(3);
+        diboson_gg_ZZ_2e2tau_aphmin->SetTitle("gg_ZZ_2e2tau");
+        diboson_gg_ZZ_2e2tau_met->SetTitle("gg_ZZ_2e2tau");
+        diboson_gg_ZZ_2e2tau_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2e2tau_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2e2tau_aphmin->Draw("hist");
+        //diboson_gg_ZZ_2e2tau_met->Draw("hist");
+        c1->cd(4);
+        diboson_gg_ZZ_2mu2nu_aphmin->SetTitle("gg_ZZ_2mu2nu");
+        diboson_gg_ZZ_2mu2nu_met->SetTitle("gg_ZZ_2mu2nu");
+        diboson_gg_ZZ_2mu2nu_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2mu2nu_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2mu2nu_aphmin->Draw("hist");
+        //diboson_gg_ZZ_2mu2nu_met->Draw("hist");
+        c1->cd(5);
+        diboson_gg_ZZ_2mu2tau_aphmin->SetTitle("gg_ZZ_2mu2tau");
+        diboson_gg_ZZ_2mu2tau_met->SetTitle("gg_ZZ_2mu2tau");
+        diboson_gg_ZZ_2mu2tau_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2mu2tau_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_2mu2tau_aphmin->Draw("hist");
+        //diboson_gg_ZZ_2mu2tau_met->Draw("hist");
+        c1->cd(6);
+        diboson_gg_ZZ_4e_aphmin->SetTitle("gg_ZZ_4e");
+        diboson_gg_ZZ_4e_met->SetTitle("gg_ZZ_4e");
+        diboson_gg_ZZ_4e_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_4e_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_4e_aphmin->Draw("hist");
+        //diboson_gg_ZZ_4e_met->Draw("hist");
+        c1->cd(7);
+        diboson_gg_ZZ_4mu_aphmin->SetTitle("gg_ZZ_4mu");
+        diboson_gg_ZZ_4mu_met->SetTitle("gg_ZZ_4mu");
+        diboson_gg_ZZ_4mu_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_4mu_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_4mu_aphmin->Draw("hist");
+        //diboson_gg_ZZ_4mu_met->Draw("hist");
+        c1->cd(8);
+        diboson_gg_ZZ_4tau_aphmin->SetTitle("gg_ZZ_4tau");
+        diboson_gg_ZZ_4tau_met->SetTitle("gg_ZZ_4tau");
+        diboson_gg_ZZ_4tau_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_4tau_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_ZZ_4tau_aphmin->Draw("hist");
+        //diboson_gg_ZZ_4tau_met->Draw("hist");
+        c1->cd(9);
+        diboson_gg_WW_2L2Nu_aphmin->SetTitle("gg_WW_2L2Nu");
+        diboson_gg_WW_2L2Nu_met->SetTitle("gg_WW_2L2Nu");
+        diboson_gg_WW_2L2Nu_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_gg_WW_2L2Nu_met->SetFillColor(HIWAMOEGI);
+        diboson_gg_WW_2L2Nu_aphmin->Draw("hist");
+        //diboson_gg_WW_2L2Nu_met->Draw("hist");
+        c1->cd(10);
+        diboson_qq_WW_2L2Nu_aphmin->SetTitle("qq_WW_2L2Nu");
+        diboson_qq_WW_2L2Nu_met->SetTitle("qq_WW_2L2Nu");
+        diboson_qq_WW_2L2Nu_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_qq_WW_2L2Nu_met->SetFillColor(HIWAMOEGI);
+        diboson_qq_WW_2L2Nu_aphmin->Draw("hist");
+        //diboson_qq_WW_2L2Nu_met->Draw("hist");
+        c1->cd(11);
+        diboson_qq_WZ_2L2Q_aphmin->SetTitle("qq_WZ_2L2Q");
+        diboson_qq_WZ_2L2Q_met->SetTitle("qq_WZ_2L2Q");
+        diboson_qq_WZ_2L2Q_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_qq_WZ_2L2Q_met->SetFillColor(HIWAMOEGI);
+        diboson_qq_WZ_2L2Q_aphmin->Draw("hist");
+        //diboson_qq_WZ_2L2Q_met->Draw("hist");
+        c1->cd(12);
+        diboson_qq_WZ_3LNu_aphmin->SetTitle("qq_WZ_3LNu");
+        diboson_qq_WZ_3LNu_met->SetTitle("qq_WZ_3LNu");
+        diboson_qq_WZ_3LNu_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_qq_WZ_3LNu_met->SetFillColor(HIWAMOEGI);
+        diboson_qq_WZ_3LNu_aphmin->Draw("hist");
+        //diboson_qq_WZ_3LNu_met->Draw("hist");
+        c1->cd(13);
+        diboson_qq_ZZ_2L2Nu_aphmin->SetTitle("qq_ZZ_2L2Nu");
+        diboson_qq_ZZ_2L2Nu_met->SetTitle("qq_ZZ_2L2Nu");
+        diboson_qq_ZZ_2L2Nu_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_qq_ZZ_2L2Nu_met->SetFillColor(HIWAMOEGI);
+        diboson_qq_ZZ_2L2Nu_aphmin->Draw("hist");
+        //diboson_qq_ZZ_2L2Nu_met->Draw("hist");
+        c1->cd(14);
+        diboson_qq_ZZ_2L2Q_aphmin->SetTitle("qq_ZZ_2L2Q");
+        diboson_qq_ZZ_2L2Q_met->SetTitle("qq_ZZ_2L2Q");
+        diboson_qq_ZZ_2L2Q_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_qq_ZZ_2L2Q_met->SetFillColor(HIWAMOEGI);
+        diboson_qq_ZZ_2L2Q_aphmin->Draw("hist");
+        //diboson_qq_ZZ_2L2Q_met->Draw("hist");
+        c1->cd(15);
+        diboson_qq_ZZ_4L_aphmin->SetTitle("qq_ZZ_4L");
+        diboson_qq_ZZ_4L_met->SetTitle("qq_ZZ_4L");
+        diboson_qq_ZZ_4L_aphmin->SetFillColor(HIWAMOEGI);
+        diboson_qq_ZZ_4L_met->SetFillColor(HIWAMOEGI);
+        diboson_qq_ZZ_4L_aphmin->Draw("hist");
+        //diboson_qq_ZZ_4L_met->Draw("hist");
+    */
 
-    diboson_gg_ZZ_2e2mu_met->Add(diboson_gg_ZZ_2e2nu_met);
-    diboson_gg_ZZ_2e2mu_met->Add(diboson_gg_ZZ_2e2tau_met);
-    diboson_gg_ZZ_2e2mu_met->Add(diboson_gg_ZZ_2mu2nu_met);
-    diboson_gg_ZZ_2e2mu_met->Add(diboson_gg_ZZ_2mu2tau_met);
-    diboson_gg_ZZ_2e2mu_met->Add(diboson_gg_ZZ_4e_met);
-    diboson_gg_ZZ_2e2mu_met->Add(diboson_gg_ZZ_4mu_met);
-    diboson_gg_ZZ_2e2mu_met->Add(diboson_gg_ZZ_4tau_met);
+    TH1F *diboson_gg_ZZ_met = (TH1F *)diboson_gg_ZZ_2e2mu_met->Clone("diboson_gg_ZZ_met");
+    TH1F *diboson_qq_WZ_met = (TH1F *)diboson_qq_WZ_2L2Q_met->Clone("diboson_qq_WZ_met");
+    TH1F *diboson_qq_ZZ_met = (TH1F *)diboson_qq_ZZ_2L2Nu_met->Clone("diboson_qq_ZZ_met");
 
-    diboson_gg_ZZ_2e2mu_aphmin->Add(diboson_gg_ZZ_2e2nu_aphmin);
-    diboson_gg_ZZ_2e2mu_aphmin->Add(diboson_gg_ZZ_2e2tau_aphmin);
-    diboson_gg_ZZ_2e2mu_aphmin->Add(diboson_gg_ZZ_2mu2nu_aphmin);
-    diboson_gg_ZZ_2e2mu_aphmin->Add(diboson_gg_ZZ_2mu2tau_aphmin);
-    diboson_gg_ZZ_2e2mu_aphmin->Add(diboson_gg_ZZ_4e_aphmin);
-    diboson_gg_ZZ_2e2mu_aphmin->Add(diboson_gg_ZZ_4mu_aphmin);
-    diboson_gg_ZZ_2e2mu_aphmin->Add(diboson_gg_ZZ_4tau_aphmin);
+    TH1F *diboson_gg_ZZ_alphamin = (TH1F *)diboson_gg_ZZ_2e2mu_aphmin->Clone("diboson_gg_ZZ_alphamin");
+    TH1F *diboson_qq_WZ_alphamin = (TH1F *)diboson_qq_WZ_2L2Q_aphmin->Clone("diboson_qq_WZ_alphamin");
+    TH1F *diboson_qq_ZZ_aphmin = (TH1F *)diboson_qq_ZZ_2L2Nu_aphmin->Clone("diboson_qq_ZZ_aphmin");
 
-    diboson_qq_WZ_2L2Q_aphmin->Add(diboson_qq_WZ_3LNu_aphmin);
-    diboson_qq_WZ_2L2Q_met->Add(diboson_qq_WZ_3LNu_met);
+    TH1F *diboson_gg_ZZ_nJets = (TH1F *)diboson_gg_ZZ_2e2mu_nThinJets->Clone("diboson_gg_ZZ_nJets");
+    TH1F *diboson_qq_WZ_nJets = (TH1F *)diboson_qq_WZ_2L2Q_nThinJets->Clone("diboson_qq_WZ_nJets");
+    TH1F *diboson_qq_ZZ_nJets = (TH1F *)diboson_qq_ZZ_2L2Nu_nThinJets->Clone("diboson_qq_ZZ_nJets");
+    // Met
+    diboson_gg_ZZ_met->Add(diboson_gg_ZZ_2e2nu_met);
+    diboson_gg_ZZ_met->Add(diboson_gg_ZZ_2e2tau_met);
+    diboson_gg_ZZ_met->Add(diboson_gg_ZZ_2mu2nu_met);
+    diboson_gg_ZZ_met->Add(diboson_gg_ZZ_2mu2tau_met);
+    diboson_gg_ZZ_met->Add(diboson_gg_ZZ_4e_met);
+    diboson_gg_ZZ_met->Add(diboson_gg_ZZ_4mu_met);
+    diboson_gg_ZZ_met->Add(diboson_gg_ZZ_4tau_met);
 
-    diboson_qq_ZZ_2L2Nu_aphmin->Add(diboson_qq_ZZ_2L2Q_aphmin);
-    diboson_qq_ZZ_2L2Nu_aphmin->Add(diboson_qq_ZZ_4L_aphmin);
+    diboson_qq_WZ_met->Add(diboson_qq_WZ_3LNu_met);
 
-    diboson_qq_ZZ_2L2Nu_met->Add(diboson_qq_ZZ_2L2Q_met);
-    diboson_qq_ZZ_2L2Nu_met->Add(diboson_qq_ZZ_4L_met);
+    diboson_qq_ZZ_met->Add(diboson_qq_ZZ_2L2Q_met);
+    diboson_qq_ZZ_met->Add(diboson_qq_ZZ_4L_met);
+    // Alphamin
+    diboson_gg_ZZ_alphamin->Add(diboson_gg_ZZ_2e2nu_aphmin);
+    diboson_gg_ZZ_alphamin->Add(diboson_gg_ZZ_2e2tau_aphmin);
+    diboson_gg_ZZ_alphamin->Add(diboson_gg_ZZ_2mu2nu_aphmin);
+    diboson_gg_ZZ_alphamin->Add(diboson_gg_ZZ_2mu2tau_aphmin);
+    diboson_gg_ZZ_alphamin->Add(diboson_gg_ZZ_4e_aphmin);
+    diboson_gg_ZZ_alphamin->Add(diboson_gg_ZZ_4mu_aphmin);
+    diboson_gg_ZZ_alphamin->Add(diboson_gg_ZZ_4tau_aphmin);
+
+    diboson_qq_WZ_alphamin->Add(diboson_qq_WZ_3LNu_aphmin);
+
+    diboson_qq_ZZ_aphmin->Add(diboson_qq_ZZ_2L2Q_aphmin);
+    diboson_qq_ZZ_aphmin->Add(diboson_qq_ZZ_4L_aphmin);
+
+    // Add nJets
+    diboson_gg_ZZ_nJets->Add(diboson_gg_ZZ_2e2nu_nThinJets);
+    diboson_gg_ZZ_nJets->Add(diboson_gg_ZZ_2e2tau_nThinJets);
+    diboson_gg_ZZ_nJets->Add(diboson_gg_ZZ_2mu2nu_nThinJets);
+    diboson_gg_ZZ_nJets->Add(diboson_gg_ZZ_2mu2tau_nThinJets);
+    diboson_gg_ZZ_nJets->Add(diboson_gg_ZZ_4e_nThinJets);
+    diboson_gg_ZZ_nJets->Add(diboson_gg_ZZ_4mu_nThinJets);
+    diboson_gg_ZZ_nJets->Add(diboson_gg_ZZ_4tau_nThinJets);
+
+    diboson_qq_WZ_nJets->Add(diboson_qq_WZ_3LNu_nThinJets);
+    diboson_qq_ZZ_nJets->Add(diboson_qq_ZZ_2L2Q_nThinJets);
+    diboson_qq_ZZ_nJets->Add(diboson_qq_ZZ_4L_nThinJets);
+
+    // c1->SaveAs("2016Diboson_aphmin.pdf");
 
     TFile *outFile = new TFile("./../../root_file/Ztoee/Diboson_All.root", "RECREATE");
     outFile->cd();
-    // diboson_gg_ZZ_2e2mu_met->Write();
-    // diboson_gg_ZZ_2e2mu_aphmin->Write();
-    // diboson_gg_ZZ_2e2nu_aphmin->Write();
-    // diboson_gg_ZZ_2e2nu_met->Write();
-    // diboson_gg_ZZ_2e2tau_aphmin->Write();
-    // diboson_gg_ZZ_2e2tau_met->Write();
-    // diboson_gg_ZZ_2mu2nu_aphmin->Write();
-    // diboson_gg_ZZ_2mu2nu_met->Write();
-    // diboson_gg_ZZ_2mu2tau_aphmin->Write();
-    // diboson_gg_ZZ_2mu2tau_met->Write();
-    // diboson_gg_ZZ_4e_aphmin->Write();
-    // diboson_gg_ZZ_4e_met->Write();
-    // diboson_gg_ZZ_4mu_aphmin->Write();
-    // diboson_gg_ZZ_4mu_met->Write();
-    // diboson_gg_ZZ_4tau_aphmin->Write();
-    // diboson_gg_ZZ_4tau_met->Write();
     diboson_gg_ZZ_2e2mu_met->Write();
     diboson_gg_ZZ_2e2mu_aphmin->Write();
-
+    diboson_gg_ZZ_2e2nu_aphmin->Write();
+    diboson_gg_ZZ_2e2nu_met->Write();
+    diboson_gg_ZZ_2e2tau_aphmin->Write();
+    diboson_gg_ZZ_2e2tau_met->Write();
+    diboson_gg_ZZ_2mu2nu_aphmin->Write();
+    diboson_gg_ZZ_2mu2nu_met->Write();
+    diboson_gg_ZZ_2mu2tau_aphmin->Write();
+    diboson_gg_ZZ_2mu2tau_met->Write();
+    diboson_gg_ZZ_4e_aphmin->Write();
+    diboson_gg_ZZ_4e_met->Write();
+    diboson_gg_ZZ_4mu_aphmin->Write();
+    diboson_gg_ZZ_4mu_met->Write();
+    diboson_gg_ZZ_4tau_aphmin->Write();
+    diboson_gg_ZZ_4tau_met->Write();
     diboson_gg_WW_2L2Nu_aphmin->Write();
     diboson_gg_WW_2L2Nu_met->Write();
-
     diboson_qq_WW_2L2Nu_aphmin->Write();
     diboson_qq_WW_2L2Nu_met->Write();
-
     diboson_qq_WZ_2L2Q_aphmin->Write();
     diboson_qq_WZ_2L2Q_met->Write();
-
     diboson_qq_ZZ_2L2Nu_aphmin->Write();
     diboson_qq_ZZ_2L2Nu_met->Write();
+
+    diboson_gg_ZZ_met->Write();
+    diboson_qq_WZ_met->Write();
+    diboson_qq_ZZ_met->Write();
+
+    diboson_gg_ZZ_alphamin->Write();
+    diboson_qq_WZ_alphamin->Write();
+    diboson_qq_ZZ_aphmin->Write();
+
+    diboson_qq_WZ_nJets->Write();
+    diboson_qq_ZZ_nJets->Write();
+    diboson_qq_ZZ_nJets->Write();
 
     outFile->Close();
 }
