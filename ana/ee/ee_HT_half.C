@@ -389,7 +389,7 @@ void ee_HT_half()
             if (evt % 2 == 1)
             {
                 f_ht0_Met_1 = f_ht0_Met;
-                for (int i = 0; i < v_ht0_Jethadronflavor->size(); i++)
+                for (int i = 0; i < v_ht0_JetPT->size(); i++)
                 {
                     v_ht0_JetPT_1.push_back((*v_ht0_JetPT)[i]);
                     //(*v_ht0_JetEta_1)[i] = (*v_ht0_JetEta)[i];
