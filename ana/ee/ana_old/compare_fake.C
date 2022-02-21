@@ -81,22 +81,27 @@ void compare_fake()
     Top_fakeRate->GetXaxis()->SetTitle("Jet PT");
     Top_hev_Jeteta_cutalpha->GetXaxis()->SetTitle("Jet Eta");
 
-    //Top_light_Jeteta_cutalpha->DrawNormalized("hist&&E");
-    //Top_hev_Jeteta_cutalpha->DrawNormalized("hist&&same&&E");
-    //DY_hev_Jeteta_cutalpha->DrawNormalized("hist&&same&&E");
-    //DY_light_Jeteta_cutalpha->DrawNormalized("hist&&same&&E");
-    
-    DY_barr_light_fakeRate->DrawNormalized("hist&&E");
-    Top_barr_light_fakeRate->DrawNormalized("hist&&&&Esame");
+    // Top_light_Jeteta_cutalpha->DrawNormalized("hist&&E");
+    // Top_hev_Jeteta_cutalpha->DrawNormalized("hist&&same&&E");
+    // DY_hev_Jeteta_cutalpha->DrawNormalized("hist&&same&&E");
+    // DY_light_Jeteta_cutalpha->DrawNormalized("hist&&same&&E");
+
+    Top_barr_hev_fakeRate->GetXaxis()->SetTitle("fake rate");
+    Top_barr_light_fakeRate->GetXaxis()->SetTitle("fake rate");
+    DY_barr_light_fakeRate->GetXaxis()->SetTitle("fake rate");
+    // Top_barr_hev_fakeRate->Draw("hist&&E");
+    // DY_barr_hev_fakeRate->Draw("hist&&E&&same");
+    DY_barr_light_fakeRate->Draw("hist&&E");
+    Top_barr_light_fakeRate->Draw("hist&&E&&same");
 
     TLegend *l3 = new TLegend(0.20, 0.55, 0.70, 0.8);
     l3->SetBorderSize(0);
     l3->SetTextSize(0.04);
-    //l3->AddEntry(Top_hev_Jeteta_cutalpha, "Top process heavy Jet", "l");
-    //l3->AddEntry(Top_light_Jeteta_cutalpha, "Top process light Jet", "l");
-    //l3->AddEntry(DY_hev_Jeteta_cutalpha, "Drell-Yan process heavy Jet", "l");
-    //l3->AddEntry(DY_light_Jeteta_cutalpha, "Drell-Yan process light Jet", "l");
+    // l3->AddEntry(Top_hev_Jeteta_cutalpha, "Top process heavy Jet", "l");
+    //  l3->AddEntry(Top_light_Jeteta_cutalpha, "Top process light Jet", "l");
+    // l3->AddEntry(DY_hev_Jeteta_cutalpha, "Drell-Yan process heavy Jet", "l");
+    //  l3->AddEntry(DY_light_Jeteta_cutalpha, "Drell-Yan process light Jet", "l");
     l3->AddEntry(Top_barr_light_fakeRate, "Top barrel fakeRate(light)", "l");
-    l3->AddEntry(DY_barr_light_fakeRate, "Drell-Yan barrel fakeRate(light)", "l");   
+    l3->AddEntry(DY_barr_light_fakeRate, "Drell-Yan barrel fakeRate(light)", "l");
     l3->Draw();
 }

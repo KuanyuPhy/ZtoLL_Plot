@@ -246,7 +246,7 @@ void Top_fakerate()
             {
                 h_tW_top_emergjetpt->Fill((*v_tW_top_fakeJetPt)[i], f_tW_top_weight * ST_tW_topWeight);
                 h_tW_top_emergjetEta->Fill((*v_tW_top_fakeJetEta)[i], f_tW_top_weight * ST_tW_topWeight);
-                if ((*v_tW_top_fakealpha)[i] < 0.2)
+                if ((*v_tW_top_fakealpha)[i] < 0.35)
                 {
                     h_tW_top_emergjetpt_cutalpha->Fill((*v_tW_top_fakeJetPt)[i], f_tW_top_weight * ST_tW_topWeight);
                 }
@@ -278,7 +278,7 @@ void Top_fakerate()
             {
                 h_tW_antitop_emergjetpt->Fill((*v_tW_antitop_fakeJetPt)[i], f_tW_antitop_weight * ST_tW_antitopWeight);
                 h_tW_antitop_emergjetEta->Fill((*v_tW_antitop_fakeJetEta)[i], f_tW_antitop_weight * ST_tW_antitopWeight);
-                if ((*v_tW_antitop_fakealpha)[i] < 0.2)
+                if ((*v_tW_antitop_fakealpha)[i] < 0.35)
                 {
                     h_tW_antitop_emergjetpt_cutalpha->Fill((*v_tW_antitop_fakeJetPt)[i], f_tW_antitop_weight * ST_tW_antitopWeight);
                 }
@@ -314,7 +314,7 @@ void Top_fakerate()
                 {
                     h_TTTo2L2Nu_barr_hev_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                 }
-                if ((*v_TTTo2L2Nu_fakealpha)[i] < 0.2)
+                if ((*v_TTTo2L2Nu_fakealpha)[i] < 0.35)
                 {
                     h_TTTo2L2Nu_emergjetpt_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_hev_emergjetEta_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
@@ -337,7 +337,7 @@ void Top_fakerate()
                 {
                     h_TTTo2L2Nu_barr_light_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                 }
-                if ((*v_TTTo2L2Nu_fakealpha)[i] < 0.2)
+                if ((*v_TTTo2L2Nu_fakealpha)[i] < 0.35)
                 {
                     h_TTTo2L2Nu_light_emergjetEta_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) <= 1)
@@ -373,7 +373,7 @@ void Top_fakerate()
             {
                 h_TTWJetsToLNu_emergjetpt->Fill((*v_TTWJetsToLNu_fakeJetPt)[i], f_TTWJetsToLNu_weight * TTWJetsToLNuWeight);
                 h_TTWJetsToLNu_emergjetEta->Fill((*v_TTWJetsToLNu_fakeJetEta)[i], f_TTWJetsToLNu_weight * TTWJetsToLNuWeight);
-                if ((*v_TTWJetsToLNu_fakealpha)[i] < 0.2)
+                if ((*v_TTWJetsToLNu_fakealpha)[i] < 0.35)
                 {
                     h_TTWJetsToLNu_emergjetpt_cutalpha->Fill((*v_TTWJetsToLNu_fakeJetPt)[i], f_TTWJetsToLNu_weight * TTWJetsToLNuWeight);
                 }
@@ -404,7 +404,7 @@ void Top_fakerate()
             {
                 h_TWJetsToQQ_emergjetpt->Fill((*v_TWJetsToQQ_fakeJetPt)[i], f_TTWJetsToQQ_weight * TTWJetsToQQWeight);
                 h_TWJetsToQQ_emergjetEta->Fill((*v_TWJetsToQQ_fakeJetEta)[i], f_TTWJetsToQQ_weight * TTWJetsToQQWeight);
-                if ((*v_TWJetsToQQ_fakealpha)[i] < 0.2)
+                if ((*v_TWJetsToQQ_fakealpha)[i] < 0.35)
                 {
                     h_TWJetsToQQ_emergjetpt_cutalpha->Fill((*v_TWJetsToQQ_fakeJetPt)[i], f_TTWJetsToQQ_weight * TTWJetsToQQWeight);
                 }
@@ -440,7 +440,7 @@ void Top_fakerate()
                 {
                     h_TTZToLLNuNu_barr_hev_emergjetpt->Fill((*v_TTZToLLNuNu_fakeJetPt)[i], f_TTZToLLNuNu_weight * TTZToLLNuNuWeight);
                 }
-                if ((*v_TTZToLLNuNu_fakealpha)[i] < 0.2)
+                if ((*v_TTZToLLNuNu_fakealpha)[i] < 0.35)
                 {
                     h_TTZToLLNuNu_emergjetpt_cutalpha->Fill((*v_TTZToLLNuNu_fakeJetPt)[i], f_TTZToLLNuNu_weight * TTZToLLNuNuWeight);
                     h_TTZToLLNuNu_hev_emergjetEta_cutalpha->Fill((*v_TTZToLLNuNu_fakeJetEta)[i], f_TTZToLLNuNu_weight * TTZToLLNuNuWeight);
@@ -463,7 +463,7 @@ void Top_fakerate()
                 {
                     h_TTZToLLNuNu_barr_light_emergjetpt->Fill((*v_TTZToLLNuNu_fakeJetPt)[i], f_TTZToLLNuNu_weight * TTZToLLNuNuWeight);
                 }
-                if ((*v_TTZToLLNuNu_fakealpha)[i] < 0.2)
+                if ((*v_TTZToLLNuNu_fakealpha)[i] < 0.35)
                 {
                     h_TTZToLLNuNu_light_emergjetEta_cutalpha->Fill((*v_TTZToLLNuNu_fakeJetEta)[i], f_TTZToLLNuNu_weight * TTZToLLNuNuWeight);
                     if (abs((*v_TTZToLLNuNu_fakeJetEta)[i]) <= 1)
@@ -499,7 +499,7 @@ void Top_fakerate()
             {
                 h_TTZToQQ_emergjetpt->Fill((*v_TTZToQQ_fakeJetPt)[i], f_TTZToQQ_weight * TTZToQQWeight);
                 h_TTZToQQ_emergjetEta->Fill((*v_TTZToQQ_fakeJetEta)[i], f_TTZToQQ_weight * TTZToQQWeight);
-                if ((*v_TTZToQQ_fakealpha)[i] < 0.2)
+                if ((*v_TTZToQQ_fakealpha)[i] < 0.35)
                 {
                     h_TTZToQQ_emergjetpt_cutalpha->Fill((*v_TTZToQQ_fakeJetPt)[i], f_TTZToQQ_weight * TTZToQQWeight);
                 }
@@ -528,7 +528,7 @@ void Top_fakerate()
     h_TTTo2L2Nu_barr_hev_emergjetpt_cutalpha->Add(h_TTZToLLNuNu_barr_hev_emergjetpt_cutalpha);
 
     h_TTTo2L2Nu_barr_light_emergjetpt->Add(h_TTZToLLNuNu_barr_light_emergjetpt);
-    h_TTTo2L2Nu_barr_light_emergjetpt_cutalpha->Add(h_TTZToLLNuNu_barr_light_emergjetpt_cutalpha);  
+    h_TTTo2L2Nu_barr_light_emergjetpt_cutalpha->Add(h_TTZToLLNuNu_barr_light_emergjetpt_cutalpha);
 
     h_tW_top_emergjetEta->Add(h_tW_antitop_emergjetEta);
     h_tW_top_emergjetEta->Add(h_TTTo2L2Nu_emergjetEta);
@@ -621,7 +621,7 @@ void Top_fakerate()
     // h_tW_top_emergjetEta->SetLineWidth(2);
     // h_tW_top_emergjetpt_fakeRate->SetTitle("fake rate");
     // h_tW_top_emergjetpt_fakeRate->Draw("hist&&E");
-    //h_TTZToLLNuNu_barr_hev_emergjetpt_fakeRate->Draw("hist&&E");
+    // h_TTZToLLNuNu_barr_hev_emergjetpt_fakeRate->Draw("hist&&E");
     h_TTZToLLNuNu_barr_hev_emergjetpt_fakeRate->Draw("");
     TFile *outFile = new TFile("./../../root_file/BgEstimation/Top_fakerate.root", "RECREATE");
     outFile->cd();
@@ -635,3 +635,4 @@ void Top_fakerate()
     h_TTZToLLNuNu_barr_light_emergjetpt_fakeRate->Write();
     outFile->Close();
 }
+

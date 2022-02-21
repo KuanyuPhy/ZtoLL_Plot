@@ -88,6 +88,19 @@
         "HT_flavor.C": "cpp",
         "Top_flavor.C": "cpp",
         "Top_fakerate.C": "cpp",
-        "compare_fake.C": "cpp"
+        "compare_fake.C": "cpp",
+        "alpha_ROC.C": "cpp",
+        "quick_deltaphi.C": "cpp",
+        "HT_factory.C": "cpp",
+        "fake_rate_study.C": "cpp",
+        "fake_rate_plot.C": "cpp",
+        "ee_HT_fake_rate_plot.C": "cpp",
+        "ee_Top_fake_rate_study.C": "cpp",
+        "ee_HT_fake_rate_study.C": "cpp",
+        "ee_Top_fake_rate_plot.C": "cpp",
+        "ee_Top_alpha_ROC.C": "cpp",
+        "ee_HT_alpha_ROC.C": "cpp",
+        "ee_3Dsig.C": "cpp",
+        "ee_HT_half.C": "cpp"
     }
 }

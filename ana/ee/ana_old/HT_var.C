@@ -302,6 +302,43 @@ void HT_var()
     h_ht2500_disJet_multiplicity->SetYTitle("N event");
     h_ht2500_disJet_multiplicity->Sumw2();
 
+    // alpha
+    TH1F *h_ht0_alpha = new TH1F("h_ht0_alpha", "", 24, 0, 1.2);
+    h_ht0_alpha->SetYTitle("N Jets");
+    h_ht0_alpha->Sumw2();
+
+    TH1F *h_ht70_alpha = new TH1F("h_ht70_alpha", "", 24, 0, 1.2);
+    h_ht70_alpha->SetYTitle("N Jets");
+    h_ht70_alpha->Sumw2();
+
+    TH1F *h_ht100_alpha = new TH1F("h_ht100_alpha", "", 24, 0, 1.2);
+    h_ht100_alpha->SetYTitle("N Jets");
+    h_ht100_alpha->Sumw2();
+
+    TH1F *h_ht200_alpha = new TH1F("h_ht200_alpha", "", 24, 0, 1.2);
+    h_ht200_alpha->SetYTitle("N Jets");
+    h_ht200_alpha->Sumw2();
+
+    TH1F *h_ht400_alpha = new TH1F("h_ht400_alpha", "", 24, 0, 1.2);
+    h_ht400_alpha->SetYTitle("N Jets");
+    h_ht400_alpha->Sumw2();
+
+    TH1F *h_ht600_alpha = new TH1F("h_ht600_alpha", "", 24, 0, 1.2);
+    h_ht600_alpha->SetYTitle("N Jets");
+    h_ht600_alpha->Sumw2();
+
+    TH1F *h_ht800_alpha = new TH1F("h_ht800_alpha", "", 24, 0, 1.2);
+    h_ht800_alpha->SetYTitle("N Jets");
+    h_ht800_alpha->Sumw2();
+
+    TH1F *h_ht1200_alpha = new TH1F("h_ht1200_alpha", "", 24, 0, 1.2);
+    h_ht1200_alpha->SetYTitle("N Jets");
+    h_ht1200_alpha->Sumw2();
+
+    TH1F *h_ht2500_alpha = new TH1F("h_ht2500_alpha", "", 24, 0, 1.2);
+    h_ht2500_alpha->SetYTitle("N Jets");
+    h_ht2500_alpha->Sumw2();
+
     float_t HT;
 
     Double_t f_ht0_alphamin, f_ht70_alphamin, f_ht100_alphamin, f_ht200_alphamin, f_ht400_alphamin,
@@ -332,6 +369,25 @@ void HT_var()
     Int_t I_ht0_minJetflavor, I_ht70_minJetflavor, I_ht100_minJetflavor, I_ht200_minJetflavor, I_ht400_minJetflavor,
         I_ht600_minJetflavor, I_ht800_minJetflavor, I_ht1200_minJetflavor, I_ht2500_minJetflavor;
 
+    vector<float> *v_ht0_alpha = new vector<float>();
+    vector<float> *v_ht70_alpha = new vector<float>();
+    vector<float> *v_ht100_alpha = new vector<float>();
+    vector<float> *v_ht200_alpha = new vector<float>();
+    vector<float> *v_ht400_alpha = new vector<float>();
+    vector<float> *v_ht600_alpha = new vector<float>();
+    vector<float> *v_ht800_alpha = new vector<float>();
+    vector<float> *v_ht1200_alpha = new vector<float>();
+    vector<float> *v_ht2500_alpha = new vector<float>();
+
+    v_ht0_alpha->clear();
+    v_ht70_alpha->clear();
+    v_ht100_alpha->clear();
+    v_ht200_alpha->clear();
+    v_ht400_alpha->clear();
+    v_ht600_alpha->clear();
+    v_ht800_alpha->clear();
+    v_ht1200_alpha->clear();
+    v_ht2500_alpha->clear();
     // Define the HTWeight
 
     float HT0Weight = (GlobalConstants::Lumi2016) * ((GlobalConstants::HT0CS) / (HT0_70_event)) * 1000;
@@ -352,16 +408,6 @@ void HT_var()
     float HT2500Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT2500CS / (DYHT2500_totevt + HT2500_Inf_event)) * 1000;
     // cout <<"HT2500Weight = " <<HT2500Weight << endl;
 
-    // float HT0Weight =(GlobalConstants::HT0CS);
-    // float HT70Weight = (GlobalConstants::HT70CS);
-    // float HT100Weight = (GlobalConstants::HT100CS);
-    // float HT200Weight = (GlobalConstants::HT200CS);
-    // float HT400Weight = (GlobalConstants::HT400CS);
-    // float HT600Weight = (GlobalConstants::HT600CS);
-    // float HT800Weight = (GlobalConstants::HT800CS);
-    // float HT1200Weight = (GlobalConstants::HT1200CS);
-    // float HT2500Weight = (GlobalConstants::HT2500CS);
-
     TTree *T_event;
     DYincli->GetObject("T_event", T_event);
     T_event->SetBranchAddress("I_weight", &I_ht0_weight);
@@ -375,6 +421,7 @@ void HT_var()
     T_event->SetBranchAddress("I_nThinJets", &I_ht0_nThinJets);
     T_event->SetBranchAddress("I_minJetflavor", &I_ht0_minJetflavor);
     T_event->SetBranchAddress("I_disJet_multiplicity", &I_ht0_disJet_multiplicity);
+    T_event->SetBranchAddress("v_ht0_alpha", &v_ht0_alpha);
     for (int evt = 0; evt < T_event->GetEntries(); evt++)
     {
         T_event->GetEntry(evt);
