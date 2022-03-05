@@ -15,11 +15,12 @@
 #include "./../lib/Cross_section.h"
 #include "./../lib/setNCUStyle.C"
 using namespace std;
-void ee_HT_half()
+void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root")
 {
-    int nthreads = 8;
+    int nthreads = 12;
     ROOT::EnableImplicitMT(nthreads);
-    TFile *DYincli = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+    TFile *DYincli = TFile::Open(inputfile);
+    // TFile *DYincli = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
     TFile *DYHT70 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
     TFile *DYHT100 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
     TFile *DYHT200 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
@@ -69,45 +70,45 @@ void ee_HT_half()
     v_ht1200_alpha->clear();
     v_ht2500_alpha->clear();
 
-    vector<float> *v_ht0_alpha_1 = new vector<float>();
-    vector<float> *v_ht70_alpha_1 = new vector<float>();
-    vector<float> *v_ht100_alpha_1 = new vector<float>();
-    vector<float> *v_ht200_alpha_1 = new vector<float>();
-    vector<float> *v_ht400_alpha_1 = new vector<float>();
-    vector<float> *v_ht600_alpha_1 = new vector<float>();
-    vector<float> *v_ht800_alpha_1 = new vector<float>();
-    vector<float> *v_ht1200_alpha_1 = new vector<float>();
-    vector<float> *v_ht2500_alpha_1 = new vector<float>();
+    vector<float> v_ht0_alpha_1;
+    vector<float> v_ht70_alpha_1;
+    vector<float> v_ht100_alpha_1;
+    vector<float> v_ht200_alpha_1;
+    vector<float> v_ht400_alpha_1;
+    vector<float> v_ht600_alpha_1;
+    vector<float> v_ht800_alpha_1;
+    vector<float> v_ht1200_alpha_1;
+    vector<float> v_ht2500_alpha_1;
 
-    v_ht0_alpha_1->clear();
-    v_ht70_alpha_1->clear();
-    v_ht100_alpha_1->clear();
-    v_ht200_alpha_1->clear();
-    v_ht400_alpha_1->clear();
-    v_ht600_alpha_1->clear();
-    v_ht800_alpha_1->clear();
-    v_ht1200_alpha_1->clear();
-    v_ht2500_alpha_1->clear();
+    v_ht0_alpha_1.clear();
+    v_ht70_alpha_1.clear();
+    v_ht100_alpha_1.clear();
+    v_ht200_alpha_1.clear();
+    v_ht400_alpha_1.clear();
+    v_ht600_alpha_1.clear();
+    v_ht800_alpha_1.clear();
+    v_ht1200_alpha_1.clear();
+    v_ht2500_alpha_1.clear();
 
-    vector<float> *v_ht0_alpha_2 = new vector<float>();
-    vector<float> *v_ht70_alpha_2 = new vector<float>();
-    vector<float> *v_ht100_alpha_2 = new vector<float>();
-    vector<float> *v_ht200_alpha_2 = new vector<float>();
-    vector<float> *v_ht400_alpha_2 = new vector<float>();
-    vector<float> *v_ht600_alpha_2 = new vector<float>();
-    vector<float> *v_ht800_alpha_2 = new vector<float>();
-    vector<float> *v_ht1200_alpha_2 = new vector<float>();
-    vector<float> *v_ht2500_alpha_2 = new vector<float>();
+    vector<float> v_ht0_alpha_2;
+    vector<float> v_ht70_alpha_2;
+    vector<float> v_ht100_alpha_2;
+    vector<float> v_ht200_alpha_2;
+    vector<float> v_ht400_alpha_2;
+    vector<float> v_ht600_alpha_2;
+    vector<float> v_ht800_alpha_2;
+    vector<float> v_ht1200_alpha_2;
+    vector<float> v_ht2500_alpha_2;
 
-    v_ht0_alpha_2->clear();
-    v_ht70_alpha_2->clear();
-    v_ht100_alpha_2->clear();
-    v_ht200_alpha_2->clear();
-    v_ht400_alpha_2->clear();
-    v_ht600_alpha_2->clear();
-    v_ht800_alpha_2->clear();
-    v_ht1200_alpha_2->clear();
-    v_ht2500_alpha_2->clear();
+    v_ht0_alpha_2.clear();
+    v_ht70_alpha_2.clear();
+    v_ht100_alpha_2.clear();
+    v_ht200_alpha_2.clear();
+    v_ht400_alpha_2.clear();
+    v_ht600_alpha_2.clear();
+    v_ht800_alpha_2.clear();
+    v_ht1200_alpha_2.clear();
+    v_ht2500_alpha_2.clear();
 
     vector<float> *v_ht0_JetPT = new vector<float>();
     vector<float> *v_ht70_JetPT = new vector<float>();
@@ -149,25 +150,25 @@ void ee_HT_half()
     v_ht1200_JetPT_1.clear();
     v_ht2500_JetPT_1.clear();
 
-    vector<float> *v_ht0_JetPT_2 = new vector<float>();
-    vector<float> *v_ht70_JetPT_2 = new vector<float>();
-    vector<float> *v_ht100_JetPT_2 = new vector<float>();
-    vector<float> *v_ht200_JetPT_2 = new vector<float>();
-    vector<float> *v_ht400_JetPT_2 = new vector<float>();
-    vector<float> *v_ht600_JetPT_2 = new vector<float>();
-    vector<float> *v_ht800_JetPT_2 = new vector<float>();
-    vector<float> *v_ht1200_JetPT_2 = new vector<float>();
-    vector<float> *v_ht2500_JetPT_2 = new vector<float>();
+    vector<float> v_ht0_JetPT_2;
+    vector<float> v_ht70_JetPT_2;
+    vector<float> v_ht100_JetPT_2;
+    vector<float> v_ht200_JetPT_2;
+    vector<float> v_ht400_JetPT_2;
+    vector<float> v_ht600_JetPT_2;
+    vector<float> v_ht800_JetPT_2;
+    vector<float> v_ht1200_JetPT_2;
+    vector<float> v_ht2500_JetPT_2;
 
-    v_ht0_JetPT_2->clear();
-    v_ht70_JetPT_2->clear();
-    v_ht100_JetPT_2->clear();
-    v_ht200_JetPT_2->clear();
-    v_ht400_JetPT_2->clear();
-    v_ht600_JetPT_2->clear();
-    v_ht800_JetPT_2->clear();
-    v_ht1200_JetPT_2->clear();
-    v_ht2500_JetPT_2->clear();
+    v_ht0_JetPT_2.clear();
+    v_ht70_JetPT_2.clear();
+    v_ht100_JetPT_2.clear();
+    v_ht200_JetPT_2.clear();
+    v_ht400_JetPT_2.clear();
+    v_ht600_JetPT_2.clear();
+    v_ht800_JetPT_2.clear();
+    v_ht1200_JetPT_2.clear();
+    v_ht2500_JetPT_2.clear();
 
     vector<float> *v_ht0_JetEta = new vector<float>();
     vector<float> *v_ht70_JetEta = new vector<float>();
@@ -189,45 +190,45 @@ void ee_HT_half()
     v_ht1200_JetEta->clear();
     v_ht2500_JetEta->clear();
 
-    vector<float> *v_ht0_JetEta_1 = new vector<float>();
-    vector<float> *v_ht70_JetEta_1 = new vector<float>();
-    vector<float> *v_ht100_JetEta_1 = new vector<float>();
-    vector<float> *v_ht200_JetEta_1 = new vector<float>();
-    vector<float> *v_ht400_JetEta_1 = new vector<float>();
-    vector<float> *v_ht600_JetEta_1 = new vector<float>();
-    vector<float> *v_ht800_JetEta_1 = new vector<float>();
-    vector<float> *v_ht1200_JetEta_1 = new vector<float>();
-    vector<float> *v_ht2500_JetEta_1 = new vector<float>();
+    vector<float> v_ht0_JetEta_1;
+    vector<float> v_ht70_JetEta_1;
+    vector<float> v_ht100_JetEta_1;
+    vector<float> v_ht200_JetEta_1;
+    vector<float> v_ht400_JetEta_1;
+    vector<float> v_ht600_JetEta_1;
+    vector<float> v_ht800_JetEta_1;
+    vector<float> v_ht1200_JetEta_1;
+    vector<float> v_ht2500_JetEta_1;
 
-    v_ht0_JetEta_1->clear();
-    v_ht70_JetEta_1->clear();
-    v_ht100_JetEta_1->clear();
-    v_ht200_JetEta_1->clear();
-    v_ht400_JetEta_1->clear();
-    v_ht600_JetEta_1->clear();
-    v_ht800_JetEta_1->clear();
-    v_ht1200_JetEta_1->clear();
-    v_ht2500_JetEta_1->clear();
+    v_ht0_JetEta_1.clear();
+    v_ht70_JetEta_1.clear();
+    v_ht100_JetEta_1.clear();
+    v_ht200_JetEta_1.clear();
+    v_ht400_JetEta_1.clear();
+    v_ht600_JetEta_1.clear();
+    v_ht800_JetEta_1.clear();
+    v_ht1200_JetEta_1.clear();
+    v_ht2500_JetEta_1.clear();
 
-    vector<float> *v_ht0_JetEta_2 = new vector<float>();
-    vector<float> *v_ht70_JetEta_2 = new vector<float>();
-    vector<float> *v_ht100_JetEta_2 = new vector<float>();
-    vector<float> *v_ht200_JetEta_2 = new vector<float>();
-    vector<float> *v_ht400_JetEta_2 = new vector<float>();
-    vector<float> *v_ht600_JetEta_2 = new vector<float>();
-    vector<float> *v_ht800_JetEta_2 = new vector<float>();
-    vector<float> *v_ht1200_JetEta_2 = new vector<float>();
-    vector<float> *v_ht2500_JetEta_2 = new vector<float>();
+    vector<float> v_ht0_JetEta_2;
+    vector<float> v_ht70_JetEta_2;
+    vector<float> v_ht100_JetEta_2;
+    vector<float> v_ht200_JetEta_2;
+    vector<float> v_ht400_JetEta_2;
+    vector<float> v_ht600_JetEta_2;
+    vector<float> v_ht800_JetEta_2;
+    vector<float> v_ht1200_JetEta_2;
+    vector<float> v_ht2500_JetEta_2;
 
-    v_ht0_JetEta_2->clear();
-    v_ht70_JetEta_2->clear();
-    v_ht100_JetEta_2->clear();
-    v_ht200_JetEta_2->clear();
-    v_ht400_JetEta_2->clear();
-    v_ht600_JetEta_2->clear();
-    v_ht800_JetEta_2->clear();
-    v_ht1200_JetEta_2->clear();
-    v_ht2500_JetEta_2->clear();
+    v_ht0_JetEta_2.clear();
+    v_ht70_JetEta_2.clear();
+    v_ht100_JetEta_2.clear();
+    v_ht200_JetEta_2.clear();
+    v_ht400_JetEta_2.clear();
+    v_ht600_JetEta_2.clear();
+    v_ht800_JetEta_2.clear();
+    v_ht1200_JetEta_2.clear();
+    v_ht2500_JetEta_2.clear();
 
     vector<int> *v_ht0_Jethadronflavor = new vector<int>();
     vector<int> *v_ht70_Jethadronflavor = new vector<int>();
@@ -249,45 +250,45 @@ void ee_HT_half()
     v_ht1200_Jethadronflavor->clear();
     v_ht2500_Jethadronflavor->clear();
 
-    vector<int> *v_ht0_Jethadronflavor_1 = new vector<int>();
-    vector<int> *v_ht70_Jethadronflavor_1 = new vector<int>();
-    vector<int> *v_ht100_Jethadronflavor_1 = new vector<int>();
-    vector<int> *v_ht200_Jethadronflavor_1 = new vector<int>();
-    vector<int> *v_ht400_Jethadronflavor_1 = new vector<int>();
-    vector<int> *v_ht600_Jethadronflavor_1 = new vector<int>();
-    vector<int> *v_ht800_Jethadronflavor_1 = new vector<int>();
-    vector<int> *v_ht1200_Jethadronflavor_1 = new vector<int>();
-    vector<int> *v_ht2500_Jethadronflavor_1 = new vector<int>();
+    vector<int> v_ht0_Jethadronflavor_1;
+    vector<int> v_ht70_Jethadronflavor_1;
+    vector<int> v_ht100_Jethadronflavor_1;
+    vector<int> v_ht200_Jethadronflavor_1;
+    vector<int> v_ht400_Jethadronflavor_1;
+    vector<int> v_ht600_Jethadronflavor_1;
+    vector<int> v_ht800_Jethadronflavor_1;
+    vector<int> v_ht1200_Jethadronflavor_1;
+    vector<int> v_ht2500_Jethadronflavor_1;
 
-    v_ht0_Jethadronflavor_1->clear();
-    v_ht70_Jethadronflavor_1->clear();
-    v_ht100_Jethadronflavor_1->clear();
-    v_ht200_Jethadronflavor_1->clear();
-    v_ht400_Jethadronflavor_1->clear();
-    v_ht600_Jethadronflavor_1->clear();
-    v_ht800_Jethadronflavor_1->clear();
-    v_ht1200_Jethadronflavor_1->clear();
-    v_ht2500_Jethadronflavor_1->clear();
+    v_ht0_Jethadronflavor_1.clear();
+    v_ht70_Jethadronflavor_1.clear();
+    v_ht100_Jethadronflavor_1.clear();
+    v_ht200_Jethadronflavor_1.clear();
+    v_ht400_Jethadronflavor_1.clear();
+    v_ht600_Jethadronflavor_1.clear();
+    v_ht800_Jethadronflavor_1.clear();
+    v_ht1200_Jethadronflavor_1.clear();
+    v_ht2500_Jethadronflavor_1.clear();
 
-    vector<int> *v_ht0_Jethadronflavor_2 = new vector<int>();
-    vector<int> *v_ht70_Jethadronflavor_2 = new vector<int>();
-    vector<int> *v_ht100_Jethadronflavor_2 = new vector<int>();
-    vector<int> *v_ht200_Jethadronflavor_2 = new vector<int>();
-    vector<int> *v_ht400_Jethadronflavor_2 = new vector<int>();
-    vector<int> *v_ht600_Jethadronflavor_2 = new vector<int>();
-    vector<int> *v_ht800_Jethadronflavor_2 = new vector<int>();
-    vector<int> *v_ht1200_Jethadronflavor_2 = new vector<int>();
-    vector<int> *v_ht2500_Jethadronflavor_2 = new vector<int>();
+    vector<int> v_ht0_Jethadronflavor_2;
+    vector<int> v_ht70_Jethadronflavor_2;
+    vector<int> v_ht100_Jethadronflavor_2;
+    vector<int> v_ht200_Jethadronflavor_2;
+    vector<int> v_ht400_Jethadronflavor_2;
+    vector<int> v_ht600_Jethadronflavor_2;
+    vector<int> v_ht800_Jethadronflavor_2;
+    vector<int> v_ht1200_Jethadronflavor_2;
+    vector<int> v_ht2500_Jethadronflavor_2;
 
-    v_ht0_Jethadronflavor_2->clear();
-    v_ht70_Jethadronflavor_2->clear();
-    v_ht100_Jethadronflavor_2->clear();
-    v_ht200_Jethadronflavor_2->clear();
-    v_ht400_Jethadronflavor_2->clear();
-    v_ht600_Jethadronflavor_2->clear();
-    v_ht800_Jethadronflavor_2->clear();
-    v_ht1200_Jethadronflavor_2->clear();
-    v_ht2500_Jethadronflavor_2->clear();
+    v_ht0_Jethadronflavor_2.clear();
+    v_ht70_Jethadronflavor_2.clear();
+    v_ht100_Jethadronflavor_2.clear();
+    v_ht200_Jethadronflavor_2.clear();
+    v_ht400_Jethadronflavor_2.clear();
+    v_ht600_Jethadronflavor_2.clear();
+    v_ht800_Jethadronflavor_2.clear();
+    v_ht1200_Jethadronflavor_2.clear();
+    v_ht2500_Jethadronflavor_2.clear();
 
     vector<int> *v_ht0_JetnTracks = new vector<int>();
     vector<int> *v_ht70_JetnTracks = new vector<int>();
@@ -309,45 +310,45 @@ void ee_HT_half()
     v_ht1200_JetnTracks->clear();
     v_ht2500_JetnTracks->clear();
 
-    vector<int> *v_ht0_JetnTracks_1 = new vector<int>();
-    vector<int> *v_ht70_JetnTracks_1 = new vector<int>();
-    vector<int> *v_ht100_JetnTracks_1 = new vector<int>();
-    vector<int> *v_ht200_JetnTracks_1 = new vector<int>();
-    vector<int> *v_ht400_JetnTracks_1 = new vector<int>();
-    vector<int> *v_ht600_JetnTracks_1 = new vector<int>();
-    vector<int> *v_ht800_JetnTracks_1 = new vector<int>();
-    vector<int> *v_ht1200_JetnTracks_1 = new vector<int>();
-    vector<int> *v_ht2500_JetnTracks_1 = new vector<int>();
+    vector<int> v_ht0_JetnTracks_1;
+    vector<int> v_ht70_JetnTracks_1;
+    vector<int> v_ht100_JetnTracks_1;
+    vector<int> v_ht200_JetnTracks_1;
+    vector<int> v_ht400_JetnTracks_1;
+    vector<int> v_ht600_JetnTracks_1;
+    vector<int> v_ht800_JetnTracks_1;
+    vector<int> v_ht1200_JetnTracks_1;
+    vector<int> v_ht2500_JetnTracks_1;
 
-    v_ht0_JetnTracks_1->clear();
-    v_ht70_JetnTracks_1->clear();
-    v_ht100_JetnTracks_1->clear();
-    v_ht200_JetnTracks_1->clear();
-    v_ht400_JetnTracks_1->clear();
-    v_ht600_JetnTracks_1->clear();
-    v_ht800_JetnTracks_1->clear();
-    v_ht1200_JetnTracks_1->clear();
-    v_ht2500_JetnTracks_1->clear();
+    v_ht0_JetnTracks_1.clear();
+    v_ht70_JetnTracks_1.clear();
+    v_ht100_JetnTracks_1.clear();
+    v_ht200_JetnTracks_1.clear();
+    v_ht400_JetnTracks_1.clear();
+    v_ht600_JetnTracks_1.clear();
+    v_ht800_JetnTracks_1.clear();
+    v_ht1200_JetnTracks_1.clear();
+    v_ht2500_JetnTracks_1.clear();
 
-    vector<int> *v_ht0_JetnTracks_2 = new vector<int>();
-    vector<int> *v_ht70_JetnTracks_2 = new vector<int>();
-    vector<int> *v_ht100_JetnTracks_2 = new vector<int>();
-    vector<int> *v_ht200_JetnTracks_2 = new vector<int>();
-    vector<int> *v_ht400_JetnTracks_2 = new vector<int>();
-    vector<int> *v_ht600_JetnTracks_2 = new vector<int>();
-    vector<int> *v_ht800_JetnTracks_2 = new vector<int>();
-    vector<int> *v_ht1200_JetnTracks_2 = new vector<int>();
-    vector<int> *v_ht2500_JetnTracks_2 = new vector<int>();
+    vector<int> v_ht0_JetnTracks_2;
+    vector<int> v_ht70_JetnTracks_2;
+    vector<int> v_ht100_JetnTracks_2;
+    vector<int> v_ht200_JetnTracks_2;
+    vector<int> v_ht400_JetnTracks_2;
+    vector<int> v_ht600_JetnTracks_2;
+    vector<int> v_ht800_JetnTracks_2;
+    vector<int> v_ht1200_JetnTracks_2;
+    vector<int> v_ht2500_JetnTracks_2;
 
-    v_ht0_JetnTracks_2->clear();
-    v_ht70_JetnTracks_2->clear();
-    v_ht100_JetnTracks_2->clear();
-    v_ht200_JetnTracks_2->clear();
-    v_ht400_JetnTracks_2->clear();
-    v_ht600_JetnTracks_2->clear();
-    v_ht800_JetnTracks_2->clear();
-    v_ht1200_JetnTracks_2->clear();
-    v_ht2500_JetnTracks_2->clear();
+    v_ht0_JetnTracks_2.clear();
+    v_ht70_JetnTracks_2.clear();
+    v_ht100_JetnTracks_2.clear();
+    v_ht200_JetnTracks_2.clear();
+    v_ht400_JetnTracks_2.clear();
+    v_ht600_JetnTracks_2.clear();
+    v_ht800_JetnTracks_2.clear();
+    v_ht1200_JetnTracks_2.clear();
+    v_ht2500_JetnTracks_2.clear();
     {
         TTree *T_event;
         DYincli->GetObject("T_event", T_event);
@@ -375,15 +376,15 @@ void ee_HT_half()
         h2->Branch("v_fakeJetEta", &v_ht0_JetEta_2);
         h2->Branch("v_fakealpha", &v_ht0_alpha_2);
         h2->Branch("v_N_Tracks", &v_ht0_JetnTracks_2);
-        //cout << T_event->GetEntries() << endl;
-        //for (int evt = 0; evt < T_event->GetEntries(); evt++)
+        // cout << T_event->GetEntries() << endl;
+        // for (int evt = 0; evt < T_event->GetEntries(); evt++)
         const auto nEntries = T_event->GetEntries();
         for (auto evt : ROOT::TSeqUL(nEntries))
         {
-            if (evt % 500 == 0)
+            if (evt % 100000 == 0)
             {
                 cout << evt << endl;
-                //fprintf(stderr, "Processing event %lli of %lli\n", T_event + 1, data.GetEntriesFast());
+                // fprintf(stderr, "Processing event %lli of %lli\n", T_event + 1, data.GetEntriesFast());
             }
             T_event->GetEntry(evt);
             if (evt % 2 == 1)
@@ -392,26 +393,24 @@ void ee_HT_half()
                 for (int i = 0; i < v_ht0_JetPT->size(); i++)
                 {
                     v_ht0_JetPT_1.push_back((*v_ht0_JetPT)[i]);
-                    //(*v_ht0_JetEta_1)[i] = (*v_ht0_JetEta)[i];
-                    //(*v_ht0_alpha_1)[i] = (*v_ht0_alpha)[i];
-                    //(*v_ht0_JetnTracks_1)[i] = (*v_ht0_JetnTracks)[i];
-                    //(*v_ht0_JetEta_1)[i] = (*v_ht0_JetEta)[i];
+                    v_ht0_JetEta_1.push_back((*v_ht0_JetEta)[i]);
+                    v_ht0_alpha_1.push_back((*v_ht0_alpha)[i]);
+                    v_ht0_JetnTracks_1.push_back((*v_ht0_JetnTracks)[i]);
+                    v_ht0_JetEta_1.push_back((*v_ht0_JetEta)[i]);
                 }
                 h1->Fill();
             }
             else
             {
                 f_ht0_Met_2 = f_ht0_Met;
-                /*
-                for (int i = 0; i < v_ht0_Jethadronflavor->size(); i++)
+                for (int i = 0; i < v_ht0_JetPT->size(); i++)
                 {
-                    (*v_ht0_JetPT_2)[i] = (*v_ht0_JetPT)[i];
-                    (*v_ht0_JetEta_2)[i] = (*v_ht0_JetEta)[i];
-                    (*v_ht0_alpha_2)[i] = (*v_ht0_alpha)[i];
-                    (*v_ht0_JetnTracks_2)[i] = (*v_ht0_JetnTracks)[i];
-                    (*v_ht0_JetEta_2)[i] = (*v_ht0_JetEta)[i];
+                    v_ht0_JetPT_2.push_back((*v_ht0_JetPT)[i]);
+                    v_ht0_JetEta_2.push_back((*v_ht0_JetEta)[i]);
+                    v_ht0_alpha_2.push_back((*v_ht0_alpha)[i]);
+                    v_ht0_JetnTracks_2.push_back((*v_ht0_JetnTracks)[i]);
+                    v_ht0_JetEta_2.push_back((*v_ht0_JetEta)[i]);
                 }
-                */
                 h2->Fill();
             }
         }

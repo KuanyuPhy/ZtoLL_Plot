@@ -44,13 +44,13 @@ void ee_3Dsig()
     TH1D *DYHT1200_sumevt = ((TH1D *)DYHT1200->Get("Event_Variable/h_totevent"));
     TH1D *DYHT2500_sumevt = ((TH1D *)DYHT2500->Get("Event_Variable/h_totevent"));
 
-    TH1D *TTTo2L2Nu_sumevt = ((TH1D *)Top_TTTo2L2Nu->Get("Event_Variable/h_totevent"));
-    TH1D *TTWJetsToLNu_sumevt = ((TH1D *)Top_TTWJetsToLNu->Get("Event_Variable/h_totevent"));
-    TH1D *TTWJetsToQQ_sumevt = ((TH1D *)Top_TTWJetsToQQ->Get("Event_Variable/h_totevent"));
-    TH1D *TTZToLLNuNu_sumevt = ((TH1D *)Top_TTZToLLNuNu->Get("Event_Variable/h_totevent"));
-    TH1D *TTZToQQ_sumevt = ((TH1D *)Top_TTZToQQ->Get("Event_Variable/h_totevent"));
-    TH1D *tW_antitop_sumevt = ((TH1D *)Top_tW_antitop->Get("Event_Variable/h_totevent"));
-    TH1D *tW_top_sumevt = ((TH1D *)Top_tW_top->Get("Event_Variable/h_totevent"));
+    // TH1D *TTTo2L2Nu_sumevt = ((TH1D *)Top_TTTo2L2Nu->Get("Event_Variable/h_totevent"));
+    // TH1D *TTWJetsToLNu_sumevt = ((TH1D *)Top_TTWJetsToLNu->Get("Event_Variable/h_totevent"));
+    // TH1D *TTWJetsToQQ_sumevt = ((TH1D *)Top_TTWJetsToQQ->Get("Event_Variable/h_totevent"));
+    // TH1D *TTZToLLNuNu_sumevt = ((TH1D *)Top_TTZToLLNuNu->Get("Event_Variable/h_totevent"));
+    // TH1D *TTZToQQ_sumevt = ((TH1D *)Top_TTZToQQ->Get("Event_Variable/h_totevent"));
+    // TH1D *tW_antitop_sumevt = ((TH1D *)Top_tW_antitop->Get("Event_Variable/h_totevent"));
+    // TH1D *tW_top_sumevt = ((TH1D *)Top_tW_top->Get("Event_Variable/h_totevent"));
 
     int DYHT100_totevt = DYHT100_sumevt->Integral();
     int DYHT200_totevt = DYHT200_sumevt->Integral();
@@ -60,13 +60,13 @@ void ee_3Dsig()
     int DYHT1200_totevt = DYHT1200_sumevt->Integral();
     int DYHT2500_totevt = DYHT2500_sumevt->Integral();
 
-    int TTTo2L2Nu_totevt = TTTo2L2Nu_sumevt->Integral();
-    int TTWJetsToLNu_totevt = TTWJetsToLNu_sumevt->Integral();
-    int TTWJetsToQQ_totevt = TTWJetsToQQ_sumevt->Integral();
-    int TTZToLLNuNu_totevt = TTZToLLNuNu_sumevt->Integral();
-    int TTZToQQ_totevt = TTZToQQ_sumevt->Integral();
-    int tW_antitop_totevt = tW_antitop_sumevt->Integral();
-    int tW_top_totevt = tW_top_sumevt->Integral();
+    // int TTTo2L2Nu_totevt = TTTo2L2Nu_sumevt->Integral();
+    // int TTWJetsToLNu_totevt = TTWJetsToLNu_sumevt->Integral();
+    // int TTWJetsToQQ_totevt = TTWJetsToQQ_sumevt->Integral();
+    // int TTZToLLNuNu_totevt = TTZToLLNuNu_sumevt->Integral();
+    // int TTZToQQ_totevt = TTZToQQ_sumevt->Integral();
+    // int tW_antitop_totevt = tW_antitop_sumevt->Integral();
+    // int tW_top_totevt = tW_top_sumevt->Integral();
 
     int HT0_70_event = h_HT_eventCout->GetBinContent(2);
     int HT70_100_event = h_HT_eventCout->GetBinContent(3);
@@ -91,148 +91,907 @@ void ee_3Dsig()
     float HT1200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT1200CS / (DYHT1200_totevt + HT1200_2500_event)) * 1000;
     float HT2500Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT2500CS / (DYHT2500_totevt + HT2500_Inf_event)) * 1000;
 
-    float ST_tW_topWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::ST_tW_top_5fCS / (tW_top_totevt)) * 1000;
-    float ST_tW_antitopWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::ST_tW_antitop_5fCS / (tW_antitop_totevt)) * 1000;
-    float TTTo2L2NuWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTTo2L2Nu / (TTTo2L2Nu_totevt)) * 1000;
-    float TTWJetsToLNuWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTWJetsToLNu / (TTWJetsToLNu_totevt)) * 1000;
-    float TTWJetsToQQWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTWJetsToQQ / (TTWJetsToQQ_totevt)) * 1000;
-    float TTZToLLNuNuWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTZToLLNuNu / (TTZToLLNuNu_totevt)) * 1000;
-    float TTZToQQWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTZToQQ / (TTZToQQ_totevt)) * 1000;
+    // float ST_tW_topWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::ST_tW_top_5fCS / (tW_top_totevt)) * 1000;
+    // float ST_tW_antitopWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::ST_tW_antitop_5fCS / (tW_antitop_totevt)) * 1000;
+    // float TTTo2L2NuWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTTo2L2Nu / (TTTo2L2Nu_totevt)) * 1000;
+    // float TTWJetsToLNuWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTWJetsToLNu / (TTWJetsToLNu_totevt)) * 1000;
+    // float TTWJetsToQQWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTWJetsToQQ / (TTWJetsToQQ_totevt)) * 1000;
+    // float TTZToLLNuNuWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTZToLLNuNu / (TTZToLLNuNu_totevt)) * 1000;
+    // float TTZToQQWeight = (GlobalConstants::Lumi2016) * (GlobalConstants::TTZToQQ / (TTZToQQ_totevt)) * 1000;
 
-    TH1D *Mx2_1_3Dsig = ((TH1D *)Mx2_1->Get("Track_Variable/Chi3Dlog"));
-    TH1D *Mx2_1_3Dsigpaper = ((TH1D *)Mx2_1->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *Mx2_50_3Dsig = ((TH1D *)Mx2_50->Get("Track_Variable/Chi3Dlog"));
-    TH1D *Mx2_50_3Dsigpaper = ((TH1D *)Mx2_50->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *Mx2_150_3Dsig = ((TH1D *)Mx2_150->Get("Track_Variable/Chi3Dlog"));
-    TH1D *Mx2_150_3Dsigpaper = ((TH1D *)Mx2_150->Get("Track_Variable/Chi3DPaperlog"));
+    TH1F *h_ht0_alpha = new TH1F("h_ht0_alpha", "", 24, 0, 1.2);
+    h_ht0_alpha->SetYTitle("N Jets");
+    h_ht0_alpha->Sumw2();
 
-    TH1D *DYHT70_3Dsig = ((TH1D *)DYHT70->Get("Track_Variable/Chi3Dlog"));
-    TH1D *DYHT70_3Dsigpaper = ((TH1D *)DYHT70->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *DYHT100_3Dsig = ((TH1D *)DYHT100->Get("Track_Variable/Chi3Dlog"));
-    TH1D *DYHT100_3Dsigpaper = ((TH1D *)DYHT100->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *DYHT200_3Dsig = ((TH1D *)DYHT200->Get("Track_Variable/Chi3Dlog"));
-    TH1D *DYHT200_3Dsigpaper = ((TH1D *)DYHT200->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *DYHT400_3Dsig = ((TH1D *)DYHT400->Get("Track_Variable/Chi3Dlog"));
-    TH1D *DYHT400_3Dsigpaper = ((TH1D *)DYHT400->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *DYHT600_3Dsig = ((TH1D *)DYHT600->Get("Track_Variable/Chi3Dlog"));
-    TH1D *DYHT600_3Dsigpaper = ((TH1D *)DYHT600->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *DYHT800_3Dsig = ((TH1D *)DYHT800->Get("Track_Variable/Chi3Dlog"));
-    TH1D *DYHT800_3Dsigpaper = ((TH1D *)DYHT800->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *DYHT1200_3Dsig = ((TH1D *)DYHT1200->Get("Track_Variable/Chi3Dlog"));
-    TH1D *DYHT1200_3Dsigpaper = ((TH1D *)DYHT1200->Get("Track_Variable/Chi3DPaperlog"));
-    TH1D *DYHT2500_3Dsig = ((TH1D *)DYHT2500->Get("Track_Variable/Chi3Dlog"));
-    TH1D *DYHT2500_3Dsigpaper = ((TH1D *)DYHT2500->Get("Track_Variable/Chi3DPaperlog"));
+    TH1F *h_ht70_alpha = new TH1F("h_ht70_alpha", "", 24, 0, 1.2);
+    h_ht70_alpha->SetYTitle("N Jets");
+    h_ht70_alpha->Sumw2();
 
-    TH1D *TTTo2L2Nu_3Dsig = ((TH1D *)Top_TTTo2L2Nu->Get("Track_Variable/Chi3Dlog"));
-    TH1D *TTTo2L2Nu_3Dsigpaper = ((TH1D *)Top_TTTo2L2Nu->Get("Track_Variable/Chi3DPaperlog"));
+    TH1F *h_ht100_alpha = new TH1F("h_ht100_alpha", "", 24, 0, 1.2);
+    h_ht100_alpha->SetYTitle("N Jets");
+    h_ht100_alpha->Sumw2();
 
-    DYHT70_3Dsig->Scale(HT70Weight);
-    DYHT70_3Dsigpaper->Scale(HT70Weight);
-    DYHT100_3Dsig->Scale(HT100Weight);
-    DYHT100_3Dsigpaper->Scale(HT100Weight);
-    DYHT200_3Dsig->Scale(HT200Weight);
-    DYHT200_3Dsigpaper->Scale(HT200Weight);
-    DYHT400_3Dsig->Scale(HT400Weight);
-    DYHT400_3Dsigpaper->Scale(HT400Weight);
-    DYHT600_3Dsig->Scale(HT600Weight);
-    DYHT600_3Dsigpaper->Scale(HT600Weight);
-    DYHT800_3Dsig->Scale(HT800Weight);
-    DYHT800_3Dsigpaper->Scale(HT800Weight);
-    DYHT1200_3Dsig->Scale(HT1200Weight);
-    DYHT1200_3Dsigpaper->Scale(HT1200Weight);
-    DYHT2500_3Dsig->Scale(HT2500Weight);
-    DYHT2500_3Dsigpaper->Scale(HT2500Weight);
+    TH1F *h_ht200_alpha = new TH1F("h_ht200_alpha", "", 24, 0, 1.2);
+    h_ht200_alpha->SetYTitle("N Jets");
+    h_ht200_alpha->Sumw2();
 
-    TTTo2L2Nu_3Dsig->Scale(TTTo2L2NuWeight);
-    TTTo2L2Nu_3Dsigpaper->Scale(TTTo2L2NuWeight);
+    TH1F *h_ht400_alpha = new TH1F("h_ht400_alpha", "", 24, 0, 1.2);
+    h_ht400_alpha->SetYTitle("N Jets");
+    h_ht400_alpha->Sumw2();
 
-    DYHT70_3Dsig->Add(DYHT100_3Dsig);
-    DYHT70_3Dsig->Add(DYHT200_3Dsig);
-    DYHT70_3Dsig->Add(DYHT400_3Dsig);
-    DYHT70_3Dsig->Add(DYHT600_3Dsig);
-    DYHT70_3Dsig->Add(DYHT1200_3Dsig);
-    DYHT70_3Dsig->Add(DYHT2500_3Dsig);
+    TH1F *h_ht600_alpha = new TH1F("h_ht600_alpha", "", 24, 0, 1.2);
+    h_ht600_alpha->SetYTitle("N Jets");
+    h_ht600_alpha->Sumw2();
 
-    DYHT70_3Dsigpaper->Add(DYHT100_3Dsigpaper);
-    DYHT70_3Dsigpaper->Add(DYHT200_3Dsigpaper);
-    DYHT70_3Dsigpaper->Add(DYHT400_3Dsigpaper);
-    DYHT70_3Dsigpaper->Add(DYHT600_3Dsigpaper);
-    DYHT70_3Dsigpaper->Add(DYHT800_3Dsigpaper);
-    DYHT70_3Dsigpaper->Add(DYHT1200_3Dsigpaper);
-    DYHT70_3Dsigpaper->Add(DYHT2500_3Dsigpaper);
+    TH1F *h_ht800_alpha = new TH1F("h_ht800_alpha", "", 24, 0, 1.2);
+    h_ht800_alpha->SetYTitle("N Jets");
+    h_ht800_alpha->Sumw2();
 
-    DYHT70_3Dsig->SetLineWidth(2);
-    TTTo2L2Nu_3Dsig->SetLineWidth(2);
-    Mx2_1_3Dsig->SetLineWidth(2);
-    Mx2_50_3Dsig->SetLineWidth(2);
-    Mx2_150_3Dsig->SetLineWidth(2);
+    TH1F *h_ht1200_alpha = new TH1F("h_ht1200_alpha", "", 24, 0, 1.2);
+    h_ht1200_alpha->SetYTitle("N Jets");
+    h_ht1200_alpha->Sumw2();
 
-    DYHT70_3Dsigpaper->SetLineWidth(2);
-    TTTo2L2Nu_3Dsigpaper->SetLineWidth(2);
-    Mx2_1_3Dsigpaper->SetLineWidth(2);
-    Mx2_50_3Dsigpaper->SetLineWidth(2);
-    Mx2_150_3Dsigpaper->SetLineWidth(2);
+    TH1F *h_ht2500_alpha = new TH1F("h_ht2500_alpha", "", 24, 0, 1.2);
+    h_ht2500_alpha->SetYTitle("N Jets");
+    h_ht2500_alpha->Sumw2();
 
-    Mx2_1_3Dsig->SetLineColor(kBlack);
-    Mx2_1_3Dsigpaper->SetLineColor(kBlack);
-    Mx2_50_3Dsig->SetLineColor(kBlue);
-    Mx2_50_3Dsigpaper->SetLineColor(kBlue);
-    Mx2_150_3Dsig->SetLineColor(kGreen - 5);
-    Mx2_150_3Dsigpaper->SetLineColor(kGreen - 5);
+    TH1F *h_ht0_Median_2DIP = new TH1F("h_ht0_Median_2DIP", "", 100, -10, 10);
+    h_ht0_Median_2DIP->SetYTitle("");
+    h_ht0_Median_2DIP->Sumw2();
 
-    DYHT70_3Dsig->SetLineColor(kMagenta);
-    DYHT70_3Dsigpaper->SetLineColor(kMagenta);
+    TH1F *h_ht70_Median_2DIP = new TH1F("h_ht70_Median_2DIP", "", 100, -10, 10);
+    h_ht70_Median_2DIP->SetYTitle("");
+    h_ht70_Median_2DIP->Sumw2();
 
-    TTTo2L2Nu_3Dsig->SetLineColor(kRed);
-    TTTo2L2Nu_3Dsigpaper->SetLineColor(kRed);
+    TH1F *h_ht100_Median_2DIP = new TH1F("h_ht100_Median_2DIP", "", 100, -10, 10);
+    h_ht100_Median_2DIP->SetYTitle("");
+    h_ht100_Median_2DIP->Sumw2();
 
-    DYHT70_3Dsig->SetTitle("3Dsig");
-    DYHT70_3Dsig->GetYaxis()->SetTitle("N Tracks/Normalized");
-    DYHT70_3Dsig->GetXaxis()->SetTitle("log_{10}(3DIP_{sig})");
+    TH1F *h_ht200_Median_2DIP = new TH1F("h_ht200_Median_2DIP", "", 100, -10, 10);
+    h_ht200_Median_2DIP->SetYTitle("");
+    h_ht200_Median_2DIP->Sumw2();
 
-    DYHT70_3Dsigpaper->SetTitle("X");
-    DYHT70_3Dsigpaper->GetYaxis()->SetTitle("N Tracks/Normalized");
-    DYHT70_3Dsigpaper->GetXaxis()->SetTitle("log_{10}(X)");
+    TH1F *h_ht400_Median_2DIP = new TH1F("h_ht400_Median_2DIP", "", 100, -10, 10);
+    h_ht400_Median_2DIP->SetYTitle("");
+    h_ht400_Median_2DIP->Sumw2();
 
-    /*
+    TH1F *h_ht600_Median_2DIP = new TH1F("h_ht600_Median_2DIP", "", 100, -10, 10);
+    h_ht600_Median_2DIP->SetYTitle("");
+    h_ht600_Median_2DIP->Sumw2();
+
+    TH1F *h_ht800_Median_2DIP = new TH1F("h_ht800_Median_2DIP", "", 100, -10, 10);
+    h_ht800_Median_2DIP->SetYTitle("");
+    h_ht800_Median_2DIP->Sumw2();
+
+    TH1F *h_ht1200_Median_2DIP = new TH1F("h_ht1200_Median_2DIP", "", 100, -10, 10);
+    h_ht1200_Median_2DIP->SetYTitle("");
+    h_ht1200_Median_2DIP->Sumw2();
+
+    TH1F *h_ht2500_Median_2DIP = new TH1F("h_ht2500_Median_2DIP", "", 100, -10, 10);
+    h_ht2500_Median_2DIP->SetYTitle("");
+    h_ht2500_Median_2DIP->Sumw2();
+
+    TH1F *h_ht0_Chi3Dlog = new TH1F("h_ht0_Chi3Dlog", "", 100, -10, 10);
+    h_ht0_Chi3Dlog->SetYTitle("");
+    h_ht0_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht70_Chi3Dlog = new TH1F("h_ht70_Chi3Dlog", "", 100, -10, 10);
+    h_ht70_Chi3Dlog->SetYTitle("");
+    h_ht70_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht100_Chi3Dlog = new TH1F("h_ht100_Chi3Dlog", "", 100, -10, 10);
+    h_ht100_Chi3Dlog->SetYTitle("");
+    h_ht100_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht200_Chi3Dlog = new TH1F("h_ht200_Chi3Dlog", "", 100, -10, 10);
+    h_ht200_Chi3Dlog->SetYTitle("");
+    h_ht200_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht400_Chi3Dlog = new TH1F("h_ht400_Chi3Dlog", "", 100, -10, 10);
+    h_ht400_Chi3Dlog->SetYTitle("");
+    h_ht400_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht600_Chi3Dlog = new TH1F("h_ht600_Chi3Dlog", "", 100, -10, 10);
+    h_ht600_Chi3Dlog->SetYTitle("");
+    h_ht600_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht800_Chi3Dlog = new TH1F("h_ht800_Chi3Dlog", "", 100, -10, 10);
+    h_ht800_Chi3Dlog->SetYTitle("");
+    h_ht800_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht1200_Chi3Dlog = new TH1F("h_ht1200_Chi3Dlog", "", 100, -10, 10);
+    h_ht1200_Chi3Dlog->SetYTitle("");
+    h_ht1200_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht2500_Chi3Dlog = new TH1F("h_ht2500_Chi3Dlog", "", 100, -10, 10);
+    h_ht2500_Chi3Dlog->SetYTitle("");
+    h_ht2500_Chi3Dlog->Sumw2();
+
+    TH1F *h_ht0_Chi3DlogPaper = new TH1F("h_ht0_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht0_Chi3DlogPaper->SetYTitle("");
+    h_ht0_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_ht70_Chi3DlogPaper = new TH1F("h_ht70_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht70_Chi3DlogPaper->SetYTitle("");
+    h_ht70_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_ht100_Chi3DlogPaper = new TH1F("h_ht100_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht100_Chi3DlogPaper->SetYTitle("");
+    h_ht100_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_ht200_Chi3DlogPaper = new TH1F("h_ht200_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht200_Chi3DlogPaper->SetYTitle("");
+    h_ht200_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_ht400_Chi3DlogPaper = new TH1F("h_ht400_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht400_Chi3DlogPaper->SetYTitle("");
+    h_ht400_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_ht600_Chi3DlogPaper = new TH1F("h_ht600_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht600_Chi3DlogPaper->SetYTitle("");
+    h_ht600_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_ht800_Chi3DlogPaper = new TH1F("h_ht800_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht800_Chi3DlogPaper->SetYTitle("");
+    h_ht800_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_ht1200_Chi3DlogPaper = new TH1F("h_ht1200_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht1200_Chi3DlogPaper->SetYTitle("");
+    h_ht1200_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_ht2500_Chi3DlogPaper = new TH1F("h_ht2500_Chi3DlogPaper", "", 100, -10, 10);
+    h_ht2500_Chi3DlogPaper->SetYTitle("");
+    h_ht2500_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_Mx2_1_alpha = new TH1F("h_Mx2_1_alpha", "", 24, 0, 1.2);
+    h_Mx2_1_alpha->SetYTitle("N Jets");
+    h_Mx2_1_alpha->Sumw2();
+
+    TH1F *h_Mx2_50_alpha = new TH1F("h_Mx2_50_alpha", "", 24, 0, 1.2);
+    h_Mx2_50_alpha->SetYTitle("N Jets");
+    h_Mx2_50_alpha->Sumw2();
+
+    TH1F *h_Mx2_150_alpha = new TH1F("h_Mx2_150_alpha", "", 24, 0, 1.2);
+    h_Mx2_150_alpha->SetYTitle("N Jets");
+    h_Mx2_150_alpha->Sumw2();
+
+    TH1F *h_Mx2_1_Median_2DIP = new TH1F("h_Mx2_1_Median_2DIP", "", 100, -10, 10);
+    h_Mx2_1_Median_2DIP->SetYTitle("");
+    h_Mx2_1_Median_2DIP->Sumw2();
+
+    TH1F *h_Mx2_50_Median_2DIP = new TH1F("h_Mx2_50_Median_2DIP", "", 100, -10, 10);
+    h_Mx2_50_Median_2DIP->SetYTitle("");
+    h_Mx2_50_Median_2DIP->Sumw2();
+
+    TH1F *h_Mx2_150_Median_2DIP = new TH1F("h_Mx2_150_Median_2DIP", "", 100, -10, 10);
+    h_Mx2_150_Median_2DIP->SetYTitle("");
+    h_Mx2_150_Median_2DIP->Sumw2();
+
+    TH1F *h_Mx2_1_Chi3Dlog = new TH1F("h_Mx2_1_Chi3Dlog", "", 100, -10, 10);
+    h_Mx2_1_Chi3Dlog->SetYTitle("");
+    h_Mx2_1_Chi3Dlog->Sumw2();
+
+    TH1F *h_Mx2_50_Chi3Dlog = new TH1F("h_Mx2_50_Chi3Dlog", "", 100, -10, 10);
+    h_Mx2_50_Chi3Dlog->SetYTitle("");
+    h_Mx2_50_Chi3Dlog->Sumw2();
+
+    TH1F *h_Mx2_150_Chi3Dlog = new TH1F("h_Mx2_150_Chi3Dlog", "", 100, -10, 10);
+    h_Mx2_150_Chi3Dlog->SetYTitle("");
+    h_Mx2_150_Chi3Dlog->Sumw2();
+
+    TH1F *h_Mx2_1_Chi3DlogPaper = new TH1F("h_Mx2_1_Chi3DlogPaper", "", 100, -10, 10);
+    h_Mx2_1_Chi3DlogPaper->SetYTitle("");
+    h_Mx2_1_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_Mx2_50_Chi3DlogPaper = new TH1F("h_Mx2_h_Mx2_50_Chi3DlogPaper50_Median_2DIP", "", 100, -10, 10);
+    h_Mx2_50_Chi3DlogPaper->SetYTitle("");
+    h_Mx2_50_Chi3DlogPaper->Sumw2();
+
+    TH1F *h_Mx2_150_Chi3DlogPaper = new TH1F("h_Mx2_150_Chi3DlogPaper", "", 100, -10, 10);
+    h_Mx2_150_Chi3DlogPaper->SetYTitle("");
+    h_Mx2_150_Chi3DlogPaper->Sumw2();
+
+    // ------------------
+    // Valid Tree Variable
+    //-------------------
+    float HT;
+
+    Int_t I_ht0_weight, I_ht70_weight, I_ht100_weight, I_ht200_weight, I_ht400_weight, I_ht600_weight, I_ht800_weight,
+        I_ht1200_weight, I_ht2500_weight;
+
+    Int_t I_ht0_nThinJets, I_ht70_nThinJets, I_ht100_nThinJets, I_ht200_nThinJets, I_ht400_nThinJets, I_ht600_nThinJets, I_ht800_nThinJets,
+        I_ht1200_nThinJets, I_ht2500_nThinJets;
+
+    Int_t I_Mx1_weight, I_Mx50_weight, I_Mx150_weight;
+
+    Int_t I_Mx1_nThinJets, I_Mx50_nThinJets, I_Mx150_nThinJets;
+
+    vector<float> *v_ht0_Median_2DIPsig = new vector<float>();
+    vector<float> *v_ht70_Median_2DIPsig = new vector<float>();
+    vector<float> *v_ht100_Median_2DIPsig = new vector<float>();
+    vector<float> *v_ht200_Median_2DIPsig = new vector<float>();
+    vector<float> *v_ht400_Median_2DIPsig = new vector<float>();
+    vector<float> *v_ht600_Median_2DIPsig = new vector<float>();
+    vector<float> *v_ht800_Median_2DIPsig = new vector<float>();
+    vector<float> *v_ht1200_Median_2DIPsig = new vector<float>();
+    vector<float> *v_ht2500_Median_2DIPsig = new vector<float>();
+
+    vector<float> *v_ht0_alpha = new vector<float>();
+    vector<float> *v_ht70_alpha = new vector<float>();
+    vector<float> *v_ht100_alpha = new vector<float>();
+    vector<float> *v_ht200_alpha = new vector<float>();
+    vector<float> *v_ht400_alpha = new vector<float>();
+    vector<float> *v_ht600_alpha = new vector<float>();
+    vector<float> *v_ht800_alpha = new vector<float>();
+    vector<float> *v_ht1200_alpha = new vector<float>();
+    vector<float> *v_ht2500_alpha = new vector<float>();
+
+    vector<float> *v_ht0_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_ht70_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_ht100_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_ht200_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_ht400_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_ht600_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_ht800_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_ht1200_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_ht2500_Chi3DlogPaper = new vector<float>();
+
+    vector<float> *v_ht0_Chi3Dlog = new vector<float>();
+    vector<float> *v_ht70_Chi3Dlog = new vector<float>();
+    vector<float> *v_ht100_Chi3Dlog = new vector<float>();
+    vector<float> *v_ht200_Chi3Dlog = new vector<float>();
+    vector<float> *v_ht400_Chi3Dlog = new vector<float>();
+    vector<float> *v_ht600_Chi3Dlog = new vector<float>();
+    vector<float> *v_ht800_Chi3Dlog = new vector<float>();
+    vector<float> *v_ht1200_Chi3Dlog = new vector<float>();
+    vector<float> *v_ht2500_Chi3Dlog = new vector<float>();
+
+    vector<float> *v_Mx2_1_alpha = new vector<float>();
+    vector<float> *v_Mx2_50_alpha = new vector<float>();
+    vector<float> *v_Mx2_150_alpha = new vector<float>();
+    vector<float> *v_Mx2_1_Chi3Dlog = new vector<float>();
+    vector<float> *v_Mx2_50_Chi3Dlog = new vector<float>();
+    vector<float> *v_Mx2_150_Chi3Dlog = new vector<float>();
+    vector<float> *v_Mx2_1_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_Mx2_50_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_Mx2_150_Chi3DlogPaper = new vector<float>();
+    vector<float> *v_Mx2_1_Median_2DIP = new vector<float>();
+    vector<float> *v_Mx2_50_Median_2DIP = new vector<float>();
+    vector<float> *v_Mx2_150_Median_2DIP = new vector<float>();
+
+    TTree *T_event;
+    DYincli->GetObject("T_event", T_event);
+    T_event->SetBranchAddress("I_weight", &I_ht0_weight);
+    T_event->SetBranchAddress("f_HT", &HT);
+    T_event->SetBranchAddress("I_nThinJets", &I_ht0_nThinJets);
+    T_event->SetBranchAddress("v_Median_2DIPsig", &v_ht0_Median_2DIPsig);
+    T_event->SetBranchAddress("v_Chi3DlogPaper", &v_ht0_Chi3DlogPaper);
+    T_event->SetBranchAddress("v_Chi3Dlog", &v_ht0_Chi3Dlog);
+    T_event->SetBranchAddress("v_fakealpha", &v_ht0_alpha);
+    for (int evt = 0; evt < T_event->GetEntries(); evt++)
+    {
+        T_event->GetEntry(evt);
+        if (I_ht0_nThinJets < 2)
+            continue;
+        if (HT < 70)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht0_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT0Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht0_Chi3Dlog->Fill(i, I_ht0_weight * HT0Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht0_Chi3DlogPaper->Fill(i, I_ht0_weight * HT0Weight);
+            }
+            for (auto i : *v_ht0_alpha)
+            {
+                h_ht0_alpha->Fill(i, I_ht0_weight * HT0Weight);
+            }
+        }
+        else if (HT >= 70 && HT < 100)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht70_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT70Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht70_Chi3Dlog->Fill(i, I_ht0_weight * HT70Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht70_Chi3DlogPaper->Fill(i, I_ht0_weight * HT70Weight);
+            }
+            for (auto i : *v_ht0_alpha)
+            {
+                h_ht70_alpha->Fill(i, I_ht0_weight * HT70Weight);
+            }
+        }
+        else if (HT >= 100 && HT < 200)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht100_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT100Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht100_Chi3Dlog->Fill(i, I_ht0_weight * HT100Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht100_Chi3DlogPaper->Fill(i, I_ht0_weight * HT100Weight);
+            }
+            for (auto i : *v_ht0_alpha)
+            {
+                h_ht100_alpha->Fill(i, I_ht0_weight * HT100Weight);
+            }
+        }
+        else if (HT >= 200 && HT < 400)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht200_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT200Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht200_Chi3Dlog->Fill(i, I_ht0_weight * HT200Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht200_Chi3DlogPaper->Fill(i, I_ht0_weight * HT200Weight);
+            }
+            for (auto i : *v_ht0_alpha)
+            {
+                h_ht200_alpha->Fill(i, I_ht0_weight * HT200Weight);
+            }
+        }
+        else if (HT >= 400 && HT < 600)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht400_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT400Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht400_Chi3Dlog->Fill(i, I_ht0_weight * HT400Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht400_Chi3DlogPaper->Fill(i, I_ht0_weight * HT400Weight);
+            }
+            for (auto i : *v_ht0_alpha)
+            {
+                h_ht400_alpha->Fill(i, I_ht0_weight * HT400Weight);
+            }
+        }
+        else if (HT >= 600 && HT < 800)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht600_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT600Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht600_Chi3Dlog->Fill(i, I_ht0_weight * HT600Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht600_Chi3DlogPaper->Fill(i, I_ht0_weight * HT600Weight);
+            }
+            for (auto i : *v_ht0_alpha)
+            {
+                h_ht600_alpha->Fill(i, I_ht0_weight * HT600Weight);
+            }
+        }
+        else if (HT >= 800 && HT < 1200)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht800_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT800Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht800_Chi3Dlog->Fill(i, I_ht0_weight * HT800Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht800_Chi3DlogPaper->Fill(i, I_ht0_weight * HT800Weight);
+            }
+            for (auto i : *v_ht0_alpha)
+            {
+                h_ht800_alpha->Fill(i, I_ht0_weight * HT800Weight);
+            }
+        }
+        else if (HT >= 1200 && HT < 2500)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht1200_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT1200Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht1200_Chi3Dlog->Fill(i, I_ht0_weight * HT1200Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht1200_Chi3DlogPaper->Fill(i, I_ht0_weight * HT1200Weight);
+            }
+            for (auto i : *v_ht0_alpha)
+            {
+
+                h_ht1200_alpha->Fill(i, I_ht0_weight * HT1200Weight);
+            }
+        }
+        else if (HT >= 2500)
+        {
+            for (auto i : *v_ht0_Median_2DIPsig)
+            {
+                h_ht2500_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht0_weight * HT2500Weight);
+            }
+            for (auto i : *v_ht0_Chi3Dlog)
+            {
+                h_ht2500_Chi3Dlog->Fill(i, I_ht0_weight * HT2500Weight);
+            }
+            for (auto i : *v_ht0_Chi3DlogPaper)
+            {
+                h_ht2500_Chi3DlogPaper->Fill(i, I_ht0_weight * HT2500Weight);
+            }
+            for (auto j : *v_ht0_alpha)
+            {
+                if (j > 1)
+                {
+                    cout << "bug" << endl;
+                }
+                h_ht2500_alpha->Fill(j, I_ht0_weight * HT2500Weight);
+            }
+        }
+    }
+    TTree *T_event1;
+    DYHT100->GetObject("T_event", T_event1);
+    T_event1->SetBranchAddress("I_weight", &I_ht100_weight);
+    T_event1->SetBranchAddress("I_nThinJets", &I_ht100_nThinJets);
+    T_event1->SetBranchAddress("v_Median_2DIPsig", &v_ht100_Median_2DIPsig);
+    T_event1->SetBranchAddress("v_Chi3DlogPaper", &v_ht100_Chi3DlogPaper);
+    T_event1->SetBranchAddress("v_Chi3Dlog", &v_ht100_Chi3Dlog);
+    T_event1->SetBranchAddress("v_fakealpha", &v_ht100_alpha);
+    for (int evt = 0; evt < T_event1->GetEntries(); evt++)
+    {
+        T_event1->GetEntry(evt);
+        if (I_ht100_nThinJets < 2)
+            continue;
+        for (auto i : *v_ht100_Median_2DIPsig)
+        {
+            h_ht100_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht100_weight * HT100Weight);
+        }
+        for (auto i : *v_ht100_Chi3Dlog)
+        {
+            h_ht100_Chi3Dlog->Fill(i, I_ht100_weight * HT100Weight);
+        }
+        for (auto i : *v_ht100_Chi3DlogPaper)
+        {
+            h_ht100_Chi3DlogPaper->Fill(i, I_ht100_weight * HT100Weight);
+        }
+        for (auto i : *v_ht100_alpha)
+        {
+            if (i > 1)
+            {
+                cout << "bug" << endl;
+                cout << "i = " << i << endl;
+            }
+            h_ht100_alpha->Fill(i, I_ht100_weight * HT100Weight);
+        }
+    }
+    TTree *T_event2;
+    DYHT200->GetObject("T_event", T_event2);
+    T_event2->SetBranchAddress("I_weight", &I_ht200_weight);
+    T_event2->SetBranchAddress("I_nThinJets", &I_ht200_nThinJets);
+    T_event2->SetBranchAddress("v_Median_2DIPsig", &v_ht200_Median_2DIPsig);
+    T_event2->SetBranchAddress("v_Chi3DlogPaper", &v_ht200_Chi3DlogPaper);
+    T_event2->SetBranchAddress("v_Chi3Dlog", &v_ht200_Chi3Dlog);
+    T_event2->SetBranchAddress("v_fakealpha", &v_ht200_alpha);
+    for (int evt = 0; evt < T_event2->GetEntries(); evt++)
+    {
+        T_event2->GetEntry(evt);
+        if (I_ht200_nThinJets < 2)
+            continue;
+        for (auto i : *v_ht200_Median_2DIPsig)
+        {
+            h_ht200_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht200_weight * HT200Weight);
+        }
+        for (auto i : *v_ht200_Chi3Dlog)
+        {
+            h_ht200_Chi3Dlog->Fill(i, I_ht200_weight * HT200Weight);
+        }
+        for (auto i : *v_ht200_Chi3DlogPaper)
+        {
+            h_ht200_Chi3DlogPaper->Fill(i, I_ht200_weight * HT200Weight);
+        }
+        for (auto i : *v_ht200_alpha)
+        {
+            if (i > 1)
+            {
+                cout << "bug" << endl;
+            }
+            h_ht200_alpha->Fill(i, I_ht200_weight * HT200Weight);
+        }
+    }
+    TTree *T_event3;
+    DYHT400->GetObject("T_event", T_event3);
+    T_event3->SetBranchAddress("I_weight", &I_ht400_weight);
+    T_event3->SetBranchAddress("I_nThinJets", &I_ht400_nThinJets);
+    T_event3->SetBranchAddress("v_Median_2DIPsig", &v_ht400_Median_2DIPsig);
+    T_event3->SetBranchAddress("v_Chi3DlogPaper", &v_ht400_Chi3DlogPaper);
+    T_event3->SetBranchAddress("v_Chi3Dlog", &v_ht400_Chi3Dlog);
+    T_event3->SetBranchAddress("v_fakealpha", &v_ht400_alpha);
+    for (int evt = 0; evt < T_event3->GetEntries(); evt++)
+    {
+        T_event3->GetEntry(evt);
+        if (I_ht400_nThinJets < 2)
+            continue;
+        for (auto i : *v_ht400_Median_2DIPsig)
+        {
+            h_ht400_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht400_weight * HT400Weight);
+        }
+        for (auto i : *v_ht400_Chi3Dlog)
+        {
+            h_ht400_Chi3Dlog->Fill(i, I_ht400_weight * HT400Weight);
+        }
+        for (auto i : *v_ht400_Chi3DlogPaper)
+        {
+            h_ht400_Chi3DlogPaper->Fill(i, I_ht400_weight * HT400Weight);
+        }
+        for (auto i : *v_ht400_alpha)
+        {
+            if (i > 1)
+            {
+                cout << "bug" << endl;
+                cout << "i = " << i << endl;
+            }
+            h_ht400_alpha->Fill(i, I_ht400_weight * HT400Weight);
+        }
+    }
+    TTree *T_event4;
+    DYHT600->GetObject("T_event", T_event4);
+    T_event4->SetBranchAddress("I_weight", &I_ht600_weight);
+    T_event4->SetBranchAddress("I_nThinJets", &I_ht600_nThinJets);
+    T_event4->SetBranchAddress("v_Median_2DIPsig", &v_ht600_Median_2DIPsig);
+    T_event4->SetBranchAddress("v_Chi3DlogPaper", &v_ht600_Chi3DlogPaper);
+    T_event4->SetBranchAddress("v_Chi3Dlog", &v_ht600_Chi3Dlog);
+    T_event4->SetBranchAddress("v_fakealpha", &v_ht600_alpha);
+    for (int evt = 0; evt < T_event4->GetEntries(); evt++)
+    {
+        T_event4->GetEntry(evt);
+        if (I_ht600_nThinJets < 2)
+            continue;
+        for (auto i : *v_ht600_Median_2DIPsig)
+        {
+            h_ht600_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht600_weight * HT600Weight);
+        }
+        for (auto i : *v_ht600_Chi3Dlog)
+        {
+            h_ht600_Chi3Dlog->Fill(i, I_ht600_weight * HT600Weight);
+        }
+        for (auto i : *v_ht600_Chi3DlogPaper)
+        {
+            h_ht600_Chi3DlogPaper->Fill(i, I_ht600_weight * HT600Weight);
+        }
+        for (auto i : *v_ht600_alpha)
+        {
+            if (i > 1)
+            {
+                cout << "bug" << endl;
+                cout << "i = " << i << endl;
+            }
+            h_ht600_alpha->Fill(i, I_ht600_weight * HT600Weight);
+        }
+    }
+    TTree *T_event5;
+    DYHT800->GetObject("T_event", T_event5);
+    T_event5->SetBranchAddress("I_weight", &I_ht800_weight);
+    T_event5->SetBranchAddress("I_nThinJets", &I_ht800_nThinJets);
+    T_event5->SetBranchAddress("v_Median_2DIPsig", &v_ht800_Median_2DIPsig);
+    T_event5->SetBranchAddress("v_Chi3DlogPaper", &v_ht800_Chi3DlogPaper);
+    T_event5->SetBranchAddress("v_Chi3Dlog", &v_ht800_Chi3Dlog);
+    T_event5->SetBranchAddress("v_fakealpha", &v_ht800_alpha);
+    for (int evt = 0; evt < T_event5->GetEntries(); evt++)
+    {
+        T_event5->GetEntry(evt);
+        if (I_ht800_nThinJets < 2)
+            continue;
+        for (auto i : *v_ht800_Median_2DIPsig)
+        {
+            h_ht800_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht800_weight * HT800Weight);
+        }
+        for (auto i : *v_ht800_Chi3Dlog)
+        {
+            h_ht800_Chi3Dlog->Fill(i, I_ht800_weight * HT800Weight);
+        }
+        for (auto i : *v_ht800_Chi3DlogPaper)
+        {
+            h_ht800_Chi3DlogPaper->Fill(i, I_ht800_weight * HT800Weight);
+        }
+        for (auto i : *v_ht800_alpha)
+        {
+            if (i > 1)
+            {
+                cout << "bug" << endl;
+                cout << "i = " << i << endl;
+            }
+            h_ht800_alpha->Fill(i, I_ht800_weight * HT800Weight);
+        }
+    }
+    TTree *T_event6;
+    DYHT1200->GetObject("T_event", T_event6);
+    T_event6->SetBranchAddress("I_weight", &I_ht1200_weight);
+    T_event6->SetBranchAddress("I_nThinJets", &I_ht1200_nThinJets);
+    T_event6->SetBranchAddress("v_Median_2DIPsig", &v_ht1200_Median_2DIPsig);
+    T_event6->SetBranchAddress("v_Chi3DlogPaper", &v_ht1200_Chi3DlogPaper);
+    T_event6->SetBranchAddress("v_Chi3Dlog", &v_ht1200_Chi3Dlog);
+    T_event6->SetBranchAddress("v_fakealpha", &v_ht1200_alpha);
+    for (int evt = 0; evt < T_event6->GetEntries(); evt++)
+    {
+        T_event6->GetEntry(evt);
+        if (I_ht1200_nThinJets < 2)
+            continue;
+        for (auto i : *v_ht1200_Median_2DIPsig)
+        {
+            h_ht1200_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht1200_weight * HT1200Weight);
+        }
+        for (auto i : *v_ht1200_Chi3Dlog)
+        {
+            h_ht1200_Chi3Dlog->Fill(i, I_ht1200_weight * HT1200Weight);
+        }
+        for (auto i : *v_ht1200_Chi3DlogPaper)
+        {
+            h_ht1200_Chi3DlogPaper->Fill(i, I_ht1200_weight * HT1200Weight);
+        }
+        for (auto i : *v_ht1200_alpha)
+        {
+            if (i > 1)
+            {
+                cout << "bug" << endl;
+                cout << "i = " << i << endl;
+            }
+            h_ht1200_alpha->Fill(i, I_ht1200_weight * HT1200Weight);
+        }
+    }
+    TTree *T_event7;
+    DYHT2500->GetObject("T_event", T_event7);
+    T_event7->SetBranchAddress("I_weight", &I_ht2500_weight);
+    T_event7->SetBranchAddress("I_nThinJets", &I_ht2500_nThinJets);
+    T_event7->SetBranchAddress("v_Median_2DIPsig", &v_ht2500_Median_2DIPsig);
+    T_event7->SetBranchAddress("v_Chi3DlogPaper", &v_ht2500_Chi3DlogPaper);
+    T_event7->SetBranchAddress("v_Chi3Dlog", &v_ht2500_Chi3Dlog);
+    T_event7->SetBranchAddress("v_fakealpha", &v_ht2500_alpha);
+    for (int evt = 0; evt < T_event7->GetEntries(); evt++)
+    {
+        T_event7->GetEntry(evt);
+        if (I_ht2500_nThinJets < 2)
+            continue;
+        for (auto i : *v_ht2500_Median_2DIPsig)
+        {
+            h_ht2500_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_ht2500_weight * HT2500Weight);
+        }
+        for (auto i : *v_ht2500_Chi3Dlog)
+        {
+            h_ht2500_Chi3Dlog->Fill(i, I_ht2500_weight * HT2500Weight);
+        }
+        for (auto i : *v_ht2500_Chi3DlogPaper)
+        {
+            h_ht2500_Chi3DlogPaper->Fill(i, I_ht2500_weight * HT2500Weight);
+        }
+        for (auto i : *v_ht2500_alpha)
+        {
+            if (i > 1)
+            {
+                cout << "bug" << endl;
+                cout << "i = " << i << endl;
+            }
+            h_ht2500_alpha->Fill(i, I_ht2500_weight * HT2500Weight);
+        }
+    }
+    TTree *Mx1_tree;
+    Mx2_1->GetObject("T_event", Mx1_tree);
+    Mx1_tree->SetBranchAddress("I_weight", &I_Mx1_weight);
+    Mx1_tree->SetBranchAddress("I_nThinJets", &I_Mx1_nThinJets);
+    Mx1_tree->SetBranchAddress("v_Median_2DIPsig", &v_Mx2_1_Median_2DIP);
+    Mx1_tree->SetBranchAddress("v_Chi3DlogPaper", &v_Mx2_1_Chi3DlogPaper);
+    Mx1_tree->SetBranchAddress("v_Chi3Dlog", &v_Mx2_1_Chi3Dlog);
+    Mx1_tree->SetBranchAddress("v_fakealpha", &v_Mx2_1_alpha);
+    for (int evt = 0; evt < Mx1_tree->GetEntries(); evt++)
+    {
+        Mx1_tree->GetEntry(evt);
+        if (I_Mx1_nThinJets < 2)
+            continue;
+        for (auto i : *v_Mx2_1_Median_2DIP)
+        {
+            h_Mx2_1_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_Mx1_weight);
+        }
+        for (auto i : *v_Mx2_1_Chi3Dlog)
+        {
+            h_Mx2_1_Chi3Dlog->Fill(i, I_Mx1_weight);
+        }
+        for (auto i : *v_Mx2_1_Chi3DlogPaper)
+        {
+            h_Mx2_1_Chi3DlogPaper->Fill(i, I_Mx1_weight);
+        }
+        for (auto i : *v_Mx2_1_alpha)
+        {
+            h_Mx2_1_alpha->Fill(i, I_Mx1_weight);
+        }
+    }
+    TTree *Mx50_tree;
+    Mx2_50->GetObject("T_event", Mx50_tree);
+    Mx50_tree->SetBranchAddress("I_weight", &I_Mx50_weight);
+    Mx50_tree->SetBranchAddress("I_nThinJets", &I_Mx50_nThinJets);
+    Mx50_tree->SetBranchAddress("v_Median_2DIPsig", &v_Mx2_50_Median_2DIP);
+    Mx50_tree->SetBranchAddress("v_Chi3DlogPaper", &v_Mx2_50_Chi3DlogPaper);
+    Mx50_tree->SetBranchAddress("v_Chi3Dlog", &v_Mx2_50_Chi3Dlog);
+    Mx50_tree->SetBranchAddress("v_fakealpha", &v_Mx2_50_alpha);
+    for (int evt = 0; evt < Mx50_tree->GetEntries(); evt++)
+    {
+        Mx50_tree->GetEntry(evt);
+        if (I_Mx50_nThinJets < 2)
+            continue;
+        for (auto i : *v_Mx2_50_Median_2DIP)
+        {
+            h_Mx2_50_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_Mx50_weight);
+        }
+        for (auto i : *v_Mx2_50_Chi3Dlog)
+        {
+            h_Mx2_50_Chi3Dlog->Fill(i, I_Mx50_weight);
+        }
+        for (auto i : *v_Mx2_50_Chi3DlogPaper)
+        {
+            h_Mx2_50_Chi3DlogPaper->Fill(i, I_Mx50_weight);
+        }
+        for (auto i : *v_Mx2_50_alpha)
+        {
+            h_Mx2_50_alpha->Fill(i, I_Mx50_weight);
+        }
+    }
+    TTree *Mx150_tree;
+    Mx2_150->GetObject("T_event", Mx150_tree);
+    Mx150_tree->SetBranchAddress("I_weight", &I_Mx150_weight);
+    Mx150_tree->SetBranchAddress("I_nThinJets", &I_Mx150_nThinJets);
+    Mx150_tree->SetBranchAddress("v_Median_2DIPsig", &v_Mx2_150_Median_2DIP);
+    Mx150_tree->SetBranchAddress("v_Chi3DlogPaper", &v_Mx2_150_Chi3DlogPaper);
+    Mx150_tree->SetBranchAddress("v_Chi3Dlog", &v_Mx2_150_Chi3Dlog);
+    Mx150_tree->SetBranchAddress("v_fakealpha", &v_Mx2_150_alpha);
+    for (int evt = 0; evt < Mx150_tree->GetEntries(); evt++)
+    {
+        Mx150_tree->GetEntry(evt);
+        if (I_Mx150_nThinJets < 2)
+           continue;
+        for (auto i : *v_Mx2_150_Median_2DIP)
+        {
+            h_Mx2_150_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_Mx150_weight);
+        }
+        for (auto i : *v_Mx2_150_Chi3Dlog)
+        {
+            h_Mx2_150_Chi3Dlog->Fill(i, I_Mx150_weight);
+        }
+        for (auto i : *v_Mx2_150_Chi3DlogPaper)
+        {
+            h_Mx2_150_Chi3DlogPaper->Fill(i, I_Mx150_weight);
+        }
+        for (auto i : *v_Mx2_150_alpha)
+        {
+            h_Mx2_150_alpha->Fill(i, I_Mx150_weight);
+        }
+    }
+
+    h_ht0_Median_2DIP->Add(h_ht70_Median_2DIP);
+    h_ht0_Median_2DIP->Add(h_ht100_Median_2DIP);
+    h_ht0_Median_2DIP->Add(h_ht200_Median_2DIP);
+    h_ht0_Median_2DIP->Add(h_ht400_Median_2DIP);
+    h_ht0_Median_2DIP->Add(h_ht600_Median_2DIP);
+    h_ht0_Median_2DIP->Add(h_ht800_Median_2DIP);
+    h_ht0_Median_2DIP->Add(h_ht1200_Median_2DIP);
+    h_ht0_Median_2DIP->Add(h_ht2500_Median_2DIP);
+
+    h_ht0_Chi3Dlog->Add(h_ht70_Chi3Dlog);
+    h_ht0_Chi3Dlog->Add(h_ht100_Chi3Dlog);
+    h_ht0_Chi3Dlog->Add(h_ht200_Chi3Dlog);
+    h_ht0_Chi3Dlog->Add(h_ht400_Chi3Dlog);
+    h_ht0_Chi3Dlog->Add(h_ht600_Chi3Dlog);
+    h_ht0_Chi3Dlog->Add(h_ht800_Chi3Dlog);
+    h_ht0_Chi3Dlog->Add(h_ht1200_Chi3Dlog);
+    h_ht0_Chi3Dlog->Add(h_ht2500_Chi3Dlog);
+
+    h_ht0_Chi3DlogPaper->Add(h_ht70_Chi3DlogPaper);
+    h_ht0_Chi3DlogPaper->Add(h_ht100_Chi3DlogPaper);
+    h_ht0_Chi3DlogPaper->Add(h_ht200_Chi3DlogPaper);
+    h_ht0_Chi3DlogPaper->Add(h_ht400_Chi3DlogPaper);
+    h_ht0_Chi3DlogPaper->Add(h_ht600_Chi3DlogPaper);
+    h_ht0_Chi3DlogPaper->Add(h_ht800_Chi3DlogPaper);
+    h_ht0_Chi3DlogPaper->Add(h_ht1200_Chi3DlogPaper);
+    h_ht0_Chi3DlogPaper->Add(h_ht2500_Chi3DlogPaper);
+
+    h_ht0_alpha->Add(h_ht70_alpha);
+    h_ht0_alpha->Add(h_ht100_alpha);
+    h_ht0_alpha->Add(h_ht200_alpha);
+    h_ht0_alpha->Add(h_ht400_alpha);
+    h_ht0_alpha->Add(h_ht600_alpha);
+    h_ht0_alpha->Add(h_ht800_alpha);
+    h_ht0_alpha->Add(h_ht1200_alpha);
+    h_ht0_alpha->Add(h_ht2500_alpha);
+
+    h_ht0_Chi3Dlog->SetLineWidth(2);
+    h_ht0_Chi3DlogPaper->SetLineWidth(2);
+
+    // TTTo2L2Nu_3Dsig->SetLineWidth(2);
+    h_Mx2_1_Chi3Dlog->SetLineWidth(2);
+    h_Mx2_50_Chi3Dlog->SetLineWidth(2);
+    h_Mx2_150_Chi3Dlog->SetLineWidth(2);
+
+    // TTTo2L2Nu_3Dsigpaper->SetLineWidth(2);
+    h_Mx2_1_Chi3DlogPaper->SetLineWidth(2);
+    h_Mx2_50_Chi3DlogPaper->SetLineWidth(2);
+    h_Mx2_150_Chi3DlogPaper->SetLineWidth(2);
+
+    h_Mx2_1_Chi3Dlog->SetLineColor(kBlack);
+    h_Mx2_1_Chi3DlogPaper->SetLineColor(kBlack);
+    h_Mx2_50_Chi3Dlog->SetLineColor(kBlue);
+    h_Mx2_50_Chi3DlogPaper->SetLineColor(kBlue);
+    h_Mx2_150_Chi3Dlog->SetLineColor(kGreen - 5);
+    h_Mx2_150_Chi3DlogPaper->SetLineColor(kGreen - 5);
+
+    h_ht0_Chi3Dlog->SetLineColor(kMagenta);
+    h_ht0_Chi3DlogPaper->SetLineColor(kMagenta);
+
+    // TTTo2L2Nu_3Dsig->SetLineColor(kRed);
+    // TTTo2L2Nu_3Dsigpaper->SetLineColor(kRed);
+
+    h_ht0_Chi3Dlog->SetTitle("3Dsig");
+    h_ht0_Chi3Dlog->GetYaxis()->SetTitle("N Tracks/Normalized");
+    h_ht0_Chi3Dlog->GetXaxis()->SetTitle("log_{10}(3DIP_{sig})");
+
+    h_ht0_Chi3DlogPaper->SetTitle("X");
+    h_ht0_Chi3DlogPaper->GetYaxis()->SetTitle("N Tracks/Normalized");
+    h_ht0_Chi3DlogPaper->GetXaxis()->SetTitle("log_{10}(X)");
+/*
     auto c1 = new TCanvas("c", "BPRE");
     c1->Divide(2, 1);
     c1->cd(1);
-    DYHT70_3Dsig->DrawNormalized("hist");
-    TTTo2L2Nu_3Dsig->DrawNormalized("hist&&same");
-    Mx2_1_3Dsig->DrawNormalized("hist&&same");
-    Mx2_50_3Dsig->DrawNormalized("hist&&same");
-    Mx2_150_3Dsig->DrawNormalized("hist&&same");
+    h_ht0_Chi3Dlog->DrawNormalized("hist");
+    // TTTo2L2Nu_3Dsig->DrawNormalized("hist&&same");
+    h_Mx2_1_Chi3Dlog->DrawNormalized("hist&&same");
+    h_Mx2_50_Chi3Dlog->DrawNormalized("hist&&same");
+    h_Mx2_150_Chi3Dlog->DrawNormalized("hist&&same");
 
     TLegend *i2 = new TLegend(0.60, 0.55, 0.90, 0.90);
     i2->SetBorderSize(0);
     i2->SetTextSize(0.03);
-    i2->AddEntry(Mx2_1_3Dsig, "ctau=1mm m_{x^{2}}=1", "l");
-    i2->AddEntry(Mx2_50_3Dsig, "ctau=10mm m_{x^{2}}=50", "l");
-    i2->AddEntry(Mx2_150_3Dsig, "ctau=1mm m_{x^{2}}=150", "l");
-    i2->AddEntry(TTTo2L2Nu_3Dsig, "Top", "l");
-    i2->AddEntry(DYHT70_3Dsig, "Drell-Yan", "l");
+    i2->AddEntry(h_Mx2_1_Chi3Dlog, "ctau=1mm m_{x^{2}}=1", "l");
+    i2->AddEntry(h_Mx2_50_Chi3Dlog, "ctau=10mm m_{x^{2}}=50", "l");
+    i2->AddEntry(h_Mx2_150_Chi3Dlog, "ctau=1mm m_{x^{2}}=150", "l");
+    // i2->AddEntry(TTTo2L2Nu_3Dsig, "Top", "l");
+    i2->AddEntry(h_ht0_Chi3Dlog, "Drell-Yan", "l");
     i2->Draw();
 
     gStyle->SetOptStat(0);
 
     c1->cd(2);
 
-    DYHT70_3Dsigpaper->DrawNormalized("hist");
-    TTTo2L2Nu_3Dsigpaper->DrawNormalized("hist&&same");
-    Mx2_1_3Dsigpaper->DrawNormalized("hist&&same");
-    Mx2_50_3Dsigpaper->DrawNormalized("hist&&same");
-    Mx2_150_3Dsigpaper->DrawNormalized("hist&&same");
-
+    h_ht0_Chi3DlogPaper->DrawNormalized("hist");
+    // TTTo2L2Nu_3Dsigpaper->DrawNormalized("hist&&same");
+    h_Mx2_1_Chi3DlogPaper->DrawNormalized("hist&&same");
+    h_Mx2_50_Chi3DlogPaper->DrawNormalized("hist&&same");
+    h_Mx2_150_Chi3DlogPaper->DrawNormalized("hist&&same");
 
     gStyle->SetOptStat(0);
-    */
-
-    float TotSigEvent_Mx1 = Mx2_1_3Dsig->Integral();
-    float TotSigEvent_Mx50 = Mx2_50_3Dsig->Integral();
-    float TotSigEvent_Mx150 = Mx2_150_3Dsig->Integral();
-    float TotBgEvent_Mx1 = DYHT70_3Dsig->Integral();
-    int nBin = Mx2_1_3Dsig->GetNbinsX();
+*/
+    
+    float TotSigEvent_Mx1 = h_Mx2_1_Chi3Dlog->Integral();
+    float TotSigEvent_Mx50 = h_Mx2_50_Chi3Dlog->Integral();
+    float TotSigEvent_Mx150 = h_Mx2_150_Chi3Dlog->Integral();
+    float TotBgEvent_Mx1 = h_ht0_Chi3Dlog->Integral();
+    int nBin = h_Mx2_1_Chi3Dlog->GetNbinsX();
     int half = nBin / 2;
 
     float nSigEvent_Mx1 = 0;
@@ -254,18 +1013,18 @@ void ee_3Dsig()
 
     for (int i = 0; i < half; i++)
     {
-        nSigEvent_Mx1 += Mx2_1_3Dsig->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx1 += Mx2_1_3Dsig->GetBinContent(half - i);     // from 0 to end for sig
-        // nSigEvent_Mx50 += Mx2_50_3Dsig->GetBinContent(i + 1);      // from 0 to end for sig
-        // nSigEvent_Mx50 += Mx2_50_3Dsig->GetBinContent(nBin - i);   // from 0 to end for sig
-        nSigEvent_Mx50 += Mx2_50_3Dsig->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx50 += Mx2_50_3Dsig->GetBinContent(half - i);
-        // nSigEvent_Mx150 += Mx2_150_3Dsig->GetBinContent(i + 1);    // from 0 to end for sig
-        // nSigEvent_Mx150 += Mx2_150_3Dsig->GetBinContent(nBin - i); // from 0 to end for sig
-        nSigEvent_Mx150 += Mx2_150_3Dsig->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx150 += Mx2_150_3Dsig->GetBinContent(half - i);
-        nBgEvent_Mx1 += DYHT70_3Dsig->GetBinContent(half + i + 1);
-        nBgEvent_Mx1 += DYHT70_3Dsig->GetBinContent(half - i);
+        nSigEvent_Mx1 += h_Mx2_1_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
+        nSigEvent_Mx1 += h_Mx2_1_Chi3Dlog->GetBinContent(half - i);     // from 0 to end for sig
+        // nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(i + 1);      // from 0 to end for sig
+        // nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(nBin - i);   // from 0 to end for sig
+        nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
+        nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(half - i);
+        // nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(i + 1);    // from 0 to end for sig
+        // nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(nBin - i); // from 0 to end for sig
+        nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
+        nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(half - i);
+        nBgEvent_Mx1 += h_ht0_Chi3Dlog->GetBinContent(half + i + 1);
+        nBgEvent_Mx1 += h_ht0_Chi3Dlog->GetBinContent(half - i);
         effs_Mx1.push_back(nSigEvent_Mx1 / TotSigEvent_Mx1);
         effs_Mx50.push_back(nSigEvent_Mx50 / TotSigEvent_Mx50);
         effs_Mx150.push_back(nSigEvent_Mx150 / TotSigEvent_Mx150);
@@ -275,10 +1034,10 @@ void ee_3Dsig()
         cout << " effb_Mx1 " << nBgEvent_Mx1 / TotBgEvent_Mx1 << endl;
     }
 
-    float TotSigEvent_Mx1paper = Mx2_1_3Dsigpaper->Integral();
-    float TotSigEvent_Mx50paper = Mx2_50_3Dsigpaper->Integral();
-    float TotSigEvent_Mx150paper = Mx2_150_3Dsigpaper->Integral();
-    float TotBgEvent_Mx1paper = DYHT70_3Dsigpaper->Integral();
+    float TotSigEvent_Mx1paper = h_Mx2_1_Chi3DlogPaper->Integral();
+    float TotSigEvent_Mx50paper = h_Mx2_50_Chi3DlogPaper->Integral();
+    float TotSigEvent_Mx150paper = h_Mx2_150_Chi3DlogPaper->Integral();
+    float TotBgEvent_Mx1paper = h_ht0_Chi3DlogPaper->Integral();
 
     float nSigEvent_Mx1paper = 0;
     float nSigEvent_Mx50paper = 0;
@@ -298,14 +1057,14 @@ void ee_3Dsig()
     effs_Mx150paper.clear();
     for (int i = 0; i < half; i++)
     {
-        nSigEvent_Mx1paper += Mx2_1_3Dsigpaper->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx1paper += Mx2_1_3Dsigpaper->GetBinContent(half - i); // from 0 to end for sig
-        nSigEvent_Mx50paper += Mx2_50_3Dsigpaper->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx50paper += Mx2_50_3Dsigpaper->GetBinContent(half - i);   // from 0 to end for sig
-        nSigEvent_Mx150paper += Mx2_150_3Dsigpaper->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx150paper += Mx2_150_3Dsigpaper->GetBinContent(half - i); // from 0 to end for sig
-        nBgEvent_Mx1paper += DYHT70_3Dsigpaper->GetBinContent(half + i + 1);
-        nBgEvent_Mx1paper += DYHT70_3Dsigpaper->GetBinContent(half - i);
+        nSigEvent_Mx1paper += h_Mx2_1_Chi3DlogPaper->GetBinContent(half + i + 1);     // from 0 to end for sig
+        nSigEvent_Mx1paper += h_Mx2_1_Chi3DlogPaper->GetBinContent(half - i);         // from 0 to end for sig
+        nSigEvent_Mx50paper += h_Mx2_50_Chi3DlogPaper->GetBinContent(half + i + 1);   // from 0 to end for sig
+        nSigEvent_Mx50paper += h_Mx2_50_Chi3DlogPaper->GetBinContent(half - i);       // from 0 to end for sig
+        nSigEvent_Mx150paper += h_Mx2_150_Chi3DlogPaper->GetBinContent(half + i + 1); // from 0 to end for sig
+        nSigEvent_Mx150paper += h_Mx2_150_Chi3DlogPaper->GetBinContent(half - i);     // from 0 to end for sig
+        nBgEvent_Mx1paper += h_ht0_Chi3DlogPaper->GetBinContent(half + i + 1);
+        nBgEvent_Mx1paper += h_ht0_Chi3DlogPaper->GetBinContent(half - i);
 
         effs_Mx1paper.push_back(nSigEvent_Mx1paper / TotSigEvent_Mx1paper);
         effs_Mx50paper.push_back(nSigEvent_Mx50paper / TotSigEvent_Mx50paper);
@@ -371,12 +1130,12 @@ void ee_3Dsig()
     l1->SetBorderSize(0);
     l1->SetTextSize(0.03);
     l1->AddEntry(ROC_Mx1, "ctau=1mm m_{x^{2}}=1 (3DSig)", "l");
-    l1->AddEntry(ROC_Mx50, "ctau=10mm m_{x^{2}}=50 (3DSig)", "l");
-    l1->AddEntry(ROC_Mx150, "ctau=1mm m_{x^{2}}=150 (3DSig)", "l");
     l1->AddEntry(ROC_Mx1paper, "ctau=1mm m_{x^{2}}=1 (X)", "l");
+    l1->AddEntry(ROC_Mx50, "ctau=10mm m_{x^{2}}=50 (3DSig)", "l");
     l1->AddEntry(ROC_Mx50paper, "ctau=10mm m_{x^{2}}=50 (X)", "l");
+    l1->AddEntry(ROC_Mx150, "ctau=1mm m_{x^{2}}=150 (3DSig)", "l");
     l1->AddEntry(ROC_Mx150paper, "ctau=1mm m_{x^{2}}=150 (X)", "l");
     l1->Draw();
-
+    
     gStyle->SetOptStat(0);
 }

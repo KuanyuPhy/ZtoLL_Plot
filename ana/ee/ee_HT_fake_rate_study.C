@@ -19,7 +19,6 @@ void ee_HT_fake_rate_study()
 {
 
     //setNCUStyle(true);
-
     TFile *DYincli = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
     TFile *DYHT70 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
     TFile *DYHT100 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
@@ -29,6 +28,16 @@ void ee_HT_fake_rate_study()
     TFile *DYHT800 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
     TFile *DYHT1200 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
     TFile *DYHT2500 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+
+    TFile *DYincli_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_DYincli_1.root");
+    TFile *DYHT70_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht70_1.root");
+    TFile *DYHT100_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht100_1.root");
+    TFile *DYHT200_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht200_1.root");
+    TFile *DYHT400_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht400_1.root");
+    TFile *DYHT600_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht600_1.root");
+    TFile *DYHT800_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht800_1.root");
+    TFile *DYHT1200_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht1200.root");
+    TFile *DYHT2500_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht2500.root");
 
     TH1D *h_HT_eventCout = ((TH1D *)DYincli->Get("Event_Variable/h_HT_eventCout"));
 

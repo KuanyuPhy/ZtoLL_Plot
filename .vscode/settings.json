@@ -101,6 +101,8 @@
         "ee_Top_alpha_ROC.C": "cpp",
         "ee_HT_alpha_ROC.C": "cpp",
         "ee_3Dsig.C": "cpp",
-        "ee_HT_half.C": "cpp"
+        "ee_HT_half.C": "cpp",
+        "ee_HT_half_test.C": "cpp",
+        "ee_HT_2DIP.C": "cpp"
     }
 }

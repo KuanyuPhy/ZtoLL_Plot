@@ -34,6 +34,7 @@ void ee_HT_fake_rate_plot()
     TH1D *DY_light_emergjetnTrack_cutalpha = ((TH1D *)DYHT->Get("h_ht0_light_emergjetnTrack_cutalpha"));
 
     auto c1 = new TCanvas("c", "BPRE");
+    c1->Divide(2,1);
     DY_emergjethadronflavor->SetTitle("Drell-Yan process");
     DY_emergjethadronflavor->GetXaxis()->SetTitle("Jet Flavor");
     DY_emergjethadronflavor->GetYaxis()->SetTitle("N Jets");
@@ -116,13 +117,6 @@ void ee_HT_fake_rate_plot()
     h_hev_emergjetnTrack_fakeRate->Write();
     h_light_emergjetnTrack_fakeRate->Write();
     outFile->Close();
-
-    h_hev_emergjetpt_fakeRate
-    h_light_emergjetpt_fakeRate
-    h_hev_emergjetEta_fakeRate 
-    h_light_emergjetEta_fakeRate
-    h_hev_emergjetnTrack_fakeRate
-    h_light_emergjetnTrack_fakeRate
 
     
 }
