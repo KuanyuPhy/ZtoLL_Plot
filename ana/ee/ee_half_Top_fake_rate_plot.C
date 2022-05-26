@@ -18,56 +18,121 @@ using namespace RooFit;
 void ee_half_Top_fake_rate_plot()
 {
     // setNCUStyle(true);
-    TFile *Top = new TFile("./../../../root_file/BgEstimation/Top_fakerateStudy.root");
+    TFile *Top = new TFile("./../../../../root_file/BgEstimation/Top_fakerateStudy.root");
     TH1D *Top_emergjethadronflavor = ((TH1D *)Top->Get("h_TTTo2L2Nu_emergjethadronflavor"));
     TH1D *Top_hev_emergjetpt = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetpt"));
+    TH1D *Top_hev_emergjetpt_nog = ((TH1D *)Top->Get("Top_hev_emergjetpt_nog"));
     TH1D *Top_light_emergjetpt = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_emergjetpt"));
     TH1D *Top_hev_emergjetpt_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetpt_cutalpha"));
+    TH1D *Top_hev_emergjetpt_cutalpha_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetpt_cutalpha_nog"));
     TH1D *Top_light_emergjetpt_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_emergjetpt_cutalpha"));
     TH1D *Top_hev_emergjetEta = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetEta"));
+    TH1D *Top_hev_emergjetEta_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetEta_nog"));
     TH1D *Top_light_emergjetEta = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_emergjetEta"));
     TH1D *Top_hev_emergjetEta_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetEta_cutalpha"));
+    TH1D *Top_hev_emergjetEta_cutalpha_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetEta_cutalpha_nog"));
     TH1D *Top_light_emergjetEta_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_emergjetEta_cutalpha"));
     TH1D *Top_hev_emergjetnTrack = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetnTrack"));
+    TH1D *Top_hev_emergjetnTrack_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetnTrack_nog"));
     TH1D *Top_light_emergjetnTrack = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_emergjetnTrack"));
     TH1D *Top_hev_emergjetnTrack_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha"));
+    TH1D *Top_hev_emergjetnTrack_cutalpha_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha_nog"));
     TH1D *Top_light_emergjetnTrack_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_emergjetnTrack_cutalpha"));
+    //--
+    TH1D *Top_hev_barr_emergjetnTrack = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_barr_emergjetnTrack"));
+    TH1D *Top_hev_barr_emergjetnTrack_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_barr_emergjetnTrack_nog"));
+    TH1D *Top_light_barr_emergjetnTrack = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_barr_emergjetnTrack"));
+    TH1D *Top_hev_barr_emergjetnTrack_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha"));
+    TH1D *Top_hev_barr_emergjetnTrack_cutalpha_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha_nog"));
+    TH1D *Top_light_barr_emergjetnTrack_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_barr_emergjetnTrack_cutalpha"));
+    //--
+    TH1D *Top_hev_end_emergjetnTrack = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_end_emergjetnTrack"));
+    TH1D *Top_hev_end_emergjetnTrack_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_end_emergjetnTrack_nog"));
+    TH1D *Top_light_end_emergjetnTrack = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_end_emergjetnTrack"));
+    TH1D *Top_hev_end_emergjetnTrack_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha"));
+    TH1D *Top_hev_end_emergjetnTrack_cutalpha_nog = ((TH1D *)Top->Get("h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha_nog"));
 
-    TFile *HTroot = new TFile("./../../../root_file/BgEstimation/DYHT_fakerateStudy.root");
-    TH1F *h_ht0_hev_emergjetpt = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetpt"));
-    TH1F *h_ht0_light_emergjetpt = ((TH1F *)HTroot->Get("h_ht0_light_emergjetpt"));
-    TH1F *h_ht0_hev_emergjetpt_cutalpha = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetpt_cutalpha"));
-    TH1F *h_ht0_light_emergjetpt_cutalpha = ((TH1F *)HTroot->Get("h_ht0_light_emergjetpt_cutalpha"));
+    TH1D *Top_light_end_emergjetnTrack_cutalpha = ((TH1D *)Top->Get("h_TTTo2L2Nu_light_end_emergjetnTrack_cutalpha"));
 
-    TH1F *h_ht0_hev_emergjetEta = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetEta"));
-    TH1F *h_ht0_light_emergjetEta = ((TH1F *)HTroot->Get("h_ht0_light_emergjetEta"));
-    TH1F *h_ht0_hev_emergjetEta_cutalpha = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetEta_cutalpha"));
-    TH1F *h_ht0_light_emergjetEta_cutalpha = ((TH1F *)HTroot->Get("h_ht0_light_emergjetEta_cutalpha"));
+    TFile *HTroot = new TFile("./../../../../root_file/BgEstimation/DYHT_fakerateStudy.root");
+    TFile *HTroot2 = new TFile("./../../../../root_file/BgEstimation/DYHT_fakerateStudy_v2.root");
+    TH1F *HT_hev_emergjetpt_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_emergjetpt_fakeRate"));
+    TH1F *HT_hev_emergjetEta_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_emergjetEta_fakeRate"));
+    TH1F *HT_hev_emergjetnTrack_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_emergjetnTrack_fakeRate"));
+    TH1F *HT_light_emergjetpt_fakeRate = ((TH1F *)HTroot2->Get("DY_light_emergjetpt_fakeRate"));
+    TH1F *HT_light_emergjetEta_fakeRate = ((TH1F *)HTroot2->Get("DY_light_emergjetEta_fakeRate"));
+    TH1F *HT_light_emergjetnTrack_fakeRate = ((TH1F *)HTroot2->Get("DY_light_emergjetnTrack_fakeRate"));
+    TH1F *HT_hev_barr_emergjetpt_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_barr_emergjetpt_fakeRate"));
+    TH1F *HT_hev_barr_emergjetEta_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_barr_emergjetEta_fakeRate"));
+    TH1F *HT_hev_barr_emergjetnTrack_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_barr_emergjetnTrack_fakeRate"));
+    TH1F *HT_light_barr_emergjetpt_fakeRate = ((TH1F *)HTroot2->Get("DY_light_barr_emergjetpt_fakeRate"));
+    TH1F *HT_light_barr_emergjetEta_fakeRate = ((TH1F *)HTroot2->Get("DY_light_barr_emergjetEta_fakeRate"));
+    TH1F *HT_light_barr_emergjetnTrack_fakeRate = ((TH1F *)HTroot2->Get("DY_light_barr_emergjetnTrack_fakeRate"));
+    // HT_light_barr_emergjetnTrack_fakeRate->Draw();
+    TH1F *HT_hev_end_emergjetpt_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_end_emergjetpt_fakeRate"));
+    TH1F *HT_hev_end_emergjetEta_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_end_emergjetEta_fakeRate"));
+    TH1F *HT_hev_end_emergjetnTrack_fakeRate = ((TH1F *)HTroot2->Get("DY_hev_end_emergjetnTrack_fakeRate"));
+    TH1F *HT_light_end_emergjetpt_fakeRate = ((TH1F *)HTroot2->Get("DY_light_end_emergjetpt_fakeRate"));
+    TH1F *HT_light_end_emergjetEta_fakeRate = ((TH1F *)HTroot2->Get("DY_light_end_emergjetEta_fakeRate"));
+    TH1F *HT_light_end_emergjetnTrack_fakeRate = ((TH1F *)HTroot2->Get("DY_light_end_emergjetnTrack_fakeRate"));
 
-    TH1F *h_ht0_hev_emergjetnTrack = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetnTrack"));
-    TH1F *h_ht0_light_emergjetnTrack = ((TH1F *)HTroot->Get("h_ht0_light_emergjetnTrack"));
-    TH1F *h_ht0_hev_emergjetnTrack_cutalpha = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetnTrack_cutalpha"));
-    TH1F *h_ht0_light_emergjetnTrack_cutalpha = ((TH1F *)HTroot->Get("h_ht0_light_emergjetnTrack_cutalpha"));
-    TH1F *h_ht0_emergjethadronflavor = ((TH1F *)HTroot->Get("h_ht0_emergjethadronflavor"));
+    /*
+        TH1F *h_ht0_hev_emergjetpt = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetpt"));
+        TH1F *h_ht0_light_emergjetpt = ((TH1F *)HTroot->Get("h_ht0_light_emergjetpt"));
+        TH1F *h_ht0_hev_emergjetpt_cutalpha = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetpt_cutalpha"));
+        TH1F *h_ht0_light_emergjetpt_cutalpha = ((TH1F *)HTroot->Get("h_ht0_light_emergjetpt_cutalpha"));
 
-    TH1D *HT_hev_emergjetpt_fakeRate = (TH1D *)h_ht0_hev_emergjetpt_cutalpha->Clone("HT_hev_emergjetpt_fakeRate");
-    HT_hev_emergjetpt_fakeRate->Divide(h_ht0_hev_emergjetpt_cutalpha, h_ht0_hev_emergjetpt, 1, 1, "b");
+        TH1F *h_ht0_hev_emergjetEta = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetEta"));
+        TH1F *h_ht0_light_emergjetEta = ((TH1F *)HTroot->Get("h_ht0_light_emergjetEta"));
+        TH1F *h_ht0_hev_emergjetEta_cutalpha = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetEta_cutalpha"));
+        TH1F *h_ht0_light_emergjetEta_cutalpha = ((TH1F *)HTroot->Get("h_ht0_light_emergjetEta_cutalpha"));
 
-    TH1D *HT_hev_emergjetEta_fakeRate = (TH1D *)h_ht0_hev_emergjetEta_cutalpha->Clone("HT_hev_emergjetEta_fakeRate");
-    HT_hev_emergjetEta_fakeRate->Divide(h_ht0_hev_emergjetEta_cutalpha, h_ht0_hev_emergjetEta, 1, 1, "b");
+        TH1F *h_ht0_hev_emergjetnTrack = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetnTrack"));
+        TH1F *h_ht0_light_emergjetnTrack = ((TH1F *)HTroot->Get("h_ht0_light_emergjetnTrack"));
+        TH1F *h_ht0_hev_emergjetnTrack_cutalpha = ((TH1F *)HTroot->Get("h_ht0_hev_emergjetnTrack_cutalpha"));
+        TH1F *h_ht0_light_emergjetnTrack_cutalpha = ((TH1F *)HTroot->Get("h_ht0_light_emergjetnTrack_cutalpha"));
+        TH1F *h_ht0_emergjethadronflavor = ((TH1F *)HTroot->Get("h_ht0_emergjethadronflavor"));
 
-    TH1D *HT_hev_emergjetnTrack_fakeRate = (TH1D *)h_ht0_hev_emergjetnTrack_cutalpha->Clone("HT_hev_emergjetnTrack_fakeRate");
-    HT_hev_emergjetnTrack_fakeRate->Divide(h_ht0_hev_emergjetnTrack_cutalpha, h_ht0_hev_emergjetnTrack, 1, 1, "b");
+        TH1F *h_ht0_hev_barr_emergjetnTrack = ((TH1F *)HTroot->Get("h_ht0_hev_barr_emergjetnTrack"));
+        TH1F *h_ht0_light_barr_emergjetnTrack = ((TH1F *)HTroot->Get("h_ht0_light_barr_emergjetnTrack"));
+        TH1F *h_ht0_hev_barr_emergjetnTrack_cutalpha = ((TH1F *)HTroot->Get("h_ht0_hev_barr_emergjetnTrack_cutalpha"));
+        TH1F *h_ht0_light_barr_emergjetnTrack_cutalpha = ((TH1F *)HTroot->Get("h_ht0_light_barr_emergjetnTrack_cutalpha"));
 
-    TH1D *HT_light_emergjetpt_fakeRate = (TH1D *)h_ht0_light_emergjetpt_cutalpha->Clone("HT_light_emergjetpt_fakeRate");
-    HT_light_emergjetpt_fakeRate->Divide(h_ht0_light_emergjetpt_cutalpha, h_ht0_light_emergjetpt, 1, 1, "b");
+        TH1F *h_ht0_hev_end_emergjetnTrack = ((TH1F *)HTroot->Get("h_ht0_hev_end_emergjetnTrack"));
+        TH1F *h_ht0_light_end_emergjetnTrack = ((TH1F *)HTroot->Get("h_ht0_light_end_emergjetnTrack"));
+        TH1F *h_ht0_hev_end_emergjetnTrack_cutalpha = ((TH1F *)HTroot->Get("h_ht0_hev_end_emergjetnTrack_cutalpha"));
+        TH1F *h_ht0_light_end_emergjetnTrack_cutalpha = ((TH1F *)HTroot->Get("h_ht0_light_end_emergjetnTrack_cutalpha"));
 
-    TH1D *HT_light_emergjetEta_fakeRate = (TH1D *)h_ht0_light_emergjetEta_cutalpha->Clone("HT_light_emergjetEta_fakeRate");
-    HT_light_emergjetEta_fakeRate->Divide(h_ht0_light_emergjetEta_cutalpha, h_ht0_light_emergjetEta, 1, 1, "b");
+        TH1D *HT_hev_emergjetpt_fakeRate = (TH1D *)h_ht0_hev_emergjetpt_cutalpha->Clone("HT_hev_emergjetpt_fakeRate");
+        HT_hev_emergjetpt_fakeRate->Divide(h_ht0_hev_emergjetpt_cutalpha, h_ht0_hev_emergjetpt, 1, 1, "b");
 
-    TH1D *HT_light_emergjetnTrack_fakeRate = (TH1D *)h_ht0_light_emergjetnTrack_cutalpha->Clone("HT_light_emergjetnTrack_fakeRate");
-    HT_light_emergjetnTrack_fakeRate->Divide(h_ht0_light_emergjetnTrack_cutalpha, h_ht0_light_emergjetnTrack, 1, 1, "b");
+        TH1D *HT_hev_emergjetEta_fakeRate = (TH1D *)h_ht0_hev_emergjetEta_cutalpha->Clone("HT_hev_emergjetEta_fakeRate");
+        HT_hev_emergjetEta_fakeRate->Divide(h_ht0_hev_emergjetEta_cutalpha, h_ht0_hev_emergjetEta, 1, 1, "b");
 
+        TH1D *HT_hev_emergjetnTrack_fakeRate = (TH1D *)h_ht0_hev_emergjetnTrack_cutalpha->Clone("HT_hev_emergjetnTrack_fakeRate");
+        HT_hev_emergjetnTrack_fakeRate->Divide(h_ht0_hev_emergjetnTrack_cutalpha, h_ht0_hev_emergjetnTrack, 1, 1, "b");
+
+        TH1D *HT_light_emergjetpt_fakeRate = (TH1D *)h_ht0_light_emergjetpt_cutalpha->Clone("HT_light_emergjetpt_fakeRate");
+        HT_light_emergjetpt_fakeRate->Divide(h_ht0_light_emergjetpt_cutalpha, h_ht0_light_emergjetpt, 1, 1, "b");
+
+        TH1D *HT_light_emergjetEta_fakeRate = (TH1D *)h_ht0_light_emergjetEta_cutalpha->Clone("HT_light_emergjetEta_fakeRate");
+        HT_light_emergjetEta_fakeRate->Divide(h_ht0_light_emergjetEta_cutalpha, h_ht0_light_emergjetEta, 1, 1, "b");
+
+        TH1D *HT_light_emergjetnTrack_fakeRate = (TH1D *)h_ht0_light_emergjetnTrack_cutalpha->Clone("HT_light_emergjetnTrack_fakeRate");
+        HT_light_emergjetnTrack_fakeRate->Divide(h_ht0_light_emergjetnTrack_cutalpha, h_ht0_light_emergjetnTrack, 1, 1, "b");
+
+        TH1D *HT_hev_barr_emergjetnTrack_fakeRate = (TH1D *)h_ht0_hev_barr_emergjetnTrack_cutalpha->Clone("HT_hev_barr_emergjetnTrack_fakeRate");
+        HT_hev_barr_emergjetnTrack_fakeRate->Divide(h_ht0_hev_barr_emergjetnTrack_cutalpha, h_ht0_hev_barr_emergjetnTrack, 1, 1, "b");
+
+        TH1D *HT_hev_end_emergjetnTrack_fakeRate = (TH1D *)h_ht0_hev_end_emergjetnTrack_cutalpha->Clone("HT_hev_end_emergjetnTrack_fakeRate");
+        HT_hev_end_emergjetnTrack_fakeRate->Divide(h_ht0_hev_end_emergjetnTrack_cutalpha, h_ht0_hev_end_emergjetnTrack, 1, 1, "b");
+
+        TH1D *HT_light_barr_emergjetnTrack_fakeRate = (TH1D *)h_ht0_light_barr_emergjetnTrack_cutalpha->Clone("HT_light_barr_emergjetnTrack_fakeRate");
+        HT_light_barr_emergjetnTrack_fakeRate->Divide(h_ht0_light_barr_emergjetnTrack_cutalpha, h_ht0_light_barr_emergjetnTrack, 1, 1, "b");
+
+        TH1D *HT_light_end_emergjetnTrack_fakeRate = (TH1D *)h_ht0_light_end_emergjetnTrack_cutalpha->Clone("HT_light_end_emergjetnTrack_fakeRate");
+        HT_light_end_emergjetnTrack_fakeRate->Divide(h_ht0_light_end_emergjetnTrack_cutalpha, h_ht0_light_end_emergjetnTrack, 1, 1, "b");
+    */
     // Top_hev_emergjetpt_cutalpha
 
     Top_emergjethadronflavor->SetTitle("Top process");
@@ -79,7 +144,7 @@ void ee_half_Top_fake_rate_plot()
     // c1->cd(1);
     // Top_hev_emergjetpt->Draw();
     // c1->cd(2);
-    //Top_hev_emergjetpt_cutalpha->Draw();
+    // Top_hev_emergjetpt_cutalpha->Draw();
     TH1F *Top_light_emergjetpt_fakeRate = (TH1F *)Top_light_emergjetpt_cutalpha->Clone("Top_light_emergjetpt_fakeRate");
     Top_light_emergjetpt_fakeRate->Divide(Top_light_emergjetpt_cutalpha, Top_light_emergjetpt, 1, 1, "b");
 
@@ -92,8 +157,20 @@ void ee_half_Top_fake_rate_plot()
     TH1F *Top_hev_emergjetnTrack_fakeRate = (TH1F *)Top_hev_emergjetnTrack_cutalpha->Clone("Top_hev_emergjetnTrack_fakeRate");
     Top_hev_emergjetnTrack_fakeRate->Divide(Top_hev_emergjetnTrack_cutalpha, Top_hev_emergjetnTrack, 1, 1, "b");
 
+    TH1F *Top_hev_barr_emergjetnTrack_fakeRate = (TH1F *)Top_hev_barr_emergjetnTrack_cutalpha->Clone("Top_hev_barr_emergjetnTrack_fakeRate");
+    Top_hev_barr_emergjetnTrack_fakeRate->Divide(Top_hev_barr_emergjetnTrack_cutalpha, Top_hev_barr_emergjetnTrack, 1, 1, "b");
+
+    TH1F *Top_hev_end_emergjetnTrack_fakeRate = (TH1F *)Top_hev_end_emergjetnTrack_cutalpha->Clone("Top_hev_end_emergjetnTrack_fakeRate");
+    Top_hev_end_emergjetnTrack_fakeRate->Divide(Top_hev_end_emergjetnTrack_cutalpha, Top_hev_end_emergjetnTrack, 1, 1, "b");
+
     TH1F *Top_light_emergjetnTrack_fakeRate = (TH1F *)Top_light_emergjetnTrack_cutalpha->Clone("Top_light_emergjetnTrack_fakeRate");
     Top_light_emergjetnTrack_fakeRate->Divide(Top_light_emergjetnTrack_cutalpha, Top_light_emergjetnTrack, 1, 1, "b");
+
+    TH1F *Top_light_barr_emergjetnTrack_fakeRate = (TH1F *)Top_light_barr_emergjetnTrack_cutalpha->Clone("Top_light_barr_emergjetnTrack_fakeRate");
+    Top_light_barr_emergjetnTrack_fakeRate->Divide(Top_light_barr_emergjetnTrack_cutalpha, Top_light_barr_emergjetnTrack, 1, 1, "b");
+
+    TH1F *Top_light_end_emergjetnTrack_fakeRate = (TH1F *)Top_light_end_emergjetnTrack_cutalpha->Clone("Top_light_end_emergjetnTrack_fakeRate");
+    Top_light_end_emergjetnTrack_fakeRate->Divide(Top_light_end_emergjetnTrack_cutalpha, Top_light_end_emergjetnTrack, 1, 1, "b");
 
     Top_hev_emergjetpt_fakeRate->SetTitle("fake rate vs Jet PT");
     Top_hev_emergjetpt_fakeRate->GetXaxis()->SetTitle("P_{T}(jet)[GeV]");
@@ -119,12 +196,21 @@ void ee_half_Top_fake_rate_plot()
     Top_light_emergjetnTrack_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
     Top_light_emergjetnTrack_fakeRate->GetYaxis()->SetTitle("fake rate");
 
+    Top_hev_end_emergjetnTrack_fakeRate->SetTitle("fake rate vs track multiplicity");
+    Top_hev_end_emergjetnTrack_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+    HT_hev_end_emergjetnTrack_fakeRate->SetTitle("fake rate vs track multiplicity");
+    HT_hev_end_emergjetnTrack_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+
     Top_hev_emergjetpt_fakeRate->SetLineWidth(2);
     Top_light_emergjetpt_fakeRate->SetLineWidth(2);
     Top_hev_emergjetEta_fakeRate->SetLineWidth(2);
     Top_light_emergjetEta_fakeRate->SetLineWidth(2);
     Top_hev_emergjetnTrack_fakeRate->SetLineWidth(2);
+    Top_hev_barr_emergjetnTrack_fakeRate->SetLineWidth(2);
+    Top_hev_end_emergjetnTrack_fakeRate->SetLineWidth(2);
     Top_light_emergjetnTrack_fakeRate->SetLineWidth(2);
+    Top_light_barr_emergjetnTrack_fakeRate->SetLineWidth(2);
+    Top_light_end_emergjetnTrack_fakeRate->SetLineWidth(2);
 
     HT_hev_emergjetpt_fakeRate->SetLineWidth(2);
     HT_light_emergjetpt_fakeRate->SetLineWidth(2);
@@ -132,13 +218,21 @@ void ee_half_Top_fake_rate_plot()
     HT_light_emergjetEta_fakeRate->SetLineWidth(2);
     HT_hev_emergjetnTrack_fakeRate->SetLineWidth(2);
     HT_light_emergjetnTrack_fakeRate->SetLineWidth(2);
+    HT_hev_barr_emergjetnTrack_fakeRate->SetLineWidth(2);
+    HT_hev_end_emergjetnTrack_fakeRate->SetLineWidth(2);
+    HT_light_barr_emergjetnTrack_fakeRate->SetLineWidth(2);
+    HT_light_end_emergjetnTrack_fakeRate->SetLineWidth(2);
 
     Top_hev_emergjetpt_fakeRate->SetLineColor(kRed);
     Top_light_emergjetpt_fakeRate->SetLineColor(kGreen);
     Top_hev_emergjetEta_fakeRate->SetLineColor(kRed);
     Top_light_emergjetEta_fakeRate->SetLineColor(kGreen);
     Top_hev_emergjetnTrack_fakeRate->SetLineColor(kRed);
+    Top_hev_barr_emergjetnTrack_fakeRate->SetLineColor(kRed);
+    Top_hev_end_emergjetnTrack_fakeRate->SetLineColor(kRed);
     Top_light_emergjetnTrack_fakeRate->SetLineColor(kGreen);
+    Top_light_barr_emergjetnTrack_fakeRate->SetLineColor(kGreen);
+    Top_light_end_emergjetnTrack_fakeRate->SetLineColor(kGreen);
 
     HT_hev_emergjetpt_fakeRate->SetLineColor(kMagenta);
     HT_light_emergjetpt_fakeRate->SetLineColor(kCyan - 7);
@@ -146,6 +240,8 @@ void ee_half_Top_fake_rate_plot()
     HT_light_emergjetEta_fakeRate->SetLineColor(kCyan - 7);
     HT_hev_emergjetnTrack_fakeRate->SetLineColor(kMagenta);
     HT_light_emergjetnTrack_fakeRate->SetLineColor(kCyan - 7);
+    HT_hev_end_emergjetnTrack_fakeRate->SetLineColor(kMagenta);
+    HT_light_end_emergjetnTrack_fakeRate->SetLineColor(kCyan - 7);
 
     // h_hev_emergjetpt_fakeRate->Draw("");
     // h_light_emergjetpt_fakeRate->Draw("same");
@@ -153,6 +249,27 @@ void ee_half_Top_fake_rate_plot()
     // h_light_emergjetEta_fakeRate->Draw("same");
     // HT_hev_emergjetEta_fakeRate->Draw("same");
     // HT_light_emergjetEta_fakeRate->Draw("same");
+    auto c1 = new TCanvas("c", "BPRE");
+    c1->Divide(2, 1);
+    c1->cd(1);
+    HT_hev_end_emergjetnTrack_fakeRate->Draw("");
+    HT_light_end_emergjetnTrack_fakeRate->Draw("same");
+    TLegend *l = new TLegend(0.6, 0.65, 0.80, 0.85);
+    l->SetBorderSize(0);
+    l->SetTextSize(0.04);
+    l->AddEntry(HT_hev_end_emergjetnTrack_fakeRate, "DY heavy Jet", "l");
+    l->AddEntry(HT_light_end_emergjetnTrack_fakeRate, "DY light Jet", "l");
+    l->Draw();
+    c1->cd(2);
+    Top_hev_end_emergjetnTrack_fakeRate->Draw("");
+    Top_light_end_emergjetnTrack_fakeRate->Draw("same");
+    TLegend *l0 = new TLegend(0.6, 0.65, 0.80, 0.85);
+    l0->SetBorderSize(0);
+    l0->SetTextSize(0.04);
+    l0->AddEntry(Top_hev_emergjetnTrack_fakeRate, "Top heavy Jet", "l");
+    l0->AddEntry(Top_light_emergjetnTrack_fakeRate, "Top light Jet", "l");
+    l0->Draw();
+    /*
     auto c1 = new TCanvas("c", "BPRE");
     c1->Divide(3, 2);
     c1->cd(1);
@@ -212,15 +329,24 @@ void ee_half_Top_fake_rate_plot()
     l5->AddEntry(Top_light_emergjetEta_fakeRate, "Top light Jet", "l");
     l5->AddEntry(HT_light_emergjetEta_fakeRate, "HT light Jet", "l");
     l5->Draw();
-
+    */
     gStyle->SetOptStat(0);
 
-    TFile *outFile = new TFile("./../../../root_file/BgEstimation/Clouse_test.root", "RECREATE");
+    TFile *outFile = new TFile("./../../../../root_file/BgEstimation/Clouse_test.root", "RECREATE");
     outFile->cd();
     Top_hev_emergjetnTrack_fakeRate->Write();
+    Top_hev_barr_emergjetnTrack_fakeRate->Write();
+    Top_hev_end_emergjetnTrack_fakeRate->Write();
     HT_hev_emergjetnTrack_fakeRate->Write();
+    HT_hev_barr_emergjetnTrack_fakeRate->Write();
+    HT_hev_end_emergjetnTrack_fakeRate->Write();
     Top_light_emergjetnTrack_fakeRate->Write();
+    Top_light_barr_emergjetnTrack_fakeRate->Write();
+    Top_light_end_emergjetnTrack_fakeRate->Write();
     HT_light_emergjetnTrack_fakeRate->Write();
+    HT_light_barr_emergjetnTrack_fakeRate->Write();
+    HT_light_end_emergjetnTrack_fakeRate->Write();
+
     outFile->Close();
 }
 /*

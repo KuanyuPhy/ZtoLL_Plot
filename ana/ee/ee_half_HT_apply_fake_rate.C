@@ -17,29 +17,35 @@
 using namespace RooFit;
 void ee_half_HT_apply_fake_rate()
 {
-    TFile *fakeRate = new TFile("./../../../root_file/BgEstimation/Clouse_test.root");
-    TFile *DYincli = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
-    TFile *DYHT70 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
-    TFile *DYHT100 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+    TFile *fakeRate = new TFile("/home/kuanyu/Documents/CMS/ZtoLL_Plot/ana/ee/cut_optimize/DY/ee_DY_emjet_half.root");
+    TFile *DYincli = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+    TFile *DYHT70 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
+    TFile *DYHT100 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/DY/ee_ht100.root");
+    TFile *DYHT200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/DY/ee_ht200.root");
+    TFile *DYHT400 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/DY/ee_ht400.root");
+    TFile *DYHT600 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/DY/ee_ht600.root");
+    TFile *DYHT800 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/DY/ee_ht800.root");
+    TFile *DYHT1200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+    TFile *DYHT2500 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
 
-    TFile *DYincli_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_DYincli_2.root");
-    TFile *DYHT70_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht70_2.root");
-    TFile *DYHT100_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht100_2.root");
-    TFile *DYHT200_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht200_2.root");
-    TFile *DYHT400_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht400_2.root");
-    TFile *DYHT600_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht600_2.root");
-    TFile *DYHT800_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht800_2.root");
-    TFile *DYHT1200_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht1200_2.root");
-    TFile *DYHT2500_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht2500_2.root");
+    TFile *DYincli_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_DYincli_2.root");
+    TFile *DYHT70_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht70_2.root");
+    TFile *DYHT100_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht100_2.root");
+    TFile *DYHT200_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht200_2.root");
+    TFile *DYHT400_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht400_2.root");
+    TFile *DYHT600_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht600_2.root");
+    TFile *DYHT800_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht800_2.root");
+    TFile *DYHT1200_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht1200_2.root");
+    TFile *DYHT2500_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht2500_2.root");
 
-    TH1F *HT_hev_fakerate_ntr = ((TH1F *)fakeRate->Get("HT_hev_emergjetnTrack_fakeRate"));
-    TH1F *HT_light_fakerate_ntr = ((TH1F *)fakeRate->Get("HT_light_emergjetnTrack_fakeRate"));
+    TH1F *HT_hev_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_hev_emergjetnTrack_fakeRate"));
+    TH1F *HT_light_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_light_emergjetnTrack_fakeRate"));
+
+    TH1F *HT_hev_barr_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_hev_barr_emergjetnTrack_fakeRate"));
+    TH1F *HT_light_barr_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_light_barr_emergjetnTrack_fakeRate"));
+
+    TH1F *HT_hev_end_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_hev_end_emergjetnTrack_fakeRate"));
+    TH1F *HT_light_end_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_light_end_emergjetnTrack_fakeRate"));
     // TH1F *h_ht0_hev_emergjetnTrack_cutalpha = ((TH1F *)fakeRate->Get("h_ht0_hev_emergjetnTrack_cutalpha"));
     // TH1F *h_ht0_light_emergjetnTrack_cutalpha = ((TH1F *)fakeRate->Get("h_ht0_light_emergjetnTrack_cutalpha"));
 
@@ -88,6 +94,13 @@ void ee_half_HT_apply_fake_rate()
     //----------------------------------------------------------------------
     // Create Histrogram: PT, eta, NTracks
     //----------------------------------------------------------------------
+    Double_t nbins[82] = {-4.889, -4.716, -4.538, -4.363, -4.191, -4.013, -3.839, -3.664, -3.489, -3.314, -3.139, -2.964, -2.853,
+                          -2.65, -2.5, -2.322, -2.172, -2.043, -1.93, -1.83, -1.74, -1.653, -1.566, -1.479, -1.392, -1.305, -1.218, -1.131, -1.044,
+                          -0.957, -0.879, -0.783, -0.696, -0.609, -0.522, -0.435, -0.348, -0.261, -0.174, -0.087, 0, 0.087, 0.174, 0.261, 0.348, 0.435,
+                          0.522, 0.609, 0.696, 0.783, 0.879, 0.957, 1.044, 1.131, 1.218, 1.305, 1.392, 1.479, 1.566, 1.653, 1.74, 1.83, 1.93, 2.043, 2.172,
+                          2.322, 2.5, 2.65, 2.853, 2.964, 3.139, 3.314, 3.489, 3.664, 3.839, 4.013, 4.191, 4.363, 4.538, 4.716, 4.889, 5.191};
+    const Int_t nnbins = (sizeof(nbins) / sizeof(*nbins)) - 1;
+
     TH1F *h_ht0_hev_exp_emergjetpt = new TH1F("h_ht0_hev_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
     h_ht0_hev_exp_emergjetpt->Sumw2();
     TH1F *h_ht70_hev_exp_emergjetpt = new TH1F("h_ht70_hev_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
@@ -125,13 +138,6 @@ void ee_half_HT_apply_fake_rate()
     h_ht1200_light_exp_emergjetpt->Sumw2();
     TH1F *h_ht2500_light_exp_emergjetpt = new TH1F("h_ht2500_light_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
     h_ht2500_light_exp_emergjetpt->Sumw2();
-
-    Double_t nbins[82] = {-4.889, -4.716, -4.538, -4.363, -4.191, -4.013, -3.839, -3.664, -3.489, -3.314, -3.139, -2.964, -2.853,
-                          -2.65, -2.5, -2.322, -2.172, -2.043, -1.93, -1.83, -1.74, -1.653, -1.566, -1.479, -1.392, -1.305, -1.218, -1.131, -1.044,
-                          -0.957, -0.879, -0.783, -0.696, -0.609, -0.522, -0.435, -0.348, -0.261, -0.174, -0.087, 0, 0.087, 0.174, 0.261, 0.348, 0.435,
-                          0.522, 0.609, 0.696, 0.783, 0.879, 0.957, 1.044, 1.131, 1.218, 1.305, 1.392, 1.479, 1.566, 1.653, 1.74, 1.83, 1.93, 2.043, 2.172,
-                          2.322, 2.5, 2.65, 2.853, 2.964, 3.139, 3.314, 3.489, 3.664, 3.839, 4.013, 4.191, 4.363, 4.538, 4.716, 4.889, 5.191};
-    const Int_t nnbins = (sizeof(nbins) / sizeof(*nbins)) - 1;
 
     TH1F *h_ht0_hev_exp_emergjetEta = new TH1F("h_ht0_hev_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
     h_ht0_hev_exp_emergjetEta->Sumw2();
@@ -323,6 +329,463 @@ void ee_half_HT_apply_fake_rate()
     TH1F *h_ht2500_light_pred_emergjetnTrack = new TH1F("h_ht2500_light_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
     h_ht2500_light_pred_emergjetnTrack->Sumw2();
 
+    //---
+    TH1F *h_ht0_hev_barr_exp_emergjetpt = new TH1F("h_ht0_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht0_hev_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht70_hev_barr_exp_emergjetpt = new TH1F("h_ht70_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht70_hev_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht100_hev_barr_exp_emergjetpt = new TH1F("h_ht100_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht100_hev_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht200_hev_barr_exp_emergjetpt = new TH1F("h_ht200_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht200_hev_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht400_hev_barr_exp_emergjetpt = new TH1F("h_ht400_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht400_hev_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht600_hev_barr_exp_emergjetpt = new TH1F("h_ht600_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht600_hev_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht800_hev_barr_exp_emergjetpt = new TH1F("h_ht800_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht800_hev_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht1200_hev_barr_exp_emergjetpt = new TH1F("h_ht1200_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht1200_hev_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht2500_hev_barr_exp_emergjetpt = new TH1F("h_ht2500_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht2500_hev_barr_exp_emergjetpt->Sumw2();
+
+    TH1F *h_ht0_light_barr_exp_emergjetpt = new TH1F("h_ht0_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht0_light_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht70_light_barr_exp_emergjetpt = new TH1F("h_ht70_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht70_light_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht100_light_barr_exp_emergjetpt = new TH1F("h_ht100_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht100_light_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht200_light_barr_exp_emergjetpt = new TH1F("h_ht200_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht200_light_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht400_light_barr_exp_emergjetpt = new TH1F("h_ht400_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht400_light_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht600_light_barr_exp_emergjetpt = new TH1F("h_ht600_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht600_light_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht800_light_barr_exp_emergjetpt = new TH1F("h_ht800_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht800_light_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht1200_light_barr_exp_emergjetpt = new TH1F("h_ht1200_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht1200_light_barr_exp_emergjetpt->Sumw2();
+    TH1F *h_ht2500_light_barr_exp_emergjetpt = new TH1F("h_ht2500_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht2500_light_barr_exp_emergjetpt->Sumw2();
+
+    TH1F *h_ht0_hev_barr_exp_emergjetEta = new TH1F("h_ht0_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht0_hev_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht70_hev_barr_exp_emergjetEta = new TH1F("h_ht70_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht70_hev_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht100_hev_barr_exp_emergjetEta = new TH1F("h_ht100_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht100_hev_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht200_hev_barr_exp_emergjetEta = new TH1F("h_ht200_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht200_hev_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht400_hev_barr_exp_emergjetEta = new TH1F("h_ht400_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht400_hev_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht600_hev_barr_exp_emergjetEta = new TH1F("h_ht600_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht600_hev_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht800_hev_barr_exp_emergjetEta = new TH1F("h_ht800_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht800_hev_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht1200_hev_barr_exp_emergjetEta = new TH1F("h_ht1200_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht1200_hev_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht2500_hev_barr_exp_emergjetEta = new TH1F("h_ht2500_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht2500_hev_barr_exp_emergjetEta->Sumw2();
+
+    TH1F *h_ht0_light_barr_exp_emergjetEta = new TH1F("h_ht0_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht0_light_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht70_light_barr_exp_emergjetEta = new TH1F("h_ht70_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht70_light_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht100_light_barr_exp_emergjetEta = new TH1F("h_ht100_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht100_light_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht200_light_barr_exp_emergjetEta = new TH1F("h_ht200_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht200_light_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht400_light_barr_exp_emergjetEta = new TH1F("h_ht400_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht400_light_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht600_light_barr_exp_emergjetEta = new TH1F("h_ht600_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht600_light_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht800_light_barr_exp_emergjetEta = new TH1F("h_ht800_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht800_light_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht1200_light_barr_exp_emergjetEta = new TH1F("h_ht1200_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht1200_light_barr_exp_emergjetEta->Sumw2();
+    TH1F *h_ht2500_light_barr_exp_emergjetEta = new TH1F("h_ht2500_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht2500_light_barr_exp_emergjetEta->Sumw2();
+
+    TH1F *h_ht0_hev_barr_exp_emergjetnTrack = new TH1F("h_ht0_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht0_hev_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht70_hev_barr_exp_emergjetnTrack = new TH1F("h_ht70_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht70_hev_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht100_hev_barr_exp_emergjetnTrack = new TH1F("h_ht100_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht100_hev_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht200_hev_barr_exp_emergjetnTrack = new TH1F("h_ht200_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht200_hev_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht400_hev_barr_exp_emergjetnTrack = new TH1F("h_ht400_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht400_hev_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht600_hev_barr_exp_emergjetnTrack = new TH1F("h_ht600_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht600_hev_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht800_hev_barr_exp_emergjetnTrack = new TH1F("h_ht800_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht800_hev_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht1200_hev_barr_exp_emergjetnTrack = new TH1F("h_ht1200_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht1200_hev_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht2500_hev_barr_exp_emergjetnTrack = new TH1F("h_ht2500_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht2500_hev_barr_exp_emergjetnTrack->Sumw2();
+
+    TH1F *h_ht0_light_barr_exp_emergjetnTrack = new TH1F("h_ht0_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht0_light_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht70_light_barr_exp_emergjetnTrack = new TH1F("h_ht70_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht70_light_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht100_light_barr_exp_emergjetnTrack = new TH1F("h_ht100_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht100_light_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht200_light_barr_exp_emergjetnTrack = new TH1F("h_ht200_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht200_light_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht400_light_barr_exp_emergjetnTrack = new TH1F("h_ht400_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht400_light_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht600_light_barr_exp_emergjetnTrack = new TH1F("h_ht600_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht600_light_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht800_light_barr_exp_emergjetnTrack = new TH1F("h_ht800_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht800_light_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht1200_light_barr_exp_emergjetnTrack = new TH1F("h_ht1200_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht1200_light_barr_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht2500_light_barr_exp_emergjetnTrack = new TH1F("h_ht2500_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht2500_light_barr_exp_emergjetnTrack->Sumw2();
+
+    TH1F *h_ht0_hev_barr_pred_emergjetpt = new TH1F("h_ht0_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht0_hev_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht70_hev_barr_pred_emergjetpt = new TH1F("h_ht70_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht70_hev_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht100_hev_barr_pred_emergjetpt = new TH1F("h_ht100_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht100_hev_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht200_hev_barr_pred_emergjetpt = new TH1F("h_ht200_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht200_hev_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht400_hev_barr_pred_emergjetpt = new TH1F("h_ht400_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht400_hev_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht600_hev_barr_pred_emergjetpt = new TH1F("h_ht600_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht600_hev_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht800_hev_barr_pred_emergjetpt = new TH1F("h_ht800_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht800_hev_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht1200_hev_barr_pred_emergjetpt = new TH1F("h_ht1200_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht1200_hev_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht2500_hev_barr_pred_emergjetpt = new TH1F("h_ht2500_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht2500_hev_barr_pred_emergjetpt->Sumw2();
+
+    TH1F *h_ht0_light_barr_pred_emergjetpt = new TH1F("h_ht0_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht0_light_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht70_light_barr_pred_emergjetpt = new TH1F("h_ht70_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht70_light_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht100_light_barr_pred_emergjetpt = new TH1F("h_ht100_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht100_light_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht200_light_barr_pred_emergjetpt = new TH1F("h_ht200_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht200_light_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht400_light_barr_pred_emergjetpt = new TH1F("h_ht400_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht400_light_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht600_light_barr_pred_emergjetpt = new TH1F("h_ht600_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht600_light_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht800_light_barr_pred_emergjetpt = new TH1F("h_ht800_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht800_light_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht1200_light_barr_pred_emergjetpt = new TH1F("h_ht1200_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht1200_light_barr_pred_emergjetpt->Sumw2();
+    TH1F *h_ht2500_light_barr_pred_emergjetpt = new TH1F("h_ht2500_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht2500_light_barr_pred_emergjetpt->Sumw2();
+
+    TH1F *h_ht0_hev_barr_pred_emergjetEta = new TH1F("h_ht0_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht0_hev_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht70_hev_barr_pred_emergjetEta = new TH1F("h_ht70_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht70_hev_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht100_hev_barr_pred_emergjetEta = new TH1F("h_ht100_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht100_hev_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht200_hev_barr_pred_emergjetEta = new TH1F("h_ht200_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht200_hev_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht400_hev_barr_pred_emergjetEta = new TH1F("h_ht400_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht400_hev_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht600_hev_barr_pred_emergjetEta = new TH1F("h_ht600_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht600_hev_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht800_hev_barr_pred_emergjetEta = new TH1F("h_ht800_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht800_hev_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht1200_hev_barr_pred_emergjetEta = new TH1F("h_ht1200_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht1200_hev_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht2500_hev_barr_pred_emergjetEta = new TH1F("h_ht2500_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht2500_hev_barr_pred_emergjetEta->Sumw2();
+
+    TH1F *h_ht0_light_barr_pred_emergjetEta = new TH1F("h_ht0_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht0_light_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht70_light_barr_pred_emergjetEta = new TH1F("h_ht70_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht70_light_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht100_light_barr_pred_emergjetEta = new TH1F("h_ht100_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht100_light_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht200_light_barr_pred_emergjetEta = new TH1F("h_ht200_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht200_light_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht400_light_barr_pred_emergjetEta = new TH1F("h_ht400_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht400_light_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht600_light_barr_pred_emergjetEta = new TH1F("h_ht600_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht600_light_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht800_light_barr_pred_emergjetEta = new TH1F("h_ht800_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht800_light_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht1200_light_barr_pred_emergjetEta = new TH1F("h_ht1200_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht1200_light_barr_pred_emergjetEta->Sumw2();
+    TH1F *h_ht2500_light_barr_pred_emergjetEta = new TH1F("h_ht2500_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht2500_light_barr_pred_emergjetEta->Sumw2();
+
+    TH1F *h_ht0_hev_barr_pred_emergjetnTrack = new TH1F("h_ht0_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht0_hev_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht70_hev_barr_pred_emergjetnTrack = new TH1F("h_ht70_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht70_hev_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht100_hev_barr_pred_emergjetnTrack = new TH1F("h_ht100_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht100_hev_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht200_hev_barr_pred_emergjetnTrack = new TH1F("h_ht200_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht200_hev_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht400_hev_barr_pred_emergjetnTrack = new TH1F("h_ht400_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht400_hev_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht600_hev_barr_pred_emergjetnTrack = new TH1F("h_ht600_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht600_hev_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht800_hev_barr_pred_emergjetnTrack = new TH1F("h_ht800_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht800_hev_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht1200_hev_barr_pred_emergjetnTrack = new TH1F("h_ht1200_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht1200_hev_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht2500_hev_barr_pred_emergjetnTrack = new TH1F("h_ht2500_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht2500_hev_barr_pred_emergjetnTrack->Sumw2();
+
+    TH1F *h_ht0_light_barr_pred_emergjetnTrack = new TH1F("h_ht0_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht0_light_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht70_light_barr_pred_emergjetnTrack = new TH1F("h_ht70_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht70_light_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht100_light_barr_pred_emergjetnTrack = new TH1F("h_ht100_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht100_light_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht200_light_barr_pred_emergjetnTrack = new TH1F("h_ht200_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht200_light_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht400_light_barr_pred_emergjetnTrack = new TH1F("h_ht400_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht400_light_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht600_light_barr_pred_emergjetnTrack = new TH1F("h_ht600_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht600_light_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht800_light_barr_pred_emergjetnTrack = new TH1F("h_ht800_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht800_light_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht1200_light_barr_pred_emergjetnTrack = new TH1F("h_ht1200_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht1200_light_barr_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht2500_light_barr_pred_emergjetnTrack = new TH1F("h_ht2500_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht2500_light_barr_pred_emergjetnTrack->Sumw2();
+    //--
+    TH1F *h_ht0_hev_end_exp_emergjetpt = new TH1F("h_ht0_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht0_hev_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht70_hev_end_exp_emergjetpt = new TH1F("h_ht70_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht70_hev_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht100_hev_end_exp_emergjetpt = new TH1F("h_ht100_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht100_hev_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht200_hev_end_exp_emergjetpt = new TH1F("h_ht200_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht200_hev_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht400_hev_end_exp_emergjetpt = new TH1F("h_ht400_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht400_hev_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht600_hev_end_exp_emergjetpt = new TH1F("h_ht600_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht600_hev_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht800_hev_end_exp_emergjetpt = new TH1F("h_ht800_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht800_hev_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht1200_hev_end_exp_emergjetpt = new TH1F("h_ht1200_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht1200_hev_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht2500_hev_end_exp_emergjetpt = new TH1F("h_ht2500_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht2500_hev_end_exp_emergjetpt->Sumw2();
+
+    TH1F *h_ht0_light_end_exp_emergjetpt = new TH1F("h_ht0_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht0_light_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht70_light_end_exp_emergjetpt = new TH1F("h_ht70_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht70_light_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht100_light_end_exp_emergjetpt = new TH1F("h_ht100_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht100_light_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht200_light_end_exp_emergjetpt = new TH1F("h_ht200_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht200_light_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht400_light_end_exp_emergjetpt = new TH1F("h_ht400_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht400_light_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht600_light_end_exp_emergjetpt = new TH1F("h_ht600_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht600_light_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht800_light_end_exp_emergjetpt = new TH1F("h_ht800_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht800_light_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht1200_light_end_exp_emergjetpt = new TH1F("h_ht1200_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht1200_light_end_exp_emergjetpt->Sumw2();
+    TH1F *h_ht2500_light_end_exp_emergjetpt = new TH1F("h_ht2500_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht2500_light_end_exp_emergjetpt->Sumw2();
+
+    TH1F *h_ht0_hev_end_exp_emergjetEta = new TH1F("h_ht0_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht0_hev_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht70_hev_end_exp_emergjetEta = new TH1F("h_ht70_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht70_hev_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht100_hev_end_exp_emergjetEta = new TH1F("h_ht100_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht100_hev_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht200_hev_end_exp_emergjetEta = new TH1F("h_ht200_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht200_hev_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht400_hev_end_exp_emergjetEta = new TH1F("h_ht400_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht400_hev_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht600_hev_end_exp_emergjetEta = new TH1F("h_ht600_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht600_hev_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht800_hev_end_exp_emergjetEta = new TH1F("h_ht800_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht800_hev_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht1200_hev_end_exp_emergjetEta = new TH1F("h_ht1200_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht1200_hev_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht2500_hev_end_exp_emergjetEta = new TH1F("h_ht2500_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht2500_hev_end_exp_emergjetEta->Sumw2();
+
+    TH1F *h_ht0_light_end_exp_emergjetEta = new TH1F("h_ht0_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht0_light_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht70_light_end_exp_emergjetEta = new TH1F("h_ht70_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht70_light_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht100_light_end_exp_emergjetEta = new TH1F("h_ht100_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht100_light_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht200_light_end_exp_emergjetEta = new TH1F("h_ht200_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht200_light_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht400_light_end_exp_emergjetEta = new TH1F("h_ht400_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht400_light_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht600_light_end_exp_emergjetEta = new TH1F("h_ht600_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht600_light_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht800_light_end_exp_emergjetEta = new TH1F("h_ht800_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht800_light_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht1200_light_end_exp_emergjetEta = new TH1F("h_ht1200_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht1200_light_end_exp_emergjetEta->Sumw2();
+    TH1F *h_ht2500_light_end_exp_emergjetEta = new TH1F("h_ht2500_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht2500_light_end_exp_emergjetEta->Sumw2();
+
+    TH1F *h_ht0_hev_end_exp_emergjetnTrack = new TH1F("h_ht0_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht0_hev_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht70_hev_end_exp_emergjetnTrack = new TH1F("h_ht70_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht70_hev_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht100_hev_end_exp_emergjetnTrack = new TH1F("h_ht100_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht100_hev_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht200_hev_end_exp_emergjetnTrack = new TH1F("h_ht200_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht200_hev_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht400_hev_end_exp_emergjetnTrack = new TH1F("h_ht400_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht400_hev_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht600_hev_end_exp_emergjetnTrack = new TH1F("h_ht600_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht600_hev_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht800_hev_end_exp_emergjetnTrack = new TH1F("h_ht800_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht800_hev_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht1200_hev_end_exp_emergjetnTrack = new TH1F("h_ht1200_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht1200_hev_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht2500_hev_end_exp_emergjetnTrack = new TH1F("h_ht2500_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht2500_hev_end_exp_emergjetnTrack->Sumw2();
+
+    TH1F *h_ht0_light_end_exp_emergjetnTrack = new TH1F("h_ht0_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht0_light_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht70_light_end_exp_emergjetnTrack = new TH1F("h_ht70_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht70_light_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht100_light_end_exp_emergjetnTrack = new TH1F("h_ht100_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht100_light_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht200_light_end_exp_emergjetnTrack = new TH1F("h_ht200_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht200_light_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht400_light_end_exp_emergjetnTrack = new TH1F("h_ht400_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht400_light_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht600_light_end_exp_emergjetnTrack = new TH1F("h_ht600_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht600_light_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht800_light_end_exp_emergjetnTrack = new TH1F("h_ht800_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht800_light_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht1200_light_end_exp_emergjetnTrack = new TH1F("h_ht1200_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht1200_light_end_exp_emergjetnTrack->Sumw2();
+    TH1F *h_ht2500_light_end_exp_emergjetnTrack = new TH1F("h_ht2500_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht2500_light_end_exp_emergjetnTrack->Sumw2();
+
+    TH1F *h_ht0_hev_end_pred_emergjetpt = new TH1F("h_ht0_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht0_hev_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht70_hev_end_pred_emergjetpt = new TH1F("h_ht70_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht70_hev_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht100_hev_end_pred_emergjetpt = new TH1F("h_ht100_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht100_hev_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht200_hev_end_pred_emergjetpt = new TH1F("h_ht200_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht200_hev_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht400_hev_end_pred_emergjetpt = new TH1F("h_ht400_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht400_hev_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht600_hev_end_pred_emergjetpt = new TH1F("h_ht600_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht600_hev_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht800_hev_end_pred_emergjetpt = new TH1F("h_ht800_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht800_hev_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht1200_hev_end_pred_emergjetpt = new TH1F("h_ht1200_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht1200_hev_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht2500_hev_end_pred_emergjetpt = new TH1F("h_ht2500_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht2500_hev_end_pred_emergjetpt->Sumw2();
+
+    TH1F *h_ht0_light_end_pred_emergjetpt = new TH1F("h_ht0_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht0_light_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht70_light_end_pred_emergjetpt = new TH1F("h_ht70_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht70_light_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht100_light_end_pred_emergjetpt = new TH1F("h_ht100_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht100_light_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht200_light_end_pred_emergjetpt = new TH1F("h_ht200_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht200_light_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht400_light_end_pred_emergjetpt = new TH1F("h_ht400_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht400_light_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht600_light_end_pred_emergjetpt = new TH1F("h_ht600_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht600_light_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht800_light_end_pred_emergjetpt = new TH1F("h_ht800_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht800_light_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht1200_light_end_pred_emergjetpt = new TH1F("h_ht1200_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht1200_light_end_pred_emergjetpt->Sumw2();
+    TH1F *h_ht2500_light_end_pred_emergjetpt = new TH1F("h_ht2500_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_ht2500_light_end_pred_emergjetpt->Sumw2();
+
+    TH1F *h_ht0_hev_end_pred_emergjetEta = new TH1F("h_ht0_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht0_hev_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht70_hev_end_pred_emergjetEta = new TH1F("h_ht70_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht70_hev_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht100_hev_end_pred_emergjetEta = new TH1F("h_ht100_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht100_hev_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht200_hev_end_pred_emergjetEta = new TH1F("h_ht200_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht200_hev_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht400_hev_end_pred_emergjetEta = new TH1F("h_ht400_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht400_hev_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht600_hev_end_pred_emergjetEta = new TH1F("h_ht600_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht600_hev_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht800_hev_end_pred_emergjetEta = new TH1F("h_ht800_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht800_hev_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht1200_hev_end_pred_emergjetEta = new TH1F("h_ht1200_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht1200_hev_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht2500_hev_end_pred_emergjetEta = new TH1F("h_ht2500_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht2500_hev_end_pred_emergjetEta->Sumw2();
+
+    TH1F *h_ht0_light_end_pred_emergjetEta = new TH1F("h_ht0_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht0_light_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht70_light_end_pred_emergjetEta = new TH1F("h_ht70_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht70_light_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht100_light_end_pred_emergjetEta = new TH1F("h_ht100_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht100_light_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht200_light_end_pred_emergjetEta = new TH1F("h_ht200_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht200_light_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht400_light_end_pred_emergjetEta = new TH1F("h_ht400_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht400_light_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht600_light_end_pred_emergjetEta = new TH1F("h_ht600_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht600_light_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht800_light_end_pred_emergjetEta = new TH1F("h_ht800_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht800_light_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht1200_light_end_pred_emergjetEta = new TH1F("h_ht1200_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht1200_light_end_pred_emergjetEta->Sumw2();
+    TH1F *h_ht2500_light_end_pred_emergjetEta = new TH1F("h_ht2500_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_ht2500_light_end_pred_emergjetEta->Sumw2();
+
+    TH1F *h_ht0_hev_end_pred_emergjetnTrack = new TH1F("h_ht0_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht0_hev_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht70_hev_end_pred_emergjetnTrack = new TH1F("h_ht70_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht70_hev_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht100_hev_end_pred_emergjetnTrack = new TH1F("h_ht100_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht100_hev_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht200_hev_end_pred_emergjetnTrack = new TH1F("h_ht200_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht200_hev_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht400_hev_end_pred_emergjetnTrack = new TH1F("h_ht400_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht400_hev_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht600_hev_end_pred_emergjetnTrack = new TH1F("h_ht600_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht600_hev_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht800_hev_end_pred_emergjetnTrack = new TH1F("h_ht800_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht800_hev_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht1200_hev_end_pred_emergjetnTrack = new TH1F("h_ht1200_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht1200_hev_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht2500_hev_end_pred_emergjetnTrack = new TH1F("h_ht2500_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht2500_hev_end_pred_emergjetnTrack->Sumw2();
+
+    TH1F *h_ht0_light_end_pred_emergjetnTrack = new TH1F("h_ht0_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht0_light_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht70_light_end_pred_emergjetnTrack = new TH1F("h_ht70_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht70_light_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht100_light_end_pred_emergjetnTrack = new TH1F("h_ht100_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht100_light_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht200_light_end_pred_emergjetnTrack = new TH1F("h_ht200_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht200_light_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht400_light_end_pred_emergjetnTrack = new TH1F("h_ht400_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht400_light_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht600_light_end_pred_emergjetnTrack = new TH1F("h_ht600_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht600_light_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht800_light_end_pred_emergjetnTrack = new TH1F("h_ht800_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht800_light_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht1200_light_end_pred_emergjetnTrack = new TH1F("h_ht1200_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht1200_light_end_pred_emergjetnTrack->Sumw2();
+    TH1F *h_ht2500_light_end_pred_emergjetnTrack = new TH1F("h_ht2500_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_ht2500_light_end_pred_emergjetnTrack->Sumw2();
+
     float_t HT;
 
     Double_t f_ht0_alphamin, f_ht70_alphamin, f_ht100_alphamin, f_ht200_alphamin, f_ht400_alphamin,
@@ -474,146 +937,361 @@ void ee_half_HT_apply_fake_rate()
             {
                 if (HT < 70)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht0_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight);
                         h_ht0_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight);
                         h_ht0_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht0_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight);
+                            h_ht0_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight);
+                            h_ht0_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight);
+                        }
+                        else
+                        {
+                            h_ht0_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight);
+                            h_ht0_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight);
+                            h_ht0_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight);
+                        }
                     }
+
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht0_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight * ff);
+                    h_ht0_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight * ff);
+                    h_ht0_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht0_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight * ff);
-                        h_ht0_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight * ff);
-                        h_ht0_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight * ff);
+                        float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht0_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight * ff_barr);
+                        h_ht0_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight * ff_barr);
+                        h_ht0_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht0_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight * ff_end);
+                        h_ht0_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight * ff_end);
+                        h_ht0_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight * ff_end);
                     }
                 }
                 else if (HT >= 70 && HT < 100)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht70_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight);
                         h_ht70_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight);
                         h_ht70_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht70_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight);
+                            h_ht70_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight);
+                            h_ht70_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight);
+                        }
+                        else
+                        {
+                            h_ht70_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight);
+                            h_ht70_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight);
+                            h_ht70_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight);
+                        }
                     }
+
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht70_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight * ff);
+                    h_ht70_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight * ff);
+                    h_ht70_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht70_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight * ff);
-                        h_ht70_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight * ff);
-                        h_ht70_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight * ff);
+                        float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht70_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight * ff_barr);
+                        h_ht70_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight * ff_barr);
+                        h_ht70_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht70_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight * ff_end);
+                        h_ht70_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight * ff_end);
+                        h_ht70_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight * ff_end);
                     }
                 }
                 else if (HT >= 100 && HT < 200)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht100_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight);
                         h_ht100_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight);
                         h_ht100_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht100_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight);
+                            h_ht100_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight);
+                            h_ht100_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight);
+                        }
+                        else
+                        {
+                            h_ht100_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight);
+                            h_ht100_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight);
+                            h_ht100_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight);
+                        }
                     }
+
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht100_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight * ff);
+                    h_ht100_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight * ff);
+                    h_ht100_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht100_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight * ff);
-                        h_ht100_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight * ff);
-                        h_ht100_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight * ff);
+                        float ffbarr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht100_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight * ffbarr);
+                        h_ht100_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight * ffbarr);
+                        h_ht100_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight * ffbarr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht100_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight * ff_end);
+                        h_ht100_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight * ff_end);
+                        h_ht100_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight * ff_end);
                     }
                 }
                 else if (HT >= 200 && HT < 400)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht200_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight);
                         h_ht200_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight);
                         h_ht200_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht200_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight);
+                            h_ht200_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight);
+                            h_ht200_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight);
+                        }
+                        else
+                        {
+                            h_ht200_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight);
+                            h_ht200_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight);
+                            h_ht200_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight);
+                        }
                     }
+
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht200_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight * ff);
+                    h_ht200_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight * ff);
+                    h_ht200_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht200_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight * ff);
-                        h_ht200_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight * ff);
-                        h_ht200_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight * ff);
+                        float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht200_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight * ff_barr);
+                        h_ht200_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight * ff_barr);
+                        h_ht200_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht200_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight * ff_end);
+                        h_ht200_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight * ff_end);
+                        h_ht200_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight * ff_end);
                     }
                 }
                 else if (HT >= 400 && HT < 600)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht400_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight);
                         h_ht400_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight);
                         h_ht400_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht400_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight);
+                            h_ht400_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight);
+                            h_ht400_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight);
+                        }
+                        else
+                        {
+                            h_ht400_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight);
+                            h_ht400_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight);
+                            h_ht400_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight);
+                        }
                     }
+
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht400_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight * ff);
+                    h_ht400_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight * ff);
+                    h_ht400_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht400_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight * ff);
-                        h_ht400_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight * ff);
-                        h_ht400_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight * ff);
+                        float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht400_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight * ff_barr);
+                        h_ht400_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight * ff_barr);
+                        h_ht400_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht400_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight * ff_end);
+                        h_ht400_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight * ff_end);
+                        h_ht400_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight * ff_end);
                     }
                 }
                 else if (HT >= 600 && HT < 800)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht600_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight);
                         h_ht600_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight);
                         h_ht600_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht600_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight);
+                            h_ht600_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight);
+                            h_ht600_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight);
+                        }
+                        else
+                        {
+                            h_ht600_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight);
+                            h_ht600_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight);
+                            h_ht600_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight);
+                        }
                     }
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht600_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight * ff);
+                    h_ht600_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight * ff);
+                    h_ht600_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht600_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight * ff);
-                        h_ht600_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight * ff);
-                        h_ht600_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight * ff);
+                        float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht600_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight * ff_barr);
+                        h_ht600_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight * ff_barr);
+                        h_ht600_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht600_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight * ff_end);
+                        h_ht600_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight * ff_end);
+                        h_ht600_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight * ff_end);
                     }
                 }
                 else if (HT >= 800 && HT < 1200)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht800_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight);
                         h_ht800_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight);
                         h_ht800_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht800_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight);
+                            h_ht800_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight);
+                            h_ht800_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight);
+                        }
+                        else
+                        {
+                            h_ht800_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight);
+                            h_ht800_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight);
+                            h_ht800_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight);
+                        }
                     }
+
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht800_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight * ff);
+                    h_ht800_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight * ff);
+                    h_ht800_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht800_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight * ff);
-                        h_ht800_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight * ff);
-                        h_ht800_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight * ff);
+                        float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht800_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight * ff_barr);
+                        h_ht800_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight * ff_barr);
+                        h_ht800_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht800_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight * ff_end);
+                        h_ht800_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight * ff_end);
+                        h_ht800_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight * ff_end);
                     }
                 }
                 else if (HT >= 1200 && HT < 2500)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht1200_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight);
                         h_ht1200_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight);
                         h_ht1200_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht1200_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight);
+                            h_ht1200_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight);
+                            h_ht1200_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight);
+                        }
+                        else
+                        {
+                            h_ht1200_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight);
+                            h_ht1200_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight);
+                            h_ht1200_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight);
+                        }
                     }
+
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht1200_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight * ff);
+                    h_ht1200_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight * ff);
+                    h_ht1200_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht1200_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight * ff);
-                        h_ht1200_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight * ff);
-                        h_ht1200_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight * ff);
+                        float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht1200_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight * ff_barr);
+                        h_ht1200_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight * ff_barr);
+                        h_ht1200_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht1200_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight * ff_end);
+                        h_ht1200_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight * ff_end);
+                        h_ht1200_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight * ff_end);
                     }
                 }
                 else if (HT >= 2500)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht2500_hev_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight);
                         h_ht2500_hev_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight);
                         h_ht2500_hev_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht2500_hev_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight);
+                            h_ht2500_hev_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight);
+                            h_ht2500_hev_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight);
+                        }
+                        else
+                        {
+                            h_ht2500_hev_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight);
+                            h_ht2500_hev_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight);
+                            h_ht2500_hev_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight);
+                        }
                     }
+
+                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht2500_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight * ff);
+                    h_ht2500_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight * ff);
+                    h_ht2500_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht2500_hev_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight * ff);
-                        h_ht2500_hev_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight * ff);
-                        h_ht2500_hev_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight * ff);
+                        float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht2500_hev_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight * ff_barr);
+                        h_ht2500_hev_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight * ff_barr);
+                        h_ht2500_hev_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_hev_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht2500_hev_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight * ff_end);
+                        h_ht2500_hev_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight * ff_end);
+                        h_ht2500_hev_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight * ff_end);
                     }
                 }
             }
@@ -621,146 +1299,360 @@ void ee_half_HT_apply_fake_rate()
             {
                 if (HT < 70)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht0_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight);
                         h_ht0_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight);
                         h_ht0_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht0_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight);
+                            h_ht0_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight);
+                            h_ht0_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight);
+                        }
+                        else
+                        {
+                            h_ht0_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight);
+                            h_ht0_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight);
+                            h_ht0_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight);
+                        }
                     }
+
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht0_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight * ff);
+                    h_ht0_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight * ff);
+                    h_ht0_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht0_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight * ff);
-                        h_ht0_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight * ff);
-                        h_ht0_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight * ff);
+                        float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht0_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight * ff_barr);
+                        h_ht0_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight * ff_barr);
+                        h_ht0_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht0_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT0Weight * ff_end);
+                        h_ht0_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT0Weight * ff_end);
+                        h_ht0_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT0Weight * ff_end);
                     }
                 }
                 else if (HT >= 70 && HT < 100)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht70_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight);
                         h_ht70_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight);
                         h_ht70_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht70_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight);
+                            h_ht70_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight);
+                            h_ht70_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight);
+                        }
+                        else
+                        {
+                            h_ht70_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight);
+                            h_ht70_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight);
+                            h_ht70_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight);
+                        }
                     }
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht70_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight * ff);
+                    h_ht70_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight * ff);
+                    h_ht70_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht70_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight * ff);
-                        h_ht70_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight * ff);
-                        h_ht70_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight * ff);
+                        float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht70_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight * ff_barr);
+                        h_ht70_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight * ff_barr);
+                        h_ht70_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht70_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT70Weight * ff_end);
+                        h_ht70_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT70Weight * ff_end);
+                        h_ht70_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT70Weight * ff_end);
                     }
                 }
                 else if (HT >= 100 && HT < 200)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht100_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight);
                         h_ht100_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight);
                         h_ht100_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht100_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight);
+                            h_ht100_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight);
+                            h_ht100_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight);
+                        }
+                        else
+                        {
+                            h_ht100_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight);
+                            h_ht100_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight);
+                            h_ht100_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight);
+                        }
                     }
+
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht100_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight * ff);
+                    h_ht100_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight * ff);
+                    h_ht100_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht100_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight * ff);
-                        h_ht100_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight * ff);
-                        h_ht100_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight * ff);
+                        float ffbarr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht100_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight * ffbarr);
+                        h_ht100_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight * ffbarr);
+                        h_ht100_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight * ffbarr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht100_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT100Weight * ff_end);
+                        h_ht100_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT100Weight * ff_end);
+                        h_ht100_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT100Weight * ff_end);
                     }
                 }
                 else if (HT >= 200 && HT < 400)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht200_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight);
                         h_ht200_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight);
                         h_ht200_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht200_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight);
+                            h_ht200_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight);
+                            h_ht200_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight);
+                        }
+                        else
+                        {
+                            h_ht200_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight);
+                            h_ht200_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight);
+                            h_ht200_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight);
+                        }
                     }
+
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht200_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight * ff);
+                    h_ht200_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight * ff);
+                    h_ht200_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht200_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight * ff);
-                        h_ht200_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight * ff);
-                        h_ht200_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight * ff);
+                        float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht200_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight * ff_barr);
+                        h_ht200_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight * ff_barr);
+                        h_ht200_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht200_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT200Weight * ff_end);
+                        h_ht200_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT200Weight * ff_end);
+                        h_ht200_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT200Weight * ff_end);
                     }
                 }
                 else if (HT >= 400 && HT < 600)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht400_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight);
                         h_ht400_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight);
                         h_ht400_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht400_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight);
+                            h_ht400_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight);
+                            h_ht400_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight);
+                        }
+                        else
+                        {
+                            h_ht400_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight);
+                            h_ht400_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight);
+                            h_ht400_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight);
+                        }
                     }
+
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht400_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight * ff);
+                    h_ht400_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight * ff);
+                    h_ht400_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht400_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight * ff);
-                        h_ht400_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight * ff);
-                        h_ht400_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight * ff);
+                        float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht400_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight * ff_barr);
+                        h_ht400_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight * ff_barr);
+                        h_ht400_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht400_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT400Weight * ff_end);
+                        h_ht400_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT400Weight * ff_end);
+                        h_ht400_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT400Weight * ff_end);
                     }
                 }
                 else if (HT >= 600 && HT < 800)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht600_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight);
                         h_ht600_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight);
                         h_ht600_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht600_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight);
+                            h_ht600_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight);
+                            h_ht600_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight);
+                        }
+                        else
+                        {
+                            h_ht600_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight);
+                            h_ht600_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight);
+                            h_ht600_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight);
+                        }
                     }
+
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht600_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight * ff);
+                    h_ht600_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight * ff);
+                    h_ht600_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht600_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight * ff);
-                        h_ht600_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight * ff);
-                        h_ht600_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight * ff);
+                        float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht600_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight * ff_barr);
+                        h_ht600_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight * ff_barr);
+                        h_ht600_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht600_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT600Weight * ff_end);
+                        h_ht600_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT600Weight * ff_end);
+                        h_ht600_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT600Weight * ff_end);
                     }
                 }
                 else if (HT >= 800 && HT < 1200)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht800_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight);
                         h_ht800_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight);
                         h_ht800_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht800_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight);
+                            h_ht800_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight);
+                            h_ht800_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight);
+                        }
+                        else
+                        {
+                            h_ht800_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight);
+                            h_ht800_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight);
+                            h_ht800_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight);
+                        }
                     }
+
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht800_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight * ff);
+                    h_ht800_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight * ff);
+                    h_ht800_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht800_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight * ff);
-                        h_ht800_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight * ff);
-                        h_ht800_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight * ff);
+                        float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht800_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight * ff_barr);
+                        h_ht800_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight * ff_barr);
+                        h_ht800_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht800_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT800Weight * ff_end);
+                        h_ht800_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT800Weight * ff_end);
+                        h_ht800_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT800Weight * ff_end);
                     }
                 }
                 else if (HT >= 1200 && HT < 2500)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht1200_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight);
                         h_ht1200_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight);
                         h_ht1200_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht1200_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight);
+                            h_ht1200_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight);
+                            h_ht1200_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight);
+                        }
+                        else
+                        {
+                            h_ht1200_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight);
+                            h_ht1200_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight);
+                            h_ht1200_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight);
+                        }
                     }
+
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht1200_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight * ff);
+                    h_ht1200_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight * ff);
+                    h_ht1200_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht1200_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight * ff);
-                        h_ht1200_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight * ff);
-                        h_ht1200_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight * ff);
+                        float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht1200_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight * ff_barr);
+                        h_ht1200_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight * ff_barr);
+                        h_ht1200_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht1200_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT1200Weight * ff_end);
+                        h_ht1200_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT1200Weight * ff_end);
+                        h_ht1200_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT1200Weight * ff_end);
                     }
                 }
                 else if (HT >= 2500)
                 {
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    if ((*v_ht0_alpha)[i] <= 0.35)
                     {
                         h_ht2500_light_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight);
                         h_ht2500_light_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight);
                         h_ht2500_light_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_ht2500_light_barr_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight);
+                            h_ht2500_light_barr_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight);
+                            h_ht2500_light_barr_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight);
+                        }
+                        else
+                        {
+                            h_ht2500_light_end_exp_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight);
+                            h_ht2500_light_end_exp_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight);
+                            h_ht2500_light_end_exp_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight);
+                        }
                     }
+                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                    h_ht2500_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight * ff);
+                    h_ht2500_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight * ff);
+                    h_ht2500_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight * ff);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
-                        h_ht2500_light_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight * ff);
-                        h_ht2500_light_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight * ff);
-                        h_ht2500_light_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight * ff);
+                        float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht2500_light_barr_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight * ff_barr);
+                        h_ht2500_light_barr_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight * ff_barr);
+                        h_ht2500_light_barr_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight * ff_barr);
+                    }
+                    else
+                    {
+                        float ff_end = HT_light_end_fakerate_ntr->GetBinContent((*v_ht0_JetnTracks)[i] + 1);
+                        h_ht2500_light_end_pred_emergjetpt->Fill((*v_ht0_JetPT)[i], I_weight * HT2500Weight * ff_end);
+                        h_ht2500_light_end_pred_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_weight * HT2500Weight * ff_end);
+                        h_ht2500_light_end_pred_emergjetEta->Fill((*v_ht0_JetEta)[i], I_weight * HT2500Weight * ff_end);
                     }
                 }
             }
@@ -782,34 +1674,80 @@ void ee_half_HT_apply_fake_rate()
         {
             if ((*v_ht100_Jethadronflavor)[i] == 4 || (*v_ht100_Jethadronflavor)[i] == 5)
             {
-                if ((*v_ht100_alpha)[i] <= 0.35 && abs((*v_ht100_JetEta)[i]) < 1.479)
+                if ((*v_ht100_alpha)[i] <= 0.35)
                 {
                     h_ht100_hev_exp_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
                     h_ht100_hev_exp_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
                     h_ht100_hev_exp_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    if (abs((*v_ht100_JetEta)[i]) < 1.479)
+                    {
+                        h_ht100_hev_barr_exp_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_ht100_hev_barr_exp_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                        h_ht100_hev_barr_exp_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    }
+                    else
+                    {
+                        h_ht100_hev_end_exp_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_ht100_hev_end_exp_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                        h_ht100_hev_end_exp_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    }
                 }
+                float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht100_JetnTracks)[i] + 1);
+                h_ht100_hev_pred_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight * ff);
+                h_ht100_hev_pred_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight * ff);
+                h_ht100_hev_pred_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight * ff);
                 if (abs((*v_ht100_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht100_JetnTracks)[i] + 1);
-                    h_ht100_hev_pred_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight * ff);
-                    h_ht100_hev_pred_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight * ff);
-                    h_ht100_hev_pred_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight * ff);
+                    float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht100_JetnTracks)[i] + 1);
+                    h_ht100_hev_barr_pred_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight * ff_barr);
+                    h_ht100_hev_barr_pred_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight * ff_barr);
+                    h_ht100_hev_barr_pred_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_hev_fakerate_ntr->GetBinContent((*v_ht100_JetnTracks)[i] + 1);
+                    h_ht100_hev_end_pred_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight * ff_end);
+                    h_ht100_hev_end_pred_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight * ff_end);
+                    h_ht100_hev_end_pred_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight * ff_end);
                 }
             }
             else
             {
-                if ((*v_ht100_alpha)[i] <= 0.35 && abs((*v_ht100_JetEta)[i]) < 1.479)
+                if ((*v_ht100_alpha)[i] <= 0.35)
                 {
                     h_ht100_light_exp_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
                     h_ht100_light_exp_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
                     h_ht100_light_exp_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    if (abs((*v_ht100_JetEta)[i]) < 1.479)
+                    {
+                        h_ht100_light_barr_exp_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_ht100_light_barr_exp_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                        h_ht100_light_barr_exp_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    }
+                    else
+                    {
+                        h_ht100_light_end_exp_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_ht100_light_end_exp_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                        h_ht100_light_end_exp_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    }
                 }
+                float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht100_JetnTracks)[i] + 1);
+                h_ht100_light_pred_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight * ff);
+                h_ht100_light_pred_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight * ff);
+                h_ht100_light_pred_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight * ff);
                 if (abs((*v_ht100_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht100_JetnTracks)[i] + 1);
-                    h_ht100_light_pred_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight * ff);
-                    h_ht100_light_pred_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight * ff);
-                    h_ht100_light_pred_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight * ff);
+                    float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht100_JetnTracks)[i] + 1);
+                    h_ht100_light_barr_pred_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight * ff_barr);
+                    h_ht100_light_barr_pred_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight * ff_barr);
+                    h_ht100_light_barr_pred_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_light_fakerate_ntr->GetBinContent((*v_ht100_JetnTracks)[i] + 1);
+                    h_ht100_light_end_pred_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight * ff_end);
+                    h_ht100_light_end_pred_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight * ff_end);
+                    h_ht100_light_end_pred_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight * ff_end);
                 }
             }
         }
@@ -830,34 +1768,80 @@ void ee_half_HT_apply_fake_rate()
         {
             if ((*v_ht200_Jethadronflavor)[i] == 4 || (*v_ht200_Jethadronflavor)[i] == 5)
             {
-                if ((*v_ht200_alpha)[i] <= 0.35 && abs((*v_ht200_JetEta)[i]) < 1.479)
+                if ((*v_ht200_alpha)[i] <= 0.35)
                 {
                     h_ht200_hev_exp_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
                     h_ht200_hev_exp_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
                     h_ht200_hev_exp_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    if (abs((*v_ht200_JetEta)[i]) < 1.479)
+                    {
+                        h_ht200_hev_barr_exp_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_ht200_hev_barr_exp_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        h_ht200_hev_barr_exp_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    }
+                    else
+                    {
+                        h_ht200_hev_end_exp_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_ht200_hev_end_exp_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        h_ht200_hev_end_exp_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    }
                 }
+                float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht200_JetnTracks)[i] + 1);
+                h_ht200_hev_pred_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight * ff);
+                h_ht200_hev_pred_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight * ff);
+                h_ht200_hev_pred_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight * ff);
                 if (abs((*v_ht200_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht200_JetnTracks)[i] + 1);
-                    h_ht200_hev_pred_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight * ff);
-                    h_ht200_hev_pred_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight * ff);
-                    h_ht200_hev_pred_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight * ff);
+                    float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht200_JetnTracks)[i] + 1);
+                    h_ht200_hev_barr_pred_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight * ff_barr);
+                    h_ht200_hev_barr_pred_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight * ff_barr);
+                    h_ht200_hev_barr_pred_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_hev_fakerate_ntr->GetBinContent((*v_ht200_JetnTracks)[i] + 1);
+                    h_ht200_hev_end_pred_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight * ff_end);
+                    h_ht200_hev_end_pred_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight * ff_end);
+                    h_ht200_hev_end_pred_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight * ff_end);
                 }
             }
             else
             {
-                if ((*v_ht200_alpha)[i] <= 0.35 && abs((*v_ht200_JetEta)[i]) < 1.479)
+                if ((*v_ht200_alpha)[i] <= 0.35)
                 {
                     h_ht200_light_exp_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
                     h_ht200_light_exp_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
                     h_ht200_light_exp_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    if (abs((*v_ht200_JetEta)[i]) < 1.479)
+                    {
+                        h_ht200_light_barr_exp_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_ht200_light_barr_exp_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        h_ht200_light_barr_exp_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    }
+                    else
+                    {
+                        h_ht200_light_end_exp_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_ht200_light_end_exp_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        h_ht200_light_end_exp_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    }
                 }
+                float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht200_JetnTracks)[i] + 1);
+                h_ht200_light_pred_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight * ff);
+                h_ht200_light_pred_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight * ff);
+                h_ht200_light_pred_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight * ff);
                 if (abs((*v_ht200_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht200_JetnTracks)[i] + 1);
-                    h_ht200_light_pred_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight * ff);
-                    h_ht200_light_pred_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight * ff);
-                    h_ht200_light_pred_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight * ff);
+                    float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht200_JetnTracks)[i] + 1);
+                    h_ht200_light_barr_pred_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight * ff_barr);
+                    h_ht200_light_barr_pred_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight * ff_barr);
+                    h_ht200_light_barr_pred_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_light_fakerate_ntr->GetBinContent((*v_ht200_JetnTracks)[i] + 1);
+                    h_ht200_light_end_pred_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight * ff_end);
+                    h_ht200_light_end_pred_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight * ff_end);
+                    h_ht200_light_end_pred_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight * ff_end);
                 }
             }
         }
@@ -879,34 +1863,80 @@ void ee_half_HT_apply_fake_rate()
         {
             if ((*v_ht400_Jethadronflavor)[i] == 4 || (*v_ht400_Jethadronflavor)[i] == 5)
             {
-                if ((*v_ht400_alpha)[i] <= 0.35 && abs((*v_ht400_JetEta)[i]) < 1.479)
+                if ((*v_ht400_alpha)[i] <= 0.35)
                 {
                     h_ht400_hev_exp_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
                     h_ht400_hev_exp_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
                     h_ht400_hev_exp_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    if (abs((*v_ht400_JetEta)[i]) < 1.479)
+                    {
+                        h_ht400_hev_barr_exp_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_ht400_hev_barr_exp_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        h_ht400_hev_barr_exp_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    }
+                    else
+                    {
+                        h_ht400_hev_end_exp_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_ht400_hev_end_exp_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        h_ht400_hev_end_exp_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    }
                 }
+                float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht400_JetnTracks)[i] + 1);
+                h_ht400_hev_pred_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight * ff);
+                h_ht400_hev_pred_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight * ff);
+                h_ht400_hev_pred_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight * ff);
                 if (abs((*v_ht400_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht400_JetnTracks)[i] + 1);
-                    h_ht400_hev_pred_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight * ff);
-                    h_ht400_hev_pred_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight * ff);
-                    h_ht400_hev_pred_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight * ff);
+                    float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht400_JetnTracks)[i] + 1);
+                    h_ht400_hev_barr_pred_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight * ff_barr);
+                    h_ht400_hev_barr_pred_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight * ff_barr);
+                    h_ht400_hev_barr_pred_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_hev_fakerate_ntr->GetBinContent((*v_ht400_JetnTracks)[i] + 1);
+                    h_ht400_hev_end_pred_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight * ff_end);
+                    h_ht400_hev_end_pred_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight * ff_end);
+                    h_ht400_hev_end_pred_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight * ff_end);
                 }
             }
             else
             {
-                if ((*v_ht400_alpha)[i] <= 0.35 && abs((*v_ht400_JetEta)[i]) < 1.479)
+                if ((*v_ht400_alpha)[i] <= 0.35)
                 {
                     h_ht400_light_exp_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
                     h_ht400_light_exp_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
                     h_ht400_light_exp_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    if (abs((*v_ht400_JetEta)[i]) < 1.479)
+                    {
+                        h_ht400_light_barr_exp_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_ht400_light_barr_exp_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        h_ht400_light_barr_exp_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    }
+                    else
+                    {
+                        h_ht400_light_end_exp_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_ht400_light_end_exp_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        h_ht400_light_end_exp_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    }
                 }
+                float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht400_JetnTracks)[i] + 1);
+                h_ht400_light_pred_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight * ff);
+                h_ht400_light_pred_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight * ff);
+                h_ht400_light_pred_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight * ff);
                 if (abs((*v_ht400_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht400_JetnTracks)[i] + 1);
-                    h_ht400_light_pred_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight * ff);
-                    h_ht400_light_pred_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight * ff);
-                    h_ht400_light_pred_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight * ff);
+                    float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht400_JetnTracks)[i] + 1);
+                    h_ht400_light_barr_pred_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight * ff_barr);
+                    h_ht400_light_barr_pred_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight * ff_barr);
+                    h_ht400_light_barr_pred_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_light_fakerate_ntr->GetBinContent((*v_ht400_JetnTracks)[i] + 1);
+                    h_ht400_light_end_pred_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight * ff_end);
+                    h_ht400_light_end_pred_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight * ff_end);
+                    h_ht400_light_end_pred_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight * ff_end);
                 }
             }
         }
@@ -927,34 +1957,80 @@ void ee_half_HT_apply_fake_rate()
         {
             if ((*v_ht600_Jethadronflavor)[i] == 4 || (*v_ht600_Jethadronflavor)[i] == 5)
             {
-                if ((*v_ht600_alpha)[i] <= 0.35 && abs((*v_ht600_JetEta)[i]) < 1.479)
+                if ((*v_ht600_alpha)[i] <= 0.35)
                 {
                     h_ht600_hev_exp_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
                     h_ht600_hev_exp_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
                     h_ht600_hev_exp_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    if (abs((*v_ht600_JetEta)[i]) < 1.479)
+                    {
+                        h_ht600_hev_barr_exp_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_ht600_hev_barr_exp_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        h_ht600_hev_barr_exp_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    }
+                    else
+                    {
+                        h_ht600_hev_end_exp_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_ht600_hev_end_exp_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        h_ht600_hev_end_exp_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    }
                 }
+                float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht600_JetnTracks)[i] + 1);
+                h_ht600_hev_pred_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight * ff);
+                h_ht600_hev_pred_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight * ff);
+                h_ht600_hev_pred_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight * ff);
                 if (abs((*v_ht600_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht600_JetnTracks)[i] + 1);
-                    h_ht600_hev_pred_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight * ff);
-                    h_ht600_hev_pred_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight * ff);
-                    h_ht600_hev_pred_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight * ff);
+                    float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht600_JetnTracks)[i] + 1);
+                    h_ht600_hev_barr_pred_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight * ff_barr);
+                    h_ht600_hev_barr_pred_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight * ff_barr);
+                    h_ht600_hev_barr_pred_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_hev_fakerate_ntr->GetBinContent((*v_ht600_JetnTracks)[i] + 1);
+                    h_ht600_hev_end_pred_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight * ff_end);
+                    h_ht600_hev_end_pred_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight * ff_end);
+                    h_ht600_hev_end_pred_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight * ff_end);
                 }
             }
             else
             {
-                if ((*v_ht600_alpha)[i] <= 0.35 && abs((*v_ht600_JetEta)[i]) < 1.479)
+                if ((*v_ht600_alpha)[i] <= 0.35)
                 {
                     h_ht600_light_exp_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
                     h_ht600_light_exp_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
                     h_ht600_light_exp_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    if (abs((*v_ht600_JetEta)[i]) < 1.479)
+                    {
+                        h_ht600_light_barr_exp_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_ht600_light_barr_exp_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        h_ht600_light_barr_exp_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    }
+                    else
+                    {
+                        h_ht600_light_end_exp_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_ht600_light_end_exp_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        h_ht600_light_end_exp_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    }
                 }
+                float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht600_JetnTracks)[i] + 1);
+                h_ht600_light_pred_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight * ff);
+                h_ht600_light_pred_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight * ff);
+                h_ht600_light_pred_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight * ff);
                 if (abs((*v_ht600_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht600_JetnTracks)[i] + 1);
-                    h_ht600_light_pred_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight * ff);
-                    h_ht600_light_pred_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight * ff);
-                    h_ht600_light_pred_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight * ff);
+                    float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht600_JetnTracks)[i] + 1);
+                    h_ht600_light_barr_pred_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight * ff_barr);
+                    h_ht600_light_barr_pred_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight * ff_barr);
+                    h_ht600_light_barr_pred_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_light_fakerate_ntr->GetBinContent((*v_ht600_JetnTracks)[i] + 1);
+                    h_ht600_light_end_pred_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight * ff_end);
+                    h_ht600_light_end_pred_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight * ff_end);
+                    h_ht600_light_end_pred_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight * ff_end);
                 }
             }
         }
@@ -976,34 +2052,80 @@ void ee_half_HT_apply_fake_rate()
         {
             if ((*v_ht800_Jethadronflavor)[i] == 4 || (*v_ht800_Jethadronflavor)[i] == 5)
             {
-                if ((*v_ht800_alpha)[i] <= 0.35 && abs((*v_ht800_JetEta)[i]) < 1.479)
+                if ((*v_ht800_alpha)[i] <= 0.35)
                 {
                     h_ht800_hev_exp_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
                     h_ht800_hev_exp_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
                     h_ht800_hev_exp_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    if (abs((*v_ht800_JetEta)[i]) < 1.479)
+                    {
+                        h_ht800_hev_barr_exp_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_ht800_hev_barr_exp_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        h_ht800_hev_barr_exp_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    }
+                    else
+                    {
+                        h_ht800_hev_end_exp_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_ht800_hev_end_exp_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        h_ht800_hev_end_exp_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    }
                 }
+                float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht800_JetnTracks)[i] + 1);
+                h_ht800_hev_pred_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight * ff);
+                h_ht800_hev_pred_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight * ff);
+                h_ht800_hev_pred_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight * ff);
                 if (abs((*v_ht800_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht800_JetnTracks)[i] + 1);
-                    h_ht800_hev_pred_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight * ff);
-                    h_ht800_hev_pred_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight * ff);
-                    h_ht800_hev_pred_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight * ff);
+                    float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht800_JetnTracks)[i] + 1);
+                    h_ht800_hev_barr_pred_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight * ff_barr);
+                    h_ht800_hev_barr_pred_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight * ff_barr);
+                    h_ht800_hev_barr_pred_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_hev_fakerate_ntr->GetBinContent((*v_ht800_JetnTracks)[i] + 1);
+                    h_ht800_hev_end_pred_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight * ff_end);
+                    h_ht800_hev_end_pred_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight * ff_end);
+                    h_ht800_hev_end_pred_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight * ff_end);
                 }
             }
             else
             {
-                if ((*v_ht800_alpha)[i] <= 0.35 && abs((*v_ht800_JetEta)[i]) < 1.479)
+                if ((*v_ht800_alpha)[i] <= 0.35)
                 {
                     h_ht800_light_exp_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
                     h_ht800_light_exp_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
                     h_ht800_light_exp_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    if (abs((*v_ht800_JetEta)[i]) < 1.479)
+                    {
+                        h_ht800_light_barr_exp_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_ht800_light_barr_exp_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        h_ht800_light_barr_exp_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    }
+                    else
+                    {
+                        h_ht800_light_end_exp_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_ht800_light_end_exp_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        h_ht800_light_end_exp_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    }
                 }
+                float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht800_JetnTracks)[i] + 1);
+                h_ht800_light_pred_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight * ff);
+                h_ht800_light_pred_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight * ff);
+                h_ht800_light_pred_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight * ff);
                 if (abs((*v_ht800_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht800_JetnTracks)[i] + 1);
-                    h_ht800_light_pred_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight * ff);
-                    h_ht800_light_pred_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight * ff);
-                    h_ht800_light_pred_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight * ff);
+                    float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht800_JetnTracks)[i] + 1);
+                    h_ht800_light_barr_pred_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight * ff_barr);
+                    h_ht800_light_barr_pred_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight * ff_barr);
+                    h_ht800_light_barr_pred_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_light_fakerate_ntr->GetBinContent((*v_ht800_JetnTracks)[i] + 1);
+                    h_ht800_light_end_pred_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight * ff_end);
+                    h_ht800_light_end_pred_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight * ff_end);
+                    h_ht800_light_end_pred_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight * ff_end);
                 }
             }
         }
@@ -1025,35 +2147,80 @@ void ee_half_HT_apply_fake_rate()
         {
             if ((*v_ht1200_Jethadronflavor)[i] == 4 || (*v_ht1200_Jethadronflavor)[i] == 5)
             {
-
-                if ((*v_ht1200_alpha)[i] <= 0.35 && abs((*v_ht1200_JetEta)[i]) < 1.479)
+                if ((*v_ht1200_alpha)[i] <= 0.35)
                 {
                     h_ht1200_hev_exp_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
                     h_ht1200_hev_exp_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
                     h_ht1200_hev_exp_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    if (abs((*v_ht1200_JetEta)[i]) < 1.479)
+                    {
+                        h_ht1200_hev_barr_exp_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_ht1200_hev_barr_exp_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        h_ht1200_hev_barr_exp_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    }
+                    else
+                    {
+                        h_ht1200_hev_end_exp_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_ht1200_hev_end_exp_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        h_ht1200_hev_end_exp_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    }
                 }
+                float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht1200_JetnTracks)[i] + 1);
+                h_ht1200_hev_pred_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight * ff);
+                h_ht1200_hev_pred_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight * ff);
+                h_ht1200_hev_pred_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight * ff);
                 if (abs((*v_ht1200_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht1200_JetnTracks)[i] + 1);
-                    h_ht1200_hev_pred_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight * ff);
-                    h_ht1200_hev_pred_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight * ff);
-                    h_ht1200_hev_pred_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight * ff);
+                    float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht1200_JetnTracks)[i] + 1);
+                    h_ht1200_hev_barr_pred_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight * ff_barr);
+                    h_ht1200_hev_barr_pred_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight * ff_barr);
+                    h_ht1200_hev_barr_pred_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_hev_fakerate_ntr->GetBinContent((*v_ht1200_JetnTracks)[i] + 1);
+                    h_ht1200_hev_end_pred_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight * ff_end);
+                    h_ht1200_hev_end_pred_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight * ff_end);
+                    h_ht1200_hev_end_pred_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight * ff_end);
                 }
             }
             else
             {
-                if ((*v_ht1200_alpha)[i] <= 0.35 && abs((*v_ht1200_JetEta)[i]) < 1.479)
+                if ((*v_ht1200_alpha)[i] <= 0.35)
                 {
                     h_ht1200_light_exp_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
                     h_ht1200_light_exp_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
                     h_ht1200_light_exp_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    if (abs((*v_ht1200_JetEta)[i]) < 1.479)
+                    {
+                        h_ht1200_light_barr_exp_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_ht1200_light_barr_exp_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        h_ht1200_light_barr_exp_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    }
+                    else
+                    {
+                        h_ht1200_light_end_exp_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_ht1200_light_end_exp_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        h_ht1200_light_end_exp_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    }
                 }
+                float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht1200_JetnTracks)[i] + 1);
+                h_ht1200_light_pred_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight * ff);
+                h_ht1200_light_pred_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight * ff);
+                h_ht1200_light_pred_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight * ff);
                 if (abs((*v_ht1200_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht1200_JetnTracks)[i] + 1);
-                    h_ht1200_light_pred_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight * ff);
-                    h_ht1200_light_pred_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight * ff);
-                    h_ht1200_light_pred_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight * ff);
+                    float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht1200_JetnTracks)[i] + 1);
+                    h_ht1200_light_barr_pred_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight * ff_barr);
+                    h_ht1200_light_barr_pred_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight * ff_barr);
+                    h_ht1200_light_barr_pred_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_light_fakerate_ntr->GetBinContent((*v_ht1200_JetnTracks)[i] + 1);
+                    h_ht1200_light_end_pred_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight * ff_end);
+                    h_ht1200_light_end_pred_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight * ff_end);
+                    h_ht1200_light_end_pred_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight * ff_end);
                 }
             }
         }
@@ -1075,36 +2242,80 @@ void ee_half_HT_apply_fake_rate()
         {
             if ((*v_ht2500_Jethadronflavor)[i] == 4 || (*v_ht2500_Jethadronflavor)[i] == 5)
             {
-                if ((*v_ht2500_alpha)[i] <= 0.35 && abs((*v_ht2500_JetEta)[i]) < 1.479)
+                if ((*v_ht2500_alpha)[i] <= 0.35)
                 {
                     h_ht2500_hev_exp_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
                     h_ht2500_hev_exp_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
                     h_ht2500_hev_exp_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    if (abs((*v_ht2500_JetEta)[i]) < 1.479)
+                    {
+                        h_ht2500_hev_barr_exp_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_ht2500_hev_barr_exp_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        h_ht2500_hev_barr_exp_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    }
+                    else
+                    {
+                        h_ht2500_hev_end_exp_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_ht2500_hev_end_exp_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        h_ht2500_hev_end_exp_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    }
                 }
+                float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht2500_JetnTracks)[i] + 1);
+                h_ht2500_hev_pred_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight * ff);
+                h_ht2500_hev_pred_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight * ff);
+                h_ht2500_hev_pred_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight * ff);
                 if (abs((*v_ht2500_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_hev_fakerate_ntr->GetBinContent((*v_ht2500_JetnTracks)[i] + 1);
-                    h_ht2500_hev_pred_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight * ff);
-                    h_ht2500_hev_pred_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight * ff);
-                    h_ht2500_hev_pred_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight * ff);
+                    float ff_barr = HT_hev_barr_fakerate_ntr->GetBinContent((*v_ht2500_JetnTracks)[i] + 1);
+                    h_ht2500_hev_barr_pred_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight * ff_barr);
+                    h_ht2500_hev_barr_pred_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight * ff_barr);
+                    h_ht2500_hev_barr_pred_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_hev_fakerate_ntr->GetBinContent((*v_ht2500_JetnTracks)[i] + 1);
+                    h_ht2500_hev_end_pred_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight * ff_end);
+                    h_ht2500_hev_end_pred_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight * ff_end);
+                    h_ht2500_hev_end_pred_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight * ff_end);
                 }
             }
             else
             {
-                if ((*v_ht2500_alpha)[i] <= 0.35 && abs((*v_ht2500_JetEta)[i]) < 1.479)
+                if ((*v_ht2500_alpha)[i] <= 0.35)
                 {
                     h_ht2500_light_exp_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
                     h_ht2500_light_exp_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
                     h_ht2500_light_exp_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    if (abs((*v_ht2500_JetEta)[i]) < 1.479)
+                    {
+                        h_ht2500_light_barr_exp_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_ht2500_light_barr_exp_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        h_ht2500_light_barr_exp_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    }
+                    else
+                    {
+                        h_ht2500_light_end_exp_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_ht2500_light_end_exp_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        h_ht2500_light_end_exp_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    }
                 }
+                float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht2500_JetnTracks)[i] + 1);
+                h_ht2500_light_pred_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight * ff);
+                h_ht2500_light_pred_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight * ff);
+                h_ht2500_light_pred_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight * ff);
                 if (abs((*v_ht2500_JetEta)[i]) < 1.479)
                 {
-                    float ff = HT_light_fakerate_ntr->GetBinContent((*v_ht2500_JetnTracks)[i] + 1);
-                    // cout << "(*v_ht2500_JetnTracks)[i] = " << (*v_ht2500_JetnTracks)[i] << endl;
-                    // cout << "ff = " << ff << endl;
-                    h_ht2500_light_pred_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight * ff);
-                    h_ht2500_light_pred_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight * ff);
-                    h_ht2500_light_pred_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight * ff);
+                    float ff_barr = HT_light_barr_fakerate_ntr->GetBinContent((*v_ht2500_JetnTracks)[i] + 1);
+                    h_ht2500_light_barr_pred_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight * ff_barr);
+                    h_ht2500_light_barr_pred_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight * ff_barr);
+                    h_ht2500_light_barr_pred_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = HT_light_fakerate_ntr->GetBinContent((*v_ht2500_JetnTracks)[i] + 1);
+                    h_ht2500_light_end_pred_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight * ff_end);
+                    h_ht2500_light_end_pred_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight * ff_end);
+                    h_ht2500_light_end_pred_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight * ff_end);
                 }
             }
         }
@@ -1217,6 +2428,222 @@ void ee_half_HT_apply_fake_rate()
     h_ht0_light_exp_emergjetEta->Add(h_ht1200_light_exp_emergjetEta);
     h_ht0_light_exp_emergjetEta->Add(h_ht2500_light_exp_emergjetEta);
 
+    h_ht0_hev_barr_pred_emergjetpt->Add(h_ht70_hev_barr_pred_emergjetpt);
+    h_ht0_hev_barr_pred_emergjetpt->Add(h_ht100_hev_barr_pred_emergjetpt);
+    h_ht0_hev_barr_pred_emergjetpt->Add(h_ht200_hev_barr_pred_emergjetpt);
+    h_ht0_hev_barr_pred_emergjetpt->Add(h_ht400_hev_barr_pred_emergjetpt);
+    h_ht0_hev_barr_pred_emergjetpt->Add(h_ht600_hev_barr_pred_emergjetpt);
+    h_ht0_hev_barr_pred_emergjetpt->Add(h_ht800_hev_barr_pred_emergjetpt);
+    h_ht0_hev_barr_pred_emergjetpt->Add(h_ht1200_hev_barr_pred_emergjetpt);
+    h_ht0_hev_barr_pred_emergjetpt->Add(h_ht2500_hev_barr_pred_emergjetpt);
+
+    h_ht0_hev_barr_exp_emergjetpt->Add(h_ht70_hev_barr_exp_emergjetpt);
+    h_ht0_hev_barr_exp_emergjetpt->Add(h_ht100_hev_barr_exp_emergjetpt);
+    h_ht0_hev_barr_exp_emergjetpt->Add(h_ht200_hev_barr_exp_emergjetpt);
+    h_ht0_hev_barr_exp_emergjetpt->Add(h_ht400_hev_barr_exp_emergjetpt);
+    h_ht0_hev_barr_exp_emergjetpt->Add(h_ht600_hev_barr_exp_emergjetpt);
+    h_ht0_hev_barr_exp_emergjetpt->Add(h_ht800_hev_barr_exp_emergjetpt);
+    h_ht0_hev_barr_exp_emergjetpt->Add(h_ht1200_hev_barr_exp_emergjetpt);
+    h_ht0_hev_barr_exp_emergjetpt->Add(h_ht2500_hev_barr_exp_emergjetpt);
+
+    h_ht0_light_barr_pred_emergjetpt->Add(h_ht70_light_barr_pred_emergjetpt);
+    h_ht0_light_barr_pred_emergjetpt->Add(h_ht100_light_barr_pred_emergjetpt);
+    h_ht0_light_barr_pred_emergjetpt->Add(h_ht200_light_barr_pred_emergjetpt);
+    h_ht0_light_barr_pred_emergjetpt->Add(h_ht400_light_barr_pred_emergjetpt);
+    h_ht0_light_barr_pred_emergjetpt->Add(h_ht600_light_barr_pred_emergjetpt);
+    h_ht0_light_barr_pred_emergjetpt->Add(h_ht800_light_barr_pred_emergjetpt);
+    h_ht0_light_barr_pred_emergjetpt->Add(h_ht1200_light_barr_pred_emergjetpt);
+    h_ht0_light_barr_pred_emergjetpt->Add(h_ht2500_light_barr_pred_emergjetpt);
+
+    h_ht0_light_barr_exp_emergjetpt->Add(h_ht70_light_barr_exp_emergjetpt);
+    h_ht0_light_barr_exp_emergjetpt->Add(h_ht100_light_barr_exp_emergjetpt);
+    h_ht0_light_barr_exp_emergjetpt->Add(h_ht200_light_barr_exp_emergjetpt);
+    h_ht0_light_barr_exp_emergjetpt->Add(h_ht400_light_barr_exp_emergjetpt);
+    h_ht0_light_barr_exp_emergjetpt->Add(h_ht600_light_barr_exp_emergjetpt);
+    h_ht0_light_barr_exp_emergjetpt->Add(h_ht800_light_barr_exp_emergjetpt);
+    h_ht0_light_barr_exp_emergjetpt->Add(h_ht1200_light_barr_exp_emergjetpt);
+    h_ht0_light_barr_exp_emergjetpt->Add(h_ht2500_light_barr_exp_emergjetpt);
+
+    h_ht0_hev_barr_pred_emergjetnTrack->Add(h_ht70_hev_barr_pred_emergjetnTrack);
+    h_ht0_hev_barr_pred_emergjetnTrack->Add(h_ht100_hev_barr_pred_emergjetnTrack);
+    h_ht0_hev_barr_pred_emergjetnTrack->Add(h_ht200_hev_barr_pred_emergjetnTrack);
+    h_ht0_hev_barr_pred_emergjetnTrack->Add(h_ht400_hev_barr_pred_emergjetnTrack);
+    h_ht0_hev_barr_pred_emergjetnTrack->Add(h_ht600_hev_barr_pred_emergjetnTrack);
+    h_ht0_hev_barr_pred_emergjetnTrack->Add(h_ht800_hev_barr_pred_emergjetnTrack);
+    h_ht0_hev_barr_pred_emergjetnTrack->Add(h_ht1200_hev_barr_pred_emergjetnTrack);
+    h_ht0_hev_barr_pred_emergjetnTrack->Add(h_ht2500_hev_barr_pred_emergjetnTrack);
+
+    h_ht0_hev_barr_exp_emergjetnTrack->Add(h_ht70_hev_barr_exp_emergjetnTrack);
+    h_ht0_hev_barr_exp_emergjetnTrack->Add(h_ht100_hev_barr_exp_emergjetnTrack);
+    h_ht0_hev_barr_exp_emergjetnTrack->Add(h_ht200_hev_barr_exp_emergjetnTrack);
+    h_ht0_hev_barr_exp_emergjetnTrack->Add(h_ht400_hev_barr_exp_emergjetnTrack);
+    h_ht0_hev_barr_exp_emergjetnTrack->Add(h_ht600_hev_barr_exp_emergjetnTrack);
+    h_ht0_hev_barr_exp_emergjetnTrack->Add(h_ht800_hev_barr_exp_emergjetnTrack);
+    h_ht0_hev_barr_exp_emergjetnTrack->Add(h_ht1200_hev_barr_exp_emergjetnTrack);
+    h_ht0_hev_barr_exp_emergjetnTrack->Add(h_ht2500_hev_barr_exp_emergjetnTrack);
+
+    h_ht0_light_barr_pred_emergjetnTrack->Add(h_ht70_light_barr_pred_emergjetnTrack);
+    h_ht0_light_barr_pred_emergjetnTrack->Add(h_ht100_light_barr_pred_emergjetnTrack);
+    h_ht0_light_barr_pred_emergjetnTrack->Add(h_ht200_light_barr_pred_emergjetnTrack);
+    h_ht0_light_barr_pred_emergjetnTrack->Add(h_ht400_light_barr_pred_emergjetnTrack);
+    h_ht0_light_barr_pred_emergjetnTrack->Add(h_ht600_light_barr_pred_emergjetnTrack);
+    h_ht0_light_barr_pred_emergjetnTrack->Add(h_ht800_light_barr_pred_emergjetnTrack);
+    h_ht0_light_barr_pred_emergjetnTrack->Add(h_ht1200_light_barr_pred_emergjetnTrack);
+    h_ht0_light_barr_pred_emergjetnTrack->Add(h_ht2500_light_barr_pred_emergjetnTrack);
+
+    h_ht0_light_barr_exp_emergjetnTrack->Add(h_ht70_light_barr_exp_emergjetnTrack);
+    h_ht0_light_barr_exp_emergjetnTrack->Add(h_ht100_light_barr_exp_emergjetnTrack);
+    h_ht0_light_barr_exp_emergjetnTrack->Add(h_ht200_light_barr_exp_emergjetnTrack);
+    h_ht0_light_barr_exp_emergjetnTrack->Add(h_ht400_light_barr_exp_emergjetnTrack);
+    h_ht0_light_barr_exp_emergjetnTrack->Add(h_ht600_light_barr_exp_emergjetnTrack);
+    h_ht0_light_barr_exp_emergjetnTrack->Add(h_ht800_light_barr_exp_emergjetnTrack);
+    h_ht0_light_barr_exp_emergjetnTrack->Add(h_ht1200_light_barr_exp_emergjetnTrack);
+    h_ht0_light_barr_exp_emergjetnTrack->Add(h_ht2500_light_barr_exp_emergjetnTrack);
+
+    h_ht0_hev_barr_pred_emergjetEta->Add(h_ht70_hev_barr_pred_emergjetEta);
+    h_ht0_hev_barr_pred_emergjetEta->Add(h_ht100_hev_barr_pred_emergjetEta);
+    h_ht0_hev_barr_pred_emergjetEta->Add(h_ht200_hev_barr_pred_emergjetEta);
+    h_ht0_hev_barr_pred_emergjetEta->Add(h_ht400_hev_barr_pred_emergjetEta);
+    h_ht0_hev_barr_pred_emergjetEta->Add(h_ht600_hev_barr_pred_emergjetEta);
+    h_ht0_hev_barr_pred_emergjetEta->Add(h_ht800_hev_barr_pred_emergjetEta);
+    h_ht0_hev_barr_pred_emergjetEta->Add(h_ht1200_hev_barr_pred_emergjetEta);
+    h_ht0_hev_barr_pred_emergjetEta->Add(h_ht2500_hev_barr_pred_emergjetEta);
+
+    h_ht0_hev_barr_exp_emergjetEta->Add(h_ht70_hev_barr_exp_emergjetEta);
+    h_ht0_hev_barr_exp_emergjetEta->Add(h_ht100_hev_barr_exp_emergjetEta);
+    h_ht0_hev_barr_exp_emergjetEta->Add(h_ht200_hev_barr_exp_emergjetEta);
+    h_ht0_hev_barr_exp_emergjetEta->Add(h_ht400_hev_barr_exp_emergjetEta);
+    h_ht0_hev_barr_exp_emergjetEta->Add(h_ht600_hev_barr_exp_emergjetEta);
+    h_ht0_hev_barr_exp_emergjetEta->Add(h_ht800_hev_barr_exp_emergjetEta);
+    h_ht0_hev_barr_exp_emergjetEta->Add(h_ht1200_hev_barr_exp_emergjetEta);
+    h_ht0_hev_barr_exp_emergjetEta->Add(h_ht2500_hev_barr_exp_emergjetEta);
+
+    h_ht0_light_barr_pred_emergjetEta->Add(h_ht70_light_barr_pred_emergjetEta);
+    h_ht0_light_barr_pred_emergjetEta->Add(h_ht100_light_barr_pred_emergjetEta);
+    h_ht0_light_barr_pred_emergjetEta->Add(h_ht200_light_barr_pred_emergjetEta);
+    h_ht0_light_barr_pred_emergjetEta->Add(h_ht400_light_barr_pred_emergjetEta);
+    h_ht0_light_barr_pred_emergjetEta->Add(h_ht600_light_barr_pred_emergjetEta);
+    h_ht0_light_barr_pred_emergjetEta->Add(h_ht800_light_barr_pred_emergjetEta);
+    h_ht0_light_barr_pred_emergjetEta->Add(h_ht1200_light_barr_pred_emergjetEta);
+    h_ht0_light_barr_pred_emergjetEta->Add(h_ht2500_light_barr_pred_emergjetEta);
+
+    h_ht0_light_barr_exp_emergjetEta->Add(h_ht70_light_barr_exp_emergjetEta);
+    h_ht0_light_barr_exp_emergjetEta->Add(h_ht100_light_barr_exp_emergjetEta);
+    h_ht0_light_barr_exp_emergjetEta->Add(h_ht200_light_barr_exp_emergjetEta);
+    h_ht0_light_barr_exp_emergjetEta->Add(h_ht400_light_barr_exp_emergjetEta);
+    h_ht0_light_barr_exp_emergjetEta->Add(h_ht600_light_barr_exp_emergjetEta);
+    h_ht0_light_barr_exp_emergjetEta->Add(h_ht800_light_barr_exp_emergjetEta);
+    h_ht0_light_barr_exp_emergjetEta->Add(h_ht1200_light_barr_exp_emergjetEta);
+    h_ht0_light_barr_exp_emergjetEta->Add(h_ht2500_light_barr_exp_emergjetEta);
+
+    h_ht0_hev_end_pred_emergjetpt->Add(h_ht70_hev_end_pred_emergjetpt);
+    h_ht0_hev_end_pred_emergjetpt->Add(h_ht100_hev_end_pred_emergjetpt);
+    h_ht0_hev_end_pred_emergjetpt->Add(h_ht200_hev_end_pred_emergjetpt);
+    h_ht0_hev_end_pred_emergjetpt->Add(h_ht400_hev_end_pred_emergjetpt);
+    h_ht0_hev_end_pred_emergjetpt->Add(h_ht600_hev_end_pred_emergjetpt);
+    h_ht0_hev_end_pred_emergjetpt->Add(h_ht800_hev_end_pred_emergjetpt);
+    h_ht0_hev_end_pred_emergjetpt->Add(h_ht1200_hev_end_pred_emergjetpt);
+    h_ht0_hev_end_pred_emergjetpt->Add(h_ht2500_hev_end_pred_emergjetpt);
+
+    h_ht0_hev_end_exp_emergjetpt->Add(h_ht70_hev_end_exp_emergjetpt);
+    h_ht0_hev_end_exp_emergjetpt->Add(h_ht100_hev_end_exp_emergjetpt);
+    h_ht0_hev_end_exp_emergjetpt->Add(h_ht200_hev_end_exp_emergjetpt);
+    h_ht0_hev_end_exp_emergjetpt->Add(h_ht400_hev_end_exp_emergjetpt);
+    h_ht0_hev_end_exp_emergjetpt->Add(h_ht600_hev_end_exp_emergjetpt);
+    h_ht0_hev_end_exp_emergjetpt->Add(h_ht800_hev_end_exp_emergjetpt);
+    h_ht0_hev_end_exp_emergjetpt->Add(h_ht1200_hev_end_exp_emergjetpt);
+    h_ht0_hev_end_exp_emergjetpt->Add(h_ht2500_hev_end_exp_emergjetpt);
+
+    h_ht0_light_end_pred_emergjetpt->Add(h_ht70_light_end_pred_emergjetpt);
+    h_ht0_light_end_pred_emergjetpt->Add(h_ht100_light_end_pred_emergjetpt);
+    h_ht0_light_end_pred_emergjetpt->Add(h_ht200_light_end_pred_emergjetpt);
+    h_ht0_light_end_pred_emergjetpt->Add(h_ht400_light_end_pred_emergjetpt);
+    h_ht0_light_end_pred_emergjetpt->Add(h_ht600_light_end_pred_emergjetpt);
+    h_ht0_light_end_pred_emergjetpt->Add(h_ht800_light_end_pred_emergjetpt);
+    h_ht0_light_end_pred_emergjetpt->Add(h_ht1200_light_end_pred_emergjetpt);
+    h_ht0_light_end_pred_emergjetpt->Add(h_ht2500_light_end_pred_emergjetpt);
+
+    h_ht0_light_end_exp_emergjetpt->Add(h_ht70_light_end_exp_emergjetpt);
+    h_ht0_light_end_exp_emergjetpt->Add(h_ht100_light_end_exp_emergjetpt);
+    h_ht0_light_end_exp_emergjetpt->Add(h_ht200_light_end_exp_emergjetpt);
+    h_ht0_light_end_exp_emergjetpt->Add(h_ht400_light_end_exp_emergjetpt);
+    h_ht0_light_end_exp_emergjetpt->Add(h_ht600_light_end_exp_emergjetpt);
+    h_ht0_light_end_exp_emergjetpt->Add(h_ht800_light_end_exp_emergjetpt);
+    h_ht0_light_end_exp_emergjetpt->Add(h_ht1200_light_end_exp_emergjetpt);
+    h_ht0_light_end_exp_emergjetpt->Add(h_ht2500_light_end_exp_emergjetpt);
+
+    h_ht0_hev_end_pred_emergjetnTrack->Add(h_ht70_hev_end_pred_emergjetnTrack);
+    h_ht0_hev_end_pred_emergjetnTrack->Add(h_ht100_hev_end_pred_emergjetnTrack);
+    h_ht0_hev_end_pred_emergjetnTrack->Add(h_ht200_hev_end_pred_emergjetnTrack);
+    h_ht0_hev_end_pred_emergjetnTrack->Add(h_ht400_hev_end_pred_emergjetnTrack);
+    h_ht0_hev_end_pred_emergjetnTrack->Add(h_ht600_hev_end_pred_emergjetnTrack);
+    h_ht0_hev_end_pred_emergjetnTrack->Add(h_ht800_hev_end_pred_emergjetnTrack);
+    h_ht0_hev_end_pred_emergjetnTrack->Add(h_ht1200_hev_end_pred_emergjetnTrack);
+    h_ht0_hev_end_pred_emergjetnTrack->Add(h_ht2500_hev_end_pred_emergjetnTrack);
+
+    h_ht0_hev_end_exp_emergjetnTrack->Add(h_ht70_hev_end_exp_emergjetnTrack);
+    h_ht0_hev_end_exp_emergjetnTrack->Add(h_ht100_hev_end_exp_emergjetnTrack);
+    h_ht0_hev_end_exp_emergjetnTrack->Add(h_ht200_hev_end_exp_emergjetnTrack);
+    h_ht0_hev_end_exp_emergjetnTrack->Add(h_ht400_hev_end_exp_emergjetnTrack);
+    h_ht0_hev_end_exp_emergjetnTrack->Add(h_ht600_hev_end_exp_emergjetnTrack);
+    h_ht0_hev_end_exp_emergjetnTrack->Add(h_ht800_hev_end_exp_emergjetnTrack);
+    h_ht0_hev_end_exp_emergjetnTrack->Add(h_ht1200_hev_end_exp_emergjetnTrack);
+    h_ht0_hev_end_exp_emergjetnTrack->Add(h_ht2500_hev_end_exp_emergjetnTrack);
+
+    h_ht0_light_end_pred_emergjetnTrack->Add(h_ht70_light_end_pred_emergjetnTrack);
+    h_ht0_light_end_pred_emergjetnTrack->Add(h_ht100_light_end_pred_emergjetnTrack);
+    h_ht0_light_end_pred_emergjetnTrack->Add(h_ht200_light_end_pred_emergjetnTrack);
+    h_ht0_light_end_pred_emergjetnTrack->Add(h_ht400_light_end_pred_emergjetnTrack);
+    h_ht0_light_end_pred_emergjetnTrack->Add(h_ht600_light_end_pred_emergjetnTrack);
+    h_ht0_light_end_pred_emergjetnTrack->Add(h_ht800_light_end_pred_emergjetnTrack);
+    h_ht0_light_end_pred_emergjetnTrack->Add(h_ht1200_light_end_pred_emergjetnTrack);
+    h_ht0_light_end_pred_emergjetnTrack->Add(h_ht2500_light_end_pred_emergjetnTrack);
+
+    h_ht0_light_end_exp_emergjetnTrack->Add(h_ht70_light_end_exp_emergjetnTrack);
+    h_ht0_light_end_exp_emergjetnTrack->Add(h_ht100_light_end_exp_emergjetnTrack);
+    h_ht0_light_end_exp_emergjetnTrack->Add(h_ht200_light_end_exp_emergjetnTrack);
+    h_ht0_light_end_exp_emergjetnTrack->Add(h_ht400_light_end_exp_emergjetnTrack);
+    h_ht0_light_end_exp_emergjetnTrack->Add(h_ht600_light_end_exp_emergjetnTrack);
+    h_ht0_light_end_exp_emergjetnTrack->Add(h_ht800_light_end_exp_emergjetnTrack);
+    h_ht0_light_end_exp_emergjetnTrack->Add(h_ht1200_light_end_exp_emergjetnTrack);
+    h_ht0_light_end_exp_emergjetnTrack->Add(h_ht2500_light_end_exp_emergjetnTrack);
+
+    h_ht0_hev_end_pred_emergjetEta->Add(h_ht70_hev_end_pred_emergjetEta);
+    h_ht0_hev_end_pred_emergjetEta->Add(h_ht100_hev_end_pred_emergjetEta);
+    h_ht0_hev_end_pred_emergjetEta->Add(h_ht200_hev_end_pred_emergjetEta);
+    h_ht0_hev_end_pred_emergjetEta->Add(h_ht400_hev_end_pred_emergjetEta);
+    h_ht0_hev_end_pred_emergjetEta->Add(h_ht600_hev_end_pred_emergjetEta);
+    h_ht0_hev_end_pred_emergjetEta->Add(h_ht800_hev_end_pred_emergjetEta);
+    h_ht0_hev_end_pred_emergjetEta->Add(h_ht1200_hev_end_pred_emergjetEta);
+    h_ht0_hev_end_pred_emergjetEta->Add(h_ht2500_hev_end_pred_emergjetEta);
+
+    h_ht0_hev_end_exp_emergjetEta->Add(h_ht70_hev_end_exp_emergjetEta);
+    h_ht0_hev_end_exp_emergjetEta->Add(h_ht100_hev_end_exp_emergjetEta);
+    h_ht0_hev_end_exp_emergjetEta->Add(h_ht200_hev_end_exp_emergjetEta);
+    h_ht0_hev_end_exp_emergjetEta->Add(h_ht400_hev_end_exp_emergjetEta);
+    h_ht0_hev_end_exp_emergjetEta->Add(h_ht600_hev_end_exp_emergjetEta);
+    h_ht0_hev_end_exp_emergjetEta->Add(h_ht800_hev_end_exp_emergjetEta);
+    h_ht0_hev_end_exp_emergjetEta->Add(h_ht1200_hev_end_exp_emergjetEta);
+    h_ht0_hev_end_exp_emergjetEta->Add(h_ht2500_hev_end_exp_emergjetEta);
+
+    h_ht0_light_end_pred_emergjetEta->Add(h_ht70_light_end_pred_emergjetEta);
+    h_ht0_light_end_pred_emergjetEta->Add(h_ht100_light_end_pred_emergjetEta);
+    h_ht0_light_end_pred_emergjetEta->Add(h_ht200_light_end_pred_emergjetEta);
+    h_ht0_light_end_pred_emergjetEta->Add(h_ht400_light_end_pred_emergjetEta);
+    h_ht0_light_end_pred_emergjetEta->Add(h_ht600_light_end_pred_emergjetEta);
+    h_ht0_light_end_pred_emergjetEta->Add(h_ht800_light_end_pred_emergjetEta);
+    h_ht0_light_end_pred_emergjetEta->Add(h_ht1200_light_end_pred_emergjetEta);
+    h_ht0_light_end_pred_emergjetEta->Add(h_ht2500_light_end_pred_emergjetEta);
+
+    h_ht0_light_end_exp_emergjetEta->Add(h_ht70_light_end_exp_emergjetEta);
+    h_ht0_light_end_exp_emergjetEta->Add(h_ht100_light_end_exp_emergjetEta);
+    h_ht0_light_end_exp_emergjetEta->Add(h_ht200_light_end_exp_emergjetEta);
+    h_ht0_light_end_exp_emergjetEta->Add(h_ht400_light_end_exp_emergjetEta);
+    h_ht0_light_end_exp_emergjetEta->Add(h_ht600_light_end_exp_emergjetEta);
+    h_ht0_light_end_exp_emergjetEta->Add(h_ht800_light_end_exp_emergjetEta);
+    h_ht0_light_end_exp_emergjetEta->Add(h_ht1200_light_end_exp_emergjetEta);
+    h_ht0_light_end_exp_emergjetEta->Add(h_ht2500_light_end_exp_emergjetEta);
+
     h_ht0_hev_pred_emergjetpt->SetLineWidth(2);
     h_ht0_hev_exp_emergjetpt->SetLineWidth(2);
 
@@ -1235,6 +2662,42 @@ void ee_half_HT_apply_fake_rate()
     h_ht0_light_pred_emergjetEta->SetLineWidth(2);
     h_ht0_light_exp_emergjetEta->SetLineWidth(2);
 
+    h_ht0_hev_barr_pred_emergjetpt->SetLineWidth(2);
+    h_ht0_hev_barr_exp_emergjetpt->SetLineWidth(2);
+
+    h_ht0_light_barr_pred_emergjetpt->SetLineWidth(2);
+    h_ht0_light_barr_exp_emergjetpt->SetLineWidth(2);
+
+    h_ht0_hev_barr_pred_emergjetnTrack->SetLineWidth(2);
+    h_ht0_hev_barr_exp_emergjetnTrack->SetLineWidth(2);
+
+    h_ht0_light_barr_pred_emergjetnTrack->SetLineWidth(2);
+    h_ht0_light_barr_exp_emergjetnTrack->SetLineWidth(2);
+
+    h_ht0_hev_barr_pred_emergjetEta->SetLineWidth(2);
+    h_ht0_hev_barr_exp_emergjetEta->SetLineWidth(2);
+
+    h_ht0_light_barr_pred_emergjetEta->SetLineWidth(2);
+    h_ht0_light_barr_exp_emergjetEta->SetLineWidth(2);
+
+    h_ht0_hev_end_pred_emergjetpt->SetLineWidth(2);
+    h_ht0_hev_end_exp_emergjetpt->SetLineWidth(2);
+
+    h_ht0_light_end_pred_emergjetpt->SetLineWidth(2);
+    h_ht0_light_end_exp_emergjetpt->SetLineWidth(2);
+
+    h_ht0_hev_end_pred_emergjetnTrack->SetLineWidth(2);
+    h_ht0_hev_end_exp_emergjetnTrack->SetLineWidth(2);
+
+    h_ht0_light_end_pred_emergjetnTrack->SetLineWidth(2);
+    h_ht0_light_end_exp_emergjetnTrack->SetLineWidth(2);
+
+    h_ht0_hev_end_pred_emergjetEta->SetLineWidth(2);
+    h_ht0_hev_end_exp_emergjetEta->SetLineWidth(2);
+
+    h_ht0_light_end_pred_emergjetEta->SetLineWidth(2);
+    h_ht0_light_end_exp_emergjetEta->SetLineWidth(2);
+
     h_ht0_hev_pred_emergjetpt->SetLineColor(kRed);
     h_ht0_light_pred_emergjetpt->SetLineColor(kRed);
     h_ht0_hev_pred_emergjetnTrack->SetLineColor(kRed);
@@ -1242,9 +2705,24 @@ void ee_half_HT_apply_fake_rate()
     h_ht0_hev_pred_emergjetEta->SetLineColor(kRed);
     h_ht0_light_pred_emergjetEta->SetLineColor(kRed);
 
+    h_ht0_hev_barr_pred_emergjetpt->SetLineColor(kRed);
+    h_ht0_light_barr_pred_emergjetpt->SetLineColor(kRed);
+    h_ht0_hev_barr_pred_emergjetnTrack->SetLineColor(kRed);
+    h_ht0_light_barr_pred_emergjetnTrack->SetLineColor(kRed);
+    h_ht0_hev_barr_pred_emergjetEta->SetLineColor(kRed);
+    h_ht0_light_barr_pred_emergjetEta->SetLineColor(kRed);
+
+    h_ht0_hev_end_pred_emergjetpt->SetLineColor(kRed);
+    h_ht0_light_end_pred_emergjetpt->SetLineColor(kRed);
+    h_ht0_hev_end_pred_emergjetnTrack->SetLineColor(kRed);
+    h_ht0_light_end_pred_emergjetnTrack->SetLineColor(kRed);
+    h_ht0_hev_end_pred_emergjetEta->SetLineColor(kRed);
+    h_ht0_light_end_pred_emergjetEta->SetLineColor(kRed);
+
     auto c1 = new TCanvas("c", "BPRE");
     c1->Divide(3, 2);
     c1->cd(1);
+    /*
     h_ht0_hev_pred_emergjetpt->SetTitle("heavy");
     h_ht0_hev_pred_emergjetpt->GetXaxis()->SetTitle("Jet PT");
     h_ht0_hev_pred_emergjetpt->Draw("hist  e");
@@ -1291,9 +2769,11 @@ void ee_half_HT_apply_fake_rate()
 
     c1->cd(3);
     h_ht0_hev_pred_emergjetEta->SetTitle("heavy");
+    h_ht0_hev_exp_emergjetEta->SetTitle("heavy");
     h_ht0_hev_pred_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
-    h_ht0_hev_pred_emergjetEta->Draw("hist  e");
-    h_ht0_hev_exp_emergjetEta->Draw("hist same e");
+    h_ht0_hev_exp_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
+    h_ht0_hev_exp_emergjetEta->Draw("hist  e");
+    h_ht0_hev_pred_emergjetEta->Draw("hist same e");
     TLegend *l4 = new TLegend(0.6, 0.65, 0.80, 0.85);
     l4->SetBorderSize(0);
     l4->SetTextSize(0.04);
@@ -1303,11 +2783,11 @@ void ee_half_HT_apply_fake_rate()
 
     c1->cd(6);
     h_ht0_light_pred_emergjetEta->SetTitle("light");
+    h_ht0_light_exp_emergjetEta->SetTitle("light");
     h_ht0_light_pred_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
-    h_ht0_light_pred_emergjetEta->Draw("hist  e");
-    h_ht0_light_exp_emergjetEta->Draw("hist same e");
-    
-
+    h_ht0_light_exp_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
+    h_ht0_light_exp_emergjetEta->Draw("hist  e");
+    h_ht0_light_pred_emergjetEta->Draw("hist same e");
     TLegend *l5 = new TLegend(0.6, 0.65, 0.80, 0.85);
     l5->SetBorderSize(0);
     l5->SetTextSize(0.04);
@@ -1315,5 +2795,81 @@ void ee_half_HT_apply_fake_rate()
     l5->AddEntry(h_ht0_light_exp_emergjetEta, "expect", "l");
     l5->Draw();
     gStyle->SetOptStat(0);
-    // h_ht0_hev_exp_emergjetpt->Draw("hist same");
+    */
+    h_ht0_hev_pred_emergjetpt->SetTitle("heavy");
+    h_ht0_hev_pred_emergjetpt->GetXaxis()->SetTitle("Jet PT");
+    h_ht0_hev_pred_emergjetpt->Draw("hist  e");
+    h_ht0_hev_exp_emergjetpt->Draw("hist same e");
+    TLegend *l0 = new TLegend(0.6, 0.65, 0.80, 0.85);
+    l0->SetBorderSize(0);
+    l0->SetTextSize(0.04);
+    l0->AddEntry(h_ht0_hev_pred_emergjetpt, "Predict", "l");
+    l0->AddEntry(h_ht0_hev_exp_emergjetpt, "expect", "l");
+    l0->Draw();
+    c1->cd(4);
+    h_ht0_light_exp_emergjetpt->SetTitle("light");
+    h_ht0_light_exp_emergjetpt->GetXaxis()->SetTitle("Jet PT");
+    h_ht0_light_exp_emergjetpt->Draw("hist  e");
+    h_ht0_light_pred_emergjetpt->Draw("hist same e");
+    TLegend *l1 = new TLegend(0.6, 0.65, 0.80, 0.85);
+    l1->SetBorderSize(0);
+    l1->SetTextSize(0.04);
+    l1->AddEntry(h_ht0_light_pred_emergjetpt, "Predict", "l");
+    l1->AddEntry(h_ht0_light_exp_emergjetpt, "expect", "l");
+    l1->Draw();
+    c1->cd(2);
+    h_ht0_hev_pred_emergjetnTrack->SetTitle("heavy");
+    h_ht0_hev_pred_emergjetnTrack->GetXaxis()->SetTitle("Trackmultiplicity");
+    h_ht0_hev_pred_emergjetnTrack->Draw("hist  e");
+    h_ht0_hev_exp_emergjetnTrack->Draw("hist same e");
+    TLegend *l2 = new TLegend(0.6, 0.65, 0.80, 0.85);
+    l2->SetBorderSize(0);
+    l2->SetTextSize(0.04);
+    l2->AddEntry(h_ht0_hev_pred_emergjetnTrack, "Predict", "l");
+    l2->AddEntry(h_ht0_hev_exp_emergjetnTrack, "expect", "l");
+    l2->Draw();
+    c1->cd(5);
+    h_ht0_light_pred_emergjetnTrack->SetTitle("light");
+    h_ht0_light_exp_emergjetnTrack->SetTitle("light");
+    h_ht0_light_pred_emergjetnTrack->GetXaxis()->SetTitle("Trackmultiplicity");
+    h_ht0_light_exp_emergjetnTrack->GetXaxis()->SetTitle("Trackmultiplicity");
+    h_ht0_light_exp_emergjetnTrack->Draw("hist  e");
+    h_ht0_light_pred_emergjetnTrack->Draw("hist same e");
+    
+    TLegend *l3 = new TLegend(0.6, 0.65, 0.80, 0.85);
+    l3->SetBorderSize(0);
+    l3->SetTextSize(0.04);
+    l3->AddEntry(h_ht0_light_pred_emergjetnTrack, "Predict", "l");
+    l3->AddEntry(h_ht0_light_exp_emergjetnTrack, "expect", "l");
+    l3->Draw();
+
+    c1->cd(3);
+    h_ht0_hev_pred_emergjetEta->SetTitle("heavy");
+    h_ht0_hev_exp_emergjetEta->SetTitle("heavy");
+    h_ht0_hev_pred_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
+    h_ht0_hev_exp_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
+      h_ht0_hev_pred_emergjetEta->Draw("hist  e");
+    h_ht0_hev_exp_emergjetEta->Draw("hist same e");
+  
+    TLegend *l4 = new TLegend(0.6, 0.65, 0.80, 0.85);
+    l4->SetBorderSize(0);
+    l4->SetTextSize(0.04);
+    l4->AddEntry(h_ht0_hev_pred_emergjetEta, "Predict", "l");
+    l4->AddEntry(h_ht0_hev_exp_emergjetEta, "expect", "l");
+    l4->Draw();
+
+    c1->cd(6);
+    h_ht0_light_pred_emergjetEta->SetTitle("light");
+    h_ht0_light_exp_emergjetEta->SetTitle("light");
+    h_ht0_light_pred_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
+    h_ht0_light_exp_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
+    h_ht0_light_exp_emergjetEta->Draw("hist  e");
+    h_ht0_light_pred_emergjetEta->Draw("hist same e");
+    TLegend *l5 = new TLegend(0.6, 0.65, 0.80, 0.85);
+    l5->SetBorderSize(0);
+    l5->SetTextSize(0.04);
+    l5->AddEntry(h_ht0_light_pred_emergjetEta, "Predict", "l");
+    l5->AddEntry(h_ht0_light_exp_emergjetEta, "expect", "l");
+    l5->Draw();
+    gStyle->SetOptStat(0);
 }

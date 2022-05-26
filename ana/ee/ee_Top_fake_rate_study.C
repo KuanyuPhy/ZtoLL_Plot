@@ -19,13 +19,13 @@ void ee_Top_fake_rate_study()
 {
 
     //setNCUStyle(true);
-    TFile *Top_TTTo2L2Nu = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
-    TFile *Top_TTWJetsToLNu = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
-    TFile *Top_TTWJetsToQQ = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
-    TFile *Top_TTZToLLNuNu = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
-    TFile *Top_TTZToQQ = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
-    TFile *Top_tW_antitop = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
-    TFile *Top_tW_top = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
+    TFile *Top_TTTo2L2Nu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
+    TFile *Top_TTWJetsToLNu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
+    TFile *Top_TTWJetsToQQ = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
+    TFile *Top_TTZToLLNuNu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
+    TFile *Top_TTZToQQ = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
+    TFile *Top_tW_antitop = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
+    TFile *Top_tW_top = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
 
     TH1D *TTTo2L2Nu_sumevt = ((TH1D *)Top_TTTo2L2Nu->Get("Event_Variable/h_totevent"));
     TH1D *TTWJetsToLNu_sumevt = ((TH1D *)Top_TTWJetsToLNu->Get("Event_Variable/h_totevent"));
@@ -360,7 +360,7 @@ void ee_Top_fake_rate_study()
         for (int i = 0; i < v_tW_top_Jethadronflavor->size(); i++)
         {
             h_tW_top_emergjethadronflavor->Fill((*v_tW_top_Jethadronflavor)[i], f_tW_top_weight * ST_tW_topWeight);
-            if ((*v_tW_top_Jethadronflavor)[i] == 4 || (*v_tW_top_Jethadronflavor)[i] == 5)
+            if ((*v_tW_top_Jethadronflavor)[i] == 5)
             {
                 h_tW_top_hev_emergjetpt->Fill((*v_tW_top_fakeJetPt)[i], f_tW_top_weight * ST_tW_topWeight);
                 h_tW_top_hev_emergjetEta->Fill((*v_tW_top_fakeJetEta)[i], f_tW_top_weight * ST_tW_topWeight);
@@ -403,7 +403,7 @@ void ee_Top_fake_rate_study()
         for (int i = 0; i < v_tW_antitop_Jethadronflavor->size(); i++)
         {
             h_tW_antitop_emergjethadronflavor->Fill((*v_tW_antitop_Jethadronflavor)[i], f_tW_antitop_weight * ST_tW_antitopWeight);
-            if ((*v_tW_antitop_Jethadronflavor)[i] == 4 || (*v_tW_antitop_Jethadronflavor)[i] == 5)
+            if ((*v_tW_antitop_Jethadronflavor)[i] == 5)
             {
                 h_tW_antitop_hev_emergjetpt->Fill((*v_tW_antitop_fakeJetPt)[i], f_tW_antitop_weight * ST_tW_antitopWeight);
                 h_tW_antitop_hev_emergjetEta->Fill((*v_tW_antitop_fakeJetEta)[i], f_tW_antitop_weight * ST_tW_antitopWeight);
@@ -446,7 +446,7 @@ void ee_Top_fake_rate_study()
         for (int i = 0; i < v_TTTo2L2Nu_Jethadronflavor->size(); i++)
         {
             h_TTTo2L2Nu_emergjethadronflavor->Fill((*v_TTTo2L2Nu_Jethadronflavor)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
-            if ((*v_TTTo2L2Nu_Jethadronflavor)[i] == 4 || (*v_TTTo2L2Nu_Jethadronflavor)[i] == 5)
+            if ((*v_TTTo2L2Nu_Jethadronflavor)[i] == 5)
             {
                 h_TTTo2L2Nu_hev_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                 h_TTTo2L2Nu_hev_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
@@ -496,7 +496,7 @@ void ee_Top_fake_rate_study()
         for (int i = 0; i < v_TTWJetsToLNu_Jethadronflavor->size(); i++)
         {
             h_TTWJetsToLNu_emergjethadronflavor->Fill((*v_TTWJetsToLNu_Jethadronflavor)[i], f_TTWJetsToLNu_weight * TTWJetsToLNuWeight);
-            if ((*v_TTWJetsToLNu_Jethadronflavor)[i] == 4 || (*v_TTWJetsToLNu_Jethadronflavor)[i] == 5)
+            if ((*v_TTWJetsToLNu_Jethadronflavor)[i] == 5)
             {
                 h_TTWJetsToLNu_hev_emergjetpt->Fill((*v_TTWJetsToLNu_fakeJetPt)[i], f_TTWJetsToLNu_weight * TTWJetsToLNuWeight);
                 h_TTWJetsToLNu_hev_emergjetEta->Fill((*v_TTWJetsToLNu_fakeJetEta)[i], f_TTWJetsToLNu_weight * TTWJetsToLNuWeight);
@@ -538,7 +538,7 @@ void ee_Top_fake_rate_study()
         for (int i = 0; i < v_TWJetsToQQ_Jethadronflavor->size(); i++)
         {
             h_TWJetsToQQ_emergjethadronflavor->Fill((*v_TWJetsToQQ_Jethadronflavor)[i], f_TTWJetsToQQ_weight * TTWJetsToQQWeight);
-            if ((*v_TWJetsToQQ_Jethadronflavor)[i] == 4 || (*v_TWJetsToQQ_Jethadronflavor)[i] == 5)
+            if ((*v_TWJetsToQQ_Jethadronflavor)[i] == 5)
             {
                 h_TWJetsToQQ_hev_emergjetpt->Fill((*v_TWJetsToQQ_fakeJetPt)[i], f_TTWJetsToQQ_weight * TTWJetsToQQWeight);
                 h_TWJetsToQQ_hev_emergjetEta->Fill((*v_TWJetsToQQ_fakeJetEta)[i], f_TTWJetsToQQ_weight * TTWJetsToQQWeight);
@@ -581,7 +581,7 @@ void ee_Top_fake_rate_study()
         for (int i = 0; i < v_TTZToLLNuNu_Jethadronflavor->size(); i++)
         {
             h_TTZToLLNuNu_emergjethadronflavor->Fill((*v_TTZToLLNuNu_Jethadronflavor)[i], f_TTZToLLNuNu_weight * TTZToLLNuNuWeight);
-            if ((*v_TTZToLLNuNu_Jethadronflavor)[i] == 4 || (*v_TTZToLLNuNu_Jethadronflavor)[i] == 5)
+            if ((*v_TTZToLLNuNu_Jethadronflavor)[i] == 5)
             {
                 h_TTZToLLNuNu_hev_emergjetpt->Fill((*v_TTZToLLNuNu_fakeJetPt)[i], f_TTZToLLNuNu_weight * TTZToLLNuNuWeight);
                 h_TTZToLLNuNu_hev_emergjetEta->Fill((*v_TTZToLLNuNu_fakeJetEta)[i], f_TTZToLLNuNu_weight * TTZToLLNuNuWeight);
@@ -623,7 +623,7 @@ void ee_Top_fake_rate_study()
         for (int i = 0; i < v_TTZToQQ_Jethadronflavor->size(); i++)
         {
             h_TTZToQQ_emergjethadronflavor->Fill((*v_TTZToQQ_Jethadronflavor)[i], f_TTZToQQ_weight * TTZToQQWeight);
-            if ((*v_TTZToQQ_Jethadronflavor)[i] == 4 || (*v_TTZToQQ_Jethadronflavor)[i] == 5)
+            if ((*v_TTZToQQ_Jethadronflavor)[i] == 5)
             {
                 h_TTZToQQ_hev_emergjetpt->Fill((*v_TTZToQQ_fakeJetPt)[i], f_TTZToQQ_weight * TTZToQQWeight);
                 h_TTZToQQ_hev_emergjetEta->Fill((*v_TTZToQQ_fakeJetEta)[i], f_TTZToQQ_weight * TTZToQQWeight);
@@ -747,7 +747,7 @@ void ee_Top_fake_rate_study()
     //h_tW_top_emergjethadronflavor->Draw();
 
 
-    TFile *outFile = new TFile("./../../../root_file/BgEstimation/Top_fakerateStudy.root", "RECREATE");
+    TFile *outFile = new TFile("./../../../../root_file/BgEstimation/Top_fakerateStudy.root", "RECREATE");
     outFile->cd();
     h_TTTo2L2Nu_emergjethadronflavor->Write();
     h_TTTo2L2Nu_hev_emergjetpt->Write();

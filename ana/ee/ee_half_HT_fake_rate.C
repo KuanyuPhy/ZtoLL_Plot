@@ -14,28 +14,28 @@
 #include "RooDataSet.h"
 #include "./../lib/Cross_section.h"
 #include "./../lib/setNCUStyle.C"
-using namespace RooFit;
+
 void ee_half_HT_fake_rate()
 {
-    TFile *DYincli = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
-    TFile *DYHT70 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
-    TFile *DYHT100 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+    TFile *DYincli = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+    TFile *DYHT70 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
+    TFile *DYHT100 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
+    TFile *DYHT200 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
+    TFile *DYHT400 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
+    TFile *DYHT600 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
+    TFile *DYHT800 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
+    TFile *DYHT1200 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+    TFile *DYHT2500 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
 
-    TFile *DYincli_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_DYincli_1.root");
-    TFile *DYHT70_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht70_1.root");
-    TFile *DYHT100_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht100_1.root");
-    TFile *DYHT200_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht200_1.root");
-    TFile *DYHT400_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht400_1.root");
-    TFile *DYHT600_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht600_1.root");
-    TFile *DYHT800_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht800_1.root");
-    TFile *DYHT1200_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht1200_1.root");
-    TFile *DYHT2500_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/output/ee_ht2500_1.root");
+    TFile *DYincli_1 = new TFile("./../../../../root_file/BgEstimation/ee_DYincli_1.root");
+    TFile *DYHT70_1 = new TFile("./../../../../root_file/BgEstimation/ee_ht70_1.root");
+    TFile *DYHT100_1 = new TFile("./../../../../root_file/BgEstimation/ee_ht100_1.root");
+    TFile *DYHT200_1 = new TFile("./../../../../root_file/BgEstimation/ee_ht200_1.root");
+    TFile *DYHT400_1 = new TFile("./../../../../root_file/BgEstimation/ee_ht400_1.root");
+    TFile *DYHT600_1 = new TFile("./../../../../root_file/BgEstimation/ee_ht600_1.root");
+    TFile *DYHT800_1 = new TFile("./../../../../root_file/BgEstimation/ee_ht800_1.root");
+    TFile *DYHT1200_1 = new TFile("./../../../../root_file/BgEstimation/ee_ht1200_1.root");
+    TFile *DYHT2500_1 = new TFile("./../../../../root_file/BgEstimation/ee_ht2500_1.root");
 
     TH1D *h_HT_eventCout = ((TH1D *)DYincli->Get("Event_Variable/h_HT_eventCout"));
 
@@ -65,282 +65,192 @@ void ee_half_HT_fake_rate()
     int HT800_1200_event = h_HT_eventCout->GetBinContent(8);
     int HT1200_2500_event = h_HT_eventCout->GetBinContent(9);
     int HT2500_Inf_event = h_HT_eventCout->GetBinContent(10);
-
     //----------------------------------------------------------------------
     // Create Histrogram: PT, eta, NTracks
     //----------------------------------------------------------------------
-    TH1F *h_ht0_hev_emergjetpt = new TH1F("h_ht0_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht0_hev_emergjetpt->Sumw2();
-    TH1F *h_ht70_hev_emergjetpt = new TH1F("h_ht70_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht70_hev_emergjetpt->Sumw2();
-    TH1F *h_ht100_hev_emergjetpt = new TH1F("h_ht100_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht100_hev_emergjetpt->Sumw2();
-    TH1F *h_ht200_hev_emergjetpt = new TH1F("h_ht200_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht200_hev_emergjetpt->Sumw2();
-    TH1F *h_ht400_hev_emergjetpt = new TH1F("h_ht400_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht400_hev_emergjetpt->Sumw2();
-    TH1F *h_ht600_hev_emergjetpt = new TH1F("h_ht600_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht600_hev_emergjetpt->Sumw2();
-    TH1F *h_ht800_hev_emergjetpt = new TH1F("h_ht800_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht800_hev_emergjetpt->Sumw2();
-    TH1F *h_ht1200_hev_emergjetpt = new TH1F("h_ht1200_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht1200_hev_emergjetpt->Sumw2();
-    TH1F *h_ht2500_hev_emergjetpt = new TH1F("h_ht2500_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht2500_hev_emergjetpt->Sumw2();
-
-    TH1F *h_ht0_hev_emergjetpt_cutalpha = new TH1F("h_ht0_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht0_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht70_hev_emergjetpt_cutalpha = new TH1F("h_ht70_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht70_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht100_hev_emergjetpt_cutalpha = new TH1F("h_ht100_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht100_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht200_hev_emergjetpt_cutalpha = new TH1F("h_ht200_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht200_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht400_hev_emergjetpt_cutalpha = new TH1F("h_ht400_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht400_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht600_hev_emergjetpt_cutalpha = new TH1F("h_ht600_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht600_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht800_hev_emergjetpt_cutalpha = new TH1F("h_ht800_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht800_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht1200_hev_emergjetpt_cutalpha = new TH1F("h_ht1200_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht1200_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht2500_hev_emergjetpt_cutalpha = new TH1F("h_ht2500_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht2500_hev_emergjetpt_cutalpha->Sumw2();
-
-    TH1F *h_ht0_light_emergjetpt = new TH1F("h_ht0_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht0_light_emergjetpt->Sumw2();
-    TH1F *h_ht70_light_emergjetpt = new TH1F("h_ht70_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht70_light_emergjetpt->Sumw2();
-    TH1F *h_ht100_light_emergjetpt = new TH1F("h_ht100_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht100_light_emergjetpt->Sumw2();
-    TH1F *h_ht200_light_emergjetpt = new TH1F("h_ht200_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht200_light_emergjetpt->Sumw2();
-    TH1F *h_ht400_light_emergjetpt = new TH1F("h_ht400_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht400_light_emergjetpt->Sumw2();
-    TH1F *h_ht600_light_emergjetpt = new TH1F("h_ht600_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht600_light_emergjetpt->Sumw2();
-    TH1F *h_ht800_light_emergjetpt = new TH1F("h_ht800_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht800_light_emergjetpt->Sumw2();
-    TH1F *h_ht1200_light_emergjetpt = new TH1F("h_ht1200_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht1200_light_emergjetpt->Sumw2();
-    TH1F *h_ht2500_light_emergjetpt = new TH1F("h_ht2500_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_ht2500_light_emergjetpt->Sumw2();
-
-    TH1F *h_ht0_light_emergjetpt_cutalpha = new TH1F("h_ht0_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht0_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht70_light_emergjetpt_cutalpha = new TH1F("h_ht70_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht70_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht100_light_emergjetpt_cutalpha = new TH1F("h_ht100_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht100_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht200_light_emergjetpt_cutalpha = new TH1F("h_ht200_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht200_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht400_light_emergjetpt_cutalpha = new TH1F("h_ht400_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht400_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht600_light_emergjetpt_cutalpha = new TH1F("h_ht600_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht600_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht800_light_emergjetpt_cutalpha = new TH1F("h_ht800_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht800_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht1200_light_emergjetpt_cutalpha = new TH1F("h_ht1200_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht1200_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_ht2500_light_emergjetpt_cutalpha = new TH1F("h_ht2500_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_ht2500_light_emergjetpt_cutalpha->Sumw2();
-
     Double_t nbins[82] = {-4.889, -4.716, -4.538, -4.363, -4.191, -4.013, -3.839, -3.664, -3.489, -3.314, -3.139, -2.964, -2.853,
                           -2.65, -2.5, -2.322, -2.172, -2.043, -1.93, -1.83, -1.74, -1.653, -1.566, -1.479, -1.392, -1.305, -1.218, -1.131, -1.044,
                           -0.957, -0.879, -0.783, -0.696, -0.609, -0.522, -0.435, -0.348, -0.261, -0.174, -0.087, 0, 0.087, 0.174, 0.261, 0.348, 0.435,
                           0.522, 0.609, 0.696, 0.783, 0.879, 0.957, 1.044, 1.131, 1.218, 1.305, 1.392, 1.479, 1.566, 1.653, 1.74, 1.83, 1.93, 2.043, 2.172,
                           2.322, 2.5, 2.65, 2.853, 2.964, 3.139, 3.314, 3.489, 3.664, 3.839, 4.013, 4.191, 4.363, 4.538, 4.716, 4.889, 5.191};
     const Int_t nnbins = (sizeof(nbins) / sizeof(*nbins)) - 1;
-    cout << nnbins << endl;
-    TH1F *h_ht0_hev_emergjetEta = new TH1F("h_ht0_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht0_hev_emergjetEta->Sumw2();
-    TH1F *h_ht70_hev_emergjetEta = new TH1F("h_ht70_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht70_hev_emergjetEta->Sumw2();
-    TH1F *h_ht100_hev_emergjetEta = new TH1F("h_ht100_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht100_hev_emergjetEta->Sumw2();
-    TH1F *h_ht200_hev_emergjetEta = new TH1F("h_ht200_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht200_hev_emergjetEta->Sumw2();
-    TH1F *h_ht400_hev_emergjetEta = new TH1F("h_ht400_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht400_hev_emergjetEta->Sumw2();
-    TH1F *h_ht600_hev_emergjetEta = new TH1F("h_ht600_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht600_hev_emergjetEta->Sumw2();
-    TH1F *h_ht800_hev_emergjetEta = new TH1F("h_ht800_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht800_hev_emergjetEta->Sumw2();
-    TH1F *h_ht1200_hev_emergjetEta = new TH1F("h_ht1200_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht1200_hev_emergjetEta->Sumw2();
-    TH1F *h_ht2500_hev_emergjetEta = new TH1F("h_ht2500_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht2500_hev_emergjetEta->Sumw2();
 
-    TH1F *h_ht0_hev_emergjetEta_cutalpha = new TH1F("h_ht0_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht0_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht70_hev_emergjetEta_cutalpha = new TH1F("h_ht70_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht70_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht100_hev_emergjetEta_cutalpha = new TH1F("h_ht100_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht100_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht200_hev_emergjetEta_cutalpha = new TH1F("h_ht200_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht200_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht400_hev_emergjetEta_cutalpha = new TH1F("h_ht400_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht400_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht600_hev_emergjetEta_cutalpha = new TH1F("h_ht600_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht600_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht800_hev_emergjetEta_cutalpha = new TH1F("h_ht800_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht800_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht1200_hev_emergjetEta_cutalpha = new TH1F("h_ht1200_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht1200_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht2500_hev_emergjetEta_cutalpha = new TH1F("h_ht2500_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht2500_hev_emergjetEta_cutalpha->Sumw2();
+    string HT_region[9] = {"ht0", "ht70", "ht100", "ht200", "ht400", "ht600", "ht800", "ht1200", "ht2500"};
+    TH1F *h_hev_emergjetpt[9];
+    TH1F *h_hev_barr_emergjetpt[9];
+    TH1F *h_hev_end_emergjetpt[9];
+    TH1F *h_hev_emergjetpt_cutalpha[9];
+    TH1F *h_hev_barr_emergjetpt_cutalpha[9];
+    TH1F *h_hev_end_emergjetpt_cutalpha[9];
+    TH1F *h_hev_emergjetpt_nog[9];
+    TH1F *h_hev_barr_emergjetpt_nog[9];
+    TH1F *h_hev_end_emergjetpt_nog[9];
+    TH1F *h_hev_emergjetpt_cutalpha_nog[9];
+    TH1F *h_hev_barr_emergjetpt_cutalpha_nog[9];
+    TH1F *h_hev_end_emergjetpt_cutalpha_nog[9];
+    TH1F *h_light_emergjetpt[9];
+    TH1F *h_light_barr_emergjetpt[9];
+    TH1F *h_light_end_emergjetpt[9];
+    TH1F *h_light_emergjetpt_cutalpha[9];
+    TH1F *h_light_barr_emergjetpt_cutalpha[9];
+    TH1F *h_light_end_emergjetpt_cutalpha[9];
+    TH1F *h_hev_emergjetEta[9];
+    TH1F *h_hev_barr_emergjetEta[9];
+    TH1F *h_hev_end_emergjetEta[9];
+    TH1F *h_hev_emergjetEta_cutalpha[9];
+    TH1F *h_hev_barr_emergjetEta_cutalpha[9];
+    TH1F *h_hev_end_emergjetEta_cutalpha[9];
+    TH1F *h_hev_emergjetEta_nog[9];
+    TH1F *h_hev_barr_emergjetEta_nog[9];
+    TH1F *h_hev_end_emergjetEta_nog[9];
+    TH1F *h_hev_emergjetEta_cutalpha_nog[9];
+    TH1F *h_hev_barr_emergjetEta_cutalpha_nog[9];
+    TH1F *h_hev_end_emergjetEta_cutalpha_nog[9];
+    TH1F *h_light_emergjetEta[9];
+    TH1F *h_light_barr_emergjetEta[9];
+    TH1F *h_light_end_emergjetEta[9];
+    TH1F *h_light_emergjetEta_cutalpha[9];
+    TH1F *h_light_barr_emergjetEta_cutalpha[9];
+    TH1F *h_light_end_emergjetEta_cutalpha[9];
+    TH1F *h_hev_emergjetnTrack[9];
+    TH1F *h_hev_barr_emergjetnTrack[9];
+    TH1F *h_hev_end_emergjetnTrack[9];
+    TH1F *h_hev_emergjetnTrack_cutalpha[9];
+    TH1F *h_hev_barr_emergjetnTrack_cutalpha[9];
+    TH1F *h_hev_end_emergjetnTrack_cutalpha[9];
+    TH1F *h_hev_emergjetnTrack_nog[9];
+    TH1F *h_hev_barr_emergjetnTrack_nog[9];
+    TH1F *h_hev_end_emergjetnTrack_nog[9];
+    TH1F *h_hev_emergjetnTrack_cutalpha_nog[9];
+    TH1F *h_hev_barr_emergjetnTrack_cutalpha_nog[9];
+    TH1F *h_hev_end_emergjetnTrack_cutalpha_nog[9];
+    TH1F *h_light_emergjetnTrack[9];
+    TH1F *h_light_barr_emergjetnTrack[9];
+    TH1F *h_light_end_emergjetnTrack[9];
+    TH1F *h_light_emergjetnTrack_cutalpha[9];
+    TH1F *h_light_barr_emergjetnTrack_cutalpha[9];
+    TH1F *h_light_end_emergjetnTrack_cutalpha[9];
+    for (int i = 0; i < 9; i++)
+    {
+        h_hev_emergjetpt[i] = new TH1F(Form("h_%s_hev_emergjetpt", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_emergjetpt[i]->Sumw2();
+        h_hev_barr_emergjetpt[i] = new TH1F(Form("h_%s_barr_emergjetpt", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_barr_emergjetpt[i]->Sumw2();
+        h_hev_end_emergjetpt[i] = new TH1F(Form("h_%s_end_emergjetpt", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_end_emergjetpt[i]->Sumw2();
+        h_hev_emergjetpt_cutalpha[i] = new TH1F(Form("h_%s_emergjetpt_cutalpha", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_emergjetpt_cutalpha[i]->Sumw2();
+        h_hev_barr_emergjetpt_cutalpha[i] = new TH1F(Form("h_%s_barr_emergjetpt_cutalpha", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_barr_emergjetpt_cutalpha[i]->Sumw2();
+        h_hev_end_emergjetpt_cutalpha[i] = new TH1F(Form("h_%s_end_emergjetpt_cutalpha", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_end_emergjetpt_cutalpha[i]->Sumw2();
+        h_hev_emergjetpt_nog[i] = new TH1F(Form("h_%s_hev_emergjetpt_nog", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_emergjetpt_nog[i]->Sumw2();
+        h_hev_barr_emergjetpt_nog[i] = new TH1F(Form("h_%s_barr_emergjetpt_nog", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_barr_emergjetpt_nog[i]->Sumw2();
+        h_hev_end_emergjetpt_nog[i] = new TH1F(Form("h_%s_end_emergjetpt_nog", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_end_emergjetpt_nog[i]->Sumw2();
+        h_hev_emergjetpt_cutalpha_nog[i] = new TH1F(Form("h_%s_emergjetpt_cutalpha_nog", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_emergjetpt_cutalpha_nog[i]->Sumw2();
+        h_hev_barr_emergjetpt_cutalpha_nog[i] = new TH1F(Form("h_%s_barr_emergjetpt_cutalpha_nog", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_barr_emergjetpt_cutalpha_nog[i]->Sumw2();
+        h_hev_end_emergjetpt_cutalpha_nog[i] = new TH1F(Form("h_%s_end_emergjetpt_cutalpha_nog", HT_region[i].c_str()), "", 50, 0, 500);
+        h_hev_end_emergjetpt_cutalpha_nog[i]->Sumw2();
+        h_light_emergjetpt[i] = new TH1F(Form("h_%s_light_emergjetpt", HT_region[i].c_str()), "", 50, 0, 500);
+        h_light_emergjetpt[i]->Sumw2();
+        h_light_barr_emergjetpt[i] = new TH1F(Form("h_%s_light_barr_emergjetpt", HT_region[i].c_str()), "", 50, 0, 500);
+        h_light_barr_emergjetpt[i]->Sumw2();
+        h_light_end_emergjetpt[i] = new TH1F(Form("h_%s_light_end_emergjetpt", HT_region[i].c_str()), "", 50, 0, 500);
+        h_light_end_emergjetpt[i]->Sumw2();
+        h_light_emergjetpt_cutalpha[i] = new TH1F(Form("h_%s_light_emergjetpt_cutalpha", HT_region[i].c_str()), "", 50, 0, 500);
+        h_light_emergjetpt_cutalpha[i]->Sumw2();
+        h_light_barr_emergjetpt_cutalpha[i] = new TH1F(Form("h_%s_light_barr_emergjetpt_cutalpha", HT_region[i].c_str()), "", 50, 0, 500);
+        h_light_barr_emergjetpt_cutalpha[i]->Sumw2();
+        h_light_end_emergjetpt_cutalpha[i] = new TH1F(Form("h_%s_light_end_emergjetpt_cutalpha", HT_region[i].c_str()), "", 50, 0, 500);
+        h_light_end_emergjetpt_cutalpha[i]->Sumw2();
+        h_hev_emergjetEta[i] = new TH1F(Form("h_%s_hev_emergjetEta", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_emergjetEta[i]->Sumw2();
+        h_hev_barr_emergjetEta[i] = new TH1F(Form("h_%s_hev_barr_emergjetEta", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_barr_emergjetEta[i]->Sumw2();
+        h_hev_end_emergjetEta[i] = new TH1F(Form("h_%s_hev_end_emergjetEta", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_end_emergjetEta[i]->Sumw2();
+        h_hev_emergjetEta_cutalpha[i] = new TH1F(Form("h_%s_hev_emergjetEta_cutalpha", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_emergjetEta_cutalpha[i]->Sumw2();
+        h_hev_barr_emergjetEta_cutalpha[i] = new TH1F(Form("h_%s_hev_barr_emergjetEta_cutalpha", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_barr_emergjetEta_cutalpha[i]->Sumw2();
+        h_hev_end_emergjetEta_cutalpha[i] = new TH1F(Form("h_%s_hev_end_emergjetEta_cutalpha", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_end_emergjetEta_cutalpha[i]->Sumw2();
+        h_hev_emergjetEta_nog[i] = new TH1F(Form("h_%s_hev_emergjetEta_nog", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_emergjetEta_nog[i]->Sumw2();
+        h_hev_barr_emergjetEta_nog[i] = new TH1F(Form("h_%s_hev_barr_emergjetEta_nog", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_barr_emergjetEta_nog[i]->Sumw2();
+        h_hev_end_emergjetEta_nog[i] = new TH1F(Form("h_%s_hev_end_emergjetEta_nog", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_end_emergjetEta_nog[i]->Sumw2();
+        h_hev_emergjetEta_cutalpha_nog[i] = new TH1F(Form("h_%s_hev_emergjetEta_cutalpha_nog", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_emergjetEta_cutalpha_nog[i]->Sumw2();
+        h_hev_barr_emergjetEta_cutalpha_nog[i] = new TH1F(Form("h_%s_hev_barr_emergjetEta_cutalpha_nog", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_barr_emergjetEta_cutalpha_nog[i]->Sumw2();
+        h_hev_end_emergjetEta_cutalpha_nog[i] = new TH1F(Form("h_%s_hev_end_emergjetEta_cutalpha_nog", HT_region[i].c_str()), "", nnbins, nbins);
+        h_hev_end_emergjetEta_cutalpha_nog[i]->Sumw2();
 
-    TH1F *h_ht0_light_emergjetEta = new TH1F("h_ht0_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht0_light_emergjetEta->Sumw2();
-    TH1F *h_ht70_light_emergjetEta = new TH1F("h_ht70_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht70_light_emergjetEta->Sumw2();
-    TH1F *h_ht100_light_emergjetEta = new TH1F("h_ht100_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht100_light_emergjetEta->Sumw2();
-    TH1F *h_ht200_light_emergjetEta = new TH1F("h_ht200_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht200_light_emergjetEta->Sumw2();
-    TH1F *h_ht400_light_emergjetEta = new TH1F("h_ht400_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht400_light_emergjetEta->Sumw2();
-    TH1F *h_ht600_light_emergjetEta = new TH1F("h_ht600_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht600_light_emergjetEta->Sumw2();
-    TH1F *h_ht800_light_emergjetEta = new TH1F("h_ht800_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht800_light_emergjetEta->Sumw2();
-    TH1F *h_ht1200_light_emergjetEta = new TH1F("h_ht1200_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht1200_light_emergjetEta->Sumw2();
-    TH1F *h_ht2500_light_emergjetEta = new TH1F("h_ht2500_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_ht2500_light_emergjetEta->Sumw2();
+        h_light_emergjetEta[i] = new TH1F(Form("h_%s_light_emergjetEta", HT_region[i].c_str()), "", nnbins, nbins);
+        h_light_emergjetEta[i]->Sumw2();
+        h_light_barr_emergjetEta[i] = new TH1F(Form("h_%s_light_barr_emergjetEta", HT_region[i].c_str()), "", nnbins, nbins);
+        h_light_barr_emergjetEta[i]->Sumw2();
+        h_light_end_emergjetEta[i] = new TH1F(Form("h_%s_light_end_emergjetEta", HT_region[i].c_str()), "", nnbins, nbins);
+        h_light_end_emergjetEta[i]->Sumw2();
+        h_light_emergjetEta_cutalpha[i] = new TH1F(Form("h_%s_light_emergjetEta_cutalpha", HT_region[i].c_str()), "", nnbins, nbins);
+        h_light_emergjetEta_cutalpha[i]->Sumw2();
+        h_light_barr_emergjetEta_cutalpha[i] = new TH1F(Form("h_%s_light_barr_emergjetEta_cutalpha", HT_region[i].c_str()), "", nnbins, nbins);
+        h_light_barr_emergjetEta_cutalpha[i]->Sumw2();
+        h_light_end_emergjetEta_cutalpha[i] = new TH1F(Form("h_%s_light_end_emergjetEta_cutalpha", HT_region[i].c_str()), "", nnbins, nbins);
+        h_light_end_emergjetEta_cutalpha[i]->Sumw2();
+        h_hev_emergjetnTrack[i] = new TH1F(Form("h_%s_hev_emergjetnTrack", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_emergjetnTrack[i]->Sumw2();
+        h_hev_barr_emergjetnTrack[i] = new TH1F(Form("h_%s_hev_barr_emergjetnTrack", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_barr_emergjetnTrack[i]->Sumw2();
+        h_hev_end_emergjetnTrack[i] = new TH1F(Form("h_%s_hev_end_emergjetnTrack", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_end_emergjetnTrack[i]->Sumw2();
+        h_hev_emergjetnTrack_cutalpha[i] = new TH1F(Form("h_%s_hev_emergjetnTrack_cutalpha", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_emergjetnTrack_cutalpha[i]->Sumw2();
+        h_hev_barr_emergjetnTrack_cutalpha[i] = new TH1F(Form("h_%s_hev_barr_emergjetnTrack_cutalpha", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_barr_emergjetnTrack_cutalpha[i]->Sumw2();
+        h_hev_end_emergjetnTrack_cutalpha[i] = new TH1F(Form("h_%s_hev_end_emergjetnTrack_cutalpha", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_end_emergjetnTrack_cutalpha[i]->Sumw2();
 
-    TH1F *h_ht0_light_emergjetEta_cutalpha = new TH1F("h_ht0_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht0_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht70_light_emergjetEta_cutalpha = new TH1F("h_ht70_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht70_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht100_light_emergjetEta_cutalpha = new TH1F("h_ht100_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht100_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht200_light_emergjetEta_cutalpha = new TH1F("h_ht200_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht200_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht400_light_emergjetEta_cutalpha = new TH1F("h_ht400_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht400_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht600_light_emergjetEta_cutalpha = new TH1F("h_ht600_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht600_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht800_light_emergjetEta_cutalpha = new TH1F("h_ht800_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht800_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht1200_light_emergjetEta_cutalpha = new TH1F("h_ht1200_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht1200_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_ht2500_light_emergjetEta_cutalpha = new TH1F("h_ht2500_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_ht2500_light_emergjetEta_cutalpha->Sumw2();
+        h_hev_emergjetnTrack_nog[i] = new TH1F(Form("h_%s_hev_emergjetnTrack_nog", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_emergjetnTrack_nog[i]->Sumw2();
+        h_hev_barr_emergjetnTrack_nog[i] = new TH1F(Form("h_%s_hev_barr_emergjetnTrack_nog", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_barr_emergjetnTrack_nog[i]->Sumw2();
+        h_hev_end_emergjetnTrack_nog[i] = new TH1F(Form("h_%s_hev_end_emergjetnTrack_nog", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_end_emergjetnTrack_nog[i]->Sumw2();
+        h_hev_emergjetnTrack_cutalpha_nog[i] = new TH1F(Form("h_%s_hev_emergjetnTrack_cutalpha_nog", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_emergjetnTrack_cutalpha_nog[i]->Sumw2();
+        h_hev_barr_emergjetnTrack_cutalpha_nog[i] = new TH1F(Form("h_%s_hev_barr_emergjetnTrack_cutalpha_nog", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_barr_emergjetnTrack_cutalpha_nog[i]->Sumw2();
+        h_hev_end_emergjetnTrack_cutalpha_nog[i] = new TH1F(Form("h_%s_hev_end_emergjetnTrack_cutalpha_nog", HT_region[i].c_str()), "", 50, 0, 50);
+        h_hev_end_emergjetnTrack_cutalpha_nog[i]->Sumw2();
 
-    TH1F *h_ht0_hev_emergjetnTrack = new TH1F("h_ht0_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht0_hev_emergjetnTrack->Sumw2();
-    TH1F *h_ht70_hev_emergjetnTrack = new TH1F("h_ht70_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht70_hev_emergjetnTrack->Sumw2();
-    TH1F *h_ht100_hev_emergjetnTrack = new TH1F("h_ht100_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht100_hev_emergjetnTrack->Sumw2();
-    TH1F *h_ht200_hev_emergjetnTrack = new TH1F("h_ht200_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht200_hev_emergjetnTrack->Sumw2();
-    TH1F *h_ht400_hev_emergjetnTrack = new TH1F("h_ht400_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht400_hev_emergjetnTrack->Sumw2();
-    TH1F *h_ht600_hev_emergjetnTrack = new TH1F("h_ht600_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht600_hev_emergjetnTrack->Sumw2();
-    TH1F *h_ht800_hev_emergjetnTrack = new TH1F("h_ht800_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht800_hev_emergjetnTrack->Sumw2();
-    TH1F *h_ht1200_hev_emergjetnTrack = new TH1F("h_ht1200_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht1200_hev_emergjetnTrack->Sumw2();
-    TH1F *h_ht2500_hev_emergjetnTrack = new TH1F("h_ht2500_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht2500_hev_emergjetnTrack->Sumw2();
-
-    TH1F *h_ht0_hev_emergjetnTrack_cutalpha = new TH1F("h_ht0_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht0_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht70_hev_emergjetnTrack_cutalpha = new TH1F("h_ht70_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht70_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht100_hev_emergjetnTrack_cutalpha = new TH1F("h_ht100_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht100_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht200_hev_emergjetnTrack_cutalpha = new TH1F("h_ht200_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht200_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht400_hev_emergjetnTrack_cutalpha = new TH1F("h_ht400_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht400_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht600_hev_emergjetnTrack_cutalpha = new TH1F("h_ht600_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht600_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht800_hev_emergjetnTrack_cutalpha = new TH1F("h_ht800_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht800_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht1200_hev_emergjetnTrack_cutalpha = new TH1F("h_ht1200_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht1200_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht2500_hev_emergjetnTrack_cutalpha = new TH1F("h_ht2500_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht2500_hev_emergjetnTrack_cutalpha->Sumw2();
-
-    TH1F *h_ht0_light_emergjetnTrack = new TH1F("h_ht0_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht0_light_emergjetnTrack->Sumw2();
-    TH1F *h_ht70_light_emergjetnTrack = new TH1F("h_ht70_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht70_light_emergjetnTrack->Sumw2();
-    TH1F *h_ht100_light_emergjetnTrack = new TH1F("h_ht100_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht100_light_emergjetnTrack->Sumw2();
-    TH1F *h_ht200_light_emergjetnTrack = new TH1F("h_ht200_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht200_light_emergjetnTrack->Sumw2();
-    TH1F *h_ht400_light_emergjetnTrack = new TH1F("h_ht400_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht400_light_emergjetnTrack->Sumw2();
-    TH1F *h_ht600_light_emergjetnTrack = new TH1F("h_ht600_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht600_light_emergjetnTrack->Sumw2();
-    TH1F *h_ht800_light_emergjetnTrack = new TH1F("h_ht800_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht800_light_emergjetnTrack->Sumw2();
-    TH1F *h_ht1200_light_emergjetnTrack = new TH1F("h_ht1200_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht1200_light_emergjetnTrack->Sumw2();
-    TH1F *h_ht2500_light_emergjetnTrack = new TH1F("h_ht2500_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_ht2500_light_emergjetnTrack->Sumw2();
-
-    TH1F *h_ht0_light_emergjetnTrack_cutalpha = new TH1F("h_ht0_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht0_light_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht70_light_emergjetnTrack_cutalpha = new TH1F("h_ht70_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht70_light_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht100_light_emergjetnTrack_cutalpha = new TH1F("h_ht100_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht100_light_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht200_light_emergjetnTrack_cutalpha = new TH1F("h_ht200_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht200_light_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht400_light_emergjetnTrack_cutalpha = new TH1F("h_ht400_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht400_light_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht600_light_emergjetnTrack_cutalpha = new TH1F("h_ht600_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht600_light_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht800_light_emergjetnTrack_cutalpha = new TH1F("h_ht800_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht800_light_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht1200_light_emergjetnTrack_cutalpha = new TH1F("h_ht1200_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht1200_light_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_ht2500_light_emergjetnTrack_cutalpha = new TH1F("h_ht2500_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_ht2500_light_emergjetnTrack_cutalpha->Sumw2();
-
-    TH1F *h_ht0_emergjethadronflavor = new TH1F("h_ht0_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht0_emergjethadronflavor->Sumw2();
-    TH1F *h_ht70_emergjethadronflavor = new TH1F("h_ht70_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht70_emergjethadronflavor->Sumw2();
-    TH1F *h_ht100_emergjethadronflavor = new TH1F("h_ht100_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht100_emergjethadronflavor->Sumw2();
-    TH1F *h_ht200_emergjethadronflavor = new TH1F("h_ht200_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht200_emergjethadronflavor->Sumw2();
-    TH1F *h_ht400_emergjethadronflavor = new TH1F("h_ht400_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht400_emergjethadronflavor->Sumw2();
-    TH1F *h_ht600_emergjethadronflavor = new TH1F("h_ht600_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht600_emergjethadronflavor->Sumw2();
-    TH1F *h_ht800_emergjethadronflavor = new TH1F("h_ht800_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht800_emergjethadronflavor->Sumw2();
-    TH1F *h_ht1200_emergjethadronflavor = new TH1F("h_ht1200_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht1200_emergjethadronflavor->Sumw2();
-    TH1F *h_ht2500_emergjethadronflavor = new TH1F("h_ht2500_emergjethadronflavor", "emerging Jet hadronflavor", 6, 0, 6);
-    h_ht2500_emergjethadronflavor->Sumw2();
-
+        h_light_emergjetnTrack[i] = new TH1F(Form("h_%s_light_emergjetnTrack", HT_region[i].c_str()), "", 50, 0, 50);
+        h_light_emergjetnTrack[i]->Sumw2();
+        h_light_barr_emergjetnTrack[i] = new TH1F(Form("h_%s_light_barr_emergjetnTrack", HT_region[i].c_str()), "", 50, 0, 50);
+        h_light_barr_emergjetnTrack[i]->Sumw2();
+        h_light_end_emergjetnTrack[i] = new TH1F(Form("h_%s_light_end_emergjetnTrack", HT_region[i].c_str()), "", 50, 0, 50);
+        h_light_end_emergjetnTrack[i]->Sumw2();
+        h_light_emergjetnTrack_cutalpha[i] = new TH1F(Form("h_%s_light_emergjetnTrack_cutalpha", HT_region[i].c_str()), "", 50, 0, 50);
+        h_light_emergjetnTrack_cutalpha[i]->Sumw2();
+        h_light_barr_emergjetnTrack_cutalpha[i] = new TH1F(Form("h_%s_light_barr_emergjetnTrack_cutalpha", HT_region[i].c_str()), "", 50, 0, 50);
+        h_light_barr_emergjetnTrack_cutalpha[i]->Sumw2();
+        h_light_end_emergjetnTrack_cutalpha[i] = new TH1F(Form("h_%s_end_emergjetnTrack_cutalpha", HT_region[i].c_str()), "", 50, 0, 50);
+        h_light_end_emergjetnTrack_cutalpha[i]->Sumw2();
+    }
     float_t HT;
-
-    Double_t f_ht0_alphamin, f_ht70_alphamin, f_ht100_alphamin, f_ht200_alphamin, f_ht400_alphamin,
-        f_ht600_alphamin, f_ht800_alphamin, f_ht1200_alphamin, f_ht2500_alphamin;
-    float_t f_ht0_Met, f_ht70_Met, f_ht100_Met, f_ht200_Met, f_ht400_Met, f_ht600_Met, f_ht800_Met,
-        f_ht1200_Met, f_ht2500_Met;
 
     Int_t I_ht0_nThinJets, I_ht70_nThinJets, I_ht100_nThinJets, I_ht200_nThinJets, I_ht400_nThinJets, I_ht600_nThinJets,
         I_ht800_nThinJets, I_ht1200_nThinJets, I_ht2500_nThinJets;
 
     Int_t I_ht0_weight, I_ht70_weight, I_ht100_weight, I_ht200_weight, I_ht400_weight, I_ht600_weight,
         I_ht800_weight, I_ht1200_weight, I_ht2500_weight;
-
-    Int_t I_ht0_disJet_multiplicity, I_ht70_disJet_multiplicity, I_ht100_disJet_multiplicity, I_ht200_disJet_multiplicity, I_ht400_disJet_multiplicity,
-        I_ht600_disJet_multiplicity, I_ht800_disJet_multiplicity, I_ht1200_disJet_multiplicity, I_ht2500_disJet_multiplicity;
-
-    Int_t I_ht0_minJetflavor, I_ht70_minJetflavor, I_ht100_minJetflavor, I_ht200_minJetflavor, I_ht400_minJetflavor,
-        I_ht600_minJetflavor, I_ht800_minJetflavor, I_ht1200_minJetflavor, I_ht2500_minJetflavor;
 
     vector<float> *v_ht0_alpha = new vector<float>();
     vector<float> *v_ht70_alpha = new vector<float>();
@@ -422,6 +332,26 @@ void ee_half_HT_fake_rate()
     v_ht1200_Jethadronflavor->clear();
     v_ht2500_Jethadronflavor->clear();
 
+    vector<int> *v_ht0_Jetpartonflavor = new vector<int>();
+    vector<int> *v_ht70_Jetpartonflavor = new vector<int>();
+    vector<int> *v_ht100_Jetpartonflavor = new vector<int>();
+    vector<int> *v_ht200_Jetpartonflavor = new vector<int>();
+    vector<int> *v_ht400_Jetpartonflavor = new vector<int>();
+    vector<int> *v_ht600_Jetpartonflavor = new vector<int>();
+    vector<int> *v_ht800_Jetpartonflavor = new vector<int>();
+    vector<int> *v_ht1200_Jetpartonflavor = new vector<int>();
+    vector<int> *v_ht2500_Jetpartonflavor = new vector<int>();
+
+    v_ht0_Jetpartonflavor->clear();
+    v_ht70_Jetpartonflavor->clear();
+    v_ht100_Jetpartonflavor->clear();
+    v_ht200_Jetpartonflavor->clear();
+    v_ht400_Jetpartonflavor->clear();
+    v_ht600_Jetpartonflavor->clear();
+    v_ht800_Jetpartonflavor->clear();
+    v_ht1200_Jetpartonflavor->clear();
+    v_ht2500_Jetpartonflavor->clear();
+
     vector<int> *v_ht0_JetnTracks = new vector<int>();
     vector<int> *v_ht70_JetnTracks = new vector<int>();
     vector<int> *v_ht100_JetnTracks = new vector<int>();
@@ -441,7 +371,6 @@ void ee_half_HT_fake_rate()
     v_ht800_JetnTracks->clear();
     v_ht1200_JetnTracks->clear();
     v_ht2500_JetnTracks->clear();
-
     //---------------------
     // Define the HTWeight
     //---------------------
@@ -458,154 +387,667 @@ void ee_half_HT_fake_rate()
     TTree *T_event;
     DYincli_1->GetObject("h1", T_event);
     T_event->SetBranchAddress("I_weight", &I_ht0_weight);
-    T_event->SetBranchAddress("f_Met", &f_ht0_Met);
     T_event->SetBranchAddress("f_HT", &HT);
     T_event->SetBranchAddress("v_fakeJethadronflavor", &v_ht0_Jethadronflavor);
+    T_event->SetBranchAddress("v_fakeJetpartonflavor", &v_ht0_Jetpartonflavor);
     T_event->SetBranchAddress("v_fakeJetPt", &v_ht0_JetPT);
     T_event->SetBranchAddress("v_fakeJetEta", &v_ht0_JetEta);
     T_event->SetBranchAddress("v_fakealpha", &v_ht0_alpha);
     T_event->SetBranchAddress("v_N_Tracks", &v_ht0_JetnTracks);
+    T_event->SetBranchAddress("I_nJets", &I_ht0_nThinJets);
     for (int evt = 0; evt < T_event->GetEntries(); evt++)
     {
         T_event->GetEntry(evt);
         for (int i = 0; i < v_ht0_Jethadronflavor->size(); i++)
         {
-            h_ht0_emergjethadronflavor->Fill((*v_ht0_Jethadronflavor)[i], I_ht0_weight * HT0Weight);
             if ((*v_ht0_Jethadronflavor)[i] == 4 || (*v_ht0_Jethadronflavor)[i] == 5)
             {
                 if (HT < 70)
                 {
+                    h_hev_emergjetpt[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                    h_hev_emergjetEta[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                    h_hev_emergjetnTrack[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                        h_hev_emergjetEta_nog[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                        h_hev_emergjetnTrack_nog[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht0_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
-                        h_ht0_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
-                        h_ht0_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        h_hev_barr_emergjetpt[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                        h_hev_barr_emergjetEta[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                        h_hev_barr_emergjetnTrack[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                            h_hev_barr_emergjetEta_nog[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                            h_hev_barr_emergjetnTrack_nog[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht0_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
-                        h_ht0_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
-                        h_ht0_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        h_hev_end_emergjetpt[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                        h_hev_end_emergjetEta[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                        h_hev_end_emergjetnTrack[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                            h_hev_end_emergjetEta_nog[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                            h_hev_end_emergjetnTrack_nog[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        }
                     }
-                }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                        h_hev_emergjetEta_cutalpha[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                        h_hev_emergjetnTrack_cutalpha[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                            h_hev_emergjetEta_cutalpha_nog[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                            h_hev_barr_emergjetEta_cutalpha[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                            h_hev_end_emergjetEta_cutalpha[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                            }
+                        }
+                    } // alpha cut
+                }     // HT<70
                 else if (HT >= 70 && HT < 100)
                 {
+                    h_hev_emergjetpt[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                    h_hev_emergjetEta[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                    h_hev_emergjetnTrack[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                        h_hev_emergjetEta_nog[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                        h_hev_emergjetnTrack_nog[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht70_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
-                        h_ht70_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
-                        h_ht70_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        h_hev_barr_emergjetpt[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                        h_hev_barr_emergjetEta[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                        h_hev_barr_emergjetnTrack[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                            h_hev_barr_emergjetEta_nog[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                            h_hev_barr_emergjetnTrack_nog[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht70_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
-                        h_ht70_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
-                        h_ht70_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        h_hev_end_emergjetpt[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                        h_hev_end_emergjetEta[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                        h_hev_end_emergjetnTrack[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                            h_hev_end_emergjetEta_nog[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                            h_hev_end_emergjetnTrack_nog[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        }
                     }
-                }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                        h_hev_emergjetEta_cutalpha[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                        h_hev_emergjetnTrack_cutalpha[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                            h_hev_emergjetEta_cutalpha_nog[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                            h_hev_barr_emergjetEta_cutalpha[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                            h_hev_end_emergjetEta_cutalpha[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                            }
+                        }
+                    } // alpha cut
+                }     // HT<100
                 else if (HT >= 100 && HT < 200)
                 {
+                    h_hev_emergjetpt[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                    h_hev_emergjetEta[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                    h_hev_emergjetnTrack[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                        h_hev_emergjetEta_nog[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                        h_hev_emergjetnTrack_nog[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht100_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
-                        h_ht100_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
-                        h_ht100_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        h_hev_barr_emergjetpt[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                        h_hev_barr_emergjetEta[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                        h_hev_barr_emergjetnTrack[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                            h_hev_barr_emergjetEta_nog[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                            h_hev_barr_emergjetnTrack_nog[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht100_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
-                        h_ht100_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
-                        h_ht100_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        h_hev_end_emergjetpt[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                        h_hev_end_emergjetEta[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                        h_hev_end_emergjetnTrack[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                            h_hev_end_emergjetEta_nog[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                            h_hev_end_emergjetnTrack_nog[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        }
                     }
-                }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                        h_hev_emergjetEta_cutalpha[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                        h_hev_emergjetnTrack_cutalpha[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                            h_hev_emergjetEta_cutalpha_nog[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                            h_hev_barr_emergjetEta_cutalpha[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                            h_hev_end_emergjetEta_cutalpha[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                            }
+                        }
+                    }
+                } // HT<200
                 else if (HT >= 200 && HT < 400)
                 {
+                    h_hev_emergjetpt[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                    h_hev_emergjetEta[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                    h_hev_emergjetnTrack[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                        h_hev_emergjetEta_nog[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                        h_hev_emergjetnTrack_nog[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht200_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
-                        h_ht200_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
-                        h_ht200_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        h_hev_barr_emergjetpt[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                        h_hev_barr_emergjetEta[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                        h_hev_barr_emergjetnTrack[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                            h_hev_barr_emergjetEta_nog[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                            h_hev_barr_emergjetnTrack_nog[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht200_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
-                        h_ht200_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
-                        h_ht200_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        h_hev_end_emergjetpt[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                        h_hev_end_emergjetEta[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                        h_hev_end_emergjetnTrack[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                            h_hev_end_emergjetEta_nog[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                            h_hev_end_emergjetnTrack_nog[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        }
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                        h_hev_emergjetEta_cutalpha[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                        h_hev_emergjetnTrack_cutalpha[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                            h_hev_emergjetEta_cutalpha_nog[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                            h_hev_barr_emergjetEta_cutalpha[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                            h_hev_end_emergjetEta_cutalpha[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                            }
+                        }
                     }
                 }
                 else if (HT >= 400 && HT < 600)
                 {
+                    h_hev_emergjetpt[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                    h_hev_emergjetEta[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                    h_hev_emergjetnTrack[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                        h_hev_emergjetEta_nog[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                        h_hev_emergjetnTrack_nog[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht400_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
-                        h_ht400_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
-                        h_ht400_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        h_hev_barr_emergjetpt[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                        h_hev_barr_emergjetEta[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                        h_hev_barr_emergjetnTrack[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                            h_hev_barr_emergjetEta_nog[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                            h_hev_barr_emergjetnTrack_nog[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht400_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
-                        h_ht400_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
-                        h_ht400_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        h_hev_end_emergjetpt[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                        h_hev_end_emergjetEta[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                        h_hev_end_emergjetnTrack[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                            h_hev_end_emergjetEta_nog[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                            h_hev_end_emergjetnTrack_nog[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        }
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                        h_hev_emergjetEta_cutalpha[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                        h_hev_emergjetnTrack_cutalpha[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                            h_hev_emergjetEta_cutalpha_nog[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                            h_hev_barr_emergjetEta_cutalpha[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                            h_hev_end_emergjetEta_cutalpha[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                            }
+                        }
                     }
                 }
                 else if (HT >= 600 && HT < 800)
                 {
+                    h_hev_emergjetpt[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                    h_hev_emergjetEta[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                    h_hev_emergjetnTrack[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                        h_hev_emergjetEta_nog[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                        h_hev_emergjetnTrack_nog[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht600_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
-                        h_ht600_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
-                        h_ht600_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        h_hev_barr_emergjetpt[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                        h_hev_barr_emergjetEta[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                        h_hev_barr_emergjetnTrack[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                            h_hev_barr_emergjetEta_nog[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                            h_hev_barr_emergjetnTrack_nog[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht600_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
-                        h_ht600_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
-                        h_ht600_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        h_hev_end_emergjetpt[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                        h_hev_end_emergjetEta[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                        h_hev_end_emergjetnTrack[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                            h_hev_end_emergjetEta_nog[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                            h_hev_end_emergjetnTrack_nog[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        }
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                        h_hev_emergjetEta_cutalpha[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                        h_hev_emergjetnTrack_cutalpha[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                            h_hev_emergjetEta_cutalpha_nog[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                            h_hev_barr_emergjetEta_cutalpha[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                            h_hev_end_emergjetEta_cutalpha[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                            }
+                        }
                     }
                 }
                 else if (HT >= 800 && HT < 1200)
                 {
+                    h_hev_emergjetpt[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                    h_hev_emergjetEta[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                    h_hev_emergjetnTrack[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                        h_hev_emergjetEta_nog[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                        h_hev_emergjetnTrack_nog[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht800_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
-                        h_ht800_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
-                        h_ht800_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        h_hev_barr_emergjetpt[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                        h_hev_barr_emergjetEta[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                        h_hev_barr_emergjetnTrack[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                            h_hev_barr_emergjetEta_nog[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                            h_hev_barr_emergjetnTrack_nog[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht800_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
-                        h_ht800_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
-                        h_ht800_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        h_hev_end_emergjetpt[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                        h_hev_end_emergjetEta[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                        h_hev_end_emergjetnTrack[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                            h_hev_end_emergjetEta_nog[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                            h_hev_end_emergjetnTrack_nog[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        }
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                        h_hev_emergjetEta_cutalpha[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                        h_hev_emergjetnTrack_cutalpha[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                            h_hev_emergjetEta_cutalpha_nog[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                            h_hev_barr_emergjetEta_cutalpha[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                            h_hev_end_emergjetEta_cutalpha[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                            }
+                        }
                     }
                 }
                 else if (HT >= 1200 && HT < 2500)
                 {
+                    h_hev_emergjetpt[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                    h_hev_emergjetEta[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                    h_hev_emergjetnTrack[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_emergjetEta_nog[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_emergjetnTrack_nog[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht1200_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
-                        h_ht1200_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
-                        h_ht1200_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_barr_emergjetpt[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_barr_emergjetEta[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_barr_emergjetnTrack[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_barr_emergjetEta_nog[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_barr_emergjetnTrack_nog[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht1200_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
-                        h_ht1200_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
-                        h_ht1200_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_end_emergjetpt[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_end_emergjetEta[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_end_emergjetnTrack[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_end_emergjetEta_nog[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_end_emergjetnTrack_nog[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        }
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_emergjetEta_cutalpha[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                        h_hev_emergjetnTrack_cutalpha[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_emergjetEta_cutalpha_nog[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_barr_emergjetEta_cutalpha[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_end_emergjetEta_cutalpha[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                            }
+                        }
                     }
                 }
                 else if (HT >= 2500)
                 {
+                    h_hev_emergjetpt[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                    h_hev_emergjetEta[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                    h_hev_emergjetnTrack[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                    if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_nog[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_emergjetEta_nog[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_emergjetnTrack_nog[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                    }
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht2500_hev_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
-                        h_ht2500_hev_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
-                        h_ht2500_hev_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_barr_emergjetpt[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_barr_emergjetEta[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_barr_emergjetnTrack[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_nog[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_barr_emergjetEta_nog[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_barr_emergjetnTrack_nog[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        }
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht2500_hev_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
-                        h_ht2500_hev_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
-                        h_ht2500_hev_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_end_emergjetpt[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_end_emergjetEta[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_end_emergjetnTrack[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_nog[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_end_emergjetEta_nog[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_end_emergjetnTrack_nog[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        }
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_hev_emergjetpt_cutalpha[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_emergjetEta_cutalpha[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                        h_hev_emergjetnTrack_cutalpha[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_emergjetpt_cutalpha_nog[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_emergjetEta_cutalpha_nog[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_emergjetnTrack_cutalpha_nog[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        }
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_barr_emergjetEta_cutalpha[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_barr_emergjetpt_cutalpha_nog[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                                h_hev_barr_emergjetEta_cutalpha_nog[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                                h_hev_barr_emergjetnTrack_cutalpha_nog[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                            }
+                        }
+                        else
+                        {
+                            h_hev_end_emergjetpt_cutalpha[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_end_emergjetEta_cutalpha[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                            h_hev_end_emergjetnTrack_cutalpha[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                            if ((*v_ht0_Jetpartonflavor)[i] != 21)
+                            {
+                                h_hev_end_emergjetpt_cutalpha_nog[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                                h_hev_end_emergjetEta_cutalpha_nog[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                                h_hev_end_emergjetnTrack_cutalpha_nog[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                            }
+                        }
                     }
                 }
             }
@@ -613,605 +1055,1385 @@ void ee_half_HT_fake_rate()
             {
                 if (HT < 70)
                 {
+                    h_light_emergjetpt[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                    h_light_emergjetEta[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                    h_light_emergjetnTrack[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht0_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
-                        h_ht0_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
-                        h_ht0_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        h_light_barr_emergjetpt[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                        h_light_barr_emergjetEta[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                        h_light_barr_emergjetnTrack[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht0_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
-                        h_ht0_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
-                        h_ht0_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        h_light_end_emergjetpt[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                        h_light_end_emergjetEta[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                        h_light_end_emergjetnTrack[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                        h_light_emergjetEta_cutalpha[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                        h_light_emergjetnTrack_cutalpha[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                            h_light_barr_emergjetEta_cutalpha[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[0]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT0Weight);
+                            h_light_end_emergjetEta_cutalpha[0]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT0Weight);
+                            h_light_end_emergjetnTrack_cutalpha[0]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT0Weight);
+                        }
                     }
                 }
                 else if (HT >= 70 && HT < 100)
                 {
+                    h_light_emergjetpt[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                    h_light_emergjetEta[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                    h_light_emergjetnTrack[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht70_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
-                        h_ht70_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
-                        h_ht70_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        h_light_barr_emergjetpt[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                        h_light_barr_emergjetEta[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                        h_light_barr_emergjetnTrack[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht70_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
-                        h_ht70_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
-                        h_ht70_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        h_light_end_emergjetpt[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                        h_light_end_emergjetEta[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                        h_light_end_emergjetnTrack[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                        h_light_emergjetEta_cutalpha[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                        h_light_emergjetnTrack_cutalpha[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                            h_light_barr_emergjetEta_cutalpha[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[1]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT70Weight);
+                            h_light_end_emergjetEta_cutalpha[1]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT70Weight);
+                            h_light_end_emergjetnTrack_cutalpha[1]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT70Weight);
+                        }
                     }
                 }
                 else if (HT >= 100 && HT < 200)
                 {
+                    h_light_emergjetpt[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                    h_light_emergjetEta[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                    h_light_emergjetnTrack[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht100_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
-                        h_ht100_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
-                        h_ht100_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        h_light_barr_emergjetpt[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                        h_light_barr_emergjetEta[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                        h_light_barr_emergjetnTrack[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht100_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
-                        h_ht100_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
-                        h_ht100_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        h_light_end_emergjetpt[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                        h_light_end_emergjetEta[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                        h_light_end_emergjetnTrack[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                        h_light_emergjetEta_cutalpha[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                        h_light_emergjetnTrack_cutalpha[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                            h_light_barr_emergjetEta_cutalpha[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[2]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT100Weight);
+                            h_light_end_emergjetEta_cutalpha[2]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT100Weight);
+                            h_light_end_emergjetnTrack_cutalpha[2]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT100Weight);
+                        }
                     }
                 }
                 else if (HT >= 200 && HT < 400)
                 {
+                    h_light_emergjetpt[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                    h_light_emergjetEta[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                    h_light_emergjetnTrack[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht200_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
-                        h_ht200_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
-                        h_ht200_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        h_light_barr_emergjetpt[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                        h_light_barr_emergjetEta[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                        h_light_barr_emergjetnTrack[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht200_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
-                        h_ht200_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
-                        h_ht200_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        h_light_end_emergjetpt[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                        h_light_end_emergjetEta[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                        h_light_end_emergjetnTrack[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                        h_light_emergjetEta_cutalpha[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                        h_light_emergjetnTrack_cutalpha[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                            h_light_barr_emergjetEta_cutalpha[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[3]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT200Weight);
+                            h_light_end_emergjetEta_cutalpha[3]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT200Weight);
+                            h_light_end_emergjetnTrack_cutalpha[3]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT200Weight);
+                        }
                     }
                 }
                 else if (HT >= 400 && HT < 600)
                 {
+                    h_light_emergjetpt[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                    h_light_emergjetEta[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                    h_light_emergjetnTrack[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht400_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
-                        h_ht400_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
-                        h_ht400_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        h_light_barr_emergjetpt[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                        h_light_barr_emergjetEta[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                        h_light_barr_emergjetnTrack[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht400_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
-                        h_ht400_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
-                        h_ht400_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        h_light_end_emergjetpt[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                        h_light_end_emergjetEta[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                        h_light_end_emergjetnTrack[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                        h_light_emergjetEta_cutalpha[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                        h_light_emergjetnTrack_cutalpha[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                            h_light_barr_emergjetEta_cutalpha[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[4]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT400Weight);
+                            h_light_end_emergjetEta_cutalpha[4]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT400Weight);
+                            h_light_end_emergjetnTrack_cutalpha[4]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT400Weight);
+                        }
                     }
                 }
                 else if (HT >= 600 && HT < 800)
                 {
+                    h_light_emergjetpt[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                    h_light_emergjetEta[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                    h_light_emergjetnTrack[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht600_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
-                        h_ht600_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
-                        h_ht600_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        h_light_barr_emergjetpt[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                        h_light_barr_emergjetEta[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                        h_light_barr_emergjetnTrack[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht600_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
-                        h_ht600_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
-                        h_ht600_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        h_light_end_emergjetpt[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                        h_light_end_emergjetEta[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                        h_light_end_emergjetnTrack[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                        h_light_emergjetEta_cutalpha[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                        h_light_emergjetnTrack_cutalpha[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                            h_light_barr_emergjetEta_cutalpha[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[5]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT600Weight);
+                            h_light_end_emergjetEta_cutalpha[5]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT600Weight);
+                            h_light_end_emergjetnTrack_cutalpha[5]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT600Weight);
+                        }
                     }
                 }
                 else if (HT >= 800 && HT < 1200)
                 {
+                    h_light_emergjetpt[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                    h_light_emergjetEta[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                    h_light_emergjetnTrack[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht800_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
-                        h_ht800_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
-                        h_ht800_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        h_light_barr_emergjetpt[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                        h_light_barr_emergjetEta[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                        h_light_barr_emergjetnTrack[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht800_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
-                        h_ht800_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
-                        h_ht800_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        h_light_end_emergjetpt[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                        h_light_end_emergjetEta[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                        h_light_end_emergjetnTrack[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                        h_light_emergjetEta_cutalpha[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                        h_light_emergjetnTrack_cutalpha[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                            h_light_barr_emergjetEta_cutalpha[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[6]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT800Weight);
+                            h_light_end_emergjetEta_cutalpha[6]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT800Weight);
+                            h_light_end_emergjetnTrack_cutalpha[6]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT800Weight);
+                        }
                     }
                 }
                 else if (HT >= 1200 && HT < 2500)
                 {
+                    h_light_emergjetpt[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                    h_light_emergjetEta[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                    h_light_emergjetnTrack[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht1200_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
-                        h_ht1200_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
-                        h_ht1200_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        h_light_barr_emergjetpt[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                        h_light_barr_emergjetEta[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                        h_light_barr_emergjetnTrack[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht1200_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
-                        h_ht1200_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
-                        h_ht1200_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        h_light_end_emergjetpt[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                        h_light_end_emergjetEta[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                        h_light_end_emergjetnTrack[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                        h_light_emergjetEta_cutalpha[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                        h_light_emergjetnTrack_cutalpha[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                            h_light_barr_emergjetEta_cutalpha[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[7]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT1200Weight);
+                            h_light_end_emergjetEta_cutalpha[7]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT1200Weight);
+                            h_light_end_emergjetnTrack_cutalpha[7]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT1200Weight);
+                        }
                     }
                 }
                 else if (HT >= 2500)
                 {
+                    h_light_emergjetpt[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                    h_light_emergjetEta[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                    h_light_emergjetnTrack[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
                     if (abs((*v_ht0_JetEta)[i]) < 1.479)
                     {
-                        h_ht2500_light_emergjetpt->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
-                        h_ht2500_light_emergjetEta->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
-                        h_ht2500_light_emergjetnTrack->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        h_light_barr_emergjetpt[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                        h_light_barr_emergjetEta[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                        h_light_barr_emergjetnTrack[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
                     }
-                    if ((*v_ht0_alpha)[i] <= 0.35 && abs((*v_ht0_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht2500_light_emergjetpt_cutalpha->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
-                        h_ht2500_light_emergjetEta_cutalpha->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
-                        h_ht2500_light_emergjetnTrack_cutalpha->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        h_light_end_emergjetpt[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                        h_light_end_emergjetEta[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                        h_light_end_emergjetnTrack[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                    }
+                    if ((*v_ht0_alpha)[i] <= 0.35)
+                    {
+                        h_light_emergjetpt_cutalpha[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                        h_light_emergjetEta_cutalpha[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                        h_light_emergjetnTrack_cutalpha[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        if (abs((*v_ht0_JetEta)[i]) < 1.479)
+                        {
+                            h_light_barr_emergjetpt_cutalpha[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                            h_light_barr_emergjetEta_cutalpha[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                            h_light_barr_emergjetnTrack_cutalpha[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        }
+                        else
+                        {
+                            h_light_end_emergjetpt_cutalpha[8]->Fill((*v_ht0_JetPT)[i], I_ht0_weight * HT2500Weight);
+                            h_light_end_emergjetEta_cutalpha[8]->Fill((*v_ht0_JetEta)[i], I_ht0_weight * HT2500Weight);
+                            h_light_end_emergjetnTrack_cutalpha[8]->Fill((*v_ht0_JetnTracks)[i], I_ht0_weight * HT2500Weight);
+                        }
                     }
                 }
             }
         }
-    }
+    } // End of DYHT0 loop
     TTree *T_event1;
     DYHT100_1->GetObject("h1", T_event1);
-    T_event1->SetBranchAddress("f_Met", &f_ht100_Met);
     T_event1->SetBranchAddress("I_weight", &I_ht100_weight);
     T_event1->SetBranchAddress("v_fakeJethadronflavor", &v_ht100_Jethadronflavor);
+    T_event1->SetBranchAddress("v_fakeJetpartonflavor", &v_ht100_Jetpartonflavor);
     T_event1->SetBranchAddress("v_fakeJetPt", &v_ht100_JetPT);
     T_event1->SetBranchAddress("v_fakeJetEta", &v_ht100_JetEta);
     T_event1->SetBranchAddress("v_fakealpha", &v_ht100_alpha);
     T_event1->SetBranchAddress("v_N_Tracks", &v_ht100_JetnTracks);
+    T_event1->SetBranchAddress("I_nJets", &I_ht100_nThinJets);
     for (int evt = 0; evt < T_event1->GetEntries(); evt++)
     {
         T_event1->GetEntry(evt);
         for (int i = 0; i < v_ht100_Jethadronflavor->size(); i++)
         {
-            h_ht100_emergjethadronflavor->Fill((*v_ht100_Jethadronflavor)[i], I_ht100_weight * HT100Weight);
             if ((*v_ht100_Jethadronflavor)[i] == 4 || (*v_ht100_Jethadronflavor)[i] == 5)
             {
+                h_hev_emergjetpt[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                h_hev_emergjetEta[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                h_hev_emergjetnTrack[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                if ((*v_ht100_Jetpartonflavor)[i] != 21)
+                {
+                    h_hev_emergjetpt_nog[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                    h_hev_emergjetEta_nog[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    h_hev_emergjetnTrack_nog[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                }
                 if (abs((*v_ht100_JetEta)[i]) < 1.479)
                 {
-                    h_ht100_hev_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
-                    h_ht100_hev_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
-                    h_ht100_hev_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    h_hev_barr_emergjetpt[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                    h_hev_barr_emergjetEta[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    h_hev_barr_emergjetnTrack[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    if ((*v_ht100_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_barr_emergjetpt_nog[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_hev_barr_emergjetEta_nog[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                        h_hev_barr_emergjetnTrack_nog[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    }
                 }
-                if ((*v_ht100_alpha)[i] <= 0.35 && abs((*v_ht100_JetEta)[i]) < 1.479)
+                else
                 {
-                    h_ht100_hev_emergjetpt_cutalpha->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
-                    h_ht100_hev_emergjetEta_cutalpha->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
-                    h_ht100_hev_emergjetnTrack_cutalpha->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    h_hev_end_emergjetpt[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                    h_hev_end_emergjetEta[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    h_hev_end_emergjetnTrack[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    if ((*v_ht100_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_end_emergjetpt_nog[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_hev_end_emergjetEta_nog[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                        h_hev_end_emergjetnTrack_nog[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    }
+                }
+                if ((*v_ht100_alpha)[i] <= 0.35)
+                {
+                    h_hev_emergjetpt_cutalpha[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                    h_hev_emergjetEta_cutalpha[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    h_hev_emergjetnTrack_cutalpha[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    if ((*v_ht100_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_cutalpha_nog[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_hev_emergjetEta_cutalpha_nog[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                        h_hev_emergjetnTrack_cutalpha_nog[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    }
+                    if (abs((*v_ht100_JetEta)[i]) < 1.479)
+                    {
+                        h_hev_barr_emergjetpt_cutalpha[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_hev_barr_emergjetEta_cutalpha[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                        h_hev_barr_emergjetnTrack_cutalpha[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                        if ((*v_ht100_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha_nog[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                            h_hev_barr_emergjetEta_cutalpha_nog[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha_nog[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                        }
+                    }
+                    else
+                    {
+                        h_hev_end_emergjetpt_cutalpha[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_hev_end_emergjetEta_cutalpha[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                        h_hev_end_emergjetnTrack_cutalpha[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                        if ((*v_ht100_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_cutalpha_nog[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                            h_hev_end_emergjetEta_cutalpha_nog[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                            h_hev_end_emergjetnTrack_cutalpha_nog[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                        }
+                    }
                 }
             }
             else
             {
+                h_light_emergjetpt[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                h_light_emergjetEta[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                h_light_emergjetnTrack[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
                 if (abs((*v_ht100_JetEta)[i]) < 1.479)
                 {
-                    h_ht100_light_emergjetpt->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
-                    h_ht100_light_emergjetEta->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
-                    h_ht100_light_emergjetnTrack->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    h_light_barr_emergjetpt[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                    h_light_barr_emergjetEta[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    h_light_barr_emergjetnTrack[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
                 }
-                if ((*v_ht100_alpha)[i] <= 0.35 && abs((*v_ht100_JetEta)[i]) < 1.479)
+                else
                 {
-                    h_ht100_light_emergjetpt_cutalpha->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
-                    h_ht100_light_emergjetEta_cutalpha->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
-                    h_ht100_light_emergjetnTrack_cutalpha->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    h_light_end_emergjetpt[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                    h_light_end_emergjetEta[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    h_light_end_emergjetnTrack[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                }
+                if ((*v_ht100_alpha)[i] <= 0.35)
+                {
+                    h_light_emergjetpt_cutalpha[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                    h_light_emergjetEta_cutalpha[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                    h_light_emergjetnTrack_cutalpha[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    if (abs((*v_ht100_JetEta)[i]) < 1.479)
+                    {
+                        h_light_barr_emergjetpt_cutalpha[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_light_barr_emergjetEta_cutalpha[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                        h_light_barr_emergjetnTrack_cutalpha[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    }
+                    else
+                    {
+                        h_light_end_emergjetpt_cutalpha[2]->Fill((*v_ht100_JetPT)[i], I_ht100_weight * HT100Weight);
+                        h_light_end_emergjetEta_cutalpha[2]->Fill((*v_ht100_JetEta)[i], I_ht100_weight * HT100Weight);
+                        h_light_end_emergjetnTrack_cutalpha[2]->Fill((*v_ht100_JetnTracks)[i], I_ht100_weight * HT100Weight);
+                    }
                 }
             }
         }
-    }
-
+    } // End of HT100 loop
     TTree *T_event2;
     DYHT200_1->GetObject("h1", T_event2);
-    T_event2->SetBranchAddress("f_Met", &f_ht200_Met);
     T_event2->SetBranchAddress("I_weight", &I_ht200_weight);
     T_event2->SetBranchAddress("v_fakeJethadronflavor", &v_ht200_Jethadronflavor);
+    T_event2->SetBranchAddress("v_fakeJetpartonflavor", &v_ht200_Jetpartonflavor);
     T_event2->SetBranchAddress("v_fakeJetPt", &v_ht200_JetPT);
     T_event2->SetBranchAddress("v_fakeJetEta", &v_ht200_JetEta);
     T_event2->SetBranchAddress("v_fakealpha", &v_ht200_alpha);
     T_event2->SetBranchAddress("v_N_Tracks", &v_ht200_JetnTracks);
+    T_event2->SetBranchAddress("I_nJets", &I_ht200_nThinJets);
     for (int evt = 0; evt < T_event2->GetEntries(); evt++)
     {
-        T_event2->GetEntry(evt);
         for (int i = 0; i < v_ht200_Jethadronflavor->size(); i++)
         {
-            h_ht200_emergjethadronflavor->Fill((*v_ht200_Jethadronflavor)[i], I_ht200_weight * HT200Weight);
             if ((*v_ht200_Jethadronflavor)[i] == 4 || (*v_ht200_Jethadronflavor)[i] == 5)
             {
+                h_hev_emergjetpt[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                h_hev_emergjetEta[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                h_hev_emergjetnTrack[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                if ((*v_ht200_Jetpartonflavor)[i] != 21)
+                {
+                    h_hev_emergjetpt_nog[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                    h_hev_emergjetEta_nog[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    h_hev_emergjetnTrack_nog[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                }
                 if (abs((*v_ht200_JetEta)[i]) < 1.479)
                 {
-                    h_ht200_hev_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
-                    h_ht200_hev_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
-                    h_ht200_hev_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
-                    if ((*v_ht200_alpha)[i] <= 0.35 && abs((*v_ht200_JetEta)[i]) < 1.479)
+                    h_hev_barr_emergjetpt[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                    h_hev_barr_emergjetEta[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    h_hev_barr_emergjetnTrack[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                    if ((*v_ht200_Jetpartonflavor)[i] != 21)
                     {
-                        h_ht200_hev_emergjetpt_cutalpha->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
-                        h_ht200_hev_emergjetEta_cutalpha->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
-                        h_ht200_hev_emergjetnTrack_cutalpha->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        h_hev_barr_emergjetpt_nog[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_hev_barr_emergjetEta_nog[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                        h_hev_barr_emergjetnTrack_nog[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
                     }
                 }
                 else
                 {
+                    h_hev_end_emergjetpt[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                    h_hev_end_emergjetEta[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    h_hev_end_emergjetnTrack[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                    if ((*v_ht200_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_end_emergjetpt_nog[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_hev_end_emergjetEta_nog[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                        h_hev_end_emergjetnTrack_nog[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                    }
+                }
+                if ((*v_ht200_alpha)[i] <= 0.35)
+                {
+                    h_hev_emergjetpt_cutalpha[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                    h_hev_emergjetEta_cutalpha[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    h_hev_emergjetnTrack_cutalpha[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                    if ((*v_ht200_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_cutalpha_nog[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_hev_emergjetEta_cutalpha_nog[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                        h_hev_emergjetnTrack_cutalpha_nog[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                    }
                     if (abs((*v_ht200_JetEta)[i]) < 1.479)
                     {
-                        h_ht200_light_emergjetpt->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
-                        h_ht200_light_emergjetEta->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
-                        h_ht200_light_emergjetnTrack->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        h_hev_barr_emergjetpt_cutalpha[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_hev_barr_emergjetEta_cutalpha[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                        h_hev_barr_emergjetnTrack_cutalpha[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        if ((*v_ht200_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha_nog[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                            h_hev_barr_emergjetEta_cutalpha_nog[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha_nog[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        }
                     }
-                    if ((*v_ht200_alpha)[i] <= 0.35 && abs((*v_ht200_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht200_light_emergjetpt_cutalpha->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
-                        h_ht200_light_emergjetEta_cutalpha->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
-                        h_ht200_light_emergjetnTrack_cutalpha->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        h_hev_end_emergjetpt_cutalpha[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_hev_end_emergjetEta_cutalpha[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                        h_hev_end_emergjetnTrack_cutalpha[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        if ((*v_ht200_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_cutalpha_nog[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                            h_hev_end_emergjetEta_cutalpha_nog[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                            h_hev_end_emergjetnTrack_cutalpha_nog[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                h_light_emergjetpt[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                h_light_emergjetEta[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                h_light_emergjetnTrack[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                if (abs((*v_ht200_JetEta)[i]) < 1.479)
+                {
+                    h_light_barr_emergjetpt[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                    h_light_barr_emergjetEta[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    h_light_barr_emergjetnTrack[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                }
+                else
+                {
+                    h_light_end_emergjetpt[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                    h_light_end_emergjetEta[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    h_light_end_emergjetnTrack[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                }
+                if ((*v_ht200_alpha)[i] <= 0.35)
+                {
+                    h_light_emergjetpt_cutalpha[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                    h_light_emergjetEta_cutalpha[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                    h_light_emergjetnTrack_cutalpha[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                    if (abs((*v_ht200_JetEta)[i]) < 1.479)
+                    {
+                        h_light_barr_emergjetpt_cutalpha[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_light_barr_emergjetEta_cutalpha[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                        h_light_barr_emergjetnTrack_cutalpha[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
+                    }
+                    else
+                    {
+                        h_light_end_emergjetpt_cutalpha[3]->Fill((*v_ht200_JetPT)[i], I_ht200_weight * HT200Weight);
+                        h_light_end_emergjetEta_cutalpha[3]->Fill((*v_ht200_JetEta)[i], I_ht200_weight * HT200Weight);
+                        h_light_end_emergjetnTrack_cutalpha[3]->Fill((*v_ht200_JetnTracks)[i], I_ht200_weight * HT200Weight);
                     }
                 }
             }
         }
-    }
-        TTree *T_event3;
-        DYHT400_1->GetObject("h1", T_event3);
-        T_event3->SetBranchAddress("f_Met", &f_ht400_Met);
-        T_event3->SetBranchAddress("I_weight", &I_ht400_weight);
-        T_event3->SetBranchAddress("v_fakeJethadronflavor", &v_ht400_Jethadronflavor);
-        T_event3->SetBranchAddress("v_fakeJetPt", &v_ht400_JetPT);
-        T_event3->SetBranchAddress("v_fakeJetEta", &v_ht400_JetEta);
-        T_event3->SetBranchAddress("v_fakealpha", &v_ht400_alpha);
-        T_event3->SetBranchAddress("v_N_Tracks", &v_ht400_JetnTracks);
-        for (int evt = 0; evt < T_event3->GetEntries(); evt++)
+    } // End of HT200 loop
+    TTree *T_event3;
+    DYHT400_1->GetObject("h1", T_event3);
+    T_event3->SetBranchAddress("I_weight", &I_ht400_weight);
+    T_event3->SetBranchAddress("v_fakeJethadronflavor", &v_ht400_Jethadronflavor);
+    T_event3->SetBranchAddress("v_fakeJetpartonflavor", &v_ht400_Jetpartonflavor);
+    T_event3->SetBranchAddress("v_fakeJetPt", &v_ht400_JetPT);
+    T_event3->SetBranchAddress("v_fakeJetEta", &v_ht400_JetEta);
+    T_event3->SetBranchAddress("v_fakealpha", &v_ht400_alpha);
+    T_event3->SetBranchAddress("v_N_Tracks", &v_ht400_JetnTracks);
+    T_event3->SetBranchAddress("I_nJets", &I_ht400_nThinJets);
+    for (int evt = 0; evt < T_event3->GetEntries(); evt++)
+    {
+        T_event3->GetEntry(evt);
+        for (int i = 0; i < v_ht400_Jethadronflavor->size(); i++)
         {
-            T_event3->GetEntry(evt);
-            for (int i = 0; i < v_ht400_Jethadronflavor->size(); i++)
+            if ((*v_ht400_Jethadronflavor)[i] == 4 || (*v_ht400_Jethadronflavor)[i] == 5)
             {
-                h_ht400_emergjethadronflavor->Fill((*v_ht400_Jethadronflavor)[i], I_ht400_weight * HT400Weight);
-                if ((*v_ht400_Jethadronflavor)[i] == 4 || (*v_ht400_Jethadronflavor)[i] == 5)
+                h_hev_emergjetpt[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                h_hev_emergjetEta[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                h_hev_emergjetnTrack[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                if ((*v_ht400_Jetpartonflavor)[i] != 21)
                 {
+                    h_hev_emergjetpt_nog[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                    h_hev_emergjetEta_nog[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    h_hev_emergjetnTrack_nog[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                }
+                if (abs((*v_ht400_JetEta)[i]) < 1.479)
+                {
+                    h_hev_barr_emergjetpt[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                    h_hev_barr_emergjetEta[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    h_hev_barr_emergjetnTrack[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                    if ((*v_ht400_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_barr_emergjetpt_nog[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_hev_barr_emergjetEta_nog[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                        h_hev_barr_emergjetnTrack_nog[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                    }
+                }
+                else
+                {
+                    h_hev_end_emergjetpt[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                    h_hev_end_emergjetEta[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    h_hev_end_emergjetnTrack[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                    if ((*v_ht400_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_end_emergjetpt_nog[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_hev_end_emergjetEta_nog[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                        h_hev_end_emergjetnTrack_nog[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                    }
+                }
+                if ((*v_ht400_alpha)[i] <= 0.35)
+                {
+                    h_hev_emergjetpt_cutalpha[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                    h_hev_emergjetEta_cutalpha[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    h_hev_emergjetnTrack_cutalpha[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                    if ((*v_ht400_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_cutalpha_nog[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_hev_emergjetEta_cutalpha_nog[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                        h_hev_emergjetnTrack_cutalpha_nog[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                    }
                     if (abs((*v_ht400_JetEta)[i]) < 1.479)
                     {
-                        h_ht400_hev_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
-                        h_ht400_hev_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
-                        h_ht400_hev_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        h_hev_barr_emergjetpt_cutalpha[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_hev_barr_emergjetEta_cutalpha[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                        h_hev_barr_emergjetnTrack_cutalpha[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        if ((*v_ht400_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha_nog[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                            h_hev_barr_emergjetEta_cutalpha_nog[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha_nog[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        }
                     }
-                    if ((*v_ht400_alpha)[i] <= 0.35 && abs((*v_ht400_alpha)[i]) < 1.479)
+                    else
                     {
-                        h_ht400_hev_emergjetpt_cutalpha->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
-                        h_ht400_hev_emergjetEta_cutalpha->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
-                        h_ht400_hev_emergjetnTrack_cutalpha->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        h_hev_end_emergjetpt_cutalpha[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_hev_end_emergjetEta_cutalpha[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                        h_hev_end_emergjetnTrack_cutalpha[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        if ((*v_ht400_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_cutalpha_nog[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                            h_hev_end_emergjetEta_cutalpha_nog[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                            h_hev_end_emergjetnTrack_cutalpha_nog[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        }
                     }
+                }
+            }
+            else
+            {
+                h_light_emergjetpt[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                h_light_emergjetEta[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                h_light_emergjetnTrack[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                if (abs((*v_ht400_JetEta)[i]) < 1.479)
+                {
+                    h_light_barr_emergjetpt[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                    h_light_barr_emergjetEta[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    h_light_barr_emergjetnTrack[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
                 }
                 else
                 {
+                    h_light_end_emergjetpt[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                    h_light_end_emergjetEta[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    h_light_end_emergjetnTrack[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                }
+                if ((*v_ht400_alpha)[i] <= 0.35)
+                {
+                    h_light_emergjetpt_cutalpha[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                    h_light_emergjetEta_cutalpha[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                    h_light_emergjetnTrack_cutalpha[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
                     if (abs((*v_ht400_JetEta)[i]) < 1.479)
                     {
-                        h_ht400_light_emergjetpt->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
-                        h_ht400_light_emergjetEta->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
-                        h_ht400_light_emergjetnTrack->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        h_light_barr_emergjetpt_cutalpha[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_light_barr_emergjetEta_cutalpha[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                        h_light_barr_emergjetnTrack_cutalpha[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
                     }
-                    if ((*v_ht400_alpha)[i] <= 0.35 && abs((*v_ht400_alpha)[i]) < 1.479)
+                    else
                     {
-                        h_ht400_light_emergjetpt_cutalpha->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
-                        h_ht400_light_emergjetEta_cutalpha->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
-                        h_ht400_light_emergjetnTrack_cutalpha->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
+                        h_light_end_emergjetpt_cutalpha[4]->Fill((*v_ht400_JetPT)[i], I_ht400_weight * HT400Weight);
+                        h_light_end_emergjetEta_cutalpha[4]->Fill((*v_ht400_JetEta)[i], I_ht400_weight * HT400Weight);
+                        h_light_end_emergjetnTrack_cutalpha[4]->Fill((*v_ht400_JetnTracks)[i], I_ht400_weight * HT400Weight);
                     }
                 }
             }
         }
-        TTree *T_event4;
-        DYHT600_1->GetObject("h1", T_event4);
-        T_event4->SetBranchAddress("f_Met", &f_ht600_Met);
-        T_event4->SetBranchAddress("I_weight", &I_ht600_weight);
-        T_event4->SetBranchAddress("v_fakeJethadronflavor", &v_ht600_Jethadronflavor);
-        T_event4->SetBranchAddress("v_fakeJetPt", &v_ht600_JetPT);
-        T_event4->SetBranchAddress("v_fakeJetEta", &v_ht600_JetEta);
-        T_event4->SetBranchAddress("v_fakealpha", &v_ht600_alpha);
-        T_event4->SetBranchAddress("v_N_Tracks", &v_ht600_JetnTracks);
-        for (int evt = 0; evt < T_event4->GetEntries(); evt++)
+    } // End of HT400 loop
+    TTree *T_event4;
+    DYHT600_1->GetObject("h1", T_event4);
+    T_event4->SetBranchAddress("I_weight", &I_ht600_weight);
+    T_event4->SetBranchAddress("v_fakeJethadronflavor", &v_ht600_Jethadronflavor);
+    T_event4->SetBranchAddress("v_fakeJetpartonflavor", &v_ht600_Jetpartonflavor);
+    T_event4->SetBranchAddress("v_fakeJetPt", &v_ht600_JetPT);
+    T_event4->SetBranchAddress("v_fakeJetEta", &v_ht600_JetEta);
+    T_event4->SetBranchAddress("v_fakealpha", &v_ht600_alpha);
+    T_event4->SetBranchAddress("v_N_Tracks", &v_ht600_JetnTracks);
+    T_event4->SetBranchAddress("I_nJets", &I_ht600_nThinJets);
+    for (int evt = 0; evt < T_event4->GetEntries(); evt++)
+    {
+        T_event4->GetEntry(evt);
+        for (int i = 0; i < v_ht600_Jethadronflavor->size(); i++)
         {
-            T_event4->GetEntry(evt);
-            for (int i = 0; i < v_ht600_Jethadronflavor->size(); i++)
+            if ((*v_ht600_Jethadronflavor)[i] == 4 || (*v_ht600_Jethadronflavor)[i] == 5)
             {
-                h_ht600_emergjethadronflavor->Fill((*v_ht600_Jethadronflavor)[i], I_ht600_weight * HT600Weight);
-                if ((*v_ht600_Jethadronflavor)[i] == 4 || (*v_ht600_Jethadronflavor)[i] == 5)
+                h_hev_emergjetpt[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                h_hev_emergjetEta[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                h_hev_emergjetnTrack[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                if ((*v_ht600_Jetpartonflavor)[i] != 21)
                 {
+                    h_hev_emergjetpt_nog[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                    h_hev_emergjetEta_nog[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    h_hev_emergjetnTrack_nog[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                }
+                if (abs((*v_ht600_JetEta)[i]) < 1.479)
+                {
+                    h_hev_barr_emergjetpt[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                    h_hev_barr_emergjetEta[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    h_hev_barr_emergjetnTrack[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                    if ((*v_ht600_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_barr_emergjetpt_nog[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_hev_barr_emergjetEta_nog[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                        h_hev_barr_emergjetnTrack_nog[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                    }
+                }
+                else
+                {
+                    h_hev_end_emergjetpt[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                    h_hev_end_emergjetEta[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    h_hev_end_emergjetnTrack[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                    if ((*v_ht600_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_end_emergjetpt_nog[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_hev_end_emergjetEta_nog[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                        h_hev_end_emergjetnTrack_nog[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                    }
+                }
+                if ((*v_ht600_alpha)[i] <= 0.35)
+                {
+                    h_hev_emergjetpt_cutalpha[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                    h_hev_emergjetEta_cutalpha[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    h_hev_emergjetnTrack_cutalpha[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                    if ((*v_ht600_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_cutalpha_nog[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_hev_emergjetEta_cutalpha_nog[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                        h_hev_emergjetnTrack_cutalpha_nog[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                    }
                     if (abs((*v_ht600_JetEta)[i]) < 1.479)
                     {
-                        h_ht600_hev_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
-                        h_ht600_hev_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
-                        h_ht600_hev_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        h_hev_barr_emergjetpt_cutalpha[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_hev_barr_emergjetEta_cutalpha[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                        h_hev_barr_emergjetnTrack_cutalpha[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        if ((*v_ht600_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha_nog[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                            h_hev_barr_emergjetEta_cutalpha_nog[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha_nog[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        }
                     }
-                    if ((*v_ht600_alpha)[i] <= 0.35 && abs((*v_ht600_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht600_hev_emergjetpt_cutalpha->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
-                        h_ht600_hev_emergjetEta_cutalpha->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
-                        h_ht600_hev_emergjetnTrack_cutalpha->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        h_hev_end_emergjetpt_cutalpha[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_hev_end_emergjetEta_cutalpha[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                        h_hev_end_emergjetnTrack_cutalpha[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        if ((*v_ht600_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_cutalpha_nog[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                            h_hev_end_emergjetEta_cutalpha_nog[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                            h_hev_end_emergjetnTrack_cutalpha_nog[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        }
                     }
+                }
+            }
+            else
+            {
+                h_light_emergjetpt[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                h_light_emergjetEta[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                h_light_emergjetnTrack[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                if (abs((*v_ht600_JetEta)[i]) < 1.479)
+                {
+                    h_light_barr_emergjetpt[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                    h_light_barr_emergjetEta[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    h_light_barr_emergjetnTrack[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
                 }
                 else
                 {
+                    h_light_end_emergjetpt[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                    h_light_end_emergjetEta[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    h_light_end_emergjetnTrack[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                }
+                if ((*v_ht600_alpha)[i] <= 0.35)
+                {
+                    h_light_emergjetpt_cutalpha[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                    h_light_emergjetEta_cutalpha[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                    h_light_emergjetnTrack_cutalpha[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
                     if (abs((*v_ht600_JetEta)[i]) < 1.479)
                     {
-                        h_ht600_light_emergjetpt->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
-                        h_ht600_light_emergjetEta->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
-                        h_ht600_light_emergjetnTrack->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        h_light_barr_emergjetpt_cutalpha[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_light_barr_emergjetEta_cutalpha[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                        h_light_barr_emergjetnTrack_cutalpha[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
                     }
-                    if ((*v_ht600_alpha)[i] <= 0.35 && abs((*v_ht600_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht600_light_emergjetpt_cutalpha->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
-                        h_ht600_light_emergjetEta_cutalpha->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
-                        h_ht600_light_emergjetnTrack_cutalpha->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
+                        h_light_end_emergjetpt_cutalpha[5]->Fill((*v_ht600_JetPT)[i], I_ht600_weight * HT600Weight);
+                        h_light_end_emergjetEta_cutalpha[5]->Fill((*v_ht600_JetEta)[i], I_ht600_weight * HT600Weight);
+                        h_light_end_emergjetnTrack_cutalpha[5]->Fill((*v_ht600_JetnTracks)[i], I_ht600_weight * HT600Weight);
                     }
                 }
             }
         }
-
-        TTree *T_event5;
-        DYHT800_1->GetObject("h1", T_event5);
-        T_event5->SetBranchAddress("f_Met", &f_ht800_Met);
-        T_event5->SetBranchAddress("I_weight", &I_ht800_weight);
-        T_event5->SetBranchAddress("v_fakeJethadronflavor", &v_ht800_Jethadronflavor);
-        T_event5->SetBranchAddress("v_fakeJetPt", &v_ht800_JetPT);
-        T_event5->SetBranchAddress("v_fakeJetEta", &v_ht800_JetEta);
-        T_event5->SetBranchAddress("v_fakealpha", &v_ht800_alpha);
-        T_event5->SetBranchAddress("v_N_Tracks", &v_ht800_JetnTracks);
-        for (int evt = 0; evt < T_event5->GetEntries(); evt++)
+    } // End of HT600 loop
+    TTree *T_event5;
+    DYHT800_1->GetObject("h1", T_event5);
+    T_event5->SetBranchAddress("I_weight", &I_ht800_weight);
+    T_event5->SetBranchAddress("v_fakeJethadronflavor", &v_ht800_Jethadronflavor);
+    T_event5->SetBranchAddress("v_fakeJetpartonflavor", &v_ht800_Jetpartonflavor);
+    T_event5->SetBranchAddress("v_fakeJetPt", &v_ht800_JetPT);
+    T_event5->SetBranchAddress("v_fakeJetEta", &v_ht800_JetEta);
+    T_event5->SetBranchAddress("v_fakealpha", &v_ht800_alpha);
+    T_event5->SetBranchAddress("v_N_Tracks", &v_ht800_JetnTracks);
+    T_event5->SetBranchAddress("I_nJets", &I_ht800_nThinJets);
+    for (int evt = 0; evt < T_event5->GetEntries(); evt++)
+    {
+        T_event5->GetEntry(evt);
+        for (int i = 0; i < v_ht800_Jethadronflavor->size(); i++)
         {
-            T_event5->GetEntry(evt);
-            for (int i = 0; i < v_ht800_Jethadronflavor->size(); i++)
+            if ((*v_ht800_Jethadronflavor)[i] == 4 || (*v_ht800_Jethadronflavor)[i] == 5)
             {
-                h_ht800_emergjethadronflavor->Fill((*v_ht800_Jethadronflavor)[i], I_ht800_weight * HT800Weight);
-                if ((*v_ht800_Jethadronflavor)[i] == 4 || (*v_ht800_Jethadronflavor)[i] == 5)
+                h_hev_emergjetpt[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                h_hev_emergjetEta[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                h_hev_emergjetnTrack[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                if ((*v_ht800_Jetpartonflavor)[i] != 21)
                 {
+                    h_hev_emergjetpt_nog[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                    h_hev_emergjetEta_nog[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    h_hev_emergjetnTrack_nog[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                }
+                if (abs((*v_ht800_JetEta)[i]) < 1.479)
+                {
+                    h_hev_barr_emergjetpt[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                    h_hev_barr_emergjetEta[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    h_hev_barr_emergjetnTrack[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                    if ((*v_ht800_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_barr_emergjetpt_nog[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_hev_barr_emergjetEta_nog[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                        h_hev_barr_emergjetnTrack_nog[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                    }
+                }
+                else
+                {
+                    h_hev_end_emergjetpt[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                    h_hev_end_emergjetEta[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    h_hev_end_emergjetnTrack[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                    if ((*v_ht800_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_end_emergjetpt_nog[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_hev_end_emergjetEta_nog[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                        h_hev_end_emergjetnTrack_nog[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                    }
+                }
+                if ((*v_ht800_alpha)[i] <= 0.35)
+                {
+                    h_hev_emergjetpt_cutalpha[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                    h_hev_emergjetEta_cutalpha[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    h_hev_emergjetnTrack_cutalpha[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                    if ((*v_ht800_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_cutalpha_nog[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_hev_emergjetEta_cutalpha_nog[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                        h_hev_emergjetnTrack_cutalpha_nog[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                    }
                     if (abs((*v_ht800_JetEta)[i]) < 1.479)
                     {
-                        h_ht800_hev_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
-                        h_ht800_hev_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
-                        h_ht800_hev_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        h_hev_barr_emergjetpt_cutalpha[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_hev_barr_emergjetEta_cutalpha[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                        h_hev_barr_emergjetnTrack_cutalpha[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        if ((*v_ht800_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha_nog[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                            h_hev_barr_emergjetEta_cutalpha_nog[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha_nog[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        }
                     }
-                    if ((*v_ht800_alpha)[i] <= 0.35 && abs((*v_ht800_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht800_hev_emergjetpt_cutalpha->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
-                        h_ht800_hev_emergjetEta_cutalpha->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
-                        h_ht800_hev_emergjetnTrack_cutalpha->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        h_hev_end_emergjetpt_cutalpha[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_hev_end_emergjetEta_cutalpha[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                        h_hev_end_emergjetnTrack_cutalpha[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        if ((*v_ht800_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_cutalpha_nog[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                            h_hev_end_emergjetEta_cutalpha_nog[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                            h_hev_end_emergjetnTrack_cutalpha_nog[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        }
                     }
+                }
+            }
+            else
+            {
+                h_light_emergjetpt[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                h_light_emergjetEta[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                h_light_emergjetnTrack[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                if (abs((*v_ht800_JetEta)[i]) < 1.479)
+                {
+                    h_light_barr_emergjetpt[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                    h_light_barr_emergjetEta[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    h_light_barr_emergjetnTrack[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
                 }
                 else
                 {
+                    h_light_end_emergjetpt[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                    h_light_end_emergjetEta[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    h_light_end_emergjetnTrack[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                }
+                if ((*v_ht800_alpha)[i] <= 0.35)
+                {
+                    h_light_emergjetpt_cutalpha[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                    h_light_emergjetEta_cutalpha[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                    h_light_emergjetnTrack_cutalpha[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
                     if (abs((*v_ht800_JetEta)[i]) < 1.479)
                     {
-                        h_ht800_light_emergjetpt->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
-                        h_ht800_light_emergjetEta->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
-                        h_ht800_light_emergjetnTrack->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        h_light_barr_emergjetpt_cutalpha[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_light_barr_emergjetEta_cutalpha[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                        h_light_barr_emergjetnTrack_cutalpha[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
                     }
-                    if ((*v_ht800_alpha)[i] <= 0.35 && abs((*v_ht800_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht800_light_emergjetpt_cutalpha->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
-                        h_ht800_light_emergjetEta_cutalpha->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
-                        h_ht800_light_emergjetnTrack_cutalpha->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
+                        h_light_end_emergjetpt_cutalpha[6]->Fill((*v_ht800_JetPT)[i], I_ht800_weight * HT800Weight);
+                        h_light_end_emergjetEta_cutalpha[6]->Fill((*v_ht800_JetEta)[i], I_ht800_weight * HT800Weight);
+                        h_light_end_emergjetnTrack_cutalpha[6]->Fill((*v_ht800_JetnTracks)[i], I_ht800_weight * HT800Weight);
                     }
                 }
             }
         }
-
-        TTree *T_event6;
-        DYHT1200_1->GetObject("h1", T_event6);
-        T_event6->SetBranchAddress("f_Met", &f_ht1200_Met);
-        T_event6->SetBranchAddress("I_weight", &I_ht1200_weight);
-        T_event6->SetBranchAddress("v_fakeJethadronflavor", &v_ht1200_Jethadronflavor);
-        T_event6->SetBranchAddress("v_fakeJetPt", &v_ht1200_JetPT);
-        T_event6->SetBranchAddress("v_fakeJetEta", &v_ht1200_JetEta);
-        T_event6->SetBranchAddress("v_fakealpha", &v_ht1200_alpha);
-        T_event6->SetBranchAddress("v_N_Tracks", &v_ht1200_JetnTracks);
-        for (int evt = 0; evt < T_event6->GetEntries(); evt++)
+    } // End of HT800 loop
+    TTree *T_event6;
+    DYHT1200_1->GetObject("h1", T_event6);
+    T_event6->SetBranchAddress("I_weight", &I_ht1200_weight);
+    T_event6->SetBranchAddress("v_fakeJethadronflavor", &v_ht1200_Jethadronflavor);
+    T_event6->SetBranchAddress("v_fakeJetpartonflavor", &v_ht1200_Jetpartonflavor);
+    T_event6->SetBranchAddress("v_fakeJetPt", &v_ht1200_JetPT);
+    T_event6->SetBranchAddress("v_fakeJetEta", &v_ht1200_JetEta);
+    T_event6->SetBranchAddress("v_fakealpha", &v_ht1200_alpha);
+    T_event6->SetBranchAddress("v_N_Tracks", &v_ht1200_JetnTracks);
+    T_event6->SetBranchAddress("I_nJets", &I_ht1200_nThinJets);
+    for (int evt = 0; evt < T_event6->GetEntries(); evt++)
+    {
+        T_event6->GetEntry(evt);
+        for (int i = 0; i < v_ht1200_Jethadronflavor->size(); i++)
         {
-            T_event6->GetEntry(evt);
-            for (int i = 0; i < v_ht1200_Jethadronflavor->size(); i++)
+            if ((*v_ht1200_Jethadronflavor)[i] == 4 || (*v_ht1200_Jethadronflavor)[i] == 5)
             {
-                h_ht1200_emergjethadronflavor->Fill((*v_ht1200_Jethadronflavor)[i], I_ht1200_weight * HT1200Weight);
-                if ((*v_ht1200_Jethadronflavor)[i] == 4 || (*v_ht1200_Jethadronflavor)[i] == 5)
+                h_hev_emergjetpt[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                h_hev_emergjetEta[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                h_hev_emergjetnTrack[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                if ((*v_ht1200_Jetpartonflavor)[i] != 21)
                 {
-                    if (abs((*v_ht1200_JetEta)[i]) < 1.479)
+                    h_hev_emergjetpt_nog[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                    h_hev_emergjetEta_nog[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    h_hev_emergjetnTrack_nog[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                }
+                if (abs((*v_ht1200_JetEta)[i]) < 1.479)
+                {
+                    h_hev_barr_emergjetpt[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                    h_hev_barr_emergjetEta[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    h_hev_barr_emergjetnTrack[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                    if ((*v_ht1200_Jetpartonflavor)[i] != 21)
                     {
-                        h_ht1200_hev_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
-                        h_ht1200_hev_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
-                        h_ht1200_hev_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
-                    }
-                    if ((*v_ht1200_alpha)[i] <= 0.35 && abs((*v_ht1200_JetEta)[i]) < 1.479)
-                    {
-                        h_ht1200_hev_emergjetpt_cutalpha->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
-                        h_ht1200_hev_emergjetEta_cutalpha->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
-                        h_ht1200_hev_emergjetnTrack_cutalpha->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_barr_emergjetpt_nog[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_barr_emergjetEta_nog[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_barr_emergjetnTrack_nog[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
                     }
                 }
                 else
                 {
+                    h_hev_end_emergjetpt[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                    h_hev_end_emergjetEta[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    h_hev_end_emergjetnTrack[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                    if ((*v_ht1200_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_end_emergjetpt_nog[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_end_emergjetEta_nog[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_end_emergjetnTrack_nog[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                    }
+                }
+                if ((*v_ht1200_alpha)[i] <= 0.35)
+                {
+                    h_hev_emergjetpt_cutalpha[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                    h_hev_emergjetEta_cutalpha[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    h_hev_emergjetnTrack_cutalpha[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                    if ((*v_ht1200_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_cutalpha_nog[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_emergjetEta_cutalpha_nog[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_emergjetnTrack_cutalpha_nog[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                    }
                     if (abs((*v_ht1200_JetEta)[i]) < 1.479)
                     {
-                        h_ht1200_light_emergjetpt->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
-                        h_ht1200_light_emergjetEta->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
-                        h_ht1200_light_emergjetnTrack->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_barr_emergjetpt_cutalpha[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_barr_emergjetEta_cutalpha[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_barr_emergjetnTrack_cutalpha[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        if ((*v_ht1200_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha_nog[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                            h_hev_barr_emergjetEta_cutalpha_nog[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha_nog[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        }
                     }
-                    if ((*v_ht1200_alpha)[i] <= 0.35 && abs((*v_ht1200_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht1200_light_emergjetpt_cutalpha->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
-                        h_ht1200_light_emergjetEta_cutalpha->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
-                        h_ht1200_light_emergjetnTrack_cutalpha->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_end_emergjetpt_cutalpha[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_end_emergjetEta_cutalpha[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                        h_hev_end_emergjetnTrack_cutalpha[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        if ((*v_ht1200_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_cutalpha_nog[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                            h_hev_end_emergjetEta_cutalpha_nog[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                            h_hev_end_emergjetnTrack_cutalpha_nog[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                h_light_emergjetpt[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                h_light_emergjetEta[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                h_light_emergjetnTrack[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                if (abs((*v_ht1200_JetEta)[i]) < 1.479)
+                {
+                    h_light_barr_emergjetpt[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                    h_light_barr_emergjetEta[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    h_light_barr_emergjetnTrack[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                }
+                else
+                {
+                    h_light_end_emergjetpt[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                    h_light_end_emergjetEta[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    h_light_end_emergjetnTrack[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                }
+                if ((*v_ht1200_alpha)[i] <= 0.35)
+                {
+                    h_light_emergjetpt_cutalpha[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                    h_light_emergjetEta_cutalpha[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                    h_light_emergjetnTrack_cutalpha[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                    if (abs((*v_ht1200_JetEta)[i]) < 1.479)
+                    {
+                        h_light_barr_emergjetpt_cutalpha[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_light_barr_emergjetEta_cutalpha[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                        h_light_barr_emergjetnTrack_cutalpha[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
+                    }
+                    else
+                    {
+                        h_light_end_emergjetpt_cutalpha[7]->Fill((*v_ht1200_JetPT)[i], I_ht1200_weight * HT1200Weight);
+                        h_light_end_emergjetEta_cutalpha[7]->Fill((*v_ht1200_JetEta)[i], I_ht1200_weight * HT1200Weight);
+                        h_light_end_emergjetnTrack_cutalpha[7]->Fill((*v_ht1200_JetnTracks)[i], I_ht1200_weight * HT1200Weight);
                     }
                 }
             }
         }
-
-        TTree *T_event7;
-        DYHT2500_1->GetObject("h1", T_event7);
-        T_event7->SetBranchAddress("f_Met", &f_ht2500_Met);
-        T_event7->SetBranchAddress("I_weight", &I_ht2500_weight);
-        T_event7->SetBranchAddress("v_fakeJethadronflavor", &v_ht2500_Jethadronflavor);
-        T_event7->SetBranchAddress("v_fakeJetPt", &v_ht2500_JetPT);
-        T_event7->SetBranchAddress("v_fakeJetEta", &v_ht2500_JetEta);
-        T_event7->SetBranchAddress("v_fakealpha", &v_ht2500_alpha);
-        T_event7->SetBranchAddress("v_N_Tracks", &v_ht2500_JetnTracks);
-        for (int evt = 0; evt < T_event7->GetEntries(); evt++)
+    } // End of HT1200 loop
+    TTree *T_event7;
+    DYHT2500_1->GetObject("h1", T_event7);
+    T_event7->SetBranchAddress("I_weight", &I_ht2500_weight);
+    T_event7->SetBranchAddress("v_fakeJethadronflavor", &v_ht2500_Jethadronflavor);
+    T_event7->SetBranchAddress("v_fakeJetpartonflavor", &v_ht2500_Jetpartonflavor);
+    T_event7->SetBranchAddress("v_fakeJetPt", &v_ht2500_JetPT);
+    T_event7->SetBranchAddress("v_fakeJetEta", &v_ht2500_JetEta);
+    T_event7->SetBranchAddress("v_fakealpha", &v_ht2500_alpha);
+    T_event7->SetBranchAddress("v_N_Tracks", &v_ht2500_JetnTracks);
+    T_event7->SetBranchAddress("I_nJets", &I_ht2500_nThinJets);
+    for (int evt = 0; evt < T_event7->GetEntries(); evt++)
+    {
+        T_event7->GetEntry(evt);
+        for (int i = 0; i < v_ht2500_Jethadronflavor->size(); i++)
         {
-            T_event7->GetEntry(evt);
-            for (int i = 0; i < v_ht2500_Jethadronflavor->size(); i++)
+            if ((*v_ht2500_Jethadronflavor)[i] == 4 || (*v_ht2500_Jethadronflavor)[i] == 5)
             {
-                h_ht2500_emergjethadronflavor->Fill((*v_ht2500_Jethadronflavor)[i], I_ht2500_weight * HT2500Weight);
-                if ((*v_ht2500_Jethadronflavor)[i] == 4 || (*v_ht2500_Jethadronflavor)[i] == 5)
+                h_hev_emergjetpt[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                h_hev_emergjetEta[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                h_hev_emergjetnTrack[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                if ((*v_ht2500_Jetpartonflavor)[i] != 21)
                 {
-                    if (abs((*v_ht2500_JetEta)[i]) < 1.479)
+                    cout<<"here"<<endl;
+                    h_hev_emergjetpt_nog[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                    h_hev_emergjetEta_nog[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    h_hev_emergjetnTrack_nog[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                }
+                if (abs((*v_ht2500_JetEta)[i]) < 1.479)
+                {
+                    h_hev_barr_emergjetpt[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                    h_hev_barr_emergjetEta[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    h_hev_barr_emergjetnTrack[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                    if ((*v_ht2500_Jetpartonflavor)[i] != 21)
                     {
-                        h_ht2500_hev_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
-                        h_ht2500_hev_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
-                        h_ht2500_hev_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
-                    }
-                    if ((*v_ht2500_alpha)[i] <= 0.35 && abs((*v_ht2500_JetEta)[i]) < 1.479)
-                    {
-                        h_ht2500_hev_emergjetpt_cutalpha->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
-                        h_ht2500_hev_emergjetEta_cutalpha->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
-                        h_ht2500_hev_emergjetnTrack_cutalpha->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_barr_emergjetpt_nog[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_barr_emergjetEta_nog[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_barr_emergjetnTrack_nog[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
                     }
                 }
                 else
                 {
+                    h_hev_end_emergjetpt[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                    h_hev_end_emergjetEta[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    h_hev_end_emergjetnTrack[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                    if ((*v_ht2500_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_end_emergjetpt_nog[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_end_emergjetEta_nog[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_end_emergjetnTrack_nog[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                    }
+                }
+                if ((*v_ht2500_alpha)[i] <= 0.35)
+                {
+                    h_hev_emergjetpt_cutalpha[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                    h_hev_emergjetEta_cutalpha[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    h_hev_emergjetnTrack_cutalpha[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                    if ((*v_ht2500_Jetpartonflavor)[i] != 21)
+                    {
+                        h_hev_emergjetpt_cutalpha_nog[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_emergjetEta_cutalpha_nog[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_emergjetnTrack_cutalpha_nog[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                    }
                     if (abs((*v_ht2500_JetEta)[i]) < 1.479)
                     {
-                        h_ht2500_light_emergjetpt->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
-                        h_ht2500_light_emergjetEta->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
-                        h_ht2500_light_emergjetnTrack->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_barr_emergjetpt_cutalpha[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_barr_emergjetEta_cutalpha[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_barr_emergjetnTrack_cutalpha[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        if ((*v_ht2500_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_barr_emergjetpt_cutalpha_nog[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                            h_hev_barr_emergjetEta_cutalpha_nog[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                            h_hev_barr_emergjetnTrack_cutalpha_nog[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        }
                     }
-                    if ((*v_ht2500_alpha)[i] <= 0.35 && abs((*v_ht2500_JetEta)[i]) < 1.479)
+                    else
                     {
-                        h_ht2500_light_emergjetpt_cutalpha->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
-                        h_ht2500_light_emergjetEta_cutalpha->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
-                        h_ht2500_light_emergjetnTrack_cutalpha->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_end_emergjetpt_cutalpha[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_end_emergjetEta_cutalpha[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                        h_hev_end_emergjetnTrack_cutalpha[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        if ((*v_ht2500_Jetpartonflavor)[i] != 21)
+                        {
+                            h_hev_end_emergjetpt_cutalpha_nog[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                            h_hev_end_emergjetEta_cutalpha_nog[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                            h_hev_end_emergjetnTrack_cutalpha_nog[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                h_light_emergjetpt[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                h_light_emergjetEta[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                h_light_emergjetnTrack[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                if (abs((*v_ht2500_JetEta)[i]) < 1.479)
+                {
+                    h_light_barr_emergjetpt[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                    h_light_barr_emergjetEta[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    h_light_barr_emergjetnTrack[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                }
+                else
+                {
+                    h_light_end_emergjetpt[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                    h_light_end_emergjetEta[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    h_light_end_emergjetnTrack[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                }
+                if ((*v_ht2500_alpha)[i] <= 0.35)
+                {
+                    h_light_emergjetpt_cutalpha[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                    h_light_emergjetEta_cutalpha[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                    h_light_emergjetnTrack_cutalpha[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                    if (abs((*v_ht2500_JetEta)[i]) < 1.479)
+                    {
+                        h_light_barr_emergjetpt_cutalpha[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_light_barr_emergjetEta_cutalpha[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                        h_light_barr_emergjetnTrack_cutalpha[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
+                    }
+                    else
+                    {
+                        h_light_end_emergjetpt_cutalpha[8]->Fill((*v_ht2500_JetPT)[i], I_ht2500_weight * HT2500Weight);
+                        h_light_end_emergjetEta_cutalpha[8]->Fill((*v_ht2500_JetEta)[i], I_ht2500_weight * HT2500Weight);
+                        h_light_end_emergjetnTrack_cutalpha[8]->Fill((*v_ht2500_JetnTracks)[i], I_ht2500_weight * HT2500Weight);
                     }
                 }
             }
         }
-        h_ht0_hev_emergjetpt->Add(h_ht70_hev_emergjetpt);
-        h_ht0_hev_emergjetpt->Add(h_ht100_hev_emergjetpt);
-        h_ht0_hev_emergjetpt->Add(h_ht200_hev_emergjetpt);
-        h_ht0_hev_emergjetpt->Add(h_ht400_hev_emergjetpt);
-        h_ht0_hev_emergjetpt->Add(h_ht600_hev_emergjetpt);
-        h_ht0_hev_emergjetpt->Add(h_ht800_hev_emergjetpt);
-        h_ht0_hev_emergjetpt->Add(h_ht1200_hev_emergjetpt);
-        h_ht0_hev_emergjetpt->Add(h_ht2500_hev_emergjetpt);
+    } // End of HT2500 loop
 
-        h_ht0_light_emergjetpt->Add(h_ht70_light_emergjetpt);
-        h_ht0_light_emergjetpt->Add(h_ht100_light_emergjetpt);
-        h_ht0_light_emergjetpt->Add(h_ht200_light_emergjetpt);
-        h_ht0_light_emergjetpt->Add(h_ht400_light_emergjetpt);
-        h_ht0_light_emergjetpt->Add(h_ht600_light_emergjetpt);
-        h_ht0_light_emergjetpt->Add(h_ht800_light_emergjetpt);
-        h_ht0_light_emergjetpt->Add(h_ht1200_light_emergjetpt);
-        h_ht0_light_emergjetpt->Add(h_ht2500_light_emergjetpt);
-
-        h_ht0_hev_emergjetpt_cutalpha->Add(h_ht70_hev_emergjetpt_cutalpha);
-        h_ht0_hev_emergjetpt_cutalpha->Add(h_ht100_hev_emergjetpt_cutalpha);
-        h_ht0_hev_emergjetpt_cutalpha->Add(h_ht200_hev_emergjetpt_cutalpha);
-        h_ht0_hev_emergjetpt_cutalpha->Add(h_ht400_hev_emergjetpt_cutalpha);
-        h_ht0_hev_emergjetpt_cutalpha->Add(h_ht600_hev_emergjetpt_cutalpha);
-        h_ht0_hev_emergjetpt_cutalpha->Add(h_ht800_hev_emergjetpt_cutalpha);
-        h_ht0_hev_emergjetpt_cutalpha->Add(h_ht1200_hev_emergjetpt_cutalpha);
-        h_ht0_hev_emergjetpt_cutalpha->Add(h_ht2500_hev_emergjetpt_cutalpha);
-
-        h_ht0_light_emergjetpt_cutalpha->Add(h_ht70_light_emergjetpt_cutalpha);
-        h_ht0_light_emergjetpt_cutalpha->Add(h_ht100_light_emergjetpt_cutalpha);
-        h_ht0_light_emergjetpt_cutalpha->Add(h_ht200_light_emergjetpt_cutalpha);
-        h_ht0_light_emergjetpt_cutalpha->Add(h_ht400_light_emergjetpt_cutalpha);
-        h_ht0_light_emergjetpt_cutalpha->Add(h_ht600_light_emergjetpt_cutalpha);
-        h_ht0_light_emergjetpt_cutalpha->Add(h_ht800_light_emergjetpt_cutalpha);
-        h_ht0_light_emergjetpt_cutalpha->Add(h_ht1200_light_emergjetpt_cutalpha);
-        h_ht0_light_emergjetpt_cutalpha->Add(h_ht2500_light_emergjetpt_cutalpha);
-
-        h_ht0_hev_emergjetEta->Add(h_ht70_hev_emergjetEta);
-        h_ht0_hev_emergjetEta->Add(h_ht100_hev_emergjetEta);
-        h_ht0_hev_emergjetEta->Add(h_ht200_hev_emergjetEta);
-        h_ht0_hev_emergjetEta->Add(h_ht400_hev_emergjetEta);
-        h_ht0_hev_emergjetEta->Add(h_ht600_hev_emergjetEta);
-        h_ht0_hev_emergjetEta->Add(h_ht800_hev_emergjetEta);
-        h_ht0_hev_emergjetEta->Add(h_ht1200_hev_emergjetEta);
-        h_ht0_hev_emergjetEta->Add(h_ht2500_hev_emergjetEta);
-
-        h_ht0_light_emergjetEta->Add(h_ht70_light_emergjetEta);
-        h_ht0_light_emergjetEta->Add(h_ht100_light_emergjetEta);
-        h_ht0_light_emergjetEta->Add(h_ht200_light_emergjetEta);
-        h_ht0_light_emergjetEta->Add(h_ht400_light_emergjetEta);
-        h_ht0_light_emergjetEta->Add(h_ht600_light_emergjetEta);
-        h_ht0_light_emergjetEta->Add(h_ht800_light_emergjetEta);
-        h_ht0_light_emergjetEta->Add(h_ht1200_light_emergjetEta);
-        h_ht0_light_emergjetEta->Add(h_ht2500_light_emergjetEta);
-
-        h_ht0_hev_emergjetEta_cutalpha->Add(h_ht70_hev_emergjetEta_cutalpha);
-        h_ht0_hev_emergjetEta_cutalpha->Add(h_ht100_hev_emergjetEta_cutalpha);
-        h_ht0_hev_emergjetEta_cutalpha->Add(h_ht200_hev_emergjetEta_cutalpha);
-        h_ht0_hev_emergjetEta_cutalpha->Add(h_ht400_hev_emergjetEta_cutalpha);
-        h_ht0_hev_emergjetEta_cutalpha->Add(h_ht600_hev_emergjetEta_cutalpha);
-        h_ht0_hev_emergjetEta_cutalpha->Add(h_ht800_hev_emergjetEta_cutalpha);
-        h_ht0_hev_emergjetEta_cutalpha->Add(h_ht1200_hev_emergjetEta_cutalpha);
-        h_ht0_hev_emergjetEta_cutalpha->Add(h_ht2500_hev_emergjetEta_cutalpha);
-
-        h_ht0_light_emergjetEta_cutalpha->Add(h_ht70_light_emergjetEta_cutalpha);
-        h_ht0_light_emergjetEta_cutalpha->Add(h_ht100_light_emergjetEta_cutalpha);
-        h_ht0_light_emergjetEta_cutalpha->Add(h_ht200_light_emergjetEta_cutalpha);
-        h_ht0_light_emergjetEta_cutalpha->Add(h_ht400_light_emergjetEta_cutalpha);
-        h_ht0_light_emergjetEta_cutalpha->Add(h_ht600_light_emergjetEta_cutalpha);
-        h_ht0_light_emergjetEta_cutalpha->Add(h_ht800_light_emergjetEta_cutalpha);
-        h_ht0_light_emergjetEta_cutalpha->Add(h_ht1200_light_emergjetEta_cutalpha);
-        h_ht0_light_emergjetEta_cutalpha->Add(h_ht2500_light_emergjetEta_cutalpha);
-
-        h_ht0_hev_emergjetnTrack->Add(h_ht70_hev_emergjetnTrack);
-        h_ht0_hev_emergjetnTrack->Add(h_ht100_hev_emergjetnTrack);
-        h_ht0_hev_emergjetnTrack->Add(h_ht200_hev_emergjetnTrack);
-        h_ht0_hev_emergjetnTrack->Add(h_ht400_hev_emergjetnTrack);
-        h_ht0_hev_emergjetnTrack->Add(h_ht600_hev_emergjetnTrack);
-        h_ht0_hev_emergjetnTrack->Add(h_ht800_hev_emergjetnTrack);
-        h_ht0_hev_emergjetnTrack->Add(h_ht1200_hev_emergjetnTrack);
-        h_ht0_hev_emergjetnTrack->Add(h_ht2500_hev_emergjetnTrack);
-
-        h_ht0_light_emergjetnTrack->Add(h_ht70_light_emergjetnTrack);
-        h_ht0_light_emergjetnTrack->Add(h_ht100_light_emergjetnTrack);
-        h_ht0_light_emergjetnTrack->Add(h_ht200_light_emergjetnTrack);
-        h_ht0_light_emergjetnTrack->Add(h_ht400_light_emergjetnTrack);
-        h_ht0_light_emergjetnTrack->Add(h_ht600_light_emergjetnTrack);
-        h_ht0_light_emergjetnTrack->Add(h_ht800_light_emergjetnTrack);
-        h_ht0_light_emergjetnTrack->Add(h_ht1200_light_emergjetnTrack);
-        h_ht0_light_emergjetnTrack->Add(h_ht2500_light_emergjetnTrack);
-
-        h_ht0_hev_emergjetnTrack_cutalpha->Add(h_ht70_hev_emergjetnTrack_cutalpha);
-        h_ht0_hev_emergjetnTrack_cutalpha->Add(h_ht100_hev_emergjetnTrack_cutalpha);
-        h_ht0_hev_emergjetnTrack_cutalpha->Add(h_ht200_hev_emergjetnTrack_cutalpha);
-        h_ht0_hev_emergjetnTrack_cutalpha->Add(h_ht400_hev_emergjetnTrack_cutalpha);
-        h_ht0_hev_emergjetnTrack_cutalpha->Add(h_ht600_hev_emergjetnTrack_cutalpha);
-        h_ht0_hev_emergjetnTrack_cutalpha->Add(h_ht800_hev_emergjetnTrack_cutalpha);
-        h_ht0_hev_emergjetnTrack_cutalpha->Add(h_ht1200_hev_emergjetnTrack_cutalpha);
-        h_ht0_hev_emergjetnTrack_cutalpha->Add(h_ht2500_hev_emergjetnTrack_cutalpha);
-
-        h_ht0_light_emergjetnTrack_cutalpha->Add(h_ht70_light_emergjetnTrack_cutalpha);
-        h_ht0_light_emergjetnTrack_cutalpha->Add(h_ht100_light_emergjetnTrack_cutalpha);
-        h_ht0_light_emergjetnTrack_cutalpha->Add(h_ht200_light_emergjetnTrack_cutalpha);
-        h_ht0_light_emergjetnTrack_cutalpha->Add(h_ht400_light_emergjetnTrack_cutalpha);
-        h_ht0_light_emergjetnTrack_cutalpha->Add(h_ht600_light_emergjetnTrack_cutalpha);
-        h_ht0_light_emergjetnTrack_cutalpha->Add(h_ht800_light_emergjetnTrack_cutalpha);
-        h_ht0_light_emergjetnTrack_cutalpha->Add(h_ht1200_light_emergjetnTrack_cutalpha);
-        h_ht0_light_emergjetnTrack_cutalpha->Add(h_ht2500_light_emergjetnTrack_cutalpha);
-
-        h_ht0_emergjethadronflavor->Add(h_ht70_emergjethadronflavor);
-        h_ht0_emergjethadronflavor->Add(h_ht100_emergjethadronflavor);
-        h_ht0_emergjethadronflavor->Add(h_ht200_emergjethadronflavor);
-        h_ht0_emergjethadronflavor->Add(h_ht400_emergjethadronflavor);
-        h_ht0_emergjethadronflavor->Add(h_ht600_emergjethadronflavor);
-        h_ht0_emergjethadronflavor->Add(h_ht800_emergjethadronflavor);
-        h_ht0_emergjethadronflavor->Add(h_ht1200_emergjethadronflavor);
-        h_ht0_emergjethadronflavor->Add(h_ht2500_emergjethadronflavor);
-        TFile *outFile = new TFile("./../../../root_file/BgEstimation/DYHT_fakerateStudy.root", "RECREATE");
-        outFile->cd();
-        h_ht0_hev_emergjetpt->Write();
-        h_ht0_light_emergjetpt->Write();
-        h_ht0_hev_emergjetpt_cutalpha->Write();
-        h_ht0_light_emergjetpt_cutalpha->Write();
-        h_ht0_hev_emergjetEta->Write();
-        h_ht0_light_emergjetEta->Write();
-        h_ht0_hev_emergjetEta_cutalpha->Write();
-        h_ht0_light_emergjetEta_cutalpha->Write();
-        h_ht0_hev_emergjetnTrack->Write();
-        h_ht0_light_emergjetnTrack->Write();
-        h_ht0_hev_emergjetnTrack_cutalpha->Write();
-        h_ht0_light_emergjetnTrack_cutalpha->Write();
-        h_ht0_emergjethadronflavor->Write();
-        outFile->Close();
+    for (int i = 0; i < 8; i++)
+    {
+        h_hev_emergjetpt[0]->Add(h_hev_emergjetpt[i + 1]);
+        h_hev_barr_emergjetpt[0]->Add(h_hev_barr_emergjetpt[i + 1]);
+        h_hev_end_emergjetpt[0]->Add(h_hev_end_emergjetpt[i + 1]);
+        h_hev_emergjetpt_cutalpha[0]->Add(h_hev_emergjetpt_cutalpha[i + 1]);
+        h_hev_barr_emergjetpt_cutalpha[0]->Add(h_hev_barr_emergjetpt_cutalpha[i + 1]);
+        h_hev_end_emergjetpt_cutalpha[0]->Add(h_hev_end_emergjetpt_cutalpha[i + 1]);
+        h_hev_emergjetpt_nog[0]->Add(h_hev_emergjetpt_nog[i + 1]);
+        h_hev_barr_emergjetpt_nog[0]->Add(h_hev_barr_emergjetpt_nog[i + 1]);
+        h_hev_end_emergjetpt_nog[0]->Add(h_hev_end_emergjetpt_nog[i + 1]);
+        h_hev_emergjetpt_cutalpha_nog[0]->Add(h_hev_emergjetpt_cutalpha_nog[i + 1]);
+        h_hev_barr_emergjetpt_cutalpha_nog[0]->Add(h_hev_barr_emergjetpt_cutalpha_nog[i + 1]);
+        h_hev_end_emergjetpt_cutalpha_nog[0]->Add(h_hev_end_emergjetpt_cutalpha_nog[i + 1]);
+        h_light_emergjetpt[0]->Add(h_light_emergjetpt[i + 1]);
+        h_light_barr_emergjetpt[0]->Add(h_light_barr_emergjetpt[i + 1]);
+        h_light_end_emergjetpt[0]->Add(h_light_end_emergjetpt[i + 1]);
+        h_light_emergjetpt_cutalpha[0]->Add(h_light_emergjetpt_cutalpha[i + 1]);
+        h_light_barr_emergjetpt_cutalpha[0]->Add(h_light_barr_emergjetpt_cutalpha[i + 1]);
+        h_light_end_emergjetpt_cutalpha[0]->Add(h_light_end_emergjetpt_cutalpha[i + 1]);
+        h_hev_emergjetEta[0]->Add(h_hev_emergjetEta[i + 1]);
+        h_hev_barr_emergjetEta[0]->Add(h_hev_barr_emergjetEta[i + 1]);
+        h_hev_end_emergjetEta[0]->Add(h_hev_end_emergjetEta[i + 1]);
+        h_hev_emergjetEta_cutalpha[0]->Add(h_hev_emergjetEta_cutalpha[i + 1]);
+        h_hev_barr_emergjetEta_cutalpha[0]->Add(h_hev_barr_emergjetEta_cutalpha[i + 1]);
+        h_hev_end_emergjetEta_cutalpha[0]->Add(h_hev_end_emergjetEta_cutalpha[i + 1]);
+        h_hev_emergjetEta_nog[0]->Add(h_hev_emergjetEta_nog[i + 1]);
+        h_hev_barr_emergjetEta_nog[0]->Add(h_hev_barr_emergjetEta_nog[i + 1]);
+        h_hev_end_emergjetEta_nog[0]->Add(h_hev_end_emergjetEta_nog[i + 1]);
+        h_hev_emergjetEta_cutalpha_nog[0]->Add(h_hev_emergjetEta_cutalpha_nog[i + 1]);
+        h_hev_barr_emergjetEta_cutalpha_nog[0]->Add(h_hev_barr_emergjetEta_cutalpha_nog[i + 1]);
+        h_hev_end_emergjetEta_cutalpha_nog[0]->Add(h_hev_end_emergjetEta_cutalpha_nog[i + 1]);
+        h_light_emergjetEta[0]->Add(h_light_emergjetEta[i + 1]);
+        h_light_barr_emergjetEta[0]->Add(h_light_barr_emergjetEta[i + 1]);
+        h_light_end_emergjetEta[0]->Add(h_light_end_emergjetEta[i + 1]);
+        h_light_emergjetEta_cutalpha[0]->Add(h_light_emergjetEta_cutalpha[i + 1]);
+        h_light_barr_emergjetEta_cutalpha[0]->Add(h_light_barr_emergjetEta_cutalpha[i + 1]);
+        h_light_end_emergjetEta_cutalpha[0]->Add(h_light_end_emergjetEta_cutalpha[i + 1]);
+        h_hev_emergjetnTrack[0]->Add(h_hev_emergjetnTrack[i + 1]);
+        h_hev_barr_emergjetnTrack[0]->Add(h_hev_barr_emergjetnTrack[i + 1]);
+        h_hev_end_emergjetnTrack[0]->Add(h_hev_end_emergjetnTrack[i + 1]);
+        h_hev_emergjetnTrack_cutalpha[0]->Add(h_hev_emergjetnTrack_cutalpha[i + 1]);
+        h_hev_barr_emergjetnTrack_cutalpha[0]->Add(h_hev_barr_emergjetnTrack_cutalpha[i + 1]);
+        h_hev_end_emergjetnTrack_cutalpha[0]->Add(h_hev_end_emergjetnTrack_cutalpha[i + 1]);
+        h_hev_emergjetnTrack_nog[0]->Add(h_hev_emergjetnTrack_nog[i + 1]);
+        h_hev_barr_emergjetnTrack_nog[0]->Add(h_hev_barr_emergjetnTrack_nog[i + 1]);
+        h_hev_end_emergjetnTrack_nog[0]->Add(h_hev_end_emergjetnTrack_nog[i + 1]);
+        h_hev_emergjetnTrack_cutalpha_nog[0]->Add(h_hev_emergjetnTrack_cutalpha_nog[i + 1]);
+        h_hev_barr_emergjetnTrack_cutalpha_nog[0]->Add(h_hev_barr_emergjetnTrack_cutalpha_nog[i + 1]);
+        h_hev_end_emergjetnTrack_cutalpha_nog[0]->Add(h_hev_end_emergjetnTrack_cutalpha_nog[i + 1]);
+        h_light_emergjetnTrack[0]->Add(h_light_emergjetnTrack[i + 1]);
+        h_light_barr_emergjetnTrack[0]->Add(h_light_barr_emergjetnTrack[i + 1]);
+        h_light_end_emergjetnTrack[0]->Add(h_light_end_emergjetnTrack[i + 1]);
+        h_light_emergjetnTrack_cutalpha[0]->Add(h_light_emergjetnTrack_cutalpha[i + 1]);
+        h_light_barr_emergjetnTrack_cutalpha[0]->Add(h_light_barr_emergjetnTrack_cutalpha[i + 1]);
+        h_light_end_emergjetnTrack_cutalpha[0]->Add(h_light_end_emergjetnTrack_cutalpha[i + 1]);
     }
+    h_hev_end_emergjetnTrack_nog[0]->Draw();
+    TH1D *DY_hev_emergjetpt_fakeRate = (TH1D *)h_hev_emergjetpt_cutalpha[0]->Clone("DY_hev_emergjetpt_fakeRate");
+    DY_hev_emergjetpt_fakeRate->Divide(DY_hev_emergjetpt_fakeRate, h_hev_emergjetpt[0], 1, 1, "b");
+
+    TH1F *DY_hev_emergjetEta_fakeRate = (TH1F *)h_hev_emergjetEta_cutalpha[0]->Clone("DY_hev_emergjetEta_fakeRate");
+    DY_hev_emergjetEta_fakeRate->Divide(DY_hev_emergjetEta_fakeRate, h_hev_emergjetEta[0], 1, 1, "b");
+
+    TH1F *DY_hev_emergjetnTrack_fakeRate = (TH1F *)h_hev_emergjetnTrack_cutalpha[0]->Clone("DY_hev_emergjetnTrack_fakeRate");
+    DY_hev_emergjetnTrack_fakeRate->Divide(DY_hev_emergjetnTrack_fakeRate, h_hev_emergjetnTrack[0], 1, 1, "b");
+
+    TH1D *DY_hev_emergjetpt_nog_fakeRate = (TH1D *)h_hev_emergjetpt_cutalpha_nog[0]->Clone("DY_hev_emergjetpt_nog_fakeRate");
+    DY_hev_emergjetpt_nog_fakeRate->Divide(DY_hev_emergjetpt_nog_fakeRate, h_hev_emergjetpt_nog[0], 1, 1, "b");
+
+    TH1F *DY_hev_emergjetEta_nog_fakeRate = (TH1F *)h_hev_emergjetEta_cutalpha_nog[0]->Clone("DY_hev_emergjetEta_nog_fakeRate");
+    DY_hev_emergjetEta_nog_fakeRate->Divide(DY_hev_emergjetEta_nog_fakeRate, h_hev_emergjetEta_nog[0], 1, 1, "b");
+
+    TH1F *DY_hev_emergjetnTrack_nog_fakeRate = (TH1F *)h_hev_emergjetnTrack_cutalpha_nog[0]->Clone("DY_hev_emergjetnTrack_nog_fakeRate");
+    DY_hev_emergjetnTrack_nog_fakeRate->Divide(DY_hev_emergjetnTrack_nog_fakeRate, h_hev_emergjetnTrack_nog[0], 1, 1, "b");
+
+    TH1F *DY_light_emergjetpt_fakeRate = (TH1F *)h_light_emergjetpt_cutalpha[0]->Clone("DY_light_emergjetpt_fakeRate");
+    DY_light_emergjetpt_fakeRate->Divide(DY_light_emergjetpt_fakeRate, h_light_emergjetpt[0], 1, 1, "b");
+
+    TH1F *DY_light_emergjetEta_fakeRate = (TH1F *)h_light_emergjetEta_cutalpha[0]->Clone("DY_light_emergjetEta_fakeRate");
+    DY_light_emergjetEta_fakeRate->Divide(DY_light_emergjetEta_fakeRate, h_light_emergjetEta[0], 1, 1, "b");
+
+    TH1F *DY_light_emergjetnTrack_fakeRate = (TH1F *)h_light_emergjetnTrack_cutalpha[0]->Clone("DY_light_emergjetnTrack_fakeRate");
+    DY_light_emergjetnTrack_fakeRate->Divide(DY_light_emergjetnTrack_fakeRate, h_light_emergjetnTrack[0], 1, 1, "b");
+
+    TH1D *DY_hev_barr_emergjetpt_fakeRate = (TH1D *)h_hev_barr_emergjetpt_cutalpha[0]->Clone("DY_hev_barr_emergjetpt_fakeRate");
+    DY_hev_barr_emergjetpt_fakeRate->Divide(DY_hev_barr_emergjetpt_fakeRate, h_hev_barr_emergjetpt[0], 1, 1, "b");
+
+    TH1F *DY_hev_barr_emergjetEta_fakeRate = (TH1F *)h_hev_barr_emergjetEta_cutalpha[0]->Clone("DY_hev_barr_emergjetEta_fakeRate");
+    DY_hev_barr_emergjetEta_fakeRate->Divide(DY_hev_barr_emergjetEta_fakeRate, h_hev_barr_emergjetEta[0], 1, 1, "b");
+
+    TH1F *DY_hev_barr_emergjetnTrack_fakeRate = (TH1F *)h_hev_barr_emergjetnTrack_cutalpha[0]->Clone("DY_hev_barr_emergjetnTrack_fakeRate");
+    DY_hev_barr_emergjetnTrack_fakeRate->Divide(DY_hev_barr_emergjetnTrack_fakeRate, h_hev_barr_emergjetnTrack[0], 1, 1, "b");
+
+    TH1D *DY_hev_barr_emergjetpt_nog_fakeRate = (TH1D *)h_hev_barr_emergjetpt_cutalpha_nog[0]->Clone("DY_hev_barr_emergjetpt_nog_fakeRate");
+    DY_hev_barr_emergjetpt_nog_fakeRate->Divide(DY_hev_barr_emergjetpt_nog_fakeRate, h_hev_barr_emergjetpt_nog[0], 1, 1, "b");
+
+    TH1F *DY_hev_barr_emergjetEta_nog_fakeRate = (TH1F *)h_hev_barr_emergjetEta_cutalpha_nog[0]->Clone("DY_hev_barr_emergjetEta_nog_fakeRate");
+    DY_hev_barr_emergjetEta_nog_fakeRate->Divide(DY_hev_barr_emergjetEta_nog_fakeRate, h_hev_barr_emergjetEta_nog[0], 1, 1, "b");
+
+    TH1F *DY_hev_barr_emergjetnTrack_nog_fakeRate = (TH1F *)h_hev_barr_emergjetnTrack_cutalpha_nog[0]->Clone("DY_hev_barr_emergjetnTrack_nog_fakeRate");
+    DY_hev_barr_emergjetnTrack_nog_fakeRate->Divide(DY_hev_barr_emergjetnTrack_nog_fakeRate, h_hev_barr_emergjetnTrack_nog[0], 1, 1, "b");
+
+    TH1F *DY_light_barr_emergjetpt_fakeRate = (TH1F *)h_light_barr_emergjetpt_cutalpha[0]->Clone("DY_light_barr_emergjetpt_fakeRate");
+    DY_light_barr_emergjetpt_fakeRate->Divide(DY_light_barr_emergjetpt_fakeRate, h_light_barr_emergjetpt[0], 1, 1, "b");
+
+    TH1F *DY_light_barr_emergjetEta_fakeRate = (TH1F *)h_light_barr_emergjetEta_cutalpha[0]->Clone("DY_light_barr_emergjetEta_fakeRate");
+    DY_light_barr_emergjetEta_fakeRate->Divide(DY_light_barr_emergjetEta_fakeRate, h_light_barr_emergjetEta[0], 1, 1, "b");
+
+    TH1F *DY_light_barr_emergjetnTrack_fakeRate = (TH1F *)h_light_barr_emergjetnTrack_cutalpha[0]->Clone("DY_light_barr_emergjetnTrack_fakeRate");
+    DY_light_barr_emergjetnTrack_fakeRate->Divide(DY_light_barr_emergjetnTrack_fakeRate, h_light_barr_emergjetnTrack[0], 1, 1, "b");
+
+    TH1D *DY_hev_end_emergjetpt_fakeRate = (TH1D *)h_hev_end_emergjetpt_cutalpha[0]->Clone("DY_hev_end_emergjetpt_fakeRate");
+    DY_hev_end_emergjetpt_fakeRate->Divide(DY_hev_end_emergjetpt_fakeRate, h_hev_end_emergjetpt[0], 1, 1, "b");
+
+    TH1F *DY_hev_end_emergjetEta_fakeRate = (TH1F *)h_hev_end_emergjetEta_cutalpha[0]->Clone("DY_hev_end_emergjetEta_fakeRate");
+    DY_hev_end_emergjetEta_fakeRate->Divide(DY_hev_end_emergjetEta_fakeRate, h_hev_end_emergjetEta[0], 1, 1, "b");
+
+    TH1F *DY_hev_end_emergjetnTrack_fakeRate = (TH1F *)h_hev_end_emergjetnTrack_cutalpha[0]->Clone("DY_hev_end_emergjetnTrack_fakeRate");
+    DY_hev_end_emergjetnTrack_fakeRate->Divide(DY_hev_end_emergjetnTrack_fakeRate, h_hev_end_emergjetnTrack[0], 1, 1, "b");
+
+    TH1D *DY_hev_end_emergjetpt_nog_fakeRate = (TH1D *)h_hev_end_emergjetpt_cutalpha_nog[0]->Clone("DY_hev_end_emergjetpt_nog_fakeRate");
+    DY_hev_end_emergjetpt_nog_fakeRate->Divide(DY_hev_end_emergjetpt_nog_fakeRate, h_hev_end_emergjetpt_nog[0], 1, 1, "b");
+
+    TH1F *DY_hev_end_emergjetEta_nog_fakeRate = (TH1F *)h_hev_end_emergjetEta_cutalpha_nog[0]->Clone("DY_hev_end_emergjetEta_nog_fakeRate");
+    DY_hev_end_emergjetEta_nog_fakeRate->Divide(DY_hev_end_emergjetEta_nog_fakeRate, h_hev_end_emergjetEta_nog[0], 1, 1, "b");
+
+    TH1F *DY_hev_end_emergjetnTrack_nog_fakeRate = (TH1F *)h_hev_end_emergjetnTrack_cutalpha_nog[0]->Clone("DY_hev_end_emergjetnTrack_nog_fakeRate");
+    DY_hev_end_emergjetnTrack_nog_fakeRate->Divide(DY_hev_end_emergjetnTrack_nog_fakeRate, h_hev_end_emergjetnTrack_nog[0], 1, 1, "b");
+
+    TH1F *DY_light_end_emergjetpt_fakeRate = (TH1F *)h_light_end_emergjetpt_cutalpha[0]->Clone("DY_light_end_emergjetpt_fakeRate");
+    DY_light_end_emergjetpt_fakeRate->Divide(DY_light_end_emergjetpt_fakeRate, h_light_end_emergjetpt[0], 1, 1, "b");
+
+    TH1F *DY_light_end_emergjetEta_fakeRate = (TH1F *)h_light_end_emergjetEta_cutalpha[0]->Clone("DY_light_end_emergjetEta_fakeRate");
+    DY_light_end_emergjetEta_fakeRate->Divide(DY_light_end_emergjetEta_fakeRate, h_light_end_emergjetEta[0], 1, 1, "b");
+
+    TH1F *DY_light_end_emergjetnTrack_fakeRate = (TH1F *)h_light_end_emergjetnTrack_cutalpha[0]->Clone("DY_light_end_emergjetnTrack_fakeRate");
+    DY_light_end_emergjetnTrack_fakeRate->Divide(DY_light_end_emergjetnTrack_fakeRate, h_light_end_emergjetnTrack[0], 1, 1, "b");
+
+    DY_hev_barr_emergjetnTrack_fakeRate->Draw();
+
+    TFile *outFile = new TFile("./../../../../root_file/BgEstimation/DYHT_fakerateStudy_v2.root", "RECREATE");
+    outFile->cd();
+    DY_hev_emergjetpt_fakeRate->Write();
+    DY_hev_emergjetEta_fakeRate->Write();
+    DY_hev_emergjetnTrack_fakeRate->Write();
+    DY_hev_emergjetpt_nog_fakeRate->Write();
+    DY_hev_emergjetEta_nog_fakeRate->Write();
+    DY_hev_emergjetnTrack_nog_fakeRate->Write();
+    DY_light_emergjetpt_fakeRate->Write();
+    DY_light_emergjetEta_fakeRate->Write();
+    DY_light_emergjetnTrack_fakeRate->Write();
+    DY_hev_barr_emergjetpt_fakeRate->Write();
+    DY_hev_barr_emergjetEta_fakeRate->Write();
+    DY_hev_barr_emergjetnTrack_fakeRate->Write();
+    DY_hev_barr_emergjetpt_nog_fakeRate->Write();
+    DY_hev_barr_emergjetEta_nog_fakeRate->Write();
+    DY_hev_barr_emergjetnTrack_nog_fakeRate->Write();
+    DY_light_barr_emergjetpt_fakeRate->Write();
+    DY_light_barr_emergjetEta_fakeRate->Write();
+    DY_light_barr_emergjetnTrack_fakeRate->Write();
+    DY_hev_end_emergjetpt_fakeRate->Write();
+    DY_hev_end_emergjetEta_fakeRate->Write();
+    DY_hev_end_emergjetnTrack_fakeRate->Write();
+    DY_hev_end_emergjetpt_nog_fakeRate->Write();
+    DY_hev_end_emergjetEta_nog_fakeRate->Write();
+    DY_hev_end_emergjetnTrack_nog_fakeRate->Write();
+    DY_light_end_emergjetpt_fakeRate->Write();
+    DY_light_end_emergjetEta_fakeRate->Write();
+    DY_light_end_emergjetnTrack_fakeRate->Write();
+
+    // TH1F *DY_hev_barr_emergjetnTrack_fakeRate = (TH1F *)DY_hev_barr_emergjetnTrack_cutalpha[0]->Clone("DY_hev_barr_emergjetnTrack_fakeRate");
+    // DY_hev_barr_emergjetnTrack_fakeRate->Divide(DY_hev_barr_emergjetnTrack_cutalpha[0], h_hev_emergjetnTrack[0], 1, 1, "b");
+
+    // TH1F *h_hev_DY_emergjetpt = (TH1F *)h_hev_emergjetpt[0]->Clone("h_hev_DY_emergjetpt");
+
+} // End of voild function
+int main(int argc, char *argv[])
+{
+    ee_half_HT_fake_rate();
+}

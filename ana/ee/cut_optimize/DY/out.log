@@ -1,0 +1,188 @@
+82a83,87
+>     TH1F *h_DY_nTracks_exclu_bjet = new TH1F("h_DY_nTracks_exclu_bjet", "", 50, 0, 50);
+>     h_DY_nTracks_exclu_bjet->GetXaxis()->SetTitle("");
+>     h_DY_nTracks_exclu_bjet->GetYaxis()->SetTitle("");
+>     h_DY_nTracks_exclu_bjet->Sumw2();
+> 
+92a98,102
+>     TH1F *h_DY_nTracks_exclu_bjet_cut = new TH1F("h_DY_nTracks_exclu_bjet_cut", "", 50, 0, 50);
+>     h_DY_nTracks_exclu_bjet_cut->GetXaxis()->SetTitle("");
+>     h_DY_nTracks_exclu_bjet_cut->GetYaxis()->SetTitle("");
+>     h_DY_nTracks_exclu_bjet_cut->Sumw2();
+> 
+344a355,358
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT0Weight);
+>                 // }
+363a378,381
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT0Weight);
+>                     // }
+412a431,434
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT70Weight);
+>                 // }
+431a454,457
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT70Weight);
+>                     // }
+479a506,509
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT100Weight);
+>                 // }
+498a529,532
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT100Weight);
+>                     // }
+546a581,584
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT200Weight);
+>                 // }
+565a604,607
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT200Weight);
+>                     // }
+613a656,659
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT400Weight);
+>                 // }
+632a679,682
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT400Weight);
+>                     // }
+680a731,734
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT600Weight);
+>                 // }
+699a754,757
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT600Weight);
+>                     // }
+748a807,810
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT800Weight);
+>                 // }
+767a830,833
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT800Weight);
+>                     // }
+815a882,885
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT1200Weight);
+>                 // }
+834a905,908
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT1200Weight);
+>                     // }
+882a957,960
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT2500Weight);
+>                 // }
+901a980,983
+>                     // else
+>                     // {
+>                     //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht0_nTrack)[i], I_ht0_weight * HT2500Weight);
+>                     // }
+966a1049,1052
+>             // else
+>             // {
+>             //     h_DY_nTracks_exclu_bjet->Fill((*v_ht100_nTrack)[i], I_ht100_weight * HT100Weight);
+>             // }
+985a1072,1075
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht100_nTrack)[i], I_ht100_weight * HT100Weight);
+>                 // }
+1049a1140,1143
+>             // else
+>             // {
+>             //     h_DY_nTracks_exclu_bjet->Fill((*v_ht200_nTrack)[i], I_ht200_weight * HT200Weight);
+>             // }
+1068a1163,1166
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht200_nTrack)[i], I_ht200_weight * HT200Weight);
+>                 // }
+1132a1231,1234
+>             // else
+>             // {
+>             //     h_DY_nTracks_exclu_bjet->Fill((*v_ht400_nTrack)[i], I_ht400_weight * HT400Weight);
+>             // }
+1151a1254,1257
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht400_nTrack)[i], I_ht400_weight * HT400Weight);
+>                 // }
+1215a1322,1325
+>             // else
+>             // {
+>             //     h_DY_nTracks_exclu_bjet->Fill((*v_ht600_nTrack)[i], I_ht600_weight * HT600Weight);
+>             // }
+1234a1345,1348
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht600_nTrack)[i], I_ht600_weight * HT600Weight);
+>                 // }
+1297c1411
+<                 h_DY_nTracks_bjet->Fill((*v_ht800_nTrack)[i], I_ht800_weight * HT800Weight);
+---
+>                 h_DY_nTracks_bjet->Fill((*v_ht800_nTrack)[i], I_ht800_weight * I_ht800_weight);
+1298a1413,1416
+>             // else
+>             // {
+>             //     h_DY_nTracks_exclu_bjet->Fill((*v_ht800_nTrack)[i], I_ht800_weight * I_ht800_weight);
+>             // }
+1317a1436,1439
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht800_nTrack)[i], I_ht800_weight * I_ht800_weight);
+>                 // }
+1382a1505,1508
+>             // else
+>             // {
+>             //     h_DY_nTracks_exclu_bjet->Fill((*v_ht1200_nTrack)[i], I_ht1200_weight * HT1200Weight);
+>             // }
+1401a1528,1531
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht1200_nTrack)[i], I_ht1200_weight * HT1200Weight);
+>                 // }
+1465a1596,1599
+>             // else
+>             // {
+>             //     h_DY_nTracks_exclu_bjet->Fill((*v_ht2500_nTrack)[i], I_ht2500_weight * HT2500Weight);
+>             // }
+1484a1619,1622
+>                 // else
+>                 // {
+>                 //     h_DY_nTracks_exclu_bjet_cut->Fill((*v_ht2500_nTrack)[i], I_ht2500_weight * HT2500Weight);
+>                 // }
+1509a1648,1650
+>     // TH1F *HT_exclu_bjet_fakeRate = (TH1F *)h_DY_nTracks_exclu_bjet_cut->Clone("HT_exclu_bjet_fakeRate");
+>     // HT_exclu_bjet_fakeRate->Divide(h_DY_nTracks_exclu_bjet_cut, h_DY_nTracks_exclu_bjet, 1, 1, "b");
+> 
+1516,1517c1657,1658
+<     h_DY_nTracks_heavy_nogluon_cut->SetLineWidth(2);
+<     h_DY_nTracks_heavy_nogluon_cut->Draw("");
+---
+>     // HT_exclu_bjet_fakeRate->SetLineWidth(2);
+>     // HT_exclu_bjet_fakeRate->Draw("");
+1530a1672
+>     //HT_exclu_bjet_fakeRate->Write();

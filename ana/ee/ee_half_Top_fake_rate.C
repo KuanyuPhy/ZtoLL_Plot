@@ -18,15 +18,15 @@ using namespace RooFit;
 void ee_half_Top_fake_rate()
 {
 
-    TFile *Top_TTTo2L2Nu = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
-    TFile *Top_TTWJetsToLNu = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
-    TFile *Top_TTWJetsToQQ = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
-    TFile *Top_TTZToLLNuNu = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
-    TFile *Top_TTZToQQ = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
-    TFile *Top_tW_antitop = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
-    TFile *Top_tW_top = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
+    TFile *Top_TTTo2L2Nu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
+    TFile *Top_TTWJetsToLNu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
+    TFile *Top_TTWJetsToQQ = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
+    TFile *Top_TTZToLLNuNu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
+    TFile *Top_TTZToQQ = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
+    TFile *Top_tW_antitop = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
+    TFile *Top_tW_top = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
 
-    TFile *Top_TTTo2L2Nu_1 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/top_TTTo2L2Nu_1.root");
+    TFile *Top_TTTo2L2Nu_1 = new TFile("./../../../../root_file/BgEstimation/top_TTTo2L2Nu_1.root");
 
     TH1D *TTTo2L2Nu_sumevt = ((TH1D *)Top_TTTo2L2Nu->Get("Event_Variable/h_totevent"));
     TH1D *TTWJetsToLNu_sumevt = ((TH1D *)Top_TTWJetsToLNu->Get("Event_Variable/h_totevent"));
@@ -47,66 +47,6 @@ void ee_half_Top_fake_rate()
     //----------------------------------------------------------------------
     // Create Histrogram: PT, eta, NTracks
     //----------------------------------------------------------------------
-    TH1F *h_tW_top_hev_emergjetpt = new TH1F("h_tW_top_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_tW_top_hev_emergjetpt->Sumw2();
-    TH1F *h_tW_antitop_hev_emergjetpt = new TH1F("h_tW_antitop_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_tW_antitop_hev_emergjetpt->Sumw2();
-    TH1F *h_TTTo2L2Nu_hev_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTTo2L2Nu_hev_emergjetpt->Sumw2();
-    TH1F *h_TTWJetsToLNu_hev_emergjetpt = new TH1F("h_TTWJetsToLNu_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTWJetsToLNu_hev_emergjetpt->Sumw2();
-    TH1F *h_TWJetsToQQ_hev_emergjetpt = new TH1F("h_TWJetsToQQ_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TWJetsToQQ_hev_emergjetpt->Sumw2();
-    TH1F *h_TTZToLLNuNu_hev_emergjetpt = new TH1F("h_TTZToLLNuNu_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTZToLLNuNu_hev_emergjetpt->Sumw2();
-    TH1F *h_TTZToQQ_hev_emergjetpt = new TH1F("h_TTZToQQ_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTZToQQ_hev_emergjetpt->Sumw2();
-
-    TH1F *h_tW_top_hev_emergjetpt_cutalpha = new TH1F("h_tW_top_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_tW_top_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_tW_antitop_hev_emergjetpt_cutalpha = new TH1F("h_tW_antitop_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_tW_antitop_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TTTo2L2Nu_hev_emergjetpt_cutalpha = new TH1F("h_TTTo2L2Nu_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TTTo2L2Nu_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TTWJetsToLNu_hev_emergjetpt_cutalpha = new TH1F("h_TTWJetsToLNu_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TTWJetsToLNu_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TWJetsToQQ_hev_emergjetpt_cutalpha = new TH1F("h_TWJetsToQQ_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TWJetsToQQ_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TTZToLLNuNu_hev_emergjetpt_cutalpha = new TH1F("h_TTZToLLNuNu_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TTZToLLNuNu_hev_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TTZToQQ_hev_emergjetpt_cutalpha = new TH1F("h_TTZToQQ_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TTZToQQ_hev_emergjetpt_cutalpha->Sumw2();
-
-    TH1F *h_tW_top_light_emergjetpt = new TH1F("h_tW_top_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_tW_top_light_emergjetpt->Sumw2();
-    TH1F *h_tW_antitop_light_emergjetpt = new TH1F("h_tW_antitop_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_tW_antitop_light_emergjetpt->Sumw2();
-    TH1F *h_TTTo2L2Nu_light_emergjetpt = new TH1F("h_TTTo2L2Nu_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTTo2L2Nu_light_emergjetpt->Sumw2();
-    TH1F *h_TTWJetsToLNu_light_emergjetpt = new TH1F("h_TTWJetsToLNu_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTWJetsToLNu_light_emergjetpt->Sumw2();
-    TH1F *h_TWJetsToQQ_light_emergjetpt = new TH1F("h_TWJetsToQQ_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TWJetsToQQ_light_emergjetpt->Sumw2();
-    TH1F *h_TTZToLLNuNu_light_emergjetpt = new TH1F("h_TTZToLLNuNu_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTZToLLNuNu_light_emergjetpt->Sumw2();
-    TH1F *h_TTZToQQ_light_emergjetpt = new TH1F("h_TTZToQQ_light_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTZToQQ_light_emergjetpt->Sumw2();
-
-    TH1F *h_tW_top_light_emergjetpt_cutalpha = new TH1F("h_tW_top_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_tW_top_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_tW_antitop_light_emergjetpt_cutalpha = new TH1F("h_tW_antitop_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_tW_antitop_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TTTo2L2Nu_light_emergjetpt_cutalpha = new TH1F("h_TTTo2L2Nu_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TTTo2L2Nu_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TTWJetsToLNu_light_emergjetpt_cutalpha = new TH1F("h_TTWJetsToLNu_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TTWJetsToLNu_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TWJetsToQQ_light_emergjetpt_cutalpha = new TH1F("h_TWJetsToQQ_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TWJetsToQQ_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TTZToLLNuNu_light_emergjetpt_cutalpha = new TH1F("h_TTZToLLNuNu_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TTZToLLNuNu_light_emergjetpt_cutalpha->Sumw2();
-    TH1F *h_TTZToQQ_light_emergjetpt_cutalpha = new TH1F("h_TTZToQQ_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
-    h_TTZToQQ_light_emergjetpt_cutalpha->Sumw2();
-
     Double_t nbins[82] = {-4.889, -4.716, -4.538, -4.363, -4.191, -4.013, -3.839, -3.664, -3.489, -3.314, -3.139, -2.964, -2.853,
                           -2.65, -2.5, -2.322, -2.172, -2.043, -1.93, -1.83, -1.74, -1.653, -1.566, -1.479, -1.392, -1.305, -1.218, -1.131, -1.044,
                           -0.957, -0.879, -0.783, -0.696, -0.609, -0.522, -0.435, -0.348, -0.261, -0.174, -0.087, 0, 0.087, 0.174, 0.261, 0.348, 0.435,
@@ -114,123 +54,264 @@ void ee_half_Top_fake_rate()
                           2.322, 2.5, 2.65, 2.853, 2.964, 3.139, 3.314, 3.489, 3.664, 3.839, 4.013, 4.191, 4.363, 4.538, 4.716, 4.889, 5.191};
     const Int_t nnbins = (sizeof(nbins) / sizeof(*nbins)) - 1;
 
+    TH1F *h_tW_top_hev_emergjetpt = new TH1F("h_tW_top_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_tW_top_hev_emergjetpt->Sumw2();
+    TH1F *h_tW_top_hev_emergjetpt_cutalpha = new TH1F("h_tW_top_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_tW_top_hev_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_tW_top_light_emergjetpt = new TH1F("h_tW_top_light_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_tW_top_light_emergjetpt->Sumw2();
+    TH1F *h_tW_top_light_emergjetpt_cutalpha = new TH1F("h_tW_top_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_tW_top_light_emergjetpt_cutalpha->Sumw2();
     TH1F *h_tW_top_hev_emergjetEta = new TH1F("h_tW_top_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
     h_tW_top_hev_emergjetEta->Sumw2();
-    TH1F *h_tW_antitop_hev_emergjetEta = new TH1F("h_tW_antitop_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_tW_antitop_hev_emergjetEta->Sumw2();
-    TH1F *h_TTTo2L2Nu_hev_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TTTo2L2Nu_hev_emergjetEta->Sumw2();
-    TH1F *h_TTWJetsToLNu_hev_emergjetEta = new TH1F("h_TTWJetsToLNu_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TTWJetsToLNu_hev_emergjetEta->Sumw2();
-    TH1F *h_TWJetsToQQ_hev_emergjetEta = new TH1F("h_TWJetsToQQ_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TWJetsToQQ_hev_emergjetEta->Sumw2();
-    TH1F *h_TTZToLLNuNu_hev_emergjetEta = new TH1F("h_TTZToLLNuNu_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TTZToLLNuNu_hev_emergjetEta->Sumw2();
-    TH1F *h_TTZToQQ_hev_emergjetEta = new TH1F("h_TTZToQQ_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TTZToQQ_hev_emergjetEta->Sumw2();
-
     TH1F *h_tW_top_hev_emergjetEta_cutalpha = new TH1F("h_tW_top_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
     h_tW_top_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_tW_antitop_hev_emergjetEta_cutalpha = new TH1F("h_tW_antitop_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_tW_antitop_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TTTo2L2Nu_hev_emergjetEta_cutalpha = new TH1F("h_TTTo2L2Nu_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TTTo2L2Nu_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TTWJetsToLNu_hev_emergjetEta_cutalpha = new TH1F("h_TTWJetsToLNu_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TTWJetsToLNu_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TWJetsToQQ_hev_emergjetEta_cutalpha = new TH1F("h_TWJetsToQQ_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TWJetsToQQ_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TTZToLLNuNu_hev_emergjetEta_cutalpha = new TH1F("h_TTZToLLNuNu_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TTZToLLNuNu_hev_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TTZToQQ_hev_emergjetEta_cutalpha = new TH1F("h_TTZToQQ_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TTZToQQ_hev_emergjetEta_cutalpha->Sumw2();
-
     TH1F *h_tW_top_light_emergjetEta = new TH1F("h_tW_top_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
     h_tW_top_light_emergjetEta->Sumw2();
-    TH1F *h_tW_antitop_light_emergjetEta = new TH1F("h_tW_antitop_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_tW_antitop_light_emergjetEta->Sumw2();
-    TH1F *h_TTTo2L2Nu_light_emergjetEta = new TH1F("h_TTTo2L2Nu_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TTTo2L2Nu_light_emergjetEta->Sumw2();
-    TH1F *h_TTWJetsToLNu_light_emergjetEta = new TH1F("h_TTWJetsToLNu_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TTWJetsToLNu_light_emergjetEta->Sumw2();
-    TH1F *h_TWJetsToQQ_light_emergjetEta = new TH1F("h_TWJetsToQQ_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TWJetsToQQ_light_emergjetEta->Sumw2();
-    TH1F *h_TTZToLLNuNu_light_emergjetEta = new TH1F("h_TTZToLLNuNu_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TTZToLLNuNu_light_emergjetEta->Sumw2();
-    TH1F *h_TTZToQQ_light_emergjetEta = new TH1F("h_TTZToQQ_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
-    h_TTZToQQ_light_emergjetEta->Sumw2();
-
     TH1F *h_tW_top_light_emergjetEta_cutalpha = new TH1F("h_tW_top_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
     h_tW_top_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_tW_antitop_light_emergjetEta_cutalpha = new TH1F("h_tW_antitop_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_tW_antitop_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TTTo2L2Nu_light_emergjetEta_cutalpha = new TH1F("h_TTTo2L2Nu_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TTTo2L2Nu_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TTWJetsToLNu_light_emergjetEta_cutalpha = new TH1F("h_TTWJetsToLNu_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TTWJetsToLNu_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TWJetsToQQ_light_emergjetEta_cutalpha = new TH1F("h_TWJetsToQQ_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TWJetsToQQ_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TTZToLLNuNu_light_emergjetEta_cutalpha = new TH1F("h_TTZToLLNuNu_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TTZToLLNuNu_light_emergjetEta_cutalpha->Sumw2();
-    TH1F *h_TTZToQQ_light_emergjetEta_cutalpha = new TH1F("h_TTZToQQ_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
-    h_TTZToQQ_light_emergjetEta_cutalpha->Sumw2();
-
     TH1F *h_tW_top_hev_emergjetnTrack = new TH1F("h_tW_top_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
     h_tW_top_hev_emergjetnTrack->Sumw2();
-    TH1F *h_tW_antitop_hev_emergjetnTrack = new TH1F("h_tW_antitop_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_tW_antitop_hev_emergjetnTrack->Sumw2();
-    TH1F *h_TTTo2L2Nu_hev_emergjetnTrack = new TH1F("h_TTTo2L2Nu_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TTTo2L2Nu_hev_emergjetnTrack->Sumw2();
-    TH1F *h_TTWJetsToLNu_hev_emergjetnTrack = new TH1F("h_TTWJetsToLNu_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TTWJetsToLNu_hev_emergjetnTrack->Sumw2();
-    TH1F *h_TWJetsToQQ_hev_emergjetnTrack = new TH1F("h_TWJetsToQQ_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TWJetsToQQ_hev_emergjetnTrack->Sumw2();
-    TH1F *h_TTZToLLNuNu_hev_emergjetnTrack = new TH1F("h_TTZToLLNuNu_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TTZToLLNuNu_hev_emergjetnTrack->Sumw2();
-    TH1F *h_TTZToQQ_hev_emergjetnTrack = new TH1F("h_TTZToQQ_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TTZToQQ_hev_emergjetnTrack->Sumw2();
-
     TH1F *h_tW_top_hev_emergjetnTrack_cutalpha = new TH1F("h_tW_top_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
     h_tW_top_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_tW_antitop_hev_emergjetnTrack_cutalpha = new TH1F("h_tW_antitop_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_tW_antitop_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha = new TH1F("h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_TTWJetsToLNu_hev_emergjetnTrack_cutalpha = new TH1F("h_TTWJetsToLNu_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_TTWJetsToLNu_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_TWJetsToQQ_hev_emergjetnTrack_cutalpha = new TH1F("h_TWJetsToQQ_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_TWJetsToQQ_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_TTZToLLNuNu_hev_emergjetnTrack_cutalpha = new TH1F("h_TTZToLLNuNu_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_TTZToLLNuNu_hev_emergjetnTrack_cutalpha->Sumw2();
-    TH1F *h_TTZToQQ_hev_emergjetnTrack_cutalpha = new TH1F("h_TTZToQQ_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
-    h_TTZToQQ_hev_emergjetnTrack_cutalpha->Sumw2();
-
     TH1F *h_tW_top_light_emergjetnTrack = new TH1F("h_tW_top_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
     h_tW_top_light_emergjetnTrack->Sumw2();
-    TH1F *h_tW_antitop_light_emergjetnTrack = new TH1F("h_tW_antitop_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_tW_antitop_light_emergjetnTrack->Sumw2();
-    TH1F *h_TTTo2L2Nu_light_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TTTo2L2Nu_light_emergjetnTrack->Sumw2();
-    TH1F *h_TTWJetsToLNu_light_emergjetnTrack = new TH1F("h_TTWJetsToLNu_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TTWJetsToLNu_light_emergjetnTrack->Sumw2();
-    TH1F *h_TWJetsToQQ_light_emergjetnTrack = new TH1F("h_TWJetsToQQ_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TWJetsToQQ_light_emergjetnTrack->Sumw2();
-    TH1F *h_TTZToLLNuNu_light_emergjetnTrack = new TH1F("h_TTZToLLNuNu_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TTZToLLNuNu_light_emergjetnTrack->Sumw2();
-    TH1F *h_TTZToQQ_light_emergjetnTrack = new TH1F("h_TTZToQQ_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
-    h_TTZToQQ_light_emergjetnTrack->Sumw2();
-
     TH1F *h_tW_top_light_emergjetnTrack_cutalpha = new TH1F("h_tW_top_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
     h_tW_top_light_emergjetnTrack_cutalpha->Sumw2();
+
+    TH1F *h_tW_antitop_hev_emergjetpt = new TH1F("h_tW_antitop_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_tW_antitop_hev_emergjetpt->Sumw2();
+    TH1F *h_tW_antitop_hev_emergjetpt_cutalpha = new TH1F("h_tW_antitop_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_tW_antitop_hev_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_tW_antitop_light_emergjetpt = new TH1F("h_tW_antitop_light_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_tW_antitop_light_emergjetpt->Sumw2();
+    TH1F *h_tW_antitop_light_emergjetpt_cutalpha = new TH1F("h_tW_antitop_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_tW_antitop_light_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_tW_antitop_hev_emergjetEta = new TH1F("h_tW_antitop_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_tW_antitop_hev_emergjetEta->Sumw2();
+    TH1F *h_tW_antitop_hev_emergjetEta_cutalpha = new TH1F("h_tW_antitop_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_tW_antitop_hev_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_tW_antitop_light_emergjetEta = new TH1F("h_tW_antitop_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_tW_antitop_light_emergjetEta->Sumw2();
+    TH1F *h_tW_antitop_light_emergjetEta_cutalpha = new TH1F("h_tW_antitop_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_tW_antitop_light_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_tW_antitop_hev_emergjetnTrack = new TH1F("h_tW_antitop_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_tW_antitop_hev_emergjetnTrack->Sumw2();
+    TH1F *h_tW_antitop_hev_emergjetnTrack_cutalpha = new TH1F("h_tW_antitop_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_tW_antitop_hev_emergjetnTrack_cutalpha->Sumw2();
+    TH1F *h_tW_antitop_light_emergjetnTrack = new TH1F("h_tW_antitop_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_tW_antitop_light_emergjetnTrack->Sumw2();
     TH1F *h_tW_antitop_light_emergjetnTrack_cutalpha = new TH1F("h_tW_antitop_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
     h_tW_antitop_light_emergjetnTrack_cutalpha->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_emergjetpt->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetpt_cutalpha = new TH1F("h_TTTo2L2Nu_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetpt_nog = new TH1F("h_TTTo2L2Nu_hev_emergjetpt_nog", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_emergjetpt_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetpt_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_emergjetpt_cutalpha_nog", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_emergjetpt_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_emergjetpt = new TH1F("h_TTTo2L2Nu_light_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_emergjetpt->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_emergjetpt_cutalpha = new TH1F("h_TTTo2L2Nu_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_emergjetEta->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetEta_cutalpha = new TH1F("h_TTTo2L2Nu_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetEta_nog = new TH1F("h_TTTo2L2Nu_hev_emergjetEta_nog", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_emergjetEta_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetEta_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_emergjetEta_cutalpha_nog", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_emergjetEta_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_emergjetEta = new TH1F("h_TTTo2L2Nu_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_emergjetEta->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_emergjetEta_cutalpha = new TH1F("h_TTTo2L2Nu_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetnTrack = new TH1F("h_TTTo2L2Nu_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_emergjetnTrack->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha = new TH1F("h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetnTrack_nog = new TH1F("h_TTTo2L2Nu_hev_emergjetnTrack_nog", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_emergjetnTrack_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha_nog", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_emergjetnTrack->Sumw2();
     TH1F *h_TTTo2L2Nu_light_emergjetnTrack_cutalpha = new TH1F("h_TTTo2L2Nu_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
     h_TTTo2L2Nu_light_emergjetnTrack_cutalpha->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_barr_emergjetpt->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetpt_nog = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetpt_nog", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_barr_emergjetpt_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha_nog", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_barr_emergjetpt = new TH1F("h_TTTo2L2Nu_light_barr_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_barr_emergjetpt->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_barr_emergjetpt_cutalpha = new TH1F("h_TTTo2L2Nu_light_barr_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_barr_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_barr_emergjetEta->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetEta_nog = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetEta_nog", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_barr_emergjetEta_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha_nog", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_barr_emergjetEta = new TH1F("h_TTTo2L2Nu_light_barr_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_barr_emergjetEta->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_barr_emergjetEta_cutalpha = new TH1F("h_TTTo2L2Nu_light_barr_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_barr_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetnTrack = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_barr_emergjetnTrack->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetnTrack_nog = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetnTrack_nog", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_barr_emergjetnTrack_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha_nog", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_barr_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_barr_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_barr_emergjetnTrack->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_barr_emergjetnTrack_cutalpha = new TH1F("h_TTTo2L2Nu_light_barr_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_barr_emergjetnTrack_cutalpha->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_end_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_end_emergjetpt->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetpt_nog = new TH1F("h_TTTo2L2Nu_hev_end_emergjetpt_nog", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_end_emergjetpt_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha = new TH1F("h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha_nog", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_end_emergjetpt = new TH1F("h_TTTo2L2Nu_light_end_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_end_emergjetpt->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_end_emergjetpt_cutalpha = new TH1F("h_TTTo2L2Nu_light_end_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_end_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_end_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_end_emergjetEta->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetEta_nog = new TH1F("h_TTTo2L2Nu_hev_end_emergjetEta_nog", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_end_emergjetEta_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha = new TH1F("h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha_nog", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_end_emergjetEta = new TH1F("h_TTTo2L2Nu_light_end_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_end_emergjetEta->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_end_emergjetEta_cutalpha = new TH1F("h_TTTo2L2Nu_light_end_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_end_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetnTrack = new TH1F("h_TTTo2L2Nu_hev_end_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_end_emergjetnTrack->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetnTrack_nog = new TH1F("h_TTTo2L2Nu_hev_end_emergjetnTrack_nog", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_end_emergjetnTrack_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha = new TH1F("h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha->Sumw2();
+    TH1F *h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha_nog = new TH1F("h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha_nog", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha_nog->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_end_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_end_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_end_emergjetnTrack->Sumw2();
+    TH1F *h_TTTo2L2Nu_light_end_emergjetnTrack_cutalpha = new TH1F("h_TTTo2L2Nu_light_end_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_end_emergjetnTrack_cutalpha->Sumw2();
+
+    TH1F *h_TTWJetsToLNu_hev_emergjetpt = new TH1F("h_TTWJetsToLNu_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTWJetsToLNu_hev_emergjetpt->Sumw2();
+    TH1F *h_TTWJetsToLNu_hev_emergjetpt_cutalpha = new TH1F("h_TTWJetsToLNu_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTWJetsToLNu_hev_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTWJetsToLNu_light_emergjetpt = new TH1F("h_TTWJetsToLNu_light_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTWJetsToLNu_light_emergjetpt->Sumw2();
+    TH1F *h_TTWJetsToLNu_light_emergjetpt_cutalpha = new TH1F("h_TTWJetsToLNu_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTWJetsToLNu_light_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTWJetsToLNu_hev_emergjetEta = new TH1F("h_TTWJetsToLNu_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTWJetsToLNu_hev_emergjetEta->Sumw2();
+    TH1F *h_TTWJetsToLNu_hev_emergjetEta_cutalpha = new TH1F("h_TTWJetsToLNu_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTWJetsToLNu_hev_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTWJetsToLNu_light_emergjetEta = new TH1F("h_TTWJetsToLNu_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTWJetsToLNu_light_emergjetEta->Sumw2();
+    TH1F *h_TTWJetsToLNu_light_emergjetEta_cutalpha = new TH1F("h_TTWJetsToLNu_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTWJetsToLNu_light_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTWJetsToLNu_hev_emergjetnTrack = new TH1F("h_TTWJetsToLNu_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTWJetsToLNu_hev_emergjetnTrack->Sumw2();
+    TH1F *h_TTWJetsToLNu_hev_emergjetnTrack_cutalpha = new TH1F("h_TTWJetsToLNu_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TTWJetsToLNu_hev_emergjetnTrack_cutalpha->Sumw2();
+    TH1F *h_TTWJetsToLNu_light_emergjetnTrack = new TH1F("h_TTWJetsToLNu_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTWJetsToLNu_light_emergjetnTrack->Sumw2();
     TH1F *h_TTWJetsToLNu_light_emergjetnTrack_cutalpha = new TH1F("h_TTWJetsToLNu_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
     h_TTWJetsToLNu_light_emergjetnTrack_cutalpha->Sumw2();
+
+    TH1F *h_TWJetsToQQ_hev_emergjetpt = new TH1F("h_TWJetsToQQ_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TWJetsToQQ_hev_emergjetpt->Sumw2();
+    TH1F *h_TWJetsToQQ_hev_emergjetpt_cutalpha = new TH1F("h_TWJetsToQQ_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TWJetsToQQ_hev_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TWJetsToQQ_light_emergjetpt = new TH1F("h_TWJetsToQQ_light_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TWJetsToQQ_light_emergjetpt->Sumw2();
+    TH1F *h_TWJetsToQQ_light_emergjetpt_cutalpha = new TH1F("h_TWJetsToQQ_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TWJetsToQQ_light_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TWJetsToQQ_hev_emergjetEta = new TH1F("h_TWJetsToQQ_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TWJetsToQQ_hev_emergjetEta->Sumw2();
+    TH1F *h_TWJetsToQQ_hev_emergjetEta_cutalpha = new TH1F("h_TWJetsToQQ_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TWJetsToQQ_hev_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TWJetsToQQ_light_emergjetEta = new TH1F("h_TWJetsToQQ_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TWJetsToQQ_light_emergjetEta->Sumw2();
+    TH1F *h_TWJetsToQQ_light_emergjetEta_cutalpha = new TH1F("h_TWJetsToQQ_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TWJetsToQQ_light_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TWJetsToQQ_hev_emergjetnTrack = new TH1F("h_TWJetsToQQ_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TWJetsToQQ_hev_emergjetnTrack->Sumw2();
+    TH1F *h_TWJetsToQQ_hev_emergjetnTrack_cutalpha = new TH1F("h_TWJetsToQQ_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TWJetsToQQ_hev_emergjetnTrack_cutalpha->Sumw2();
+    TH1F *h_TWJetsToQQ_light_emergjetnTrack = new TH1F("h_TWJetsToQQ_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TWJetsToQQ_light_emergjetnTrack->Sumw2();
     TH1F *h_TWJetsToQQ_light_emergjetnTrack_cutalpha = new TH1F("h_TWJetsToQQ_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
     h_TWJetsToQQ_light_emergjetnTrack_cutalpha->Sumw2();
+
+    TH1F *h_TTZToLLNuNu_hev_emergjetpt = new TH1F("h_TTZToLLNuNu_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTZToLLNuNu_hev_emergjetpt->Sumw2();
+    TH1F *h_TTZToLLNuNu_hev_emergjetpt_cutalpha = new TH1F("h_TTZToLLNuNu_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTZToLLNuNu_hev_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTZToLLNuNu_light_emergjetpt = new TH1F("h_TTZToLLNuNu_light_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTZToLLNuNu_light_emergjetpt->Sumw2();
+    TH1F *h_TTZToLLNuNu_light_emergjetpt_cutalpha = new TH1F("h_TTZToLLNuNu_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTZToLLNuNu_light_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTZToLLNuNu_hev_emergjetEta = new TH1F("h_TTZToLLNuNu_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTZToLLNuNu_hev_emergjetEta->Sumw2();
+    TH1F *h_TTZToLLNuNu_hev_emergjetEta_cutalpha = new TH1F("h_TTZToLLNuNu_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTZToLLNuNu_hev_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTZToLLNuNu_light_emergjetEta = new TH1F("h_TTZToLLNuNu_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTZToLLNuNu_light_emergjetEta->Sumw2();
+    TH1F *h_TTZToLLNuNu_light_emergjetEta_cutalpha = new TH1F("h_TTZToLLNuNu_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTZToLLNuNu_light_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTZToLLNuNu_hev_emergjetnTrack = new TH1F("h_TTZToLLNuNu_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTZToLLNuNu_hev_emergjetnTrack->Sumw2();
+    TH1F *h_TTZToLLNuNu_hev_emergjetnTrack_cutalpha = new TH1F("h_TTZToLLNuNu_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TTZToLLNuNu_hev_emergjetnTrack_cutalpha->Sumw2();
+    TH1F *h_TTZToLLNuNu_light_emergjetnTrack = new TH1F("h_TTZToLLNuNu_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTZToLLNuNu_light_emergjetnTrack->Sumw2();
     TH1F *h_TTZToLLNuNu_light_emergjetnTrack_cutalpha = new TH1F("h_TTZToLLNuNu_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
     h_TTZToLLNuNu_light_emergjetnTrack_cutalpha->Sumw2();
+
+    TH1F *h_TTZToQQ_hev_emergjetpt = new TH1F("h_TTZToQQ_hev_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTZToQQ_hev_emergjetpt->Sumw2();
+    TH1F *h_TTZToQQ_hev_emergjetpt_cutalpha = new TH1F("h_TTZToQQ_hev_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTZToQQ_hev_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTZToQQ_light_emergjetpt = new TH1F("h_TTZToQQ_light_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTZToQQ_light_emergjetpt->Sumw2();
+    TH1F *h_TTZToQQ_light_emergjetpt_cutalpha = new TH1F("h_TTZToQQ_light_emergjetpt_cutalpha", "emerging jet pt", 50, 0, 500);
+    h_TTZToQQ_light_emergjetpt_cutalpha->Sumw2();
+    TH1F *h_TTZToQQ_hev_emergjetEta = new TH1F("h_TTZToQQ_hev_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTZToQQ_hev_emergjetEta->Sumw2();
+    TH1F *h_TTZToQQ_hev_emergjetEta_cutalpha = new TH1F("h_TTZToQQ_hev_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTZToQQ_hev_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTZToQQ_light_emergjetEta = new TH1F("h_TTZToQQ_light_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTZToQQ_light_emergjetEta->Sumw2();
+    TH1F *h_TTZToQQ_light_emergjetEta_cutalpha = new TH1F("h_TTZToQQ_light_emergjetEta_cutalpha", "emerging jet Eta", nnbins, nbins);
+    h_TTZToQQ_light_emergjetEta_cutalpha->Sumw2();
+    TH1F *h_TTZToQQ_hev_emergjetnTrack = new TH1F("h_TTZToQQ_hev_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTZToQQ_hev_emergjetnTrack->Sumw2();
+    TH1F *h_TTZToQQ_hev_emergjetnTrack_cutalpha = new TH1F("h_TTZToQQ_hev_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
+    h_TTZToQQ_hev_emergjetnTrack_cutalpha->Sumw2();
+    TH1F *h_TTZToQQ_light_emergjetnTrack = new TH1F("h_TTZToQQ_light_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTZToQQ_light_emergjetnTrack->Sumw2();
     TH1F *h_TTZToQQ_light_emergjetnTrack_cutalpha = new TH1F("h_TTZToQQ_light_emergjetnTrack_cutalpha", "emerging jet nTrack", 50, 0, 50);
     h_TTZToQQ_light_emergjetnTrack_cutalpha->Sumw2();
 
@@ -341,6 +422,10 @@ void ee_half_Top_fake_rate()
     v_TTZToLLNuNu_Jethadronflavor->clear();
     v_TTZToQQ_Jethadronflavor->clear();
 
+    vector<int> *v_TTTo2L2Nu_Jetpartonflavor = new vector<int>();
+
+    v_TTTo2L2Nu_Jetpartonflavor->clear();
+
     //---------------------
     // Define the HTWeight
     //---------------------
@@ -443,6 +528,7 @@ void ee_half_Top_fake_rate()
     T_event2->SetBranchAddress("f_Met", &f_TTTo2L2Nu_met);
     T_event2->SetBranchAddress("I_weight", &f_TTTo2L2Nu_weight);
     T_event2->SetBranchAddress("v_fakeJethadronflavor", &v_TTTo2L2Nu_Jethadronflavor);
+    T_event2->SetBranchAddress("v_fakeJetpartonflavor", &v_TTTo2L2Nu_Jetpartonflavor);
     T_event2->SetBranchAddress("v_fakeJetPt", &v_TTTo2L2Nu_fakeJetPt);
     T_event2->SetBranchAddress("v_fakealpha", &v_TTTo2L2Nu_alpha);
     T_event2->SetBranchAddress("v_fakeJetEta", &v_TTTo2L2Nu_fakeJetEta);
@@ -455,32 +541,111 @@ void ee_half_Top_fake_rate()
             h_TTTo2L2Nu_emergjethadronflavor->Fill((*v_TTTo2L2Nu_Jethadronflavor)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
             if ((*v_TTTo2L2Nu_Jethadronflavor)[i] == 4 || (*v_TTTo2L2Nu_Jethadronflavor)[i] == 5)
             {
+                h_TTTo2L2Nu_hev_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                h_TTTo2L2Nu_hev_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                h_TTTo2L2Nu_hev_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                if ((*v_TTTo2L2Nu_Jetpartonflavor)[i] != 21)
+                {
+                    h_TTTo2L2Nu_hev_emergjetpt_nog->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_hev_emergjetEta_nog->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_hev_emergjetnTrack_nog->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                }
                 if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
                 {
-                    h_TTTo2L2Nu_hev_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
-                    h_TTTo2L2Nu_hev_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
-                    h_TTTo2L2Nu_hev_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_hev_barr_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_hev_barr_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_hev_barr_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    if ((*v_TTTo2L2Nu_Jetpartonflavor)[i] != 21)
+                    {
+                        h_TTTo2L2Nu_hev_barr_emergjetpt_nog->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_barr_emergjetEta_nog->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_barr_emergjetnTrack_nog->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
                 }
-                if ((*v_TTTo2L2Nu_alpha)[i] <= 0.35 && abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
+                else
+                {
+                    h_TTTo2L2Nu_hev_end_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_hev_end_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_hev_end_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    if ((*v_TTTo2L2Nu_Jetpartonflavor)[i] != 21)
+                    {
+                        h_TTTo2L2Nu_hev_end_emergjetpt_nog->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_end_emergjetEta_nog->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_end_emergjetnTrack_nog->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
+                }
+                if ((*v_TTTo2L2Nu_alpha)[i] <= 0.35)
                 {
                     h_TTTo2L2Nu_hev_emergjetpt_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_hev_emergjetEta_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    if ((*v_TTTo2L2Nu_Jetpartonflavor)[i] != 21)
+                    {
+                        h_TTTo2L2Nu_hev_emergjetpt_cutalpha_nog->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_emergjetEta_cutalpha_nog->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha_nog->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
+                    if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
+                    {
+                        h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        if ((*v_TTTo2L2Nu_Jetpartonflavor)[i] != 21)
+                        {
+                            h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha_nog->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                            h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha_nog->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                            h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha_nog->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        }
+                    }
+                    else
+                    {
+                        h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        if ((*v_TTTo2L2Nu_Jetpartonflavor)[i] != 21)
+                        {
+                            h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha_nog->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                            h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha_nog->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                            h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha_nog->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        }
+                    }
                 }
             }
             else
             {
+
+                h_TTTo2L2Nu_light_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                h_TTTo2L2Nu_light_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                h_TTTo2L2Nu_light_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                 if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
                 {
-                    h_TTTo2L2Nu_light_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
-                    h_TTTo2L2Nu_light_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
-                    h_TTTo2L2Nu_light_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_light_barr_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_light_barr_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_light_barr_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                 }
-                if ((*v_TTTo2L2Nu_alpha)[i] <= 0.35 && abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
+                else
+                {
+                    h_TTTo2L2Nu_light_end_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_light_end_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    h_TTTo2L2Nu_light_end_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                }
+                if ((*v_TTTo2L2Nu_alpha)[i] <= 0.35)
                 {
                     h_TTTo2L2Nu_light_emergjetpt_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_light_emergjetEta_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_light_emergjetnTrack_cutalpha->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
+                    {
+                        h_TTTo2L2Nu_light_barr_emergjetpt_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_light_barr_emergjetEta_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_light_barr_emergjetnTrack_cutalpha->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
+                    else
+                    {
+                        h_TTTo2L2Nu_light_end_emergjetpt_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_light_end_emergjetEta_cutalpha->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_light_end_emergjetnTrack_cutalpha->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
                 }
             }
         }
@@ -751,20 +916,64 @@ void ee_half_Top_fake_rate()
     h_tW_top_emergjethadronflavor->GetYaxis()->SetTitle("N Jets");
     // h_tW_top_emergjethadronflavor->Draw();
 
-    TFile *outFile = new TFile("./../../../root_file/BgEstimation/Top_fakerateStudy.root", "RECREATE");
+    TFile *outFile = new TFile("./../../../../root_file/BgEstimation/Top_fakerateStudy.root", "RECREATE");
     outFile->cd();
     h_TTTo2L2Nu_emergjethadronflavor->Write();
     h_TTTo2L2Nu_hev_emergjetpt->Write();
+    h_TTTo2L2Nu_hev_emergjetpt_nog->Write();
     h_TTTo2L2Nu_light_emergjetpt->Write();
     h_TTTo2L2Nu_hev_emergjetEta->Write();
+    h_TTTo2L2Nu_hev_emergjetEta_nog->Write();
     h_TTTo2L2Nu_light_emergjetEta->Write();
     h_TTTo2L2Nu_hev_emergjetnTrack->Write();
+    h_TTTo2L2Nu_hev_emergjetnTrack_nog->Write();
     h_TTTo2L2Nu_light_emergjetnTrack->Write();
     h_TTTo2L2Nu_hev_emergjetpt_cutalpha->Write();
+    h_TTTo2L2Nu_hev_emergjetpt_cutalpha_nog->Write();
     h_TTTo2L2Nu_light_emergjetpt_cutalpha->Write();
     h_TTTo2L2Nu_hev_emergjetEta_cutalpha->Write();
+    h_TTTo2L2Nu_hev_emergjetEta_cutalpha_nog->Write();
     h_TTTo2L2Nu_light_emergjetEta_cutalpha->Write();
     h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha->Write();
+    h_TTTo2L2Nu_hev_emergjetnTrack_cutalpha_nog->Write();
     h_TTTo2L2Nu_light_emergjetnTrack_cutalpha->Write();
+
+    h_TTTo2L2Nu_hev_barr_emergjetpt->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetpt_nog->Write();
+    h_TTTo2L2Nu_light_barr_emergjetpt->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetEta->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetEta_nog->Write();
+    h_TTTo2L2Nu_light_barr_emergjetEta->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetnTrack->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetnTrack_nog->Write();
+    h_TTTo2L2Nu_light_barr_emergjetnTrack->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetpt_cutalpha_nog->Write();
+    h_TTTo2L2Nu_light_barr_emergjetpt_cutalpha->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetEta_cutalpha_nog->Write();
+    h_TTTo2L2Nu_light_barr_emergjetEta_cutalpha->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha->Write();
+    h_TTTo2L2Nu_hev_barr_emergjetnTrack_cutalpha_nog->Write();
+    h_TTTo2L2Nu_light_barr_emergjetnTrack_cutalpha->Write();
+
+    h_TTTo2L2Nu_hev_end_emergjetpt->Write();
+    h_TTTo2L2Nu_hev_end_emergjetpt_nog->Write();
+    h_TTTo2L2Nu_light_end_emergjetpt->Write();
+    h_TTTo2L2Nu_hev_end_emergjetEta->Write();
+    h_TTTo2L2Nu_hev_end_emergjetEta_nog->Write();
+    h_TTTo2L2Nu_light_end_emergjetEta->Write();
+    h_TTTo2L2Nu_hev_end_emergjetnTrack->Write();
+    h_TTTo2L2Nu_hev_end_emergjetnTrack_nog->Write();
+    h_TTTo2L2Nu_light_end_emergjetnTrack->Write();
+    h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha->Write();
+    h_TTTo2L2Nu_hev_end_emergjetpt_cutalpha_nog->Write();
+    h_TTTo2L2Nu_light_end_emergjetpt_cutalpha->Write();
+    h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha->Write();
+    h_TTTo2L2Nu_hev_end_emergjetEta_cutalpha_nog->Write();
+    h_TTTo2L2Nu_light_end_emergjetEta_cutalpha->Write();
+    h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha->Write();
+    h_TTTo2L2Nu_hev_end_emergjetnTrack_cutalpha_nog->Write();
+    h_TTTo2L2Nu_light_end_emergjetnTrack_cutalpha->Write();
     outFile->Close();
 }

@@ -474,9 +474,9 @@ void ee_HT_alpha_ROC()
 
     
     // DY_alpha->Draw("hist");
-    DY_alpha->DrawNormalized("hist&&same");
-    h_Mx2_50_alpha->DrawNormalized("hist&&same");
-    h_Mx2_1_alpha->DrawNormalized("hist&&same");
+    //DY_alpha->DrawNormalized("hist&&same");
+    //h_Mx2_50_alpha->DrawNormalized("hist&&same");
+    //h_Mx2_1_alpha->DrawNormalized("hist&&same");
     h_Mx2_150_alpha->DrawNormalized("hist&&same");
 
     TLegend *l1 = new TLegend(0.60, 0.55, 0.90, 0.90);

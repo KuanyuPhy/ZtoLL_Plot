@@ -11,27 +11,27 @@
 using namespace std;
 void ee_3Dsig()
 {
-    TFile *Mx2_1 = new TFile("./../../../../root_file/Ztoee/Mx2_1.root");
-    TFile *Mx2_50 = new TFile("./../../../../root_file/Ztoee/Mx2_50.root");
-    TFile *Mx2_150 = new TFile("./../../../../root_file/Ztoee/Mx2_150.root");
+    TFile *Mx2_1 = new TFile("./../../../../../root_file/Ztoee/Mx2_1.root");
+    TFile *Mx2_50 = new TFile("./../../../../../root_file/Ztoee/Mx2_50.root");
+    TFile *Mx2_150 = new TFile("./../../../../../root_file/Ztoee/Mx2_150.root");
 
-    TFile *DYincli = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
-    TFile *DYHT70 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
-    TFile *DYHT100 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+    TFile *DYincli = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+    TFile *DYHT70 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
+    TFile *DYHT100 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
+    TFile *DYHT200 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
+    TFile *DYHT400 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
+    TFile *DYHT600 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
+    TFile *DYHT800 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
+    TFile *DYHT1200 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+    TFile *DYHT2500 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
 
-    TFile *Top_TTTo2L2Nu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
-    TFile *Top_TTWJetsToLNu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
-    TFile *Top_TTWJetsToQQ = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
-    TFile *Top_TTZToLLNuNu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
-    TFile *Top_TTZToQQ = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
-    TFile *Top_tW_antitop = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
-    TFile *Top_tW_top = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
+    TFile *Top_TTTo2L2Nu = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
+    TFile *Top_TTWJetsToLNu = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
+    TFile *Top_TTWJetsToQQ = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
+    TFile *Top_TTZToLLNuNu = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
+    TFile *Top_TTZToQQ = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
+    TFile *Top_tW_antitop = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
+    TFile *Top_tW_top = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
 
     TH1D *h_HT_eventCout = ((TH1D *)DYincli->Get("Event_Variable/h_HT_eventCout"));
 
@@ -360,7 +360,7 @@ void ee_3Dsig()
     vector<float> *v_Mx2_150_Median_2DIP = new vector<float>();
 
     TTree *T_event;
-    DYincli->GetObject("T_event", T_event);
+    DYincli->GetObject("T_tree", T_event);
     T_event->SetBranchAddress("I_weight", &I_ht0_weight);
     T_event->SetBranchAddress("f_HT", &HT);
     T_event->SetBranchAddress("I_nThinJets", &I_ht0_nThinJets);
@@ -551,7 +551,7 @@ void ee_3Dsig()
         }
     }
     TTree *T_event1;
-    DYHT100->GetObject("T_event", T_event1);
+    DYHT100->GetObject("T_tree", T_event1);
     T_event1->SetBranchAddress("I_weight", &I_ht100_weight);
     T_event1->SetBranchAddress("I_nThinJets", &I_ht100_nThinJets);
     T_event1->SetBranchAddress("v_Median_2DIPsig", &v_ht100_Median_2DIPsig);
@@ -586,7 +586,7 @@ void ee_3Dsig()
         }
     }
     TTree *T_event2;
-    DYHT200->GetObject("T_event", T_event2);
+    DYHT200->GetObject("T_tree", T_event2);
     T_event2->SetBranchAddress("I_weight", &I_ht200_weight);
     T_event2->SetBranchAddress("I_nThinJets", &I_ht200_nThinJets);
     T_event2->SetBranchAddress("v_Median_2DIPsig", &v_ht200_Median_2DIPsig);
@@ -620,7 +620,7 @@ void ee_3Dsig()
         }
     }
     TTree *T_event3;
-    DYHT400->GetObject("T_event", T_event3);
+    DYHT400->GetObject("T_tree", T_event3);
     T_event3->SetBranchAddress("I_weight", &I_ht400_weight);
     T_event3->SetBranchAddress("I_nThinJets", &I_ht400_nThinJets);
     T_event3->SetBranchAddress("v_Median_2DIPsig", &v_ht400_Median_2DIPsig);
@@ -655,7 +655,7 @@ void ee_3Dsig()
         }
     }
     TTree *T_event4;
-    DYHT600->GetObject("T_event", T_event4);
+    DYHT600->GetObject("T_tree", T_event4);
     T_event4->SetBranchAddress("I_weight", &I_ht600_weight);
     T_event4->SetBranchAddress("I_nThinJets", &I_ht600_nThinJets);
     T_event4->SetBranchAddress("v_Median_2DIPsig", &v_ht600_Median_2DIPsig);
@@ -690,7 +690,7 @@ void ee_3Dsig()
         }
     }
     TTree *T_event5;
-    DYHT800->GetObject("T_event", T_event5);
+    DYHT800->GetObject("T_tree", T_event5);
     T_event5->SetBranchAddress("I_weight", &I_ht800_weight);
     T_event5->SetBranchAddress("I_nThinJets", &I_ht800_nThinJets);
     T_event5->SetBranchAddress("v_Median_2DIPsig", &v_ht800_Median_2DIPsig);
@@ -725,7 +725,7 @@ void ee_3Dsig()
         }
     }
     TTree *T_event6;
-    DYHT1200->GetObject("T_event", T_event6);
+    DYHT1200->GetObject("T_tree", T_event6);
     T_event6->SetBranchAddress("I_weight", &I_ht1200_weight);
     T_event6->SetBranchAddress("I_nThinJets", &I_ht1200_nThinJets);
     T_event6->SetBranchAddress("v_Median_2DIPsig", &v_ht1200_Median_2DIPsig);
@@ -760,7 +760,7 @@ void ee_3Dsig()
         }
     }
     TTree *T_event7;
-    DYHT2500->GetObject("T_event", T_event7);
+    DYHT2500->GetObject("T_tree", T_event7);
     T_event7->SetBranchAddress("I_weight", &I_ht2500_weight);
     T_event7->SetBranchAddress("I_nThinJets", &I_ht2500_nThinJets);
     T_event7->SetBranchAddress("v_Median_2DIPsig", &v_ht2500_Median_2DIPsig);
@@ -795,7 +795,7 @@ void ee_3Dsig()
         }
     }
     TTree *Mx1_tree;
-    Mx2_1->GetObject("T_event", Mx1_tree);
+    Mx2_1->GetObject("T_tree", Mx1_tree);
     Mx1_tree->SetBranchAddress("I_weight", &I_Mx1_weight);
     Mx1_tree->SetBranchAddress("I_nThinJets", &I_Mx1_nThinJets);
     Mx1_tree->SetBranchAddress("v_Median_2DIPsig", &v_Mx2_1_Median_2DIP);
@@ -825,7 +825,7 @@ void ee_3Dsig()
         }
     }
     TTree *Mx50_tree;
-    Mx2_50->GetObject("T_event", Mx50_tree);
+    Mx2_50->GetObject("T_tree", Mx50_tree);
     Mx50_tree->SetBranchAddress("I_weight", &I_Mx50_weight);
     Mx50_tree->SetBranchAddress("I_nThinJets", &I_Mx50_nThinJets);
     Mx50_tree->SetBranchAddress("v_Median_2DIPsig", &v_Mx2_50_Median_2DIP);
@@ -855,7 +855,7 @@ void ee_3Dsig()
         }
     }
     TTree *Mx150_tree;
-    Mx2_150->GetObject("T_event", Mx150_tree);
+    Mx2_150->GetObject("T_tree", Mx150_tree);
     Mx150_tree->SetBranchAddress("I_weight", &I_Mx150_weight);
     Mx150_tree->SetBranchAddress("I_nThinJets", &I_Mx150_nThinJets);
     Mx150_tree->SetBranchAddress("v_Median_2DIPsig", &v_Mx2_150_Median_2DIP);
@@ -866,7 +866,7 @@ void ee_3Dsig()
     {
         Mx150_tree->GetEntry(evt);
         if (I_Mx150_nThinJets < 2)
-           continue;
+            continue;
         for (auto i : *v_Mx2_150_Median_2DIP)
         {
             h_Mx2_150_Median_2DIP->Fill(log10(sqrt(pow(i, 2))), I_Mx150_weight);
@@ -954,45 +954,46 @@ void ee_3Dsig()
     h_ht0_Chi3DlogPaper->SetTitle("X");
     h_ht0_Chi3DlogPaper->GetYaxis()->SetTitle("N Tracks/Normalized");
     h_ht0_Chi3DlogPaper->GetXaxis()->SetTitle("log_{10}(X)");
-/*
-    auto c1 = new TCanvas("c", "BPRE");
-    c1->Divide(2, 1);
-    c1->cd(1);
-    h_ht0_Chi3Dlog->DrawNormalized("hist");
-    // TTTo2L2Nu_3Dsig->DrawNormalized("hist&&same");
-    h_Mx2_1_Chi3Dlog->DrawNormalized("hist&&same");
-    h_Mx2_50_Chi3Dlog->DrawNormalized("hist&&same");
-    h_Mx2_150_Chi3Dlog->DrawNormalized("hist&&same");
+    /*
+        auto c1 = new TCanvas("c", "BPRE");
+        c1->Divide(2, 1);
+        c1->cd(1);
+        h_ht0_Chi3Dlog->DrawNormalized("hist");
+        // TTTo2L2Nu_3Dsig->DrawNormalized("hist&&same");
+        h_Mx2_1_Chi3Dlog->DrawNormalized("hist&&same");
+        h_Mx2_50_Chi3Dlog->DrawNormalized("hist&&same");
+        h_Mx2_150_Chi3Dlog->DrawNormalized("hist&&same");
 
-    TLegend *i2 = new TLegend(0.60, 0.55, 0.90, 0.90);
-    i2->SetBorderSize(0);
-    i2->SetTextSize(0.03);
-    i2->AddEntry(h_Mx2_1_Chi3Dlog, "ctau=1mm m_{x^{2}}=1", "l");
-    i2->AddEntry(h_Mx2_50_Chi3Dlog, "ctau=10mm m_{x^{2}}=50", "l");
-    i2->AddEntry(h_Mx2_150_Chi3Dlog, "ctau=1mm m_{x^{2}}=150", "l");
-    // i2->AddEntry(TTTo2L2Nu_3Dsig, "Top", "l");
-    i2->AddEntry(h_ht0_Chi3Dlog, "Drell-Yan", "l");
-    i2->Draw();
+        TLegend *i2 = new TLegend(0.60, 0.55, 0.90, 0.90);
+        i2->SetBorderSize(0);
+        i2->SetTextSize(0.03);
+        i2->AddEntry(h_Mx2_1_Chi3Dlog, "ctau=1mm m_{x^{2}}=1", "l");
+        i2->AddEntry(h_Mx2_50_Chi3Dlog, "ctau=10mm m_{x^{2}}=50", "l");
+        i2->AddEntry(h_Mx2_150_Chi3Dlog, "ctau=1mm m_{x^{2}}=150", "l");
+        // i2->AddEntry(TTTo2L2Nu_3Dsig, "Top", "l");
+        i2->AddEntry(h_ht0_Chi3Dlog, "Drell-Yan", "l");
+        i2->Draw();
 
-    gStyle->SetOptStat(0);
+        gStyle->SetOptStat(0);
 
-    c1->cd(2);
+        c1->cd(2);
 
-    h_ht0_Chi3DlogPaper->DrawNormalized("hist");
-    // TTTo2L2Nu_3Dsigpaper->DrawNormalized("hist&&same");
-    h_Mx2_1_Chi3DlogPaper->DrawNormalized("hist&&same");
-    h_Mx2_50_Chi3DlogPaper->DrawNormalized("hist&&same");
-    h_Mx2_150_Chi3DlogPaper->DrawNormalized("hist&&same");
+        h_ht0_Chi3DlogPaper->DrawNormalized("hist");
+        // TTTo2L2Nu_3Dsigpaper->DrawNormalized("hist&&same");
+        h_Mx2_1_Chi3DlogPaper->DrawNormalized("hist&&same");
+        h_Mx2_50_Chi3DlogPaper->DrawNormalized("hist&&same");
+        h_Mx2_150_Chi3DlogPaper->DrawNormalized("hist&&same");
 
-    gStyle->SetOptStat(0);
-*/
-    
+        gStyle->SetOptStat(0);
+    */
+
     float TotSigEvent_Mx1 = h_Mx2_1_Chi3Dlog->Integral();
     float TotSigEvent_Mx50 = h_Mx2_50_Chi3Dlog->Integral();
     float TotSigEvent_Mx150 = h_Mx2_150_Chi3Dlog->Integral();
     float TotBgEvent_Mx1 = h_ht0_Chi3Dlog->Integral();
     int nBin = h_Mx2_1_Chi3Dlog->GetNbinsX();
-    int half = nBin / 2;
+    // int half = nBin / 2;
+    int half = nBin;
 
     float nSigEvent_Mx1 = 0;
     float nSigEvent_Mx50 = 0;
@@ -1013,18 +1014,20 @@ void ee_3Dsig()
 
     for (int i = 0; i < half; i++)
     {
-        nSigEvent_Mx1 += h_Mx2_1_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx1 += h_Mx2_1_Chi3Dlog->GetBinContent(half - i);     // from 0 to end for sig
-        // nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(i + 1);      // from 0 to end for sig
+        // nSigEvent_Mx1 += h_Mx2_1_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
+        nSigEvent_Mx1 += h_Mx2_1_Chi3Dlog->GetBinContent(i + 1); // from 0 to end for sig
+        // nSigEvent_Mx1 += h_Mx2_1_Chi3Dlog->GetBinContent(half - i);     // from 0 to end for sig
+        nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(i + 1); // from 0 to end for sig
         // nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(nBin - i);   // from 0 to end for sig
-        nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(half - i);
-        // nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(i + 1);    // from 0 to end for sig
+        // nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
+        // nSigEvent_Mx50 += h_Mx2_50_Chi3Dlog->GetBinContent(half - i);
+        nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(i + 1); // from 0 to end for sig
         // nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(nBin - i); // from 0 to end for sig
-        nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(half - i);
-        nBgEvent_Mx1 += h_ht0_Chi3Dlog->GetBinContent(half + i + 1);
-        nBgEvent_Mx1 += h_ht0_Chi3Dlog->GetBinContent(half - i);
+        // nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(half + i + 1); // from 0 to end for sig
+        // nSigEvent_Mx150 += h_Mx2_150_Chi3Dlog->GetBinContent(half - i);
+        // nBgEvent_Mx1 += h_ht0_Chi3Dlog->GetBinContent(half + i + 1);
+        // nBgEvent_Mx1 += h_ht0_Chi3Dlog->GetBinContent(half - i);
+        nBgEvent_Mx1 += h_ht0_Chi3Dlog->GetBinContent(i + 1);
         effs_Mx1.push_back(nSigEvent_Mx1 / TotSigEvent_Mx1);
         effs_Mx50.push_back(nSigEvent_Mx50 / TotSigEvent_Mx50);
         effs_Mx150.push_back(nSigEvent_Mx150 / TotSigEvent_Mx150);
@@ -1057,15 +1060,18 @@ void ee_3Dsig()
     effs_Mx150paper.clear();
     for (int i = 0; i < half; i++)
     {
-        nSigEvent_Mx1paper += h_Mx2_1_Chi3DlogPaper->GetBinContent(half + i + 1);     // from 0 to end for sig
-        nSigEvent_Mx1paper += h_Mx2_1_Chi3DlogPaper->GetBinContent(half - i);         // from 0 to end for sig
-        nSigEvent_Mx50paper += h_Mx2_50_Chi3DlogPaper->GetBinContent(half + i + 1);   // from 0 to end for sig
-        nSigEvent_Mx50paper += h_Mx2_50_Chi3DlogPaper->GetBinContent(half - i);       // from 0 to end for sig
-        nSigEvent_Mx150paper += h_Mx2_150_Chi3DlogPaper->GetBinContent(half + i + 1); // from 0 to end for sig
-        nSigEvent_Mx150paper += h_Mx2_150_Chi3DlogPaper->GetBinContent(half - i);     // from 0 to end for sig
-        nBgEvent_Mx1paper += h_ht0_Chi3DlogPaper->GetBinContent(half + i + 1);
-        nBgEvent_Mx1paper += h_ht0_Chi3DlogPaper->GetBinContent(half - i);
-
+        // nSigEvent_Mx1paper += h_Mx2_1_Chi3DlogPaper->GetBinContent(half + i + 1);     // from 0 to end for sig
+        // nSigEvent_Mx1paper += h_Mx2_1_Chi3DlogPaper->GetBinContent(half - i);         // from 0 to end for sig
+        nSigEvent_Mx1paper += h_Mx2_1_Chi3DlogPaper->GetBinContent(i + 1); // from 0 to end for sig
+        // nSigEvent_Mx50paper += h_Mx2_50_Chi3DlogPaper->GetBinContent(half + i + 1);   // from 0 to end for sig
+        // nSigEvent_Mx50paper += h_Mx2_50_Chi3DlogPaper->GetBinContent(half - i);       // from 0 to end for sig
+        nSigEvent_Mx50paper += h_Mx2_50_Chi3DlogPaper->GetBinContent(i + 1); // from 0 to end for sig
+        // nSigEvent_Mx150paper += h_Mx2_150_Chi3DlogPaper->GetBinContent(half + i + 1); // from 0 to end for sig
+        // nSigEvent_Mx150paper += h_Mx2_150_Chi3DlogPaper->GetBinContent(half - i);     // from 0 to end for sig
+        nSigEvent_Mx150paper += h_Mx2_150_Chi3DlogPaper->GetBinContent(i + 1); // from 0 to end for sig
+        //nBgEvent_Mx1paper += h_ht0_Chi3DlogPaper->GetBinContent(half + i + 1);
+        //nBgEvent_Mx1paper += h_ht0_Chi3DlogPaper->GetBinContent(half - i);
+        nBgEvent_Mx1paper += h_ht0_Chi3DlogPaper->GetBinContent(i + 1); // from 0 to end for sig
         effs_Mx1paper.push_back(nSigEvent_Mx1paper / TotSigEvent_Mx1paper);
         effs_Mx50paper.push_back(nSigEvent_Mx50paper / TotSigEvent_Mx50paper);
         effs_Mx150paper.push_back(nSigEvent_Mx150paper / TotSigEvent_Mx150paper);
@@ -1084,13 +1090,19 @@ void ee_3Dsig()
         Teffb_Mx1paper[i] = 1 - effb_Mx1paper[i];
     }
 
-    TGraph *ROC_Mx1 = new TGraph(half, Teffs_Mx1, Teffb_Mx1);
+    //TGraph *ROC_Mx1 = new TGraph(half, Teffs_Mx1, Teffb_Mx1);
+    //TGraph *ROC_Mx50 = new TGraph(half, Teffs_Mx50, Teffb_Mx1);
+    //TGraph *ROC_Mx150 = new TGraph(half, Teffs_Mx150, Teffb_Mx1);
+    TGraph *ROC_Mx1 = new TGraph(half, Teffs_Mx1,Teffb_Mx1);
     TGraph *ROC_Mx50 = new TGraph(half, Teffs_Mx50, Teffb_Mx1);
     TGraph *ROC_Mx150 = new TGraph(half, Teffs_Mx150, Teffb_Mx1);
 
-    TGraph *ROC_Mx1paper = new TGraph(half, Teffs_Mx1paper, Teffb_Mx1paper);
-    TGraph *ROC_Mx50paper = new TGraph(half, Teffs_Mx50paper, Teffb_Mx1paper);
-    TGraph *ROC_Mx150paper = new TGraph(half, Teffs_Mx150paper, Teffb_Mx1paper);
+    //TGraph *ROC_Mx1paper = new TGraph(half, Teffs_Mx1paper, Teffb_Mx1paper);
+    //TGraph *ROC_Mx50paper = new TGraph(half, Teffs_Mx50paper, Teffb_Mx1paper);
+    //TGraph *ROC_Mx150paper = new TGraph(half, Teffs_Mx150paper, Teffb_Mx1paper);
+    TGraph *ROC_Mx1paper = new TGraph(half, Teffs_Mx1paper, Teffb_Mx1);
+    TGraph *ROC_Mx50paper = new TGraph(half, Teffs_Mx50paper, Teffb_Mx1);
+    TGraph *ROC_Mx150paper = new TGraph(half, Teffs_Mx150paper, Teffb_Mx1);
 
     TH2F *ROC_total = new TH2F("ROC_total", "", 100, 0, 1, 100, 0, 1);
     ROC_total->SetXTitle("Sig Efficiency");
@@ -1119,10 +1131,10 @@ void ee_3Dsig()
     ROC_Mx1->GetXaxis()->SetLabelOffset(0.015);
     ROC_Mx1->GetYaxis()->SetTitle("Bkg rejection Efficiency");
     ROC_total->Draw();
-    ROC_Mx1->Draw("L* same");
+    ROC_Mx1->Draw("L* same ");
     ROC_Mx50->Draw("L* same");
     ROC_Mx150->Draw("L*");
-    ROC_Mx1paper->Draw("L* same");
+    ROC_Mx1paper->Draw("L* same text");
     ROC_Mx50paper->Draw("L* same");
     ROC_Mx150paper->Draw("L* same");
 
@@ -1136,6 +1148,6 @@ void ee_3Dsig()
     l1->AddEntry(ROC_Mx150, "ctau=1mm m_{x^{2}}=150 (3DSig)", "l");
     l1->AddEntry(ROC_Mx150paper, "ctau=1mm m_{x^{2}}=150 (X)", "l");
     l1->Draw();
-    
+
     gStyle->SetOptStat(0);
 }

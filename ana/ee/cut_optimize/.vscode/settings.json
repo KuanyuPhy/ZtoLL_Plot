@@ -1,0 +1,18 @@
+{
+    "files.associations": {
+        "punzi_3Dsig.C": "cpp",
+        "ee_HT3D.C": "cpp",
+        "ee_Top_alpha_ROC.C": "cpp",
+        "ee_HT_2DIP.C": "cpp",
+        "ee_Sig3D.C": "cpp",
+        "DY_Top_ratio.C": "cpp",
+        "setNCUStyle.C": "cpp",
+        "ee_Top_produce.C": "cpp",
+        "ee_HT_produce.C": "cpp",
+        "typeinfo": "cpp",
+        "diff_region.C": "cpp",
+        "ee_Sig_produce.C": "cpp",
+        "compare_2DIP.C": "cpp",
+        "cmath": "cpp"
+    }
+}

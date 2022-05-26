@@ -33,7 +33,7 @@ void setNCUStyle(bool gridOn=false) {
   ncuStyle->SetFrameFillColor(0);
   ncuStyle->SetFrameFillStyle(0);
   ncuStyle->SetFrameLineColor(1);
-  ncuStyle->SetFrameLineStyle(1);
+  //ncuStyle->SetFrameLineStyle(1);
   ncuStyle->SetFrameLineWidth(3);
 
 // For the Legend:
@@ -44,7 +44,7 @@ void setNCUStyle(bool gridOn=false) {
   
 // For the histo:
   // ncuStyle->SetHistFillColor(1);
-  // ncuStyle->SetHistFillStyle(0);
+   ncuStyle->SetHistFillStyle(0);
   ncuStyle->SetHistLineColor(1);
   ncuStyle->SetHistLineStyle(0);
   ncuStyle->SetHistLineWidth(3);
@@ -55,7 +55,7 @@ void setNCUStyle(bool gridOn=false) {
   // ncuStyle->SetErrorMarker(20);
   //ncuStyle->SetErrorX(0.);
   
-  ncuStyle->SetMarkerStyle(20);
+  //ncuStyle->SetMarkerStyle(20);
   
 //For the fit/function:
   ncuStyle->SetOptFit(1);
@@ -92,23 +92,23 @@ void setNCUStyle(bool gridOn=false) {
 
 // For the Global title:
 
-  ncuStyle->SetOptTitle(0);
+  //ncuStyle->SetOptTitle(0);
   ncuStyle->SetTitleFont(62);
   ncuStyle->SetTitleColor(1);
   ncuStyle->SetTitleTextColor(1);
   ncuStyle->SetTitleFillColor(10);
-  ncuStyle->SetTitleFontSize(0.05);
+  //ncuStyle->SetTitleFontSize(0.1);
   // ncuStyle->SetTitleH(0); // Set the height of the title box
   // ncuStyle->SetTitleW(0); // Set the width of the title box
-  // ncuStyle->SetTitleX(0); // Set the position of the title box
+   ncuStyle->SetTitleX(0.3); // Set the position of the title box
   // ncuStyle->SetTitleY(0.985); // Set the position of the title box
   // ncuStyle->SetTitleStyle(Style_t style = 1001);
-  // ncuStyle->SetTitleBorderSize(2);
+   ncuStyle->SetTitleBorderSize(0);
 
 // For the axis titles:
 
   ncuStyle->SetTitleColor(1, "XYZ");
-  ncuStyle->SetTitleSize(0.06, "XYZ");
+  //ncuStyle->SetTitleSize(0.06, "XYZ");
   // ncuStyle->SetTitleXSize(Float_t size = 0.02); // Another way to set the size?
   // ncuStyle->SetTitleYSize(Float_t size = 0.02);
   // the following commands are not doing any thing

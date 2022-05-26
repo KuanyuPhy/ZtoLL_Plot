@@ -17,27 +17,25 @@
 using namespace RooFit;
 void draw_nJet()
 {
-    TFile *Mx2_1 = new TFile("./../../../root_file/Ztoee/Mx2_1.root");
-    TFile *Mx2_50 = new TFile("./../../../root_file/Ztoee/Mx2_50.root");
-    TFile *Mx2_150 = new TFile("./../../../root_file/Ztoee/Mx2_150.root");
+    TFile *Mx2_1 = new TFile("./../../../../root_file/Ztoee/Mx2_1.root");
+    TFile *Mx2_50 = new TFile("./../../../../root_file/Ztoee/Mx2_50.root");
+    TFile *Mx2_150 = new TFile("./../../../../root_file/Ztoee/Mx2_150.root");
 
-    TFile *DYincli = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
-    TFile *DYHT70 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht70.root");
-    TFile *DYHT100 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("./../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+    TFile *DYincli = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+    TFile *DYHT100 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
+    TFile *DYHT200 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
+    TFile *DYHT400 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
+    TFile *DYHT600 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
+    TFile *DYHT800 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
+    TFile *DYHT1200 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+    TFile *DYHT2500 = new TFile("./../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
 
-    TFile *Top_TTTo2L2Nu = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
+    TFile *Top_TTTo2L2Nu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
 
     TH1D *TTTo2L2Nu_sumevt = ((TH1D *)Top_TTTo2L2Nu->Get("Event_Variable/h_totevent"));
 
     TH1D *h_HT_eventCout = ((TH1D *)DYincli->Get("Event_Variable/h_HT_eventCout"));
 
-    TH1D *DYHT70_sumevt = ((TH1D *)DYHT70->Get("Event_Variable/h_totevent"));
     TH1D *DYHT100_sumevt = ((TH1D *)DYHT100->Get("Event_Variable/h_totevent"));
     TH1D *DYHT200_sumevt = ((TH1D *)DYHT200->Get("Event_Variable/h_totevent"));
     TH1D *DYHT400_sumevt = ((TH1D *)DYHT400->Get("Event_Variable/h_totevent"));
@@ -127,7 +125,7 @@ void draw_nJet()
     h_Mx2_150_nJets->Sumw2();
 
     TTree *T_event;
-    DYincli->GetObject("T_event", T_event);
+    DYincli->GetObject("T_tree", T_event);
     T_event->SetBranchAddress("I_weight", &I_ht0_weight);
     T_event->SetBranchAddress("f_HT", &HT);
     T_event->SetBranchAddress("I_nThinJets", &I_ht0_nThinJets);
@@ -172,7 +170,7 @@ void draw_nJet()
         }
     }
     TTree *T_event1;
-    DYHT100->GetObject("T_event", T_event1);
+    DYHT100->GetObject("T_tree", T_event1);
     T_event1->SetBranchAddress("I_weight", &I_ht100_weight);
     T_event1->SetBranchAddress("I_nThinJets", &I_ht100_nThinJets);
     for (int evt = 0; evt < T_event1->GetEntries(); evt++)
@@ -181,7 +179,7 @@ void draw_nJet()
         h_ht100_nJets->Fill(I_ht100_nThinJets, I_ht100_weight * HT100Weight);
     }
     TTree *T_event2;
-    DYHT200->GetObject("T_event", T_event2);
+    DYHT200->GetObject("T_tree", T_event2);
     T_event2->SetBranchAddress("I_weight", &I_ht200_weight);
     T_event2->SetBranchAddress("I_nThinJets", &I_ht200_nThinJets);
     for (int evt = 0; evt < T_event2->GetEntries(); evt++)
@@ -190,7 +188,7 @@ void draw_nJet()
         h_ht200_nJets->Fill(I_ht200_nThinJets, I_ht200_weight * HT200Weight);
     }
     TTree *T_event3;
-    DYHT400->GetObject("T_event", T_event3);
+    DYHT400->GetObject("T_tree", T_event3);
     T_event3->SetBranchAddress("I_weight", &I_ht400_weight);
     T_event3->SetBranchAddress("I_nThinJets", &I_ht400_nThinJets);
     for (int evt = 0; evt < T_event3->GetEntries(); evt++)
@@ -199,7 +197,7 @@ void draw_nJet()
         h_ht400_nJets->Fill(I_ht400_nThinJets, I_ht400_weight * HT400Weight);
     }
     TTree *T_event4;
-    DYHT600->GetObject("T_event", T_event4);
+    DYHT600->GetObject("T_tree", T_event4);
     T_event4->SetBranchAddress("I_weight", &I_ht600_weight);
     T_event4->SetBranchAddress("I_nThinJets", &I_ht600_nThinJets);
     for (int evt = 0; evt < T_event4->GetEntries(); evt++)
@@ -208,7 +206,7 @@ void draw_nJet()
         h_ht600_nJets->Fill(I_ht600_nThinJets, I_ht600_weight * HT600Weight);
     }
     TTree *T_event5;
-    DYHT800->GetObject("T_event", T_event5);
+    DYHT800->GetObject("T_tree", T_event5);
     T_event5->SetBranchAddress("I_weight", &I_ht800_weight);
     T_event5->SetBranchAddress("I_nThinJets", &I_ht800_nThinJets);
     for (int evt = 0; evt < T_event5->GetEntries(); evt++)
@@ -216,7 +214,7 @@ void draw_nJet()
         h_ht800_nJets->Fill(I_ht800_nThinJets, I_ht800_weight * HT800Weight);
     }
     TTree *T_event6;
-    DYHT1200->GetObject("T_event", T_event6);
+    DYHT1200->GetObject("T_tree", T_event6);
     T_event6->SetBranchAddress("I_weight", &I_ht1200_weight);
     T_event6->SetBranchAddress("I_nThinJets", &I_ht1200_nThinJets);
     for (int evt = 0; evt < T_event6->GetEntries(); evt++)
@@ -225,7 +223,7 @@ void draw_nJet()
         h_ht1200_nJets->Fill(I_ht1200_nThinJets, I_ht1200_weight * HT1200Weight);
     }
     TTree *T_event7;
-    DYHT2500->GetObject("T_event", T_event7);
+    DYHT2500->GetObject("T_tree", T_event7);
     T_event7->SetBranchAddress("I_weight", &I_ht2500_weight);
     T_event7->SetBranchAddress("I_nThinJets", &I_ht2500_nThinJets);
     for (int evt = 0; evt < T_event7->GetEntries(); evt++)
@@ -234,7 +232,7 @@ void draw_nJet()
         h_ht2500_nJets->Fill(I_ht2500_nThinJets, I_ht2500_weight * HT2500Weight);
     }
     TTree *T_event8;
-    Top_TTTo2L2Nu->GetObject("T_event", T_event8);
+    Top_TTTo2L2Nu->GetObject("T_tree", T_event8);
     T_event8->SetBranchAddress("I_weight", &f_TTTo2L2Nu_weight);
     T_event8->SetBranchAddress("I_nThinJets", &I_TTTo2L2Nu_nThinJets);
     for (int evt = 0; evt < T_event8->GetEntries(); evt++)
@@ -244,7 +242,7 @@ void draw_nJet()
     }
 
     TTree *Mx1_tree;
-    Mx2_1->GetObject("T_event", Mx1_tree);
+    Mx2_1->GetObject("T_tree", Mx1_tree);
     Mx1_tree->SetBranchAddress("I_weight", &I_Mx1_weight);
     Mx1_tree->SetBranchAddress("I_nThinJets", &I_Mx1_nThinJets);
     for (int evt = 0; evt < Mx1_tree->GetEntries(); evt++)
@@ -254,7 +252,7 @@ void draw_nJet()
     }
 
     TTree *Mx50_tree;
-    Mx2_50->GetObject("T_event", Mx50_tree);
+    Mx2_50->GetObject("T_tree", Mx50_tree);
     Mx50_tree->SetBranchAddress("I_weight", &I_Mx50_weight);
     Mx50_tree->SetBranchAddress("I_nThinJets", &I_Mx50_nThinJets);
     for (int evt = 0; evt < Mx50_tree->GetEntries(); evt++)
@@ -264,7 +262,7 @@ void draw_nJet()
     }
 
     TTree *Mx150_tree;
-    Mx2_150->GetObject("T_event", Mx150_tree);
+    Mx2_150->GetObject("T_tree", Mx150_tree);
     Mx150_tree->SetBranchAddress("I_weight", &I_Mx150_weight);
     Mx150_tree->SetBranchAddress("I_nThinJets", &I_Mx150_nThinJets);
     for (int evt = 0; evt < Mx150_tree->GetEntries(); evt++)

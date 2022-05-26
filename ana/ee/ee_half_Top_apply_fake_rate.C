@@ -17,14 +17,18 @@
 using namespace RooFit;
 void ee_half_Top_apply_fake_rate()
 {
-    TFile *fakeRate = new TFile("./../../../root_file/BgEstimation/Clouse_test.root");
+    TFile *fakeRate = new TFile("./../../../../root_file/BgEstimation/Clouse_test.root");
 
-    TFile *Top_TTTo2L2Nu = new TFile("./../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
+    TFile *Top_TTTo2L2Nu = new TFile("./../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
 
-    TFile *Top_TTTo2L2Nu_2 = new TFile("/mnt/c/Users/USER/Documents/ZtoLL_Plot/ana/ee/top_TTTo2L2Nu_2.root");
+    TFile *Top_TTTo2L2Nu_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTTo2L2Nu_2.root");
 
     TH1F *Top_hev_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_hev_emergjetnTrack_fakeRate"));
+    TH1F *Top_hev_barr_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_hev_barr_emergjetnTrack_fakeRate"));
+    TH1F *Top_hev_end_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_hev_end_emergjetnTrack_fakeRate"));
     TH1F *Top_light_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_light_emergjetnTrack_fakeRate"));
+    TH1F *Top_light_barr_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_light_barr_emergjetnTrack_fakeRate"));
+    TH1F *Top_light_end_fakerate_ntr = ((TH1F *)fakeRate->Get("Top_light_end_emergjetnTrack_fakeRate"));
 
     TH1D *TTTo2L2Nu_sumevt = ((TH1D *)Top_TTTo2L2Nu->Get("Event_Variable/h_totevent"));
 
@@ -33,18 +37,17 @@ void ee_half_Top_apply_fake_rate()
     //----------------------------------------------------------------------
     // Create Histrogram: PT, eta, NTracks
     //----------------------------------------------------------------------
-    TH1F *h_TTTo2L2Nu_hev_exp_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTTo2L2Nu_hev_exp_emergjetpt->Sumw2();
-
-    TH1F *h_TTTo2L2Nu_light_exp_emergjetpt = new TH1F("h_TTTo2L2Nu_light_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
-    h_TTTo2L2Nu_light_exp_emergjetpt->Sumw2();
-
     Double_t nbins[82] = {-4.889, -4.716, -4.538, -4.363, -4.191, -4.013, -3.839, -3.664, -3.489, -3.314, -3.139, -2.964, -2.853,
                           -2.65, -2.5, -2.322, -2.172, -2.043, -1.93, -1.83, -1.74, -1.653, -1.566, -1.479, -1.392, -1.305, -1.218, -1.131, -1.044,
                           -0.957, -0.879, -0.783, -0.696, -0.609, -0.522, -0.435, -0.348, -0.261, -0.174, -0.087, 0, 0.087, 0.174, 0.261, 0.348, 0.435,
                           0.522, 0.609, 0.696, 0.783, 0.879, 0.957, 1.044, 1.131, 1.218, 1.305, 1.392, 1.479, 1.566, 1.653, 1.74, 1.83, 1.93, 2.043, 2.172,
                           2.322, 2.5, 2.65, 2.853, 2.964, 3.139, 3.314, 3.489, 3.664, 3.839, 4.013, 4.191, 4.363, 4.538, 4.716, 4.889, 5.191};
     const Int_t nnbins = (sizeof(nbins) / sizeof(*nbins)) - 1;
+    TH1F *h_TTTo2L2Nu_hev_exp_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_exp_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_exp_emergjetpt = new TH1F("h_TTTo2L2Nu_light_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_exp_emergjetpt->Sumw2();
 
     TH1F *h_TTTo2L2Nu_hev_exp_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
     h_TTTo2L2Nu_hev_exp_emergjetEta->Sumw2();
@@ -75,6 +78,79 @@ void ee_half_Top_apply_fake_rate()
 
     TH1F *h_TTTo2L2Nu_light_pred_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
     h_TTTo2L2Nu_light_pred_emergjetnTrack->Sumw2();
+
+    //-----
+    TH1F *h_TTTo2L2Nu_hev_barr_exp_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_barr_exp_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_barr_exp_emergjetpt = new TH1F("h_TTTo2L2Nu_light_barr_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_barr_exp_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_barr_exp_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_barr_exp_emergjetEta->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_barr_exp_emergjetEta = new TH1F("h_TTTo2L2Nu_light_barr_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_barr_exp_emergjetEta->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_barr_exp_emergjetnTrack = new TH1F("h_TTTo2L2Nu_hev_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_barr_exp_emergjetnTrack->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_barr_exp_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_barr_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_barr_exp_emergjetnTrack->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_barr_pred_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_barr_pred_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_barr_pred_emergjetpt = new TH1F("h_TTTo2L2Nu_light_barr_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_barr_pred_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_barr_pred_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_barr_pred_emergjetEta->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_barr_pred_emergjetEta = new TH1F("h_TTTo2L2Nu_light_barr_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_barr_pred_emergjetEta->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_barr_pred_emergjetnTrack = new TH1F("h_TTTo2L2Nu_hev_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_barr_pred_emergjetnTrack->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_barr_pred_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_barr_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_barr_pred_emergjetnTrack->Sumw2();
+    //--
+    TH1F *h_TTTo2L2Nu_hev_end_exp_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_end_exp_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_end_exp_emergjetpt = new TH1F("h_TTTo2L2Nu_light_end_exp_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_end_exp_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_end_exp_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_end_exp_emergjetEta->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_end_exp_emergjetEta = new TH1F("h_TTTo2L2Nu_light_end_exp_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_end_exp_emergjetEta->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_end_exp_emergjetnTrack = new TH1F("h_TTTo2L2Nu_hev_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_end_exp_emergjetnTrack->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_end_exp_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_end_exp_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_end_exp_emergjetnTrack->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_end_pred_emergjetpt = new TH1F("h_TTTo2L2Nu_hev_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_hev_end_pred_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_end_pred_emergjetpt = new TH1F("h_TTTo2L2Nu_light_end_pred_emergjetpt", "emerging jet pt", 50, 0, 500);
+    h_TTTo2L2Nu_light_end_pred_emergjetpt->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_end_pred_emergjetEta = new TH1F("h_TTTo2L2Nu_hev_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_hev_end_pred_emergjetEta->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_end_pred_emergjetEta = new TH1F("h_TTTo2L2Nu_light_end_pred_emergjetEta", "emerging jet Eta", nnbins, nbins);
+    h_TTTo2L2Nu_light_end_pred_emergjetEta->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_hev_end_pred_emergjetnTrack = new TH1F("h_TTTo2L2Nu_hev_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_hev_end_pred_emergjetnTrack->Sumw2();
+
+    TH1F *h_TTTo2L2Nu_light_end_pred_emergjetnTrack = new TH1F("h_TTTo2L2Nu_light_end_pred_emergjetnTrack", "emerging jet nTrack", 50, 0, 50);
+    h_TTTo2L2Nu_light_end_pred_emergjetnTrack->Sumw2();
 
     Int_t f_tW_top_weight, f_tW_antitop_weight, f_TTTo2L2Nu_weight, f_TTWJetsToLNu_weight, f_TTWJetsToQQ_weight,
         f_TTZToLLNuNu_weight, f_TTZToQQ_weight;
@@ -179,34 +255,81 @@ void ee_half_Top_apply_fake_rate()
         {
             if ((*v_TTTo2L2Nu_Jethadronflavor)[i] == 4 || (*v_TTTo2L2Nu_Jethadronflavor)[i] == 5)
             {
-                if ((*v_TTTo2L2Nu_alpha)[i] <= 0.35 && abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
+                if ((*v_TTTo2L2Nu_alpha)[i] <= 0.35)
                 {
                     h_TTTo2L2Nu_hev_exp_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_hev_exp_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_hev_exp_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
+                    {
+                        h_TTTo2L2Nu_hev_barr_exp_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_barr_exp_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_barr_exp_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
+                    else
+                    {
+                        h_TTTo2L2Nu_hev_end_exp_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_end_exp_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_hev_end_exp_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
                 }
+                float ff = Top_hev_fakerate_ntr->GetBinContent((*v_TTTo2L2Nu_JetnTracks)[i] + 1);
+                h_TTTo2L2Nu_hev_pred_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
+                h_TTTo2L2Nu_hev_pred_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
+                h_TTTo2L2Nu_hev_pred_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
                 if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
                 {
-                    float ff = Top_hev_fakerate_ntr->GetBinContent((*v_TTTo2L2Nu_JetnTracks)[i] + 1);
-                    h_TTTo2L2Nu_hev_pred_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
-                    h_TTTo2L2Nu_hev_pred_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
-                    h_TTTo2L2Nu_hev_pred_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
+                    float ff_barr = Top_hev_barr_fakerate_ntr->GetBinContent((*v_TTTo2L2Nu_JetnTracks)[i] + 1);
+                    h_TTTo2L2Nu_hev_barr_pred_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight*ff_barr);
+                    h_TTTo2L2Nu_hev_barr_pred_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight*ff_barr);
+                    h_TTTo2L2Nu_hev_barr_pred_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight*ff_barr);
+                }
+                else
+                {
+                    float ff_end = Top_hev_end_fakerate_ntr->GetBinContent((*v_TTTo2L2Nu_JetnTracks)[i] + 1);
+                    h_TTTo2L2Nu_hev_end_pred_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight*ff_end);
+                    h_TTTo2L2Nu_hev_end_pred_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight*ff_end);
+                    h_TTTo2L2Nu_hev_end_pred_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight*ff_end);
                 }
             }
             else
             {
-                if ((*v_TTTo2L2Nu_alpha)[i] <= 0.35 && abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
+                if ((*v_TTTo2L2Nu_alpha)[i] <= 0.35)
                 {
                     h_TTTo2L2Nu_light_exp_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_light_exp_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
                     h_TTTo2L2Nu_light_exp_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
+                    {
+                        h_TTTo2L2Nu_light_barr_exp_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_light_barr_exp_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_light_barr_exp_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
+                    else
+                    {
+                        h_TTTo2L2Nu_light_end_exp_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_light_end_exp_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                        h_TTTo2L2Nu_light_end_exp_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight);
+                    }
                 }
+
+                float ff = Top_light_fakerate_ntr->GetBinContent((*v_TTTo2L2Nu_JetnTracks)[i] + 1);
+                h_TTTo2L2Nu_light_pred_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
+                h_TTTo2L2Nu_light_pred_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
+                h_TTTo2L2Nu_light_pred_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
                 if (abs((*v_TTTo2L2Nu_fakeJetEta)[i]) < 1.479)
                 {
-                    float ff = Top_light_fakerate_ntr->GetBinContent((*v_TTTo2L2Nu_JetnTracks)[i] + 1);
-                    h_TTTo2L2Nu_light_pred_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
-                    h_TTTo2L2Nu_light_pred_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
-                    h_TTTo2L2Nu_light_pred_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff);
+                    float ff_barr = Top_light_barr_fakerate_ntr->GetBinContent((*v_TTTo2L2Nu_JetnTracks)[i] + 1);
+                    h_TTTo2L2Nu_light_barr_pred_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff_barr);
+                    h_TTTo2L2Nu_light_barr_pred_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff_barr);
+                    h_TTTo2L2Nu_light_barr_pred_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff_barr);
+                }
+                else
+                {
+                    float ff_end = Top_light_end_fakerate_ntr->GetBinContent((*v_TTTo2L2Nu_JetnTracks)[i] + 1);
+                    h_TTTo2L2Nu_light_end_pred_emergjetpt->Fill((*v_TTTo2L2Nu_fakeJetPt)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff_end);
+                    h_TTTo2L2Nu_light_end_pred_emergjetEta->Fill((*v_TTTo2L2Nu_fakeJetEta)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff_end);
+                    h_TTTo2L2Nu_light_end_pred_emergjetnTrack->Fill((*v_TTTo2L2Nu_JetnTracks)[i], f_TTTo2L2Nu_weight * TTTo2L2NuWeight * ff_end);
                 }
             }
         }
@@ -224,6 +347,35 @@ void ee_half_Top_apply_fake_rate()
     h_TTTo2L2Nu_hev_pred_emergjetnTrack->SetLineWidth(2);
     h_TTTo2L2Nu_light_exp_emergjetnTrack->SetLineWidth(2);
     h_TTTo2L2Nu_light_pred_emergjetnTrack->SetLineWidth(2);
+    //--
+    h_TTTo2L2Nu_hev_barr_pred_emergjetpt->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_barr_exp_emergjetpt->SetLineWidth(2);
+    h_TTTo2L2Nu_light_barr_pred_emergjetpt->SetLineWidth(2);
+    h_TTTo2L2Nu_light_barr_exp_emergjetpt->SetLineWidth(2);
+    h_TTTo2L2Nu_light_barr_pred_emergjetEta->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_barr_exp_emergjetEta->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_barr_pred_emergjetEta->SetLineWidth(2);
+    h_TTTo2L2Nu_light_barr_exp_emergjetEta->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_barr_exp_emergjetnTrack->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_barr_pred_emergjetnTrack->SetLineWidth(2);
+    h_TTTo2L2Nu_light_barr_exp_emergjetnTrack->SetLineWidth(2);
+    h_TTTo2L2Nu_light_barr_pred_emergjetnTrack->SetLineWidth(2);
+    //--
+    h_TTTo2L2Nu_hev_end_pred_emergjetpt->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_end_exp_emergjetpt->SetLineWidth(2);
+    h_TTTo2L2Nu_light_end_pred_emergjetpt->SetLineWidth(2);
+    h_TTTo2L2Nu_light_end_exp_emergjetpt->SetLineWidth(2);
+    h_TTTo2L2Nu_light_end_pred_emergjetEta->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_end_exp_emergjetEta->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_end_pred_emergjetEta->SetLineWidth(2);
+    h_TTTo2L2Nu_light_end_exp_emergjetEta->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_end_exp_emergjetnTrack->SetLineWidth(2);
+    h_TTTo2L2Nu_hev_end_pred_emergjetnTrack->SetLineWidth(2);
+    h_TTTo2L2Nu_light_end_exp_emergjetnTrack->SetLineWidth(2);
+    h_TTTo2L2Nu_light_end_pred_emergjetnTrack->SetLineWidth(2);
+
+    Top_hev_fakerate_ntr->SetLineWidth(2);
+    Top_light_fakerate_ntr->SetLineWidth(2);
 
     h_TTTo2L2Nu_hev_pred_emergjetpt->SetLineColor(kRed);
     h_TTTo2L2Nu_light_pred_emergjetpt->SetLineColor(kRed);
@@ -231,6 +383,22 @@ void ee_half_Top_apply_fake_rate()
     h_TTTo2L2Nu_hev_pred_emergjetEta->SetLineColor(kRed);
     h_TTTo2L2Nu_hev_pred_emergjetnTrack->SetLineColor(kRed);
     h_TTTo2L2Nu_light_pred_emergjetnTrack->SetLineColor(kRed);
+    h_TTTo2L2Nu_hev_barr_pred_emergjetpt->SetLineColor(kRed);
+    h_TTTo2L2Nu_light_barr_pred_emergjetpt->SetLineColor(kRed);
+    h_TTTo2L2Nu_light_barr_pred_emergjetEta->SetLineColor(kRed);
+    h_TTTo2L2Nu_hev_barr_pred_emergjetEta->SetLineColor(kRed);
+    h_TTTo2L2Nu_hev_barr_pred_emergjetnTrack->SetLineColor(kRed);
+    h_TTTo2L2Nu_light_barr_pred_emergjetnTrack->SetLineColor(kRed);
+    h_TTTo2L2Nu_hev_end_pred_emergjetpt->SetLineColor(kRed);
+    h_TTTo2L2Nu_light_end_pred_emergjetpt->SetLineColor(kRed);
+    h_TTTo2L2Nu_light_end_pred_emergjetEta->SetLineColor(kRed);
+    h_TTTo2L2Nu_hev_end_pred_emergjetEta->SetLineColor(kRed);
+    h_TTTo2L2Nu_hev_end_pred_emergjetnTrack->SetLineColor(kRed);
+    h_TTTo2L2Nu_light_end_pred_emergjetnTrack->SetLineColor(kRed);
+    // Top_hev_fakerate_ntr->SetLineColor(kRed);
+    //Top_light_barr_fakerate_ntr->Draw();
+    //Top_hev_barr_fakerate_ntr->Draw("same");
+
     auto c1 = new TCanvas("c", "BPRE");
     c1->Divide(3, 2);
     c1->cd(1);
@@ -258,9 +426,11 @@ void ee_half_Top_apply_fake_rate()
 
     c1->cd(2);
     h_TTTo2L2Nu_hev_pred_emergjetnTrack->SetTitle("heavy");
+    h_TTTo2L2Nu_hev_exp_emergjetnTrack->SetTitle("heavy");
     h_TTTo2L2Nu_hev_pred_emergjetnTrack->GetXaxis()->SetTitle("Trackmultiplicity");
-    h_TTTo2L2Nu_hev_pred_emergjetnTrack->Draw("hist  e");
-    h_TTTo2L2Nu_hev_exp_emergjetnTrack->Draw("hist same e");
+    h_TTTo2L2Nu_hev_exp_emergjetnTrack->GetXaxis()->SetTitle("Trackmultiplicity");
+    h_TTTo2L2Nu_hev_exp_emergjetnTrack->Draw("hist  e");
+    h_TTTo2L2Nu_hev_pred_emergjetnTrack->Draw("hist same e");
     TLegend *l2 = new TLegend(0.6, 0.65, 0.80, 0.85);
     l2->SetBorderSize(0);
     l2->SetTextSize(0.04);
@@ -268,8 +438,8 @@ void ee_half_Top_apply_fake_rate()
     l2->AddEntry(h_TTTo2L2Nu_hev_exp_emergjetnTrack, "expect", "l");
     l2->Draw();
     c1->cd(5);
-    h_TTTo2L2Nu_light_pred_emergjetnTrack->SetTitle("light");
-    h_TTTo2L2Nu_light_pred_emergjetnTrack->GetXaxis()->SetTitle("Trackmultiplicity");
+    h_TTTo2L2Nu_light_exp_emergjetnTrack->SetTitle("light");
+    h_TTTo2L2Nu_light_exp_emergjetnTrack->GetXaxis()->SetTitle("Trackmultiplicity");
     h_TTTo2L2Nu_light_exp_emergjetnTrack->Draw("hist  e");
     h_TTTo2L2Nu_light_pred_emergjetnTrack->Draw("hist same e");
 
@@ -282,9 +452,12 @@ void ee_half_Top_apply_fake_rate()
 
     c1->cd(3);
     h_TTTo2L2Nu_hev_pred_emergjetEta->SetTitle("heavy");
+    h_TTTo2L2Nu_hev_exp_emergjetEta->SetTitle("heavy");
     h_TTTo2L2Nu_hev_pred_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
+    h_TTTo2L2Nu_hev_exp_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
     h_TTTo2L2Nu_hev_pred_emergjetEta->Draw("hist  e");
     h_TTTo2L2Nu_hev_exp_emergjetEta->Draw("hist same e");
+
     TLegend *l4 = new TLegend(0.6, 0.65, 0.80, 0.85);
     l4->SetBorderSize(0);
     l4->SetTextSize(0.04);
@@ -293,8 +466,8 @@ void ee_half_Top_apply_fake_rate()
     l4->Draw();
 
     c1->cd(6);
-    h_TTTo2L2Nu_light_pred_emergjetEta->SetTitle("light");
-    h_TTTo2L2Nu_light_pred_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
+    h_TTTo2L2Nu_light_exp_emergjetEta->SetTitle("light");
+    h_TTTo2L2Nu_light_exp_emergjetEta->GetXaxis()->SetTitle("Jet(#eta)");
     h_TTTo2L2Nu_light_exp_emergjetEta->Draw("hist  e");
     h_TTTo2L2Nu_light_pred_emergjetEta->Draw("hist same e");
 
@@ -304,6 +477,7 @@ void ee_half_Top_apply_fake_rate()
     l5->AddEntry(h_TTTo2L2Nu_light_pred_emergjetEta, "Predict", "l");
     l5->AddEntry(h_TTTo2L2Nu_light_exp_emergjetEta, "expect", "l");
     l5->Draw();
+
     gStyle->SetOptStat(0);
     // h_ht0_hev_exp_emergjetpt->Draw("hist same");
 }
