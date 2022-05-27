@@ -78,27 +78,27 @@ Double_t lightjet_background(float x)
 void Ratio_HT_apply()
 {
     // setNCUStyle(true);
-    TFile *DYincli = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+    TFile *DYincli = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
 
-    TFile *DYHT100 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+    TFile *DYHT100 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
+    TFile *DYHT200 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
+    TFile *DYHT400 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
+    TFile *DYHT600 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
+    TFile *DYHT800 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
+    TFile *DYHT1200 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+    TFile *DYHT2500 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
 
     //-------------
     // Open Tree
     //-------------
-    TFile *DYincli_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_DYincli_2.root");
-    TFile *DYHT100_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht100_2.root");
-    TFile *DYHT200_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht200_2.root");
-    TFile *DYHT400_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht400_2.root");
-    TFile *DYHT600_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht600_2.root");
-    TFile *DYHT800_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht800_2.root");
-    TFile *DYHT1200_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht1200_2.root");
-    TFile *DYHT2500_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht2500_2.root");
+    TFile *DYincli_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_DYincli_2.root");
+    TFile *DYHT100_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht100_2.root");
+    TFile *DYHT200_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht200_2.root");
+    TFile *DYHT400_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht400_2.root");
+    TFile *DYHT600_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht600_2.root");
+    TFile *DYHT800_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht800_2.root");
+    TFile *DYHT1200_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht1200_2.root");
+    TFile *DYHT2500_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht2500_2.root");
 
     TFile *DYfile = new TFile("./../ee_DY_emjet_half.root");
 
@@ -602,11 +602,11 @@ void Ratio_HT_apply()
                 // For b jet
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-                // for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], HT0_eventWeight, h_DY_jeteta_bjet_CR);
                 //  For c jet
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
-                // for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], cWeight, h_DY_jeteta_cjet_CR);
+                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], cWeight, h_DY_jeteta_cjet_CR);
 
                 // For heavy flavor
                 for_doubleflavor_jet(4, 5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], Weight, h_DY_nTracks_heavy_CR);
@@ -614,7 +614,7 @@ void Ratio_HT_apply()
                 // For light flavor
                 for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], lightWeight, h_DY_nTracks_light_CR);
                 for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], lightWeight, h_DY_jetpt_light_CR);
-                // for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], lightWeight, h_DY_jeteta_light_CR);
+                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], lightWeight, h_DY_jeteta_light_CR);
 
                 // By bin
                 double bWeightbybin = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT0_eventWeight;
@@ -693,12 +693,12 @@ void Ratio_HT_apply()
                 // For b jet
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-                // for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], HT70_eventWeight, h_DY_jeteta_bjet_CR);
 
                 // For c jet
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
-                // for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], cWeight, h_DY_jeteta_cjet_CR);
+                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], cWeight, h_DY_jeteta_cjet_CR);
 
                 // For heavy flavor
                 for_doubleflavor_jet(4, 5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], Weight, h_DY_nTracks_heavy_CR);
@@ -706,7 +706,7 @@ void Ratio_HT_apply()
                 // For light flavor
                 for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], lightWeight, h_DY_nTracks_light_CR);
                 for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], lightWeight, h_DY_jetpt_light_CR);
-                // for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], lightWeight, h_DY_jeteta_light_CR);
+                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], lightWeight, h_DY_jeteta_light_CR);
 
                 // By bin
                 double bWeightbybin = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT70_eventWeight;
@@ -784,12 +784,12 @@ void Ratio_HT_apply()
                 // For b jet
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-                // for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], HT100_eventWeight, h_DY_jeteta_bjet_CR);
 
                 // For c jet
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
-                // for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], cWeight, h_DY_jeteta_cjet_CR);
+                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], cWeight, h_DY_jeteta_cjet_CR);
 
                 // For heavy flavor
                 for_doubleflavor_jet(4, 5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], Weight, h_DY_nTracks_heavy_CR);
@@ -797,7 +797,7 @@ void Ratio_HT_apply()
                 // For light flavor
                 for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], lightWeight, h_DY_nTracks_light_CR);
                 for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], lightWeight, h_DY_jetpt_light_CR);
-                // for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], lightWeight, h_DY_jeteta_light_CR);
+                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], lightWeight, h_DY_jeteta_light_CR);
 
                 // By bin
                 double bWeightbybin = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT100_eventWeight;
@@ -874,7 +874,7 @@ void Ratio_HT_apply()
                 // For b jet
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], HT200_eventWeight, h_DY_jeteta_bjet_CR);
 
                 // For c jet
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
@@ -960,7 +960,7 @@ void Ratio_HT_apply()
                 // For b jet
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], HT400_eventWeight, h_DY_jeteta_bjet_CR);
 
                 // For c jet
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
@@ -1048,7 +1048,7 @@ void Ratio_HT_apply()
                 // For b jet
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], HT600_eventWeight, h_DY_jeteta_bjet_CR);
 
                 // For c jet
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
@@ -1223,7 +1223,7 @@ void Ratio_HT_apply()
                 // For b jet
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], HT1200_eventWeight, h_DY_jeteta_bjet_CR);
 
                 // For c jet
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
@@ -1313,7 +1313,7 @@ void Ratio_HT_apply()
                 // For b jet
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
                 for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_JetEta)[i], HT2500_eventWeight, h_DY_jeteta_bjet_CR);
 
                 // For c jet
                 for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
@@ -1420,7 +1420,7 @@ void Ratio_HT_apply()
             // For b jet
             for_signalflavor_jet(5, (*v_ht100_Jethadronflavor)[i], (*v_ht100_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(5, (*v_ht100_Jethadronflavor)[i], (*v_ht100_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-            for_signalflavor_jet(5, (*v_ht100_Jethadronflavor)[i], (*v_ht100_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+            for_signalflavor_jet(5, (*v_ht100_Jethadronflavor)[i], (*v_ht100_JetEta)[i], HT100_eventWeight, h_DY_jeteta_bjet_CR);
             // For c jet
             for_signalflavor_jet(4, (*v_ht100_Jethadronflavor)[i], (*v_ht100_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(4, (*v_ht100_Jethadronflavor)[i], (*v_ht100_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
@@ -1523,7 +1523,7 @@ void Ratio_HT_apply()
             // For b jet
             for_signalflavor_jet(5, (*v_ht200_Jethadronflavor)[i], (*v_ht200_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(5, (*v_ht200_Jethadronflavor)[i], (*v_ht200_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-            for_signalflavor_jet(5, (*v_ht200_Jethadronflavor)[i], (*v_ht200_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+            for_signalflavor_jet(5, (*v_ht200_Jethadronflavor)[i], (*v_ht200_JetEta)[i], HT200_eventWeight, h_DY_jeteta_bjet_CR);
             // For c jet
             for_signalflavor_jet(4, (*v_ht200_Jethadronflavor)[i], (*v_ht200_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(4, (*v_ht200_Jethadronflavor)[i], (*v_ht200_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
@@ -1625,7 +1625,7 @@ void Ratio_HT_apply()
             // For b jet
             for_signalflavor_jet(5, (*v_ht400_Jethadronflavor)[i], (*v_ht400_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(5, (*v_ht400_Jethadronflavor)[i], (*v_ht400_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-            for_signalflavor_jet(5, (*v_ht400_Jethadronflavor)[i], (*v_ht400_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+            for_signalflavor_jet(5, (*v_ht400_Jethadronflavor)[i], (*v_ht400_JetEta)[i], HT400_eventWeight, h_DY_jeteta_bjet_CR);
             // For c jet
             for_signalflavor_jet(4, (*v_ht400_Jethadronflavor)[i], (*v_ht400_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(4, (*v_ht400_Jethadronflavor)[i], (*v_ht400_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
@@ -1728,7 +1728,7 @@ void Ratio_HT_apply()
             // For b jet
             for_signalflavor_jet(5, (*v_ht600_Jethadronflavor)[i], (*v_ht600_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(5, (*v_ht600_Jethadronflavor)[i], (*v_ht600_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-            for_signalflavor_jet(5, (*v_ht600_Jethadronflavor)[i], (*v_ht600_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+            for_signalflavor_jet(5, (*v_ht600_Jethadronflavor)[i], (*v_ht600_JetEta)[i], HT600_eventWeight, h_DY_jeteta_bjet_CR);
             // For c jet
             for_signalflavor_jet(4, (*v_ht600_Jethadronflavor)[i], (*v_ht600_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(4, (*v_ht600_Jethadronflavor)[i], (*v_ht600_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
@@ -1831,7 +1831,7 @@ void Ratio_HT_apply()
             // For b jet
             for_signalflavor_jet(5, (*v_ht800_Jethadronflavor)[i], (*v_ht800_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(5, (*v_ht800_Jethadronflavor)[i], (*v_ht800_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-            for_signalflavor_jet(5, (*v_ht800_Jethadronflavor)[i], (*v_ht800_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+            for_signalflavor_jet(5, (*v_ht800_Jethadronflavor)[i], (*v_ht800_JetEta)[i], HT800_eventWeight, h_DY_jeteta_bjet_CR);
             // For c jet
             for_signalflavor_jet(4, (*v_ht800_Jethadronflavor)[i], (*v_ht800_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(4, (*v_ht800_Jethadronflavor)[i], (*v_ht800_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
@@ -1934,7 +1934,7 @@ void Ratio_HT_apply()
             // For b jet
             for_signalflavor_jet(5, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(5, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-            for_signalflavor_jet(5, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+            for_signalflavor_jet(5, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_JetEta)[i], HT1200_eventWeight, h_DY_jeteta_bjet_CR);
             // For c jet
             for_signalflavor_jet(4, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(4, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
@@ -2038,7 +2038,7 @@ void Ratio_HT_apply()
             // For b jet
             for_signalflavor_jet(5, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_nTrack)[i], bWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(5, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_JetPt)[i], bWeight, h_DY_jetpt_bjet_CR);
-            for_signalflavor_jet(5, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_JetEta)[i], bWeight, h_DY_jeteta_bjet_CR);
+            for_signalflavor_jet(5, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_JetEta)[i], HT2500_eventWeight, h_DY_jeteta_bjet_CR);
             // For c jet
             for_signalflavor_jet(4, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_nTrack)[i], cWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(4, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_JetPt)[i], cWeight, h_DY_jetpt_cjet_CR);
@@ -2174,14 +2174,14 @@ void Ratio_HT_apply()
     h_DY_jeteta_cjet_cut->GetXaxis()->SetTitle("Jet #eta");
     h_DY_jeteta_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    auto c1 = new TCanvas("c1", "", 700, 1000);
-    c1->Divide(1, 2, 0.01, 0);
-
-    c1->Divide(2, 1);
-    c1->cd(1);
-    gPad->SetTopMargin(0 - 0.3);
-    gPad->SetBottomMargin(0.02);
-    gPad->SetRightMargin(0.04);
+    //auto c1 = new TCanvas("c1", "", 700, 1000);
+    //c1->Divide(1, 2, 0.01, 0);
+    //c1->Divide(2, 1);
+    //c1->cd(1);
+    h_DY_jeteta_bjet_CR->DrawNormalized("hist e ");
+    //gPad->SetTopMargin(0 - 0.3);
+    //gPad->SetBottomMargin(0.02);
+    //gPad->SetRightMargin(0.04);
 
     h_DY_nTracks_cjet_CR->SetLabelSize(0);
     h_DY_nTracks_bjet_CR->SetLabelSize(0);
@@ -2216,22 +2216,24 @@ void Ratio_HT_apply()
             ratio_FM = 0;
             Error = 0;
         }
-        cout << "Error = " << Error << endl;
+        //cout << "Error = " << Error << endl;
         // cout << " i = " << i << " fit_content = " << fit_content << "MC_content = " << MC_content << " ratio_FM =  " << ratio_FM << endl;
         Ratioresult->SetBinContent(i, ratio_FM);
         Ratioresult->SetBinError(i, Error);
     }
 
     // h_DY_nTracks_cjet_CR->Draw("hist e ");
-    // h_DY_nTracks_bjet_CR->Draw("hist e ");
-    // h_DY_nTracks_bjet_cut->Draw("hist e same");
+    //h_DY_nTracks_bjet_CR->Draw("hist e ");
+    //h_DY_nTracks_bjet_cut->Draw("hist e same");
     // Ratioresult->GetXaxis()->SetRangeUser(0, 250);
+    /*
     h_DY_nTracks_cjet_cut->GetXaxis()->SetRangeUser(0, 50);
     h_DY_nTracks_cjet_CR->GetXaxis()->SetRangeUser(0, 50);
-    // h_DY_jetpt_light_CR->Draw("hist e ");
     h_DY_nTracks_cjet_CR->Draw("hist e ");
     h_DY_nTracks_cjet_cut->Draw("hist e same");
-
+    */
+   
+    /*
     TLegend *l0 = new TLegend(0.35, 0.4, 0.90, 0.80);
     l0->SetBorderSize(0);
     l0->SetTextSize(0.03);
@@ -2257,6 +2259,7 @@ void Ratio_HT_apply()
     Ratioresult->SetLineColor(kBlue);
     Ratioresult->Draw("E1");
     gStyle->SetOptStat(0);
+    */
     /*
     h_DY_nTracks_bjet_CR->GetXaxis()->SetRangeUser(0, 30);
     h_DY_nTracks_bjet_CR->Draw("hist e ");

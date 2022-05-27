@@ -26,28 +26,28 @@ void for_doubleflavor_jet(int flavor1, int flavor2, float hadronflavor, float tm
     }
 }
 
-void ee_HT_produce_half(TString inputfile = "./../../../../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root", TString outputfile1 = "./ee_DY_emjet_half.root")
+void ee_HT_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root", TString outputfile1 = "./ee_DY_emjet_half.root")
 {
     TFile *DYincli = TFile::Open(inputfile);
-    TFile *DYHT100 = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+    TFile *DYHT100 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
+    TFile *DYHT200 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
+    TFile *DYHT400 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
+    TFile *DYHT600 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
+    TFile *DYHT800 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
+    TFile *DYHT1200 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+    TFile *DYHT2500 = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
 
     //-------------
     // Open Tree
     //-------------
-    TFile *DYincli_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_DYincli_1.root");
-    TFile *DYHT100_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht100_1.root");
-    TFile *DYHT200_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht200_1.root");
-    TFile *DYHT400_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht400_1.root");
-    TFile *DYHT600_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht600_1.root");
-    TFile *DYHT800_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht800_1.root");
-    TFile *DYHT1200_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht1200_1.root");
-    TFile *DYHT2500_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht2500_1.root");
+    TFile *DYincli_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_DYincli_1.root");
+    TFile *DYHT100_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht100_1.root");
+    TFile *DYHT200_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht200_1.root");
+    TFile *DYHT400_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht400_1.root");
+    TFile *DYHT600_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht600_1.root");
+    TFile *DYHT800_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht800_1.root");
+    TFile *DYHT1200_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht1200_1.root");
+    TFile *DYHT2500_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht2500_1.root");
 
     TH1D *DYHT100_sumevt = ((TH1D *)DYHT100->Get("Event_Variable/h_totevent"));
     TH1D *DYHT200_sumevt = ((TH1D *)DYHT200->Get("Event_Variable/h_totevent"));
