@@ -98,6 +98,9 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
     vector<float> v_ht0_Chi3Dlog_1;
     vector<float> v_ht0_Chi3Dlog_2;
 
+    vector<float> v_ht0_eventId_1;
+    vector<float> v_ht0_eventId_2;
+
     TTree *T_tree;
     DYincli->GetObject("T_tree", T_tree);
     T_tree->SetBranchAddress("f_HT", &HT);
@@ -119,6 +122,7 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
     TTree *h1 = new TTree("h1", "h1");
     TFile *outfile_HT0_2 = TFile::Open(outputfile2, "RECREATE");
     TTree *h2 = new TTree("h2", "h2");
+    h1->Branch("v_eventID", &v_ht0_eventId_1);
     h1->Branch("f_HT", &HT_1);
     h1->Branch("I_weight", &I_ht0_weight_1);
     h1->Branch("f_Met", &f_ht0_Met_1);
@@ -134,6 +138,7 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
     h1->Branch("v_N_Tracks", &v_ht0_JetnTracks_1);
     h1->Branch("v_IP2D", &v_ht0_2DIP_1);
     h1->Branch("v_Chi3Dlog", &v_ht0_Chi3Dlog_1);
+    h2->Branch("v_eventID", &v_ht0_eventId_2);
     h2->Branch("f_HT", &HT_2);
     h2->Branch("f_Met", &f_ht0_Met_2);
     h2->Branch("I_nJets", &I_ht0_nJets_2);
@@ -154,6 +159,8 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
     // const auto nEntries = T_tree->GetEntries();
     // for (auto evt : ROOT::TSeqUL(nEntries))
     {
+        v_ht0_eventId_1.clear();
+        v_ht0_eventId_2.clear();
         v_ht0_alpha_1.clear();
         v_ht0_alpha_2.clear();
 
@@ -195,6 +202,7 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
         T_tree->GetEntry(evt);
         if (evt % 2 == 1)
         {
+
             HT_1 = HT;
             f_ht0_Met_1 = f_ht0_Met;
             I_ht0_weight_1 = I_ht0_weight;
@@ -206,6 +214,7 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
             }
             for (size_t i = 0; i < v_ht0_JetPT->size(); i++)
             {
+                v_ht0_eventId_1.push_back(evt);
                 v_ht0_Jethadronflavor_1.push_back((*v_ht0_Jethadronflavor)[i]);
                 v_ht0_Jetpartonflavor_1.push_back((*v_ht0_Jetpartonflavor)[i]);
                 v_ht0_JetPT_1.push_back((*v_ht0_JetPT)[i]);
@@ -215,7 +224,6 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
                 v_ht0_alpha3_1.push_back((*v_ht0_alpha3)[i]);
                 v_ht0_alpha4_1.push_back((*v_ht0_alpha4)[i]);
                 v_ht0_JetnTracks_1.push_back((*v_ht0_JetnTracks)[i]);
-                v_ht0_JetEta_1.push_back((*v_ht0_JetEta)[i]);
             }
             h1->Fill();
         }
@@ -232,6 +240,7 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
             }
             for (size_t i = 0; i < v_ht0_JetPT->size(); i++)
             {
+                v_ht0_eventId_2.push_back(evt);
                 v_ht0_Jethadronflavor_2.push_back((*v_ht0_Jethadronflavor)[i]);
                 v_ht0_Jetpartonflavor_2.push_back((*v_ht0_Jetpartonflavor)[i]);
                 v_ht0_JetPT_2.push_back((*v_ht0_JetPT)[i]);
@@ -241,7 +250,6 @@ void ee_HT_half(TString inputfile = "./../../../root_file/Ztoee/2016BKGMC/DY/ee_
                 v_ht0_alpha3_2.push_back((*v_ht0_alpha3)[i]);
                 v_ht0_alpha4_2.push_back((*v_ht0_alpha4)[i]);
                 v_ht0_JetnTracks_2.push_back((*v_ht0_JetnTracks)[i]);
-                v_ht0_JetEta_2.push_back((*v_ht0_JetEta)[i]);
             }
             h2->Fill();
         }

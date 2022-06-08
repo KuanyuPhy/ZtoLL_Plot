@@ -102,62 +102,62 @@ void ee_HT_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/20
     //-------------
     //  nTracks
     //-------------
-    TH1F *h_DY_nTracks = new TH1F("h_DY_nTracks", "", 100,0,100);
+    TH1F *h_DY_nTracks = new TH1F("h_DY_nTracks", "", 100, 0, 100);
     h_DY_nTracks->GetXaxis()->SetTitle("");
     h_DY_nTracks->GetYaxis()->SetTitle("");
     h_DY_nTracks->Sumw2();
 
-    TH1F *h_DY_nTracks_heavy = new TH1F("h_DY_nTracks_heavy", "", 100,0,100);
+    TH1F *h_DY_nTracks_heavy = new TH1F("h_DY_nTracks_heavy", "", 100, 0, 100);
     h_DY_nTracks_heavy->GetXaxis()->SetTitle("");
     h_DY_nTracks_heavy->GetYaxis()->SetTitle("");
     h_DY_nTracks_heavy->Sumw2();
 
-    TH1F *h_DY_nTracks_bjet = new TH1F("h_DY_nTracks_bjet", "", 30,0,30);
+    TH1F *h_DY_nTracks_bjet = new TH1F("h_DY_nTracks_bjet", "", 30, 0, 30);
     h_DY_nTracks_bjet->GetXaxis()->SetTitle("");
     h_DY_nTracks_bjet->GetYaxis()->SetTitle("");
     h_DY_nTracks_bjet->Sumw2();
 
-    TH1F *h_DY_nTracks_cjet = new TH1F("h_DY_nTracks_cjet", "", 50,0,50);
+    TH1F *h_DY_nTracks_cjet = new TH1F("h_DY_nTracks_cjet", "", 50, 0, 50);
     h_DY_nTracks_cjet->GetXaxis()->SetTitle("");
     h_DY_nTracks_cjet->GetYaxis()->SetTitle("");
     h_DY_nTracks_cjet->Sumw2();
 
-    TH1F *h_DY_nTracks_heavy_cut = new TH1F("h_DY_nTracks_heavy_cut", "", 100,0,100);
+    TH1F *h_DY_nTracks_heavy_cut = new TH1F("h_DY_nTracks_heavy_cut", "", 100, 0, 100);
     h_DY_nTracks_heavy_cut->GetXaxis()->SetTitle("");
     h_DY_nTracks_heavy_cut->GetYaxis()->SetTitle("");
     h_DY_nTracks_heavy_cut->Sumw2();
 
-    TH1F *h_DY_nTracks_bjet_cut = new TH1F("h_DY_nTracks_bjet_cut", "",  30,0,30);
+    TH1F *h_DY_nTracks_bjet_cut = new TH1F("h_DY_nTracks_bjet_cut", "", 30, 0, 30);
     h_DY_nTracks_bjet_cut->GetXaxis()->SetTitle("");
     h_DY_nTracks_bjet_cut->GetYaxis()->SetTitle("");
     h_DY_nTracks_bjet_cut->Sumw2();
 
-    TH1F *h_DY_nTracks_cjet_cut = new TH1F("h_DY_nTracks_cjet_cut", "", 50,0,50);
+    TH1F *h_DY_nTracks_cjet_cut = new TH1F("h_DY_nTracks_cjet_cut", "", 50, 0, 50);
     h_DY_nTracks_cjet_cut->GetXaxis()->SetTitle("");
     h_DY_nTracks_cjet_cut->GetYaxis()->SetTitle("");
     h_DY_nTracks_cjet_cut->Sumw2();
 
-    TH1F *h_DY_nTracks_heavy_nogluon = new TH1F("h_DY_nTracks_heavy_nogluon", "", 100,0,100);
+    TH1F *h_DY_nTracks_heavy_nogluon = new TH1F("h_DY_nTracks_heavy_nogluon", "", 100, 0, 100);
     h_DY_nTracks_heavy_nogluon->GetXaxis()->SetTitle("");
     h_DY_nTracks_heavy_nogluon->GetYaxis()->SetTitle("");
     h_DY_nTracks_heavy_nogluon->Sumw2();
 
-    TH1F *h_DY_nTracks_heavy_nogluon_cut = new TH1F("h_DY_nTracks_heavy_nogluon_cut", "", 100,0,100);
+    TH1F *h_DY_nTracks_heavy_nogluon_cut = new TH1F("h_DY_nTracks_heavy_nogluon_cut", "", 100, 0, 100);
     h_DY_nTracks_heavy_nogluon_cut->GetXaxis()->SetTitle("");
     h_DY_nTracks_heavy_nogluon_cut->GetYaxis()->SetTitle("");
     h_DY_nTracks_heavy_nogluon_cut->Sumw2();
 
-    TH1F *h_DY_nTracks_light = new TH1F("h_DY_nTracks_light", "", 50,0,50);
+    TH1F *h_DY_nTracks_light = new TH1F("h_DY_nTracks_light", "", 50, 0, 50);
     h_DY_nTracks_light->GetXaxis()->SetTitle("");
     h_DY_nTracks_light->GetYaxis()->SetTitle("");
     h_DY_nTracks_light->Sumw2();
 
-    TH1F *h_DY_nTracks_light_cut = new TH1F("h_DY_nTracks_light_cut", "", 50,0,50);
+    TH1F *h_DY_nTracks_light_cut = new TH1F("h_DY_nTracks_light_cut", "", 50, 0, 50);
     h_DY_nTracks_light_cut->GetXaxis()->SetTitle("");
     h_DY_nTracks_light_cut->GetYaxis()->SetTitle("");
     h_DY_nTracks_light_cut->Sumw2();
 
-    TH1F *h_DY_nTracks_cut = new TH1F("h_DY_nTracks_cut", "", 100,0,100);
+    TH1F *h_DY_nTracks_cut = new TH1F("h_DY_nTracks_cut", "", 100, 0, 100);
     h_DY_nTracks_cut->GetXaxis()->SetTitle("");
     h_DY_nTracks_cut->GetYaxis()->SetTitle("");
     h_DY_nTracks_cut->Sumw2();
@@ -586,7 +586,6 @@ void ee_HT_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/20
     v_ht1200_Jetpartonflavor->clear();
     v_ht2500_Jetpartonflavor->clear();
 
-    
     TTree *h1;
     DYincli_1->GetObject("h1", h1);
     h1->SetBranchAddress("I_weight", &I_ht0_weight);
@@ -1706,7 +1705,7 @@ void ee_HT_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/20
     for (int evt = 0; evt < T_tree2->GetEntries(); evt++)
     {
         T_tree2->GetEntry(evt);
- 
+
         double HT100_eventWeight = I_ht100_weight * HT100Weight;
         h_DY_Met->Fill(I_ht100_met, HT100_eventWeight);
         for (size_t i = 0; i < v_ht100_alpha->size(); i++)
@@ -2248,7 +2247,7 @@ void ee_HT_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/20
     for (int evt = 0; evt < T_tree6->GetEntries(); evt++)
     {
         T_tree6->GetEntry(evt);
- 
+
         double HT800_eventWeight = I_ht800_weight * HT800Weight;
 
         h_DY_Met->Fill(I_ht800_met, HT800_eventWeight);
@@ -2500,7 +2499,7 @@ void ee_HT_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/20
             } // alpha cut
         }
     }
-    
+
     TTree *T_tree8;
     DYHT2500_1->GetObject("h1", T_tree8);
     T_tree8->SetBranchAddress("I_weight", &I_ht2500_weight);
@@ -2656,14 +2655,126 @@ void ee_HT_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/20
     TH1D *HT_light_fakeRate = (TH1D *)h_DY_nTracks_light_cut->Clone("HT_light_fakeRate");
     HT_light_fakeRate->Divide(h_DY_nTracks_light_cut, h_DY_nTracks_light, 1, 1, "b");
 
+    //-------------------
+    // Fake rate for eta
+    //-------------------
+    TH1D *HT_bjet_etafakeRate = (TH1D *)h_DY_JetEta_bjet_cut->Clone("HT_bjet_etafakeRate");
+    HT_bjet_etafakeRate->Divide(h_DY_JetEta_bjet_cut, h_DY_JetEta_bjet, 1, 1, "b");
+    TH1D *HT_cjet_etafakeRate = (TH1D *)h_DY_JetEta_cjet_cut->Clone("HT_cjet_etafakeRate");
+    HT_cjet_etafakeRate->Divide(h_DY_JetEta_cjet_cut, h_DY_JetEta_cjet, 1, 1, "b");
+    TH1D *HT_light_etafakeRate = (TH1D *)h_DY_JetEta_light_cut->Clone("HT_light_etafakeRate");
+    HT_light_etafakeRate->Divide(h_DY_JetEta_light_cut, h_DY_JetEta_light, 1, 1, "b");
+
+    //-------------------
+    // Fake rate for Pt
+    //-------------------
+    TH1D *HT_bjet_PtfakeRate = (TH1D *)h_DY_JetPt_bjet_cut->Clone("HT_bjet_PtfakeRate");
+    HT_bjet_PtfakeRate->Divide(h_DY_JetPt_bjet_cut, h_DY_JetPt_bjet, 1, 1, "b");
+    TH1D *HT_cjet_PtfakeRate = (TH1D *)h_DY_JetPt_cjet_cut->Clone("HT_cjet_PtfakeRate");
+    HT_cjet_PtfakeRate->Divide(h_DY_JetPt_cjet_cut, h_DY_JetPt_cjet, 1, 1, "b");
+    TH1D *HT_light_PtfakeRate = (TH1D *)h_DY_JetPt_light_cut->Clone("HT_light_PtfakeRate");
+    HT_light_PtfakeRate->Divide(h_DY_JetPt_light_cut, h_DY_JetPt_light, 1, 1, "b");
+
     HT_bjet_fakeRate->SetTitle("Drell-Yan b fake rate");
+    HT_bjet_PtfakeRate->SetTitle("Drell-Yan b fake rate");
+    HT_bjet_etafakeRate->SetTitle("Drell-Yan b fake rate");
     HT_bjet_fakeRate->SetLineWidth(2);
+    HT_bjet_PtfakeRate->SetLineWidth(2);
+    HT_bjet_etafakeRate->SetLineWidth(2);
     HT_bjet_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+    HT_bjet_PtfakeRate->GetXaxis()->SetTitle("Jet PT");
+    HT_bjet_etafakeRate->GetXaxis()->SetTitle("Jet #eta");
     HT_bjet_fakeRate->GetYaxis()->SetTitle("fake rate");
-    HT_bjet_fakeRate->Draw("");
+    HT_bjet_PtfakeRate->GetYaxis()->SetTitle("fake rate");
+    HT_bjet_etafakeRate->GetYaxis()->SetTitle("fake rate");
+
+    HT_cjet_fakeRate->SetTitle("Drell-Yan c fake rate");
+    HT_cjet_PtfakeRate->SetTitle("Drell-Yan c fake rate");
+    HT_cjet_etafakeRate->SetTitle("Drell-Yan c fake rate");
+    HT_cjet_fakeRate->SetLineWidth(2);
+    HT_cjet_PtfakeRate->SetLineWidth(2);
+    HT_cjet_etafakeRate->SetLineWidth(2);
+    HT_cjet_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+    HT_cjet_PtfakeRate->GetXaxis()->SetTitle("Jet PT");
+    HT_cjet_etafakeRate->GetXaxis()->SetTitle("Jet #eta");
+    HT_cjet_fakeRate->GetYaxis()->SetTitle("fake rate");
+    HT_cjet_PtfakeRate->GetYaxis()->SetTitle("fake rate");
+    HT_cjet_etafakeRate->GetYaxis()->SetTitle("fake rate");
+
+    HT_light_fakeRate->SetTitle("Drell-Yan light fake rate");
+    HT_light_PtfakeRate->SetTitle("Drell-Yan light fake rate");
+    HT_light_etafakeRate->SetTitle("Drell-Yan light fake rate");
+    HT_light_fakeRate->SetLineWidth(2);
+    HT_light_PtfakeRate->SetLineWidth(2);
+    HT_light_etafakeRate->SetLineWidth(2);
+    HT_light_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+    HT_light_PtfakeRate->GetXaxis()->SetTitle("Jet PT");
+    HT_light_etafakeRate->GetXaxis()->SetTitle("Jet #eta");
+    HT_light_fakeRate->GetYaxis()->SetTitle("fake rate");
+    HT_light_PtfakeRate->GetYaxis()->SetTitle("fake rate");
+    HT_light_etafakeRate->GetYaxis()->SetTitle("fake rate");
+
+    auto c1 = new TCanvas("c1", "", 700, 700);
+    // c1->Divide(3, 3);
+    /*
+    HT_light_fakeRate->SetTitle("fakeRate vs track multiplicity");
+    HT_light_fakeRate->SetLineColor(kGreen);
+    HT_bjet_fakeRate->SetLineColor(kRed);
+    HT_cjet_fakeRate->SetLineColor(kBlack);
+    HT_light_fakeRate->Draw("");
+    HT_bjet_fakeRate->Draw("same");
+    HT_cjet_fakeRate->Draw("same");
+    */
+    /*
+    HT_light_PtfakeRate->SetTitle("fakeRate vs Jet Pt");
+    HT_light_PtfakeRate->SetLineColor(kGreen);
+    HT_bjet_PtfakeRate->SetLineColor(kRed);
+    HT_cjet_PtfakeRate->SetLineColor(kBlack);
+    HT_light_PtfakeRate->Draw("");
+    HT_bjet_PtfakeRate->Draw("same");
+    HT_cjet_PtfakeRate->Draw("same");
+    */
+    HT_light_etafakeRate->SetTitle("fakeRate vs Jet #eta");
+    HT_light_etafakeRate->SetLineColor(kGreen);
+    HT_bjet_etafakeRate->SetLineColor(kRed);
+    HT_cjet_etafakeRate->SetLineColor(kBlack);
+    HT_light_etafakeRate->Draw("");
+    HT_bjet_etafakeRate->Draw("same");
+    HT_cjet_etafakeRate->Draw("same");
+    gPad->SetLogy();
     gStyle->SetOptStat(0);
-    //HT_light_fakeRate->SetLineColor(kBlue);
-    //h_DY_nTracks_bjet_cut->Draw("same");
+    TLegend *l0 = new TLegend(0.65, 0.6, 0.90, 0.80);
+    l0->SetBorderSize(0);
+    l0->SetTextSize(0.03);
+    l0->SetHeader("Drell-Yan process");
+    l0->AddEntry(HT_light_etafakeRate, "light flavor", "l");
+    l0->AddEntry(HT_bjet_etafakeRate, "b flavor", "l");
+    l0->AddEntry(HT_cjet_etafakeRate, "c flavor", "l");
+    //l0->Draw();
+    /*
+    c1->cd(1);
+
+    c1->cd(2);
+
+    c1->cd(3);
+
+    c1->cd(4);
+    HT_light_PtfakeRate->Draw("");
+    c1->cd(5);
+    HT_bjet_PtfakeRate->Draw("");
+    c1->cd(6);
+    HT_cjet_PtfakeRate->Draw("");
+    c1->cd(7);
+    HT_light_etafakeRate->Draw("");
+    c1->cd(8);
+    HT_bjet_etafakeRate->Draw("");
+    c1->cd(9);
+    HT_cjet_etafakeRate->Draw("");
+    */
+
+    gStyle->SetOptStat(0);
+    // HT_light_fakeRate->SetLineColor(kBlue);
+    // h_DY_nTracks_bjet_cut->Draw("same");
 
     TFile *outfile_HT0 = TFile::Open(outputfile1, "RECREATE");
     h_DY_nTracks->Write();
@@ -2723,6 +2834,12 @@ void ee_HT_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/20
     h_DY_alpha3D_light->Write();
     h_DY_alpha3D_light_cut->Write();
     h_DY_alpha3D_cut->Write();
+    HT_bjet_etafakeRate->Write();
+    HT_cjet_etafakeRate->Write();
+    HT_light_etafakeRate->Write();
+    HT_bjet_PtfakeRate->Write();
+    HT_cjet_PtfakeRate->Write();
+    HT_light_PtfakeRate->Write();
     for (int i = 0; i < 4; i++)
     {
         h_DY_alpha[i]->Write();

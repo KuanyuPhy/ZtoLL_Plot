@@ -9,6 +9,21 @@
         "Draw.C": "cpp",
         "Draw_Compare_alpha.C": "cpp",
         "BGEM.C": "cpp",
-        "BGEM_HT.C": "cpp"
-    }
+        "BGEM_HT.C": "cpp",
+        "Ratio_Top_apply_nTrack.C": "cpp",
+        "Ratio_Top_apply_JetPt.C": "cpp",
+        "Ratio_Top_apply_JetEta.C": "cpp",
+        "ee_Top_produce_half.C": "cpp",
+        "ee_Top_half.C": "cpp",
+        "Ratio_HT_apply_nTrack.C": "cpp",
+        "Ratio_HT_apply_JetPt.C": "cpp",
+        "Ratio_HT_apply_JetEta.C": "cpp",
+        "DY_fit.C": "cpp",
+        "DY_rootfit.C": "cpp",
+        "ee_HT_produce_half.C": "cpp",
+        "Fit.C": "cpp"
+    },
+    "C_Cpp.default.includePath": [
+        "${ROOTSYS}/include"
+    ]
 }

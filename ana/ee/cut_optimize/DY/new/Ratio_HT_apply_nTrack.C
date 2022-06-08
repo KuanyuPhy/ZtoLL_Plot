@@ -61,9 +61,9 @@ Double_t bjet_background(Double_t x)
     // Double_t weight = ((TMath::Exp(par0 + par1 * x)) + par2 * x + par3);
     double par0 = -0.36929055060873117;
     double par1 = -0.32227621971627424;
-    double par2 =  0.0077448118765263176;
+    double par2 = 0.0077448118765263176;
     double par3 = -0.0018266700500858249;
-    double par4 =  0.016124941879979406;
+    double par4 = 0.016124941879979406;
     Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
     // Double_t weight = ((TMath::Exp(par0 + par1 * x*x + par2 * x )) + par3 * x + par4);
     return weight;
@@ -107,26 +107,26 @@ Double_t lightjet_background(float x)
 
 void Ratio_HT_apply_nTrack()
 {
-    TFile *DYincli = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
-    TFile *DYHT100 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+    TFile *DYincli = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+    TFile *DYHT100 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
+    TFile *DYHT200 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
+    TFile *DYHT400 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
+    TFile *DYHT600 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
+    TFile *DYHT800 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
+    TFile *DYHT1200 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+    TFile *DYHT2500 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
 
     //-------------
     // Open Tree
     //-------------
-    TFile *DYincli_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_DYincli_2.root");
-    TFile *DYHT100_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht100_2.root");
-    TFile *DYHT200_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht200_2.root");
-    TFile *DYHT400_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht400_2.root");
-    TFile *DYHT600_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht600_2.root");
-    TFile *DYHT800_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht800_2.root");
-    TFile *DYHT1200_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht1200_2.root");
-    TFile *DYHT2500_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht2500_2.root");
+    TFile *DYincli_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_DYincli_2.root");
+    TFile *DYHT100_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht100_2.root");
+    TFile *DYHT200_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht200_2.root");
+    TFile *DYHT400_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht400_2.root");
+    TFile *DYHT600_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht600_2.root");
+    TFile *DYHT800_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht800_2.root");
+    TFile *DYHT1200_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht1200_2.root");
+    TFile *DYHT2500_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht2500_2.root");
 
     TFile *DYfile = new TFile("./../ee_DY_emjet_half.root");
 
@@ -1155,10 +1155,10 @@ void Ratio_HT_apply_nTrack()
     h_DY_nTracks_light_cut->SetLineWidth(2);
     h_DY_nTracks_light_CR->SetLineWidth(2);
     h_DY_nTracks_light_bybin_CR->SetLineWidth(2);
-    h_DY_nTracks_light_cut->SetTitle("light jet (DY)");
+    //h_DY_nTracks_light_cut->SetTitle("light jet (DY)");
     h_DY_nTracks_light_cut->GetYaxis()->SetTitle("nJet");
     h_DY_nTracks_light_cut->GetXaxis()->SetTitle("Jet track multiplicity");
-    h_DY_nTracks_light_cut->GetXaxis()->SetTitleOffset(1.5);
+    //h_DY_nTracks_light_cut->GetXaxis()->SetTitleOffset(1.5);
 
     h_DY_nTracks_light_CR->SetTitle("light jet (DY)");
     h_DY_nTracks_light_CR->GetYaxis()->SetTitle("nJet");
@@ -1169,10 +1169,10 @@ void Ratio_HT_apply_nTrack()
     h_DY_nTracks_bjet_CR->SetLineWidth(2);
     h_DY_nTracks_bjet_bybin_CR->SetLineWidth(2);
     h_DY_nTracks_bjet_bybin_CR->SetTitle("bjet jet (DY)");
-    h_DY_nTracks_bjet_cut->SetTitle("bjet jet (DY)");
+    //h_DY_nTracks_bjet_cut->SetTitle("bjet jet (DY)");
     h_DY_nTracks_bjet_cut->GetYaxis()->SetTitle("nJet");
     h_DY_nTracks_bjet_cut->GetXaxis()->SetTitle("Jet track multiplicity");
-    h_DY_nTracks_bjet_cut->GetXaxis()->SetTitleOffset(1.5);
+    //h_DY_nTracks_bjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
     h_DY_nTracks_bjet_CR->SetTitle("bjet jet (DY)");
     h_DY_nTracks_bjet_CR->GetYaxis()->SetTitle("nJet");
@@ -1182,22 +1182,29 @@ void Ratio_HT_apply_nTrack()
     h_DY_nTracks_cjet_cut->SetLineWidth(2);
     h_DY_nTracks_cjet_CR->SetLineWidth(2);
     h_DY_nTracks_cjet_bybin_CR->SetLineWidth(2);
-    h_DY_nTracks_cjet_cut->SetTitle("cjet jet (DY)");
+    //h_DY_nTracks_cjet_cut->SetTitle("cjet jet (DY)");
     h_DY_nTracks_cjet_cut->GetYaxis()->SetTitle("nJet");
     h_DY_nTracks_cjet_cut->GetXaxis()->SetTitle("Jet track multiplicity");
-    h_DY_nTracks_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
+    //h_DY_nTracks_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
     h_DY_nTracks_cjet_CR->SetTitle("cjet jet (DY)");
     h_DY_nTracks_cjet_CR->GetYaxis()->SetTitle("nJet");
     h_DY_nTracks_cjet_CR->GetXaxis()->SetTitle("Jet track multiplicity");
     h_DY_nTracks_cjet_CR->GetXaxis()->SetTitleOffset(1.5);
 
-    auto c1 = new TCanvas("c1", "", 700, 1000);
-    c1->Divide(1, 2, 0.01, 0);
-    c1->cd(1);
-    gPad->SetTopMargin(0 - 0.3);
-    gPad->SetBottomMargin(0.02);
-    gPad->SetRightMargin(0.04);
+    //-------------
+    // Get Maximum value
+    //-------------
+    int lightbinmax = h_DY_nTracks_light_cut->FindLastBinAbove();
+    int bjetbinmax = h_DY_nTracks_bjet_cut->FindLastBinAbove();
+    int cjetbinmax = h_DY_nTracks_cjet_cut->FindLastBinAbove();
+
+    auto c1 = new TCanvas("c1", "", 700, 700);
+    // c1->Divide(1, 2, 0.01, 0);
+    // c1->cd(1);
+    // gPad->SetTopMargin(0 - 0.3);
+    // gPad->SetBottomMargin(0.02);
+    // gPad->SetRightMargin(0.04);
 
     // h_DY_nTracks_cjet_CR->SetLabelSize(0);
     h_DY_nTracks_cjet_CR->SetLineColor(kRed);
@@ -1207,7 +1214,23 @@ void Ratio_HT_apply_nTrack()
     h_DY_nTracks_cjet_bybin_CR->SetLineColor(kGreen + 3);
     h_DY_nTracks_light_bybin_CR->SetLineColor(kGreen + 3);
     h_DY_nTracks_bjet_CR->GetXaxis()->SetRangeUser(0, 30);
+    h_DY_nTracks_light_cut->GetXaxis()->SetRangeUser(0, lightbinmax+1);
+    // h_DY_nTracks_bjet_cut->SetLabelSize(0);
+    h_DY_nTracks_light_cut->Draw("hist e ");
+    h_DY_nTracks_light_bybin_CR->Draw("hist e same");
+    // h_DY_nTracks_bjet_CR->Draw("hist e same");
 
+    TLegend *l0 = new TLegend(0.4, 0.4, 0.90, 0.80);
+    l0->SetHeader("Drell-Yan (light Jet)");
+    l0->SetBorderSize(0);
+    l0->SetTextSize(0.03);
+    l0->AddEntry(h_DY_nTracks_cjet_cut, "Drell-Yan SR", "l");
+    // l0->AddEntry(h_DY_nTracks_cjet_CR, "Drell-Yan apply fit result", "l");
+    l0->AddEntry(h_DY_nTracks_cjet_bybin_CR, "Drell-Yan apply bin by bin result", "l");
+    l0->Draw();
+
+    gStyle->SetOptStat(0);
+    /*
     TH1D *Ratioresult = new TH1D("Ratioresult", "", 50, 0, 50);
     Ratioresult->Sumw2();
     int nBins = h_DY_nTracks_bjet_cut->GetNbinsX();
@@ -1227,22 +1250,8 @@ void Ratio_HT_apply_nTrack()
         Ratioresult->SetBinContent(i, ratio_FM);
         Ratioresult->SetBinError(i, Error);
     }
-    Ratioresult->GetXaxis()->SetRangeUser(0,25);
-    h_DY_nTracks_bjet_cut->GetXaxis()->SetRangeUser(0,25);
-    h_DY_nTracks_bjet_cut->SetLabelSize(0);
-    h_DY_nTracks_bjet_cut->Draw("hist e ");
-    h_DY_nTracks_bjet_bybin_CR->Draw("hist e same");
-    h_DY_nTracks_bjet_CR->Draw("hist e same");
+    Ratioresult->GetXaxis()->SetRangeUser(0, 25);
 
-    TLegend *l0 = new TLegend(0.35, 0.4, 0.90, 0.80);
-    l0->SetBorderSize(0);
-    l0->SetTextSize(0.03);
-    l0->AddEntry(h_DY_nTracks_cjet_cut, "Drell-Yan SR", "l");
-    l0->AddEntry(h_DY_nTracks_cjet_CR, "Drell-Yan apply fit result", "l");
-    l0->AddEntry(h_DY_nTracks_cjet_bybin_CR, "Drell-Yan apply bin by bin result", "l");
-    l0->Draw();
-
-    gStyle->SetOptStat(0);
     c1->cd(2);
     gStyle->SetStatW(0.3);
     gStyle->SetStatH(0.3);
@@ -1261,4 +1270,5 @@ void Ratio_HT_apply_nTrack()
     Ratioresult->SetLineColor(kBlue);
     Ratioresult->Draw("E1");
     gStyle->SetOptStat(0);
+    */
 }

@@ -1121,10 +1121,10 @@ void Ratio_HT_apply_JetPt()
     h_DY_JetPt_light_cut->SetLineWidth(2);
     h_DY_JetPt_light_CR->SetLineWidth(2);
     h_DY_JetPt_light_bybin_CR->SetLineWidth(2);
-    h_DY_JetPt_light_cut->SetTitle("light jet (DY)");
+    //h_DY_JetPt_light_cut->SetTitle("light jet (DY)");
     h_DY_JetPt_light_cut->GetYaxis()->SetTitle("nJet");
-    h_DY_JetPt_light_cut->GetXaxis()->SetTitle("Jet track multiplicity");
-    h_DY_JetPt_light_cut->GetXaxis()->SetTitleOffset(1.5);
+    h_DY_JetPt_light_cut->GetXaxis()->SetTitle("Jet PT");
+    //h_DY_JetPt_light_cut->GetXaxis()->SetTitleOffset(1.5);
 
     h_DY_JetPt_light_CR->SetTitle("light jet (DY)");
     h_DY_JetPt_light_CR->GetYaxis()->SetTitle("nJet");
@@ -1134,13 +1134,12 @@ void Ratio_HT_apply_JetPt()
     h_DY_JetPt_bjet_cut->SetLineWidth(2);
     h_DY_JetPt_bjet_CR->SetLineWidth(2);
     h_DY_JetPt_bjet_bybin_CR->SetLineWidth(2);
-    h_DY_JetPt_bjet_bybin_CR->SetTitle("b jet (DY)");
-    h_DY_JetPt_bjet_cut->SetTitle("b jet (DY)");
+    //h_DY_JetPt_bjet_bybin_CR->SetTitle("b jet (DY)");
+    //h_DY_JetPt_bjet_cut->SetTitle("b jet (DY)");
     h_DY_JetPt_bjet_cut->GetYaxis()->SetTitle("nJet");
     h_DY_JetPt_bjet_bybin_CR->GetYaxis()->SetTitle("nJet");
-    h_DY_JetPt_bjet_cut->GetXaxis()->SetTitle("Jet track multiplicity");
     h_DY_JetPt_bjet_bybin_CR->GetXaxis()->SetTitle("Jet PT");
-    h_DY_JetPt_bjet_cut->GetXaxis()->SetTitleOffset(1.5);
+    //h_DY_JetPt_bjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
     h_DY_JetPt_bjet_CR->SetTitle("b jet (DY)");
     h_DY_JetPt_bjet_CR->GetYaxis()->SetTitle("nJet");
@@ -1150,24 +1149,24 @@ void Ratio_HT_apply_JetPt()
     h_DY_JetPt_cjet_cut->SetLineWidth(2);
     h_DY_JetPt_cjet_CR->SetLineWidth(2);
     h_DY_JetPt_cjet_bybin_CR->SetLineWidth(2);
-    h_DY_JetPt_cjet_cut->SetTitle("c jet (DY)");
+    //h_DY_JetPt_cjet_cut->SetTitle("c jet (DY)");
     h_DY_JetPt_cjet_bybin_CR->SetTitle("c jet (DY)");
     h_DY_JetPt_cjet_cut->GetYaxis()->SetTitle("nJet");
     h_DY_JetPt_cjet_bybin_CR->GetYaxis()->SetTitle("nJet");
     h_DY_JetPt_cjet_cut->GetXaxis()->SetTitle("Jet PT");
-    h_DY_JetPt_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
+    //h_DY_JetPt_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
     h_DY_JetPt_cjet_CR->SetTitle("c jet (DY)");
     h_DY_JetPt_cjet_CR->GetYaxis()->SetTitle("nJet");
     h_DY_JetPt_cjet_CR->GetXaxis()->SetTitle("Jet PT");
     h_DY_JetPt_cjet_CR->GetXaxis()->SetTitleOffset(1.5);
 
-    auto c1 = new TCanvas("c1", "", 700, 1000);
-    c1->Divide(1, 2, 0.01, 0);
-    c1->cd(1);
-    gPad->SetTopMargin(0 - 0.3);
-    gPad->SetBottomMargin(0.02);
-    gPad->SetRightMargin(0.04);
+    auto c1 = new TCanvas("c1", "", 700, 700);
+    //c1->Divide(1, 2, 0.01, 0);
+    //c1->cd(1);
+    //gPad->SetTopMargin(0 - 0.3);
+    //gPad->SetBottomMargin(0.02);
+    //gPad->SetRightMargin(0.04);
 
     // h_DY_JetPt_cjet_CR->SetLabelSize(0);
     h_DY_JetPt_cjet_CR->SetLineColor(kRed);
@@ -1178,6 +1177,35 @@ void Ratio_HT_apply_JetPt()
     h_DY_JetPt_light_bybin_CR->SetLineColor(kGreen + 3);
     // h_DY_JetPt_bjet_CR->GetXaxis()->SetRangeUser(0, 30);
 
+    //h_DY_JetPt_bjet_cut->SetLabelSize(0);
+    //h_DY_JetPt_bjet_CR->SetLabelSize(0);
+    //h_DY_JetPt_cjet_CR->SetLabelSize(0);
+    //h_DY_JetPt_light_cut->SetLabelSize(0);
+    //h_DY_JetPt_bjet_bybin_CR->SetLabelSize(0);
+    //h_DY_JetPt_cjet_bybin_CR->SetLabelSize(0);
+    //h_DY_JetPt_light_bybin_CR->SetLabelSize(0);
+    h_DY_JetPt_bjet_cut->GetXaxis()->SetRangeUser(0, 250);
+    h_DY_JetPt_bjet_CR->GetXaxis()->SetRangeUser(0, 250);
+    h_DY_JetPt_cjet_CR->GetXaxis()->SetRangeUser(0, 250);
+    h_DY_JetPt_cjet_cut->GetXaxis()->SetRangeUser(0, 250);
+    h_DY_JetPt_bjet_bybin_CR->GetXaxis()->SetRangeUser(0, 250);
+    h_DY_JetPt_light_cut->GetXaxis()->SetRangeUser(0, 250);
+    
+    h_DY_JetPt_bjet_bybin_CR->Draw("hist e ");
+    h_DY_JetPt_bjet_cut->Draw("hist e same");
+    //h_DY_JetPt_light_CR->Draw("hist e same");
+
+    TLegend *l0 = new TLegend(0.35, 0.4, 0.90, 0.80);
+    l0->SetHeader("Drell-Yan (b Jet)");
+    l0->SetBorderSize(0);
+    l0->SetTextSize(0.03);
+    l0->AddEntry(h_DY_JetPt_cjet_cut, "Drell-Yan SR", "l");
+    //l0->AddEntry(h_DY_JetPt_cjet_CR, "Drell-Yan apply fit result", "l");
+    l0->AddEntry(h_DY_JetPt_cjet_bybin_CR, "Drell-Yan apply bin by bin result", "l");
+    l0->Draw();
+
+    gStyle->SetOptStat(0);
+    /*
     TH1D *Ratioresult = new TH1D("Ratioresult", "", 50, 0, 500);
     Ratioresult->Sumw2();
     int nBins = h_DY_JetPt_light_cut->GetNbinsX();
@@ -1197,32 +1225,6 @@ void Ratio_HT_apply_JetPt()
         Ratioresult->SetBinContent(i, ratio_FM);
         Ratioresult->SetBinError(i, Error);
     }
-    h_DY_JetPt_bjet_cut->SetLabelSize(0);
-    h_DY_JetPt_bjet_CR->SetLabelSize(0);
-    h_DY_JetPt_cjet_CR->SetLabelSize(0);
-    h_DY_JetPt_light_cut->SetLabelSize(0);
-    h_DY_JetPt_bjet_bybin_CR->SetLabelSize(0);
-    h_DY_JetPt_cjet_bybin_CR->SetLabelSize(0);
-    h_DY_JetPt_light_bybin_CR->SetLabelSize(0);
-    h_DY_JetPt_bjet_cut->GetXaxis()->SetRangeUser(0, 250);
-    h_DY_JetPt_bjet_CR->GetXaxis()->SetRangeUser(0, 250);
-    h_DY_JetPt_cjet_CR->GetXaxis()->SetRangeUser(0, 250);
-    h_DY_JetPt_bjet_bybin_CR->GetXaxis()->SetRangeUser(0, 250);
-    h_DY_JetPt_light_cut->GetXaxis()->SetRangeUser(0, 250);
-    
-    h_DY_JetPt_light_cut->Draw("hist e ");
-    h_DY_JetPt_light_bybin_CR->Draw("hist e same");
-    h_DY_JetPt_light_CR->Draw("hist e same");
-
-    TLegend *l0 = new TLegend(0.35, 0.4, 0.90, 0.80);
-    l0->SetBorderSize(0);
-    l0->SetTextSize(0.03);
-    l0->AddEntry(h_DY_JetPt_cjet_cut, "Drell-Yan SR", "l");
-    l0->AddEntry(h_DY_JetPt_cjet_CR, "Drell-Yan apply fit result", "l");
-    l0->AddEntry(h_DY_JetPt_cjet_bybin_CR, "Drell-Yan apply bin by bin result", "l");
-    l0->Draw();
-
-    gStyle->SetOptStat(0);
     c1->cd(2);
     gStyle->SetStatW(0.3);
     gStyle->SetStatH(0.3);
@@ -1242,4 +1244,5 @@ void Ratio_HT_apply_JetPt()
     Ratioresult->SetLineColor(kBlue);
     Ratioresult->Draw("E1");
     gStyle->SetOptStat(0);
+    */
 }

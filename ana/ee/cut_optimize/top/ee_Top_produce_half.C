@@ -28,26 +28,26 @@ void for_doubleflavor_jet(int flavor1, float flavor2, float hadronflavor, float 
     }
 }
 
-void ee_Top_produce_half(TString inputfile = "./../../../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root", TString outputfile1 = "./ee_Top_emjet_half.root")
+void ee_Top_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root", TString outputfile1 = "./ee_Top_emjet_half.root")
 {
     TFile *TTTo2L2Nufile = TFile::Open(inputfile);
-    TFile *Top_TTWJetsToLNufile = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
-    TFile *Top_TTWJetsToQQfile = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
-    TFile *Top_TTZToQQfile = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
-    TFile *Top_TTZToLLNuNufile = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
-    TFile *Top_tW_antitopfile = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
-    TFile *Top_tW_topfile = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
+    TFile *Top_TTWJetsToLNufile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
+    TFile *Top_TTWJetsToQQfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
+    TFile *Top_TTZToQQfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
+    TFile *Top_TTZToLLNuNufile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
+    TFile *Top_tW_antitopfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
+    TFile *Top_tW_topfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
 
     //-------------
     // Open Tree
     //-------------
-    TFile *TTTo2L2Nufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTTo2L2Nu_1.root");
-    TFile *Top_TTWJetsToLNufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTWJetsToLNu_1.root");
-    TFile *Top_TTWJetsToQQfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTWJetsToQQ_1.root");
-    TFile *Top_TTZToQQfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTZToQQ_1.root");
-    TFile *Top_TTZToLLNuNufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTZToLLNuNu_1.root");
-    TFile *Top_tW_antitopfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_tW_antitop_1.root");
-    TFile *Top_tW_topfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_tW_top_1.root");
+    TFile *TTTo2L2Nufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTTo2L2Nu_1.root");
+    TFile *Top_TTWJetsToLNufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTWJetsToLNu_1.root");
+    TFile *Top_TTWJetsToQQfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTWJetsToQQ_1.root");
+    TFile *Top_TTZToQQfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTZToQQ_1.root");
+    TFile *Top_TTZToLLNuNufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTZToLLNuNu_1.root");
+    TFile *Top_tW_antitopfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_tW_antitop_1.root");
+    TFile *Top_tW_topfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_tW_top_1.root");
 
     TH1D *TTTo2L2Nu_sumevt = ((TH1D *)TTTo2L2Nufile->Get("Event_Variable/h_totevent"));
     TH1D *TTWJetsToLNu_sumevt = ((TH1D *)Top_TTWJetsToLNufile->Get("Event_Variable/h_totevent"));
@@ -98,57 +98,57 @@ void ee_Top_produce_half(TString inputfile = "./../../../../../../root_file/Ztoe
     h_Top_IP2D->GetYaxis()->SetTitle("");
     h_Top_IP2D->Sumw2();
 
-    TH1F *h_Top_nTracks = new TH1F("h_Top_nTracks", "", 50, 0, 50);
+    TH1F *h_Top_nTracks = new TH1F("h_Top_nTracks", "", 50, 0., 50);
     h_Top_nTracks->GetXaxis()->SetTitle("");
     h_Top_nTracks->GetYaxis()->SetTitle("");
     h_Top_nTracks->Sumw2();
 
-    TH1F *h_Top_nTracks_tmp = new TH1F("h_Top_nTracks_tmp", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_tmp = new TH1F("h_Top_nTracks_tmp", "", 50, 0., 50);
     h_Top_nTracks_tmp->GetXaxis()->SetTitle("");
     h_Top_nTracks_tmp->GetYaxis()->SetTitle("");
     h_Top_nTracks_tmp->Sumw2();
 
-    TH1F *h_Top_nTracks_heavy = new TH1F("h_Top_nTracks_heavy", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_heavy = new TH1F("h_Top_nTracks_heavy", "", 50, 0., 50);
     h_Top_nTracks_heavy->GetXaxis()->SetTitle("");
     h_Top_nTracks_heavy->GetYaxis()->SetTitle("");
     h_Top_nTracks_heavy->Sumw2();
 
-    TH1F *h_Top_nTracks_bjet = new TH1F("h_Top_nTracks_bjet", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_bjet = new TH1F("h_Top_nTracks_bjet", "", 50, 0., 50);
     h_Top_nTracks_bjet->GetXaxis()->SetTitle("");
     h_Top_nTracks_bjet->GetYaxis()->SetTitle("");
     h_Top_nTracks_bjet->Sumw2();
 
-    TH1F *h_Top_nTracks_cjet = new TH1F("h_Top_nTracks_cjet", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_cjet = new TH1F("h_Top_nTracks_cjet", "", 50, 0., 50);
     h_Top_nTracks_cjet->GetXaxis()->SetTitle("");
     h_Top_nTracks_cjet->GetYaxis()->SetTitle("");
     h_Top_nTracks_cjet->Sumw2();
 
-    TH1F *h_Top_nTracks_light = new TH1F("h_Top_nTracks_light", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_light = new TH1F("h_Top_nTracks_light", "", 50, 0., 50);
     h_Top_nTracks_light->GetXaxis()->SetTitle("");
     h_Top_nTracks_light->GetYaxis()->SetTitle("");
     h_Top_nTracks_light->Sumw2();
 
-    TH1F *h_Top_nTracks_cut = new TH1F("h_Top_nTracks_cut", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_cut = new TH1F("h_Top_nTracks_cut", "", 50, 0., 50);
     h_Top_nTracks_cut->GetXaxis()->SetTitle("");
     h_Top_nTracks_cut->GetYaxis()->SetTitle("");
     h_Top_nTracks_cut->Sumw2();
 
-    TH1F *h_Top_nTracks_heavy_cut = new TH1F("h_Top_nTracks_heavy_cut", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_heavy_cut = new TH1F("h_Top_nTracks_heavy_cut", "", 50, 0., 50);
     h_Top_nTracks_heavy_cut->GetXaxis()->SetTitle("");
     h_Top_nTracks_heavy_cut->GetYaxis()->SetTitle("");
     h_Top_nTracks_heavy_cut->Sumw2();
 
-    TH1F *h_Top_nTracks_bjet_cut = new TH1F("h_Top_nTracks_bjet_cut", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_bjet_cut = new TH1F("h_Top_nTracks_bjet_cut", "", 50, 0., 50);
     h_Top_nTracks_bjet_cut->GetXaxis()->SetTitle("");
     h_Top_nTracks_bjet_cut->GetYaxis()->SetTitle("");
     h_Top_nTracks_bjet_cut->Sumw2();
 
-    TH1F *h_Top_nTracks_cjet_cut = new TH1F("h_Top_nTracks_cjet_cut", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_cjet_cut = new TH1F("h_Top_nTracks_cjet_cut", "", 50, 0., 50);
     h_Top_nTracks_cjet_cut->GetXaxis()->SetTitle("");
     h_Top_nTracks_cjet_cut->GetYaxis()->SetTitle("");
     h_Top_nTracks_cjet_cut->Sumw2();
 
-    TH1F *h_Top_nTracks_light_cut = new TH1F("h_Top_nTracks_light_cut", "", 50, 0, 50);
+    TH1F *h_Top_nTracks_light_cut = new TH1F("h_Top_nTracks_light_cut", "", 50, 0., 50);
     h_Top_nTracks_light_cut->GetXaxis()->SetTitle("");
     h_Top_nTracks_light_cut->GetYaxis()->SetTitle("");
     h_Top_nTracks_light_cut->Sumw2();
@@ -1002,7 +1002,6 @@ void ee_Top_produce_half(TString inputfile = "./../../../../../../root_file/Ztoe
     for (int evt = 0; evt < T_TTWJetsToQQ_tree->GetEntries(); evt++)
     {
         T_TTWJetsToQQ_tree->GetEntry(evt);
-  
 
         float TTWJetsToQQ_eventWeight = I_TTWJetsToQQ_weight * TTWJetsToQQWeight;
 
@@ -1122,7 +1121,6 @@ void ee_Top_produce_half(TString inputfile = "./../../../../../../root_file/Ztoe
     for (int evt = 0; evt < T_TTZToQQ_tree->GetEntries(); evt++)
     {
         T_TTZToQQ_tree->GetEntry(evt);
-
 
         float TTZToQQ_eventWeight = I_TTZToQQ_weight * TTZToQQWeight;
 
@@ -1350,15 +1348,144 @@ void ee_Top_produce_half(TString inputfile = "./../../../../../../root_file/Ztoe
 
     TH1F *Top_light_fakeRate = (TH1F *)h_Top_nTracks_light_cut->Clone("Top_light_fakeRate");
     Top_light_fakeRate->Divide(h_Top_nTracks_light_cut, h_Top_nTracks_light, 1, 1, "b");
+    Top_light_fakeRate->SetTitle("Top process light flavor fake rate");
+    Top_light_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_light_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+    Top_light_fakeRate->SetLineWidth(2);
 
     TH1F *Top_heavy_fakeRate = (TH1F *)h_Top_nTracks_heavy_cut->Clone("Top_heavy_fakeRate");
     Top_heavy_fakeRate->Divide(h_Top_nTracks_heavy_cut, h_Top_nTracks_heavy, 1, 1, "b");
 
     TH1F *Top_bjet_fakeRate = (TH1F *)h_Top_nTracks_bjet_cut->Clone("Top_bjet_fakeRate");
     Top_bjet_fakeRate->Divide(h_Top_nTracks_bjet_cut, h_Top_nTracks_bjet, 1, 1, "b");
+    Top_bjet_fakeRate->SetTitle("Top process b flavor fake rate");
+    Top_bjet_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_bjet_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+    Top_bjet_fakeRate->SetLineWidth(2);
 
     TH1F *Top_cjet_fakeRate = (TH1F *)h_Top_nTracks_cjet_cut->Clone("Top_cjet_fakeRate");
     Top_cjet_fakeRate->Divide(h_Top_nTracks_cjet_cut, h_Top_nTracks_cjet, 1, 1, "b");
+    Top_cjet_fakeRate->SetTitle("Top process c flavor fake rate");
+    Top_cjet_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_cjet_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+    Top_cjet_fakeRate->SetLineWidth(2);
+
+    //-----------------
+    // Jet PT
+    //-----------------
+    TH1F *Top_lightPT_fakeRate = (TH1F *)h_Top_jetpt_light_cut->Clone("Top_lightPT_fakeRate");
+    Top_lightPT_fakeRate->Divide(h_Top_jetpt_light_cut, h_Top_jetpt_light, 1, 1, "b");
+    Top_lightPT_fakeRate->SetTitle("Top process light flavor fake rate");
+    Top_lightPT_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_lightPT_fakeRate->GetXaxis()->SetTitle("Jet PT");
+    Top_lightPT_fakeRate->SetLineWidth(2);
+
+    TH1F *Top_bjetPT_fakeRate = (TH1F *)h_Top_jetpt_bjet_cut->Clone("Top_bjetPT_fakeRate");
+    Top_bjetPT_fakeRate->Divide(h_Top_jetpt_bjet_cut, h_Top_jetpt_bjet, 1, 1, "b");
+    Top_bjetPT_fakeRate->SetTitle("Top process b flavor fake rate");
+    Top_bjetPT_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_bjetPT_fakeRate->GetXaxis()->SetTitle("Jet PT");
+    Top_bjetPT_fakeRate->SetLineWidth(2);
+
+    TH1F *Top_cjetPT_fakeRate = (TH1F *)h_Top_jetpt_cjet_cut->Clone("Top_cjetPT_fakeRate");
+    Top_cjetPT_fakeRate->Divide(h_Top_jetpt_cjet_cut, h_Top_jetpt_cjet, 1, 1, "b");
+    Top_cjetPT_fakeRate->SetTitle("Top process c flavor fake rate");
+    Top_cjetPT_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_cjetPT_fakeRate->GetXaxis()->SetTitle("Jet PT");
+    Top_cjetPT_fakeRate->SetLineWidth(2);
+    //-----------------
+    // Jet Eta
+    //-----------------
+    TH1F *Top_lightEta_fakeRate = (TH1F *)h_Top_jeteta_light_cut->Clone("Top_lightEta_fakeRate");
+    Top_lightEta_fakeRate->Divide(h_Top_jeteta_light_cut, h_Top_jeteta_light, 1, 1, "b");
+    Top_lightEta_fakeRate->SetTitle("Top process light flavor fake rate");
+    Top_lightEta_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_lightEta_fakeRate->GetXaxis()->SetTitle("Jet #eta");
+    Top_lightEta_fakeRate->SetLineWidth(2);
+
+    TH1F *Top_bjetEta_fakeRate = (TH1F *)h_Top_jeteta_bjet_cut->Clone("Top_bjetEta_fakeRate");
+    Top_bjetEta_fakeRate->Divide(h_Top_jeteta_bjet_cut, h_Top_jeteta_bjet, 1, 1, "b");
+    Top_bjetEta_fakeRate->SetTitle("Top process b flavor fake rate");
+    Top_bjetEta_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_bjetEta_fakeRate->GetXaxis()->SetTitle("Jet #eta");
+    Top_bjetEta_fakeRate->SetLineWidth(2);
+
+    TH1F *Top_cjetEta_fakeRate = (TH1F *)h_Top_jeteta_cjet_cut->Clone("Top_cjetEta_fakeRate");
+    Top_cjetEta_fakeRate->Divide(h_Top_jeteta_cjet_cut, h_Top_jeteta_cjet, 1, 1, "b");
+    Top_cjetEta_fakeRate->SetTitle("Top process c flavor fake rate");
+    Top_cjetEta_fakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_cjetEta_fakeRate->GetXaxis()->SetTitle("Jet #eta");
+    Top_cjetEta_fakeRate->SetLineWidth(2);
+    auto c1 = new TCanvas("c1", "", 700, 700);
+    // c1->Divide(3, 1);
+    // c1->cd(1);
+    /*
+    Top_light_fakeRate->SetTitle("fakeRate vs track multiplicity");
+    Top_light_fakeRate->SetLineColor(kGreen);
+    Top_bjet_fakeRate->SetLineColor(kRed);
+    Top_cjet_fakeRate->SetLineColor(kBlack);
+    Top_light_fakeRate->Draw("");
+    Top_bjet_fakeRate->Draw("same");
+    Top_cjet_fakeRate->Draw("same");
+    */
+    /*
+    Top_lightPT_fakeRate->SetTitle("fakeRate vs Jet Pt");
+    Top_lightPT_fakeRate->SetLineColor(kGreen);
+    Top_bjetPT_fakeRate->SetLineColor(kRed);
+    Top_cjetPT_fakeRate->SetLineColor(kBlack);
+    Top_lightPT_fakeRate->Draw("");
+    Top_bjetPT_fakeRate->Draw("same");
+    Top_cjetPT_fakeRate->Draw("same");
+    */
+    Top_lightEta_fakeRate->SetTitle("fakeRate vs Jet Pt");
+    Top_lightEta_fakeRate->SetLineColor(kGreen);
+    Top_bjetEta_fakeRate->SetLineColor(kRed);
+    Top_cjetEta_fakeRate->SetLineColor(kBlack);
+    Top_lightEta_fakeRate->Draw("");
+    Top_bjetEta_fakeRate->Draw("same");
+    Top_cjetEta_fakeRate->Draw("same");
+    gPad->SetLogy();
+    gStyle->SetOptStat(0);
+    TLegend *l0 = new TLegend(0.65, 0.6, 0.90, 0.80);
+    l0->SetBorderSize(0);
+    l0->SetTextSize(0.03);
+    l0->SetHeader("Top process");
+    l0->AddEntry(Top_lightPT_fakeRate, "light flavor", "l");
+    l0->AddEntry(Top_bjetPT_fakeRate, "b flavor", "l");
+    l0->AddEntry(Top_cjetPT_fakeRate, "c flavor", "l");
+    //l0->Draw();
+    /*
+    c1->cd(2);
+    Top_lightPT_fakeRate->SetLineColor(kGreen);
+    Top_bjetPT_fakeRate->SetLineColor(kRed);
+    Top_cjetPT_fakeRate->SetLineColor(kBlack);
+    Top_lightPT_fakeRate->Draw("");
+    Top_bjetPT_fakeRate->Draw("same");
+    Top_cjetPT_fakeRate->Draw("same");
+    gPad->SetLogy();
+    //->Draw("");
+    c1->cd(3);
+    Top_lightEta_fakeRate->SetLineColor(kGreen);
+    Top_bjetEta_fakeRate->SetLineColor(kRed);
+    Top_cjetEta_fakeRate->SetLineColor(kBlack);
+    Top_lightEta_fakeRate->Draw("");
+    Top_bjetEta_fakeRate->Draw("same");
+    Top_cjetEta_fakeRate->Draw("same");
+    gPad->SetLogy();
+    */
+    //->Draw("");
+    // c1->cd(4);
+    // Top_lightPT_fakeRate->Draw("");
+    // c1->cd(5);
+    // Top_bjetPT_fakeRate->Draw("");
+    // c1->cd(6);
+    // Top_cjetPT_fakeRate->Draw("");
+    // c1->cd(7);
+    // Top_lightEta_fakeRate->Draw("");
+    // c1->cd(8);
+    // Top_bjetEta_fakeRate->Draw("");
+    // c1->cd(9);
+    // Top_cjetEta_fakeRate->Draw("");
 
     // Top_cjet_fakeRate->SetLineWidth(2);
     // Top_cjet_fakeRate->Draw("");
