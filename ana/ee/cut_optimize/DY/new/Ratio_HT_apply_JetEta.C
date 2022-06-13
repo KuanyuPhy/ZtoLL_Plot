@@ -42,57 +42,80 @@ Double_t background(Double_t x)
 
 Double_t bjet_background(Double_t x)
 {
-    double par0 = -0.36929055060873117;
-    double par1 = -0.32227621971627424;
-    double par2 = 0.0077448118765263176;
-    double par3 = -0.0018266700500858249;
-    double par4 = 0.016124941879979406;
-    Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // double par0 = -0.36929055060873117;
+    // double par1 = -0.32227621971627424;
+    // double par2 = 0.0077448118765263176;
+    // double par3 = -0.0018266700500858249;
+    // double par4 = 0.016124941879979406;
+    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // return weight;
+    double par0 = -0.203738;
+    double par1 = -0.342211;
+    double par2 = 0.00870887;
+    double par3 = 0.0263022;
+    double par4 = -0.00253953;
+    Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 + par4 * x);
     return weight;
 }
 Double_t cjet_background(Double_t x)
 {
-    double par0 = -0.155879619433122;
-    double par1 = -0.8197317704086138;
-    double par2 = 0.014493676237956263;
-    double par3 = -0.000158355043308647;
-    double par4 = 0.005435107513335813;
-    Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // double par0 = -0.155879619433122;
+    // double par1 = -0.8197317704086138;
+    // double par2 = 0.014493676237956263;
+    // double par3 = -0.000158355043308647;
+    // double par4 = 0.005435107513335813;
+    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // return weight;
+    double par0 = 2.88868e-01;
+    double par1 = -9.26222e-01;
+    double par2 = 5.29108e-02;
+    double par3 = -1.49987e-03;
+    double par4 = -6.16131e-04;
+    double par5 = 3.31859e-05;
+    Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
     return weight;
 }
 Double_t lightjet_background(float x)
 {
-    double par0 = 0.08118787223744216;
-    double par1 = -0.6362557021027739;
-    double par2 = 0.01143712998969338;
-    double par3 = 1.142707756756366e-05;
-    double par4 = -0.00014995176601499091;
-    Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // double par0 = 0.08118787223744216;
+    // double par1 = -0.6362557021027739;
+    // double par2 = 0.01143712998969338;
+    // double par3 = 1.142707756756366e-05;
+    // double par4 = -0.00014995176601499091;
+    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // return weight;
+    double par0 = 4.13657e-01;
+    double par1 = -6.60339e-01;
+    double par2 = 1.50643e-02;
+    double par3 = -2.92786e-04;
+    double par4 = 2.23746e-05;
+    double par5 = 5.61494e-06;
+    Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
     return weight;
 }
 
 void Ratio_HT_apply_JetEta()
 {
-    TFile *DYincli = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
-    TFile *DYHT100 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("/home/kuanyu/CMS/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+    TFile *DYincli = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+    TFile *DYHT100 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
+    TFile *DYHT200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
+    TFile *DYHT400 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
+    TFile *DYHT600 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
+    TFile *DYHT800 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
+    TFile *DYHT1200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+    TFile *DYHT2500 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
 
     //-------------
     // Open Tree
     //-------------
-    TFile *DYincli_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_DYincli_2.root");
-    TFile *DYHT100_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht100_2.root");
-    TFile *DYHT200_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht200_2.root");
-    TFile *DYHT400_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht400_2.root");
-    TFile *DYHT600_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht600_2.root");
-    TFile *DYHT800_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht800_2.root");
-    TFile *DYHT1200_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht1200_2.root");
-    TFile *DYHT2500_2 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/ee_ht2500_2.root");
+    TFile *DYincli_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_DYincli_2.root");
+    TFile *DYHT100_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht100_2.root");
+    TFile *DYHT200_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht200_2.root");
+    TFile *DYHT400_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht400_2.root");
+    TFile *DYHT600_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht600_2.root");
+    TFile *DYHT800_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht800_2.root");
+    TFile *DYHT1200_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht1200_2.root");
+    TFile *DYHT2500_2 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/ee_ht2500_2.root");
 
     TFile *DYfile = new TFile("./../ee_DY_emjet_half.root");
 
@@ -144,92 +167,92 @@ void Ratio_HT_apply_JetEta()
     //-------------
     //  eta
     //-------------
-    TH1D *h_DY_JetEta = new TH1D("h_DY_JetEta", "", 60,-3,3);
+    TH1D *h_DY_JetEta = new TH1D("h_DY_JetEta", "", 15., -3., 3.);
     h_DY_JetEta->GetXaxis()->SetTitle("");
     h_DY_JetEta->GetYaxis()->SetTitle("");
     h_DY_JetEta->Sumw2();
 
-    TH1D *h_DY_JetEta_cut = new TH1D("h_DY_JetEta_cut", "", 60,-3,3);
+    TH1D *h_DY_JetEta_cut = new TH1D("h_DY_JetEta_cut", "", 15., -3., 3.);
     h_DY_JetEta_cut->GetXaxis()->SetTitle("");
     h_DY_JetEta_cut->GetYaxis()->SetTitle("");
     h_DY_JetEta_cut->Sumw2();
 
-    TH1D *h_DY_JetEta_CR = new TH1D("h_DY_JetEta_CR", "", 60,-3,3);
+    TH1D *h_DY_JetEta_CR = new TH1D("h_DY_JetEta_CR", "", 15., -3., 3.);
     h_DY_JetEta_CR->GetXaxis()->SetTitle("");
     h_DY_JetEta_CR->GetYaxis()->SetTitle("");
     h_DY_JetEta_CR->Sumw2();
 
-    TH1D *h_DY_JetEta_heavy = new TH1D("h_DY_JetEta_heavy", "", 60,-3,3);
+    TH1D *h_DY_JetEta_heavy = new TH1D("h_DY_JetEta_heavy", "", 15., -3., 3.);
     h_DY_JetEta_heavy->GetXaxis()->SetTitle("");
     h_DY_JetEta_heavy->GetYaxis()->SetTitle("");
     h_DY_JetEta_heavy->Sumw2();
 
-    TH1D *h_DY_JetEta_heavy_cut = new TH1D("h_DY_JetEta_heavy_cut", "", 60,-3,3);
+    TH1D *h_DY_JetEta_heavy_cut = new TH1D("h_DY_JetEta_heavy_cut", "", 15., -3., 3.);
     h_DY_JetEta_heavy_cut->GetXaxis()->SetTitle("");
     h_DY_JetEta_heavy_cut->GetYaxis()->SetTitle("");
     h_DY_JetEta_heavy_cut->Sumw2();
 
-    TH1D *h_DY_JetEta_heavy_CR = new TH1D("h_DY_JetEta_heavy_CR", "", 60,-3,3);
+    TH1D *h_DY_JetEta_heavy_CR = new TH1D("h_DY_JetEta_heavy_CR", "", 15., -3., 3.);
     h_DY_JetEta_heavy_CR->GetXaxis()->SetTitle("");
     h_DY_JetEta_heavy_CR->GetYaxis()->SetTitle("");
     h_DY_JetEta_heavy_CR->Sumw2();
 
-    TH1D *h_DY_JetEta_bjet = new TH1D("h_DY_JetEta_bjet", "", 60,-3,3);
+    TH1D *h_DY_JetEta_bjet = new TH1D("h_DY_JetEta_bjet", "", 15., -3., 3.);
     h_DY_JetEta_bjet->GetXaxis()->SetTitle("");
     h_DY_JetEta_bjet->GetYaxis()->SetTitle("");
     h_DY_JetEta_bjet->Sumw2();
 
-    TH1D *h_DY_JetEta_bjet_cut = new TH1D("h_DY_JetEta_bjet_cut", "", 60,-3,3);
+    TH1D *h_DY_JetEta_bjet_cut = new TH1D("h_DY_JetEta_bjet_cut", "", 15., -3., 3.);
     h_DY_JetEta_bjet_cut->GetXaxis()->SetTitle("");
     h_DY_JetEta_bjet_cut->GetYaxis()->SetTitle("");
     h_DY_JetEta_bjet_cut->Sumw2();
 
-    TH1D *h_DY_JetEta_bjet_CR = new TH1D("h_DY_JetEta_bjet_CR", "", 60,-3,3);
+    TH1D *h_DY_JetEta_bjet_CR = new TH1D("h_DY_JetEta_bjet_CR", "", 15., -3., 3.);
     h_DY_JetEta_bjet_CR->GetXaxis()->SetTitle("");
     h_DY_JetEta_bjet_CR->GetYaxis()->SetTitle("");
     h_DY_JetEta_bjet_CR->Sumw2();
 
-    TH1D *h_DY_JetEta_bjet_bybin_CR = new TH1D("h_DY_JetEta_bjet_bybin_CR", "", 60,-3,3);
+    TH1D *h_DY_JetEta_bjet_bybin_CR = new TH1D("h_DY_JetEta_bjet_bybin_CR", "", 15., -3., 3.);
     h_DY_JetEta_bjet_bybin_CR->GetXaxis()->SetTitle("");
     h_DY_JetEta_bjet_bybin_CR->GetYaxis()->SetTitle("");
     h_DY_JetEta_bjet_bybin_CR->Sumw2();
 
-    TH1D *h_DY_JetEta_cjet = new TH1D("h_DY_JetEta_cjet", "", 60,-3,3);
+    TH1D *h_DY_JetEta_cjet = new TH1D("h_DY_JetEta_cjet", "", 15., -3., 3.);
     h_DY_JetEta_cjet->GetXaxis()->SetTitle("");
     h_DY_JetEta_cjet->GetYaxis()->SetTitle("");
     h_DY_JetEta_cjet->Sumw2();
 
-    TH1D *h_DY_JetEta_cjet_cut = new TH1D("h_DY_JetEta_cjet_cut", "", 60,-3,3);
+    TH1D *h_DY_JetEta_cjet_cut = new TH1D("h_DY_JetEta_cjet_cut", "", 15., -3., 3.);
     h_DY_JetEta_cjet_cut->GetXaxis()->SetTitle("");
     h_DY_JetEta_cjet_cut->GetYaxis()->SetTitle("");
     h_DY_JetEta_cjet_cut->Sumw2();
 
-    TH1D *h_DY_JetEta_cjet_CR = new TH1D("h_DY_JetEta_cjet_CR", "", 60,-3,3);
+    TH1D *h_DY_JetEta_cjet_CR = new TH1D("h_DY_JetEta_cjet_CR", "", 15., -3., 3.);
     h_DY_JetEta_cjet_CR->GetXaxis()->SetTitle("");
     h_DY_JetEta_cjet_CR->GetYaxis()->SetTitle("");
     h_DY_JetEta_cjet_CR->Sumw2();
 
-    TH1D *h_DY_JetEta_cjet_bybin_CR = new TH1D("h_DY_JetEta_cjet_bybin_CR", "", 60,-3,3);
+    TH1D *h_DY_JetEta_cjet_bybin_CR = new TH1D("h_DY_JetEta_cjet_bybin_CR", "", 15., -3., 3.);
     h_DY_JetEta_cjet_bybin_CR->GetXaxis()->SetTitle("");
     h_DY_JetEta_cjet_bybin_CR->GetYaxis()->SetTitle("");
     h_DY_JetEta_cjet_bybin_CR->Sumw2();
 
-    TH1D *h_DY_JetEta_light = new TH1D("h_DY_JetEta_light", "", 60,-3,3);
+    TH1D *h_DY_JetEta_light = new TH1D("h_DY_JetEta_light", "", 15., -3., 3.);
     h_DY_JetEta_light->GetXaxis()->SetTitle("");
     h_DY_JetEta_light->GetYaxis()->SetTitle("");
     h_DY_JetEta_light->Sumw2();
 
-    TH1D *h_DY_JetEta_light_cut = new TH1D("h_DY_JetEta_light_cut", "", 60,-3,3);
+    TH1D *h_DY_JetEta_light_cut = new TH1D("h_DY_JetEta_light_cut", "", 15., -3., 3.);
     h_DY_JetEta_light_cut->GetXaxis()->SetTitle("");
     h_DY_JetEta_light_cut->GetYaxis()->SetTitle("");
     h_DY_JetEta_light_cut->Sumw2();
 
-    TH1D *h_DY_JetEta_light_CR = new TH1D("h_DY_JetEta_light_CR", "", 60,-3,3);
+    TH1D *h_DY_JetEta_light_CR = new TH1D("h_DY_JetEta_light_CR", "", 15., -3., 3.);
     h_DY_JetEta_light_CR->GetXaxis()->SetTitle("");
     h_DY_JetEta_light_CR->GetYaxis()->SetTitle("");
     h_DY_JetEta_light_CR->Sumw2();
 
-    TH1D *h_DY_JetEta_light_bybin_CR = new TH1D("h_DY_JetEta_light_bybin_CR", "", 60,-3,3);
+    TH1D *h_DY_JetEta_light_bybin_CR = new TH1D("h_DY_JetEta_light_bybin_CR", "", 15., -3., 3.);
     h_DY_JetEta_light_bybin_CR->GetXaxis()->SetTitle("");
     h_DY_JetEta_light_bybin_CR->GetYaxis()->SetTitle("");
     h_DY_JetEta_light_bybin_CR->Sumw2();
@@ -1132,66 +1155,75 @@ void Ratio_HT_apply_JetEta()
     h_DY_JetEta_light_cut->SetLineWidth(2);
     h_DY_JetEta_light_CR->SetLineWidth(2);
     h_DY_JetEta_light_bybin_CR->SetLineWidth(2);
-    //h_DY_JetEta_light_cut->SetTitle("light jet (DY)");
+    // h_DY_JetEta_light_cut->SetTitle("light jet (DY)");
     h_DY_JetEta_light_cut->GetYaxis()->SetTitle("nJet");
     h_DY_JetEta_light_bybin_CR->GetYaxis()->SetTitle("nJet");
     h_DY_JetEta_light_cut->GetXaxis()->SetTitle("Jet #eta");
     h_DY_JetEta_light_bybin_CR->GetXaxis()->SetTitle("Jet #eta");
-    //h_DY_JetEta_light_cut->GetXaxis()->SetTitleOffset(1.5);
+    // h_DY_JetEta_light_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    h_DY_JetEta_light_CR->SetTitle("light jet (DY)");
+    //h_DY_JetEta_light_CR->SetTitle("light jet (DY)");
     h_DY_JetEta_light_CR->GetYaxis()->SetTitle("nJet");
-    h_DY_JetEta_light_CR->GetXaxis()->SetTitle("Jet track multiplicity");
+    h_DY_JetEta_light_CR->GetXaxis()->SetTitle("Jet #eta");
     h_DY_JetEta_light_CR->GetXaxis()->SetTitleOffset(1.5);
 
     h_DY_JetEta_bjet_cut->SetLineWidth(2);
     h_DY_JetEta_bjet_CR->SetLineWidth(2);
     h_DY_JetEta_bjet_bybin_CR->SetLineWidth(2);
-    //h_DY_JetEta_bjet_bybin_CR->SetTitle("b jet (DY)");
-    //h_DY_JetEta_bjet_cut->SetTitle("b jet (DY)");
+    // h_DY_JetEta_bjet_bybin_CR->SetTitle("b jet (DY)");
+    // h_DY_JetEta_bjet_cut->SetTitle("b jet (DY)");
     h_DY_JetEta_bjet_cut->GetYaxis()->SetTitle("nJet");
     h_DY_JetEta_bjet_bybin_CR->GetYaxis()->SetTitle("nJet");
     h_DY_JetEta_bjet_cut->GetXaxis()->SetTitle("Jet #eta");
     h_DY_JetEta_bjet_bybin_CR->GetXaxis()->SetTitle("Jet #eta");
-    //h_DY_JetEta_bjet_cut->GetXaxis()->SetTitleOffset(1.5);
+    // h_DY_JetEta_bjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    h_DY_JetEta_bjet_CR->SetTitle("b jet (DY)");
+    //h_DY_JetEta_bjet_CR->SetTitle("b jet (DY)");
     h_DY_JetEta_bjet_CR->GetYaxis()->SetTitle("nJet");
-    h_DY_JetEta_bjet_CR->GetXaxis()->SetTitle("Jet PT");
+    h_DY_JetEta_bjet_CR->GetXaxis()->SetTitle("Jet #eta");
     h_DY_JetEta_bjet_CR->GetXaxis()->SetTitleOffset(1.5);
 
     h_DY_JetEta_cjet_cut->SetLineWidth(2);
     h_DY_JetEta_cjet_CR->SetLineWidth(2);
     h_DY_JetEta_cjet_bybin_CR->SetLineWidth(2);
-    //h_DY_JetEta_cjet_cut->SetTitle("c jet (DY)");
+    // h_DY_JetEta_cjet_cut->SetTitle("c jet (DY)");
     h_DY_JetEta_cjet_bybin_CR->GetYaxis()->SetTitle("nJet");
     h_DY_JetEta_cjet_cut->GetYaxis()->SetTitle("nJet");
     h_DY_JetEta_cjet_cut->GetXaxis()->SetTitle("Jet #eta");
     h_DY_JetEta_cjet_bybin_CR->GetXaxis()->SetTitle("Jet #eta");
-    //h_DY_JetEta_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
+    // h_DY_JetEta_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    h_DY_JetEta_cjet_CR->SetTitle("c jet (DY)");
+    //h_DY_JetEta_cjet_CR->SetTitle("c jet (DY)");
     h_DY_JetEta_cjet_CR->GetYaxis()->SetTitle("nJet");
-    h_DY_JetEta_cjet_CR->GetXaxis()->SetTitle("Jet track multiplicity");
+    h_DY_JetEta_cjet_CR->GetXaxis()->SetTitle("Jet #eta");
     h_DY_JetEta_cjet_CR->GetXaxis()->SetTitleOffset(1.5);
 
     auto c1 = new TCanvas("c1", "", 700, 700);
-    //c1->Divide(1, 2, 0.01, 0);
-    //c1->cd(1);
-    // gPad->SetTopMargin(0 - 0.3);
-    // gPad->SetBottomMargin(0.02);
-    // gPad->SetRightMargin(0.04);
+    c1->Divide(1, 2, 0.01, 0);
+    c1->cd(1);
+    gPad->SetTopMargin(0 - 0.3);
+    gPad->SetBottomMargin(0.02);
+    gPad->SetRightMargin(0.04);
+
+    TH1D *Ratioresult = (TH1D *)h_DY_JetEta_light_CR->Clone("Ratioresult");
+
+
     h_DY_JetEta_cjet_CR->SetLineColor(kRed);
     h_DY_JetEta_bjet_CR->SetLineColor(kRed);
     h_DY_JetEta_light_CR->SetLineColor(kRed);
+
+    h_DY_JetEta_cjet_CR->SetLabelSize(0);
+    h_DY_JetEta_bjet_CR->SetLabelSize(0);
+    h_DY_JetEta_light_CR->SetLabelSize(0);
+
     h_DY_JetEta_bjet_bybin_CR->SetLineColor(kGreen + 3);
     h_DY_JetEta_cjet_bybin_CR->SetLineColor(kGreen + 3);
     h_DY_JetEta_light_bybin_CR->SetLineColor(kGreen + 3);
 
-    TH1D *Ratioresult = new TH1D("Ratioresult", "", 60,-3,3);
-    Ratioresult->Sumw2();
-    int nBins = h_DY_JetEta_bjet_cut->GetNbinsX();
-    cout << "nBins = " << nBins << endl;
+    // TH1D *Ratioresult = new TH1D("Ratioresult", "", 15., -3., 3.);
+    // Ratioresult->Sumw2();
+    // int nBins = h_DY_JetEta_bjet_cut->GetNbinsX();
+    // cout << "nBins = " << nBins << endl;
     /*
     for (int i = 1; i <= nBins; i++)
     {
@@ -1213,38 +1245,53 @@ void Ratio_HT_apply_JetEta()
     // Ratioresult->GetXaxis()->SetRangeUser(0, 25);
     // h_DY_JetEta_bjet_cut->GetXaxis()->SetRangeUser(0, 25);
     h_DY_JetEta_bjet_cut->SetLabelSize(0);
-    // h_DY_JetEta_cjet_CR->Draw("hist ");
+    h_DY_JetEta_light_cut->Draw("hist e ");
+    h_DY_JetEta_light_CR->Draw("hist e same");
+    h_DY_JetEta_light_bybin_CR->Draw("hist e same");
     
-    h_DY_JetEta_bjet_bybin_CR->Draw("hist e same");
-    h_DY_JetEta_bjet_cut->Draw("hist e same");
 
     TLegend *l0 = new TLegend(0.35, 0.4, 0.90, 0.80);
-    l0->SetHeader("Drell-Yan (b Jet)");
+    l0->SetHeader("Drell-Yan (light Jet)");
     l0->SetBorderSize(0);
     l0->SetTextSize(0.03);
     l0->AddEntry(h_DY_JetEta_cjet_cut, "Drell-Yan SR", "l");
-    //l0->AddEntry(h_DY_JetEta_cjet_CR, "Drell-Yan apply fit result", "l");
+    l0->AddEntry(h_DY_JetEta_cjet_CR, "Drell-Yan apply fit result", "l");
     l0->AddEntry(h_DY_JetEta_cjet_bybin_CR, "Drell-Yan apply bin by bin result", "l");
-    l0->Draw();
+    //l0->Draw();
 
     gStyle->SetOptStat(0);
-    //c1->cd(2);
-    //h_DY_JetEta_cjet_CR->GetXaxis()->SetTitle("Jet #eta");
-    //h_DY_JetEta_cjet_CR->Draw("hist ");
-    // gStyle->SetStatW(0.3);
-    // gStyle->SetStatH(0.3);
-    // gStyle->SetStatX(0.879447);
-    // gStyle->SetStatY(0.939033);
-    // gStyle->SetStatFontSize(0.05);
-    // gStyle->SetStatBorderSize(0);
-    // gPad->SetRightMargin(0.04);
-    // gPad->SetTopMargin(0);
-    // gPad->SetBottomMargin(0.2);
-    // gPad->SetTickx();
-    // Ratioresult->SetLineWidth(2);
-    // Ratioresult->GetYaxis()->SetTitle("Fit / MC");
-    // Ratioresult->GetXaxis()->SetTitle("Jet track multiplicity");
-    // Ratioresult->SetLineColor(kBlue);
-    // Ratioresult->Draw("E1");
+
+    Ratioresult->Divide(h_DY_JetEta_light_CR, h_DY_JetEta_light_cut);
+    Ratioresult->SetLineWidth(2);
+    c1->cd(2);
+    gPad->SetRightMargin(0.04);
+    gPad->SetTopMargin(0);
+    gPad->SetBottomMargin(0.2);
+    gStyle->SetStatW(0.3);
+    gStyle->SetStatH(0.3);
+    gStyle->SetStatX(0.879447);
+    gStyle->SetStatY(0.939033);
+    Ratioresult->GetYaxis()->SetTitle("Fit / MC");
+    //Ratioresult->GetXaxis()->SetRangeUser(0, lightbinmax);
+    //Ratioresult->GetYaxis()->SetRangeUser(-0.5, 2);
+    Ratioresult->Draw();
+    // c1->cd(2);
+    // h_DY_JetEta_cjet_CR->GetXaxis()->SetTitle("Jet #eta");
+    // h_DY_JetEta_cjet_CR->Draw("hist ");
+    //  gStyle->SetStatW(0.3);
+    //  gStyle->SetStatH(0.3);
+    //  gStyle->SetStatX(0.879447);
+    //  gStyle->SetStatY(0.939033);
+    //  gStyle->SetStatFontSize(0.05);
+    //  gStyle->SetStatBorderSize(0);
+    //  gPad->SetRightMargin(0.04);
+    //  gPad->SetTopMargin(0);
+    //  gPad->SetBottomMargin(0.2);
+    //  gPad->SetTickx();
+    //  Ratioresult->SetLineWidth(2);
+    //  Ratioresult->GetYaxis()->SetTitle("Fit / MC");
+    //  Ratioresult->GetXaxis()->SetTitle("Jet track multiplicity");
+    //  Ratioresult->SetLineColor(kBlue);
+    //  Ratioresult->Draw("E1");
     gStyle->SetOptStat(0);
 }

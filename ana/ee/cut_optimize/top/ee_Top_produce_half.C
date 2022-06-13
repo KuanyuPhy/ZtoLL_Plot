@@ -28,26 +28,26 @@ void for_doubleflavor_jet(int flavor1, float flavor2, float hadronflavor, float 
     }
 }
 
-void ee_Top_produce_half(TString inputfile = "./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root", TString outputfile1 = "./ee_Top_emjet_half.root")
+void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root", TString outputfile1 = "./ee_Top_emjet_half.root")
 {
     TFile *TTTo2L2Nufile = TFile::Open(inputfile);
-    TFile *Top_TTWJetsToLNufile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
-    TFile *Top_TTWJetsToQQfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
-    TFile *Top_TTZToQQfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
-    TFile *Top_TTZToLLNuNufile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
-    TFile *Top_tW_antitopfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
-    TFile *Top_tW_topfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
+    TFile *Top_TTWJetsToLNufile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
+    TFile *Top_TTWJetsToQQfile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
+    TFile *Top_TTZToQQfile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
+    TFile *Top_TTZToLLNuNufile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
+    TFile *Top_tW_antitopfile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
+    TFile *Top_tW_topfile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
 
     //-------------
     // Open Tree
     //-------------
-    TFile *TTTo2L2Nufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTTo2L2Nu_1.root");
-    TFile *Top_TTWJetsToLNufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTWJetsToLNu_1.root");
-    TFile *Top_TTWJetsToQQfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTWJetsToQQ_1.root");
-    TFile *Top_TTZToQQfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTZToQQ_1.root");
-    TFile *Top_TTZToLLNuNufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTZToLLNuNu_1.root");
-    TFile *Top_tW_antitopfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_tW_antitop_1.root");
-    TFile *Top_tW_topfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_tW_top_1.root");
+    TFile *TTTo2L2Nufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTTo2L2Nu_1.root");
+    TFile *Top_TTWJetsToLNufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTWJetsToLNu_1.root");
+    TFile *Top_TTWJetsToQQfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTWJetsToQQ_1.root");
+    TFile *Top_TTZToQQfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTZToQQ_1.root");
+    TFile *Top_TTZToLLNuNufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTZToLLNuNu_1.root");
+    TFile *Top_tW_antitopfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_tW_antitop_1.root");
+    TFile *Top_tW_topfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_tW_top_1.root");
 
     TH1D *TTTo2L2Nu_sumevt = ((TH1D *)TTTo2L2Nufile->Get("Event_Variable/h_totevent"));
     TH1D *TTWJetsToLNu_sumevt = ((TH1D *)Top_TTWJetsToLNufile->Get("Event_Variable/h_totevent"));

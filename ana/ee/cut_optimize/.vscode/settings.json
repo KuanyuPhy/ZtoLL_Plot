@@ -13,6 +13,9 @@
         "diff_region.C": "cpp",
         "ee_Sig_produce.C": "cpp",
         "compare_2DIP.C": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "ee_HT_produce_half.C": "cpp",
+        "DY_rootfit.C": "cpp",
+        "Ratio_HT_apply_JetPt.C": "cpp"
     }
 }

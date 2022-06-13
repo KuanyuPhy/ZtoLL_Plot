@@ -42,55 +42,79 @@ Double_t background(Double_t x)
 
 Double_t bjet_background(Double_t x)
 {
-    double par0 = -0.36929055060873117;
-    double par1 = -0.32227621971627424;
-    double par2 = 0.0077448118765263176;
-    double par3 = -0.0018266700500858249;
-    double par4 = 0.016124941879979406;
-    Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // double par0 = -0.36929055060873117;
+    // double par1 = -0.32227621971627424;
+    // double par2 = 0.0077448118765263176;
+    // double par3 = -0.0018266700500858249;
+    // double par4 = 0.016124941879979406;
+    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // return weight;
+    double par0 = -2.32165e-01;
+    double par1 = -3.29605e-01;
+    double par2 = 1.63397e-02;
+    double par3 = -1.08663e-03;
+    double par4 = 2.10796e-02;
+    double par5 = -8.92923e-04;
+    Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
     return weight;
 }
 Double_t cjet_background(Double_t x)
 {
-    double par0 = -0.155879619433122;
-    double par1 = -0.8197317704086138;
-    double par2 = 0.014493676237956263;
-    double par3 = -0.000158355043308647;
-    double par4 = 0.005435107513335813;
-    Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // double par0 = -0.155879619433122;
+    // double par1 = -0.8197317704086138;
+    // double par2 = 0.014493676237956263;
+    // double par3 = -0.000158355043308647;
+    // double par4 = 0.005435107513335813;
+    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // return weight;
+    double par0 = -1.01347e-01;
+    double par1 = -7.13189e-01;
+    double par2 = 2.12814e-02;
+    double par3 = -4.20289e-04;
+    double par4 = -2.06329e-03;
+    double par5 = 1.06572e-04;
+    Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
     return weight;
 }
 Double_t lightjet_background(float x)
 {
-    double par0 = 0.08118787223744216;
-    double par1 = -0.6362557021027739;
-    double par2 = 0.01143712998969338;
-    double par3 = 1.142707756756366e-05;
-    double par4 = -0.00014995176601499091;
-    Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // double par0 = 0.08118787223744216;
+    // double par1 = -0.6362557021027739;
+    // double par2 = 0.01143712998969338;
+    // double par3 = 1.142707756756366e-05;
+    // double par4 = -0.00014995176601499091;
+    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
+    // return weight;
+    double par0 = 2.19479e-01;
+    double par1 = -6.55357e-01;
+    double par2 = -1.31534e-03;
+    double par3 = 5.51655e-04;
+    double par4 = 3.63651e-05;
+    double par5 = -6.85263e-06;
+    Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
     return weight;
 }
 
 void Ratio_Top_apply_JetPt()
 {
-    TFile *TTTo2L2Nufile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
-    TFile *Top_TTWJetsToLNufile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
-    TFile *Top_TTWJetsToQQfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
-    TFile *Top_TTZToQQfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
-    TFile *Top_TTZToLLNuNufile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
-    TFile *Top_tW_antitopfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
-    TFile *Top_tW_topfile = new TFile("./../../../../../root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
+    TFile *TTTo2L2Nufile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTTo2L2Nu.root");
+    TFile *Top_TTWJetsToLNufile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTWJetsToLNu.root");
+    TFile *Top_TTWJetsToQQfile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTWJetsToQQ.root");
+    TFile *Top_TTZToQQfile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTZToQQ.root");
+    TFile *Top_TTZToLLNuNufile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_TTZToLLNuNu.root");
+    TFile *Top_tW_antitopfile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_tW_antitop.root");
+    TFile *Top_tW_topfile = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/top/top_tW_top.root");
 
     //-------------
     // Open Tree
     //-------------
-    TFile *TTTo2L2Nufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTTo2L2Nu_2.root");
-    TFile *Top_TTWJetsToLNufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTWJetsToLNu_2.root");
-    TFile *Top_TTWJetsToQQfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTWJetsToQQ_2.root");
-    TFile *Top_TTZToQQfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTZToQQ_2.root");
-    TFile *Top_TTZToLLNuNufile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_TTZToLLNuNu_2.root");
-    TFile *Top_tW_antitopfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_tW_antitop_2.root");
-    TFile *Top_tW_topfile_1 = new TFile("/home/kuanyu/CMS/root_file/BgEstimation/top_tW_top_2.root");
+    TFile *TTTo2L2Nufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTTo2L2Nu_2.root");
+    TFile *Top_TTWJetsToLNufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTWJetsToLNu_2.root");
+    TFile *Top_TTWJetsToQQfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTWJetsToQQ_2.root");
+    TFile *Top_TTZToQQfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTZToQQ_2.root");
+    TFile *Top_TTZToLLNuNufile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_TTZToLLNuNu_2.root");
+    TFile *Top_tW_antitopfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_tW_antitop_2.root");
+    TFile *Top_tW_topfile_1 = new TFile("/home/kuanyu/Documents/root_file/BgEstimation/top_tW_top_2.root");
 
     TFile *Topfile = new TFile("./ee_Top_emjet_half.root");
 
@@ -789,81 +813,96 @@ void Ratio_Top_apply_JetPt()
     h_Top_JetPT_light_cut->SetLineWidth(2);
     h_Top_JetPT_light_CR->SetLineWidth(2);
     h_Top_JetPT_light_bybin_CR->SetLineWidth(2);
-    //h_Top_JetPT_light_cut->SetTitle("light jet (Top)");
+    // h_Top_JetPT_light_cut->SetTitle("light jet (Top)");
     h_Top_JetPT_light_cut->GetYaxis()->SetTitle("nJet");
     h_Top_JetPT_light_cut->GetXaxis()->SetTitle("Jet PT");
-    //h_Top_JetPT_light_cut->GetXaxis()->SetTitleOffset(1.5);
+    // h_Top_JetPT_light_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    h_Top_JetPT_light_CR->SetTitle("light jet (Top)");
+    //h_Top_JetPT_light_CR->SetTitle("light jet (Top)");
     h_Top_JetPT_light_CR->GetYaxis()->SetTitle("nJet");
-    h_Top_JetPT_light_CR->GetXaxis()->SetTitle("Jet track multiplicity");
+    h_Top_JetPT_light_CR->GetXaxis()->SetTitle("Jet PT");
     h_Top_JetPT_light_CR->GetXaxis()->SetTitleOffset(1.5);
 
     h_Top_JetPT_bjet_cut->SetLineWidth(2);
     h_Top_JetPT_bjet_CR->SetLineWidth(2);
     h_Top_JetPT_bjet_bybin_CR->SetLineWidth(2);
-    //h_Top_JetPT_bjet_bybin_CR->SetTitle("b jet (Top)");
-    //h_Top_JetPT_bjet_cut->SetTitle("b jet (Top)");
+    // h_Top_JetPT_bjet_bybin_CR->SetTitle("b jet (Top)");
+    // h_Top_JetPT_bjet_cut->SetTitle("b jet (Top)");
     h_Top_JetPT_bjet_cut->GetYaxis()->SetTitle("nJet");
     h_Top_JetPT_bjet_bybin_CR->GetYaxis()->SetTitle("nJet");
     h_Top_JetPT_bjet_cut->GetXaxis()->SetTitle("Jet PT");
     h_Top_JetPT_bjet_bybin_CR->GetXaxis()->SetTitle("Jet PT");
-    //h_Top_JetPT_bjet_cut->GetXaxis()->SetTitleOffset(1.5);
+    // h_Top_JetPT_bjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    h_Top_JetPT_bjet_CR->SetTitle("b jet (Top)");
+    //h_Top_JetPT_bjet_CR->SetTitle("b jet (Top)");
     h_Top_JetPT_bjet_CR->GetYaxis()->SetTitle("nJet");
-    h_Top_JetPT_bjet_CR->GetXaxis()->SetTitle("Jet track multiplicity");
+    h_Top_JetPT_bjet_CR->GetXaxis()->SetTitle("Jet PT");
     h_Top_JetPT_bjet_CR->GetXaxis()->SetTitleOffset(1.5);
 
     h_Top_JetPT_cjet_cut->SetLineWidth(2);
     h_Top_JetPT_cjet_CR->SetLineWidth(2);
     h_Top_JetPT_cjet_bybin_CR->SetLineWidth(2);
-    //h_Top_JetPT_cjet_cut->SetTitle("c jet (Top)");
+    // h_Top_JetPT_cjet_cut->SetTitle("c jet (Top)");
     h_Top_JetPT_cjet_cut->GetYaxis()->SetTitle("nJet");
     h_Top_JetPT_cjet_cut->GetXaxis()->SetTitle("Jet Pt");
-    //h_Top_JetPT_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
+    // h_Top_JetPT_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    h_Top_JetPT_cjet_CR->SetTitle("c jet (Top)");
+    //h_Top_JetPT_cjet_CR->SetTitle("c jet (Top)");
     h_Top_JetPT_cjet_CR->GetYaxis()->SetTitle("nJet");
-    h_Top_JetPT_cjet_CR->GetXaxis()->SetTitle("Jet track multiplicity");
+    h_Top_JetPT_cjet_CR->GetXaxis()->SetTitle("Jet PT");
     h_Top_JetPT_cjet_CR->GetXaxis()->SetTitleOffset(1.5);
     auto c1 = new TCanvas("c1", "", 700, 700);
-    //c1->Divide(1, 2, 0.01, 0);
-    //c1->cd(1);
-    //gPad->SetTopMargin(0 - 0.3);
-    //gPad->SetBottomMargin(0.02);
-    //gPad->SetRightMargin(0.04);
+    c1->Divide(1, 2, 0.01, 0);
+    c1->cd(1);
+    gPad->SetTopMargin(0 - 0.3);
+    gPad->SetBottomMargin(0.02);
+    gPad->SetRightMargin(0.04);
+    TH1D *Ratioresult = (TH1D *)h_Top_JetPT_bjet_CR->Clone("Ratioresult");
+
     h_Top_JetPT_cjet_CR->SetLineColor(kRed);
     h_Top_JetPT_bjet_CR->SetLineColor(kRed);
     h_Top_JetPT_light_CR->SetLineColor(kRed);
     h_Top_JetPT_bjet_bybin_CR->SetLineColor(kGreen + 3);
     h_Top_JetPT_cjet_bybin_CR->SetLineColor(kGreen + 3);
     h_Top_JetPT_light_bybin_CR->SetLineColor(kGreen + 3);
-    //h_Top_JetPT_bjet_cut->SetLabelSize(0);
-    //h_Top_JetPT_cjet_cut->SetLabelSize(0);
-    //h_Top_JetPT_light_cut->SetLabelSize(0);
-    //h_Top_JetPT_light_CR->SetLabelSize(0);
-    //h_Top_JetPT_cjet_CR->SetLabelSize(0);
-    //h_Top_JetPT_bjet_CR->SetLabelSize(0);
-    //h_Top_JetPT_bjet_bybin_CR->SetLabelSize(0);
-    h_Top_JetPT_bjet_bybin_CR->GetXaxis()->SetRangeUser(0, 200);
-    h_Top_JetPT_light_cut->GetXaxis()->SetRangeUser(0, 200);
-    h_Top_JetPT_bjet_cut->GetXaxis()->SetRangeUser(0, 200);
-    h_Top_JetPT_bjet_bybin_CR->Draw("hist e ");
-    //h_Top_JetPT_light_CR->Draw("hist e same");
-    h_Top_JetPT_bjet_cut->Draw("hist e same ");
-    
-    
+    // h_Top_JetPT_bjet_cut->SetLabelSize(0);
+    // h_Top_JetPT_cjet_cut->SetLabelSize(0);
+    // h_Top_JetPT_light_cut->SetLabelSize(0);
+     h_Top_JetPT_light_CR->SetLabelSize(0);
+     h_Top_JetPT_cjet_CR->SetLabelSize(0);
+     h_Top_JetPT_bjet_CR->SetLabelSize(0);
+    // h_Top_JetPT_bjet_bybin_CR->SetLabelSize(0);
+    h_Top_JetPT_bjet_bybin_CR->GetXaxis()->SetRangeUser(0, 250);
+    h_Top_JetPT_light_cut->GetXaxis()->SetRangeUser(0, 250);
+    h_Top_JetPT_bjet_cut->GetXaxis()->SetRangeUser(0, 250);
+
+    h_Top_JetPT_cjet_CR->GetXaxis()->SetRangeUser(0, 250);
+    h_Top_JetPT_bjet_CR->Draw("hist e ");
+    h_Top_JetPT_bjet_bybin_CR->Draw("hist e same");
+    h_Top_JetPT_bjet_cut->Draw("hist e same");
+
     TLegend *l0 = new TLegend(0.5, 0.4, 0.90, 0.80);
     l0->SetHeader("Top process (b Jet)");
     l0->SetBorderSize(0);
     l0->SetTextSize(0.03);
     l0->AddEntry(h_Top_JetPT_bjet_cut, "Top SR", "l");
-    //l0->AddEntry(h_Top_JetPT_bjet_CR, "Top apply fit result", "l");
+    // l0->AddEntry(h_Top_JetPT_bjet_CR, "Top apply fit result", "l");
     l0->AddEntry(h_Top_JetPT_bjet_bybin_CR, "Top apply bin by bin result", "l");
     l0->Draw();
     gStyle->SetOptStat(0);
-    
+    Ratioresult->Divide(h_Top_JetPT_bjet_CR, h_Top_JetPT_bjet_cut);
+    Ratioresult->SetLineWidth(2);
+    c1->cd(2);
+    gPad->SetRightMargin(0.04);
+    gPad->SetTopMargin(0);
+    gPad->SetBottomMargin(0.2);
+    gStyle->SetStatW(0.3);
+    gStyle->SetStatH(0.3);
+    gStyle->SetStatX(0.879447);
+    gStyle->SetStatY(0.939033);
+    Ratioresult->GetYaxis()->SetTitle("Fit / MC");
+    Ratioresult->GetXaxis()->SetRangeUser(0, 250);
+    Ratioresult->Draw();
     /*
     c1->cd(2);
     gStyle->SetStatW(0.3);

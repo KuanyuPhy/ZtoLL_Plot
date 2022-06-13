@@ -21,7 +21,16 @@
         "DY_fit.C": "cpp",
         "DY_rootfit.C": "cpp",
         "ee_HT_produce_half.C": "cpp",
-        "Fit.C": "cpp"
+        "Fit.C": "cpp",
+        "ee_HT_half.C": "cpp",
+        "Top_fit.C": "cpp",
+        "Top_rootfit.C": "cpp",
+        "ee_HT3D.C": "cpp",
+        "ee_3Dsig.C": "cpp",
+        "ee_HT_alpha_ROC.C": "cpp",
+        "ee_HT_nem.C": "cpp",
+        "punzi_3Dsig.C": "cpp",
+        "ee_HT_alpha.C": "cpp"
     },
     "C_Cpp.default.includePath": [
         "${ROOTSYS}/include"

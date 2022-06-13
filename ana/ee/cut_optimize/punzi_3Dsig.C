@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <TH2F.h>
+#include <TGraph.h>
 #include <TH1D.h>
 #include <TAttLine.h>
 #include <TStyle.h>
@@ -411,11 +413,12 @@ void punzi_3Dsig(TString inputfile = "DY_emjet.root", TString outputfile1 = "./p
     TLegend *l1 = new TLegend(0.60, 0.55, 0.70, 0.80);
     l1->SetBorderSize(0);
     l1->SetTextSize(0.03);
-    l1->AddEntry(h_punzisig1_nEmjet_1, "ctau=1mm m_{x^{2}}=1", "l");
-    l1->AddEntry(h_punzisig50_nEmjet_1, "ctau=10mm m_{x^{2}}=50", "l");
-    l1->AddEntry(h_punzisig150_nEmjet_1, "ctau=1mm m_{x^{2}}=150", "l");
+    l1->AddEntry(h_punzisig1_nEmjet_1, "ctau=1mm m_{x^{2}}=1 GeV", "l");
+    l1->AddEntry(h_punzisig50_nEmjet_1, "ctau=10mm m_{x^{2}}=50 GeV", "l");
+    l1->AddEntry(h_punzisig150_nEmjet_1, "ctau=1mm m_{x^{2}}=150 GeV", "l");
     // l1->AddEntry(h_TTTo2L2Nu_Median_2DIPsig, "Top process", "l");
     l1->Draw();
+    
     //c1->SaveAs("cut1_chi1_punzi.png");
     //c1->cd(2);
     //h_punzisig50_nEmjet_2->SetTitle("emcut2");
@@ -493,7 +496,7 @@ void punzi_3Dsig(TString inputfile = "DY_emjet.root", TString outputfile1 = "./p
     ROC_Mx50_2->Draw("CP*");
     ROC_Mx150_2->Draw("C*");
     gStyle->SetOptStat(0);
-    c1->SaveAs("cut1_cut2_ROC.png");
+    c1->SaveAs("cut1_cut2_ROC.pdf");
     */
     // c1->SaveAs("test.png");
 }

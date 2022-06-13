@@ -76,5 +76,5 @@ void ee_HT_alpha()
     h_Mx2_150_alpha[3]->DrawNormalized("hist same");
     h_DYHT_alpha[3]->DrawNormalized("hist same");
     gStyle->SetOptStat(0);
-    c1->SaveAs("differentcut_alpha3D.png");
+    c1->SaveAs("differentcut_alpha3D.pdf");
 }
