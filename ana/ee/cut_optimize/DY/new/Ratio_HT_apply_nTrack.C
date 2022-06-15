@@ -15,6 +15,125 @@
 #include "./../../../../lib/setNCUStyle.C"
 #include "./../../../../lib/Cross_section.h"
 using namespace std;
+
+//---------------------------------------
+// Define the HTWeight and Cross_section
+//---------------------------------------
+TFile *DYincli = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
+TFile *DYHT100 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
+TFile *DYHT200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
+TFile *DYHT400 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
+TFile *DYHT600 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
+TFile *DYHT800 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
+TFile *DYHT1200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
+TFile *DYHT2500 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
+
+TH1D *h_HT_eventCout = ((TH1D *)DYincli->Get("Event_Variable/h_HT_eventCout"));
+TH1D *DYHT100_sumevt = ((TH1D *)DYHT100->Get("Event_Variable/h_totevent"));
+TH1D *DYHT200_sumevt = ((TH1D *)DYHT200->Get("Event_Variable/h_totevent"));
+TH1D *DYHT400_sumevt = ((TH1D *)DYHT400->Get("Event_Variable/h_totevent"));
+TH1D *DYHT600_sumevt = ((TH1D *)DYHT600->Get("Event_Variable/h_totevent"));
+TH1D *DYHT800_sumevt = ((TH1D *)DYHT800->Get("Event_Variable/h_totevent"));
+TH1D *DYHT1200_sumevt = ((TH1D *)DYHT1200->Get("Event_Variable/h_totevent"));
+TH1D *DYHT2500_sumevt = ((TH1D *)DYHT2500->Get("Event_Variable/h_totevent"));
+
+int DYHT100_totevt = DYHT100_sumevt->Integral();
+int DYHT200_totevt = DYHT200_sumevt->Integral();
+int DYHT400_totevt = DYHT400_sumevt->Integral();
+int DYHT600_totevt = DYHT600_sumevt->Integral();
+int DYHT800_totevt = DYHT800_sumevt->Integral();
+int DYHT1200_totevt = DYHT1200_sumevt->Integral();
+int DYHT2500_totevt = DYHT2500_sumevt->Integral();
+
+int HT0_70_event = h_HT_eventCout->GetBinContent(2);
+int HT70_100_event = h_HT_eventCout->GetBinContent(3);
+int HT100_200_event = h_HT_eventCout->GetBinContent(4);
+int HT200_400_event = h_HT_eventCout->GetBinContent(5);
+int HT400_600_event = h_HT_eventCout->GetBinContent(6);
+int HT600_800_event = h_HT_eventCout->GetBinContent(7);
+int HT800_1200_event = h_HT_eventCout->GetBinContent(8);
+int HT1200_2500_event = h_HT_eventCout->GetBinContent(9);
+int HT2500_Inf_event = h_HT_eventCout->GetBinContent(10);
+
+double HT0Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT0CS / (HT0_70_event)) * 1000 * 2;
+double HT70Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT70CS / (HT70_100_event)) * 1000 * 2;
+double HT100Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT100CS / (DYHT100_totevt + HT100_200_event)) * 1000 * 2;
+double HT200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT200CS / (DYHT200_totevt + HT200_400_event)) * 1000 * 2;
+double HT400Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT400CS / (DYHT400_totevt + HT400_600_event)) * 1000 * 2;
+double HT600Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT600CS / (DYHT600_totevt + HT600_800_event)) * 1000 * 2;
+double HT800Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT800CS / (DYHT800_totevt + HT800_1200_event)) * 1000 * 2;
+double HT1200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT1200CS / (DYHT1200_totevt + HT1200_2500_event)) * 1000 * 2;
+double HT2500Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT2500CS / (DYHT2500_totevt + HT2500_Inf_event)) * 1000 * 2;
+
+//-------------------------------
+// Valid Function
+//-------------------------------
+void for_inclusive_DY_sample(float HT, int flavor, float hadronflavor, float tmp, double Weight, TH1D *h_tmp)
+{
+    if (HT < 70)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT0Weight);
+        }
+    }
+    else if (HT >= 70 && HT < 100)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT70Weight);
+        }
+    }
+    else if (HT >= 100 && HT < 200)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT100Weight);
+        }
+    }
+    else if (HT >= 200 && HT < 400)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT200Weight);
+        }
+    }
+    else if (HT >= 400 && HT < 600)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT400Weight);
+        }
+    }
+    else if (HT >= 600 && HT < 800)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT600Weight);
+        }
+    }
+    else if (HT >= 800 && HT < 1200)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT800Weight);
+        }
+    }
+    else if (HT >= 1200 && HT < 2500)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT1200Weight);
+        }
+    }
+    else if (HT >= 2500)
+    {
+        if (hadronflavor == flavor)
+        {
+            h_tmp->Fill(tmp, Weight * HT2500Weight);
+        }
+    }
+}
 void for_signalflavor_jet(int flavor, float hadronflavor, float tmp, double Weight, TH1D *h_tmp)
 {
     if (hadronflavor == flavor)
@@ -30,52 +149,18 @@ void for_doubleflavor_jet(int flavor1, int flavor2, int hadronflavor, float tmp,
     }
 }
 
-Double_t background(Double_t x)
-{
-    double par1 = -0.25263;
-    double frac = 0.999984584;
-    double par2 = -0.76;
-    double par3 = 0.9;
-    Double_t weight = ((TMath::Exp(par1 * x)) + frac * (1 + par2 * (x) + par3 * (2 * x * x - 1)));
-    return weight;
-}
-
 Double_t bjet_background(Double_t x)
 {
-    // double par0 = -2.86598e-01;
-    // double par1 = -2.44867e-01;
-    // double par2 = 4.58146e-03;
-    // double par3 = -4.71314e-02;
-    // double par4 = 7.56403e-04;
     double par0 = -0.203738;
     double par1 = -0.342211;
     double par2 = 0.00870887;
     double par3 = 0.0263022;
     double par4 = -0.00253953;
     Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 + par4 * x);
-    // double par0 = -0.36929055060873117;
-    // double par1 = -0.32227621971627424;
-    // double par2 = 0.0077448118765263176;
-    // double par3 = -0.0018266700500858249;
-    // double par4 = 0.016124941879979406;
-    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
-    // Double_t weight = ((TMath::Exp(par0 + par1 * x*x + par2 * x )) + par3 * x + par4);
     return weight;
 }
 Double_t cjet_background(Double_t x)
 {
-    // double par0 = -1.67992e-01;
-    // double par1 = -6.54792e-01;
-    // double par2 = 1.11827e-02;
-    // double par3 = -1.80089e-05;
-    // double par4 = 4.59055e-04;
-    // double par0 = 3.15257e-01;
-    // double par1 = -9.46826e-01;
-    // double par2 = 5.67463e-02;
-    // double par3 = -1.78427e-03;
-    // double par4 = 1.58125e-04;
-    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x)) + par4);
-    // Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 + par4 * x);
     double par0 = 2.88868e-01;
     double par1 = -9.26222e-01;
     double par2 = 5.29108e-02;
@@ -83,36 +168,10 @@ Double_t cjet_background(Double_t x)
     double par4 = -6.16131e-04;
     double par5 = 3.31859e-05;
     Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
-
-    // double par0 = 1.09070e-03;
-    // double par1 = 6.82074e+00;
-    // double par2 = -7.32735e-01;
-    // double par3 = 1.04707e-02;
-    // double par4 = 1.39590e-02;
-    // double par5 = -5.81667e-07;
-    // double par6 = 5.44654e-05;
-    // double par7 = -1.54867e-03;
-    // Double_t weight = par0 * TMath::Exp(par1 + par2 * x + par3 * x * x) + par4 + par5 * x * x * x + par6 * x * x + par7 * x;
     return weight;
 }
 Double_t lightjet_background(float x)
 {
-    // double par0 = 0.07484943356324936;
-    // double par1 = -0.6296413404697103;
-    // double par2 = 0.009827553465652823;
-    // double par3 = 2.776680997518533e-06;
-    // double par4 = 0.00032930153023851135;
-    // double par0 = 0.03802204142646496;
-    // double par1 = -0.5917973777165495;
-    // double par2 = -0.00012575990135907687;
-    // double par3 = -0.00012575990135907687;
-    // double par4 = 0.000326526663406202;
-    //double par0 = 0.08118787223744216;
-    //double par1 = -0.6362557021027739;
-    //double par2 = 0.01143712998969338;
-    //double par3 = 1.142707756756366e-05;
-    //double par4 = -0.00014995176601499091;
-    //Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 * x + par4);
     double par0 = 4.13657e-01;
     double par1 = -6.60339e-01;
     double par2 = 1.50643e-02;
@@ -120,21 +179,11 @@ Double_t lightjet_background(float x)
     double par4 = 2.23746e-05;
     double par5 = 5.61494e-06;
     Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
-    // Double_t weight = ((TMath::Exp(par0 + par1 * x )) + par2 * x + par3);
     return weight;
 }
 
 void Ratio_HT_apply_nTrack()
 {
-    TFile *DYincli = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_DYincli.root");
-    TFile *DYHT100 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht100.root");
-    TFile *DYHT200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht200.root");
-    TFile *DYHT400 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht400.root");
-    TFile *DYHT600 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht600.root");
-    TFile *DYHT800 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht800.root");
-    TFile *DYHT1200 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht1200.root");
-    TFile *DYHT2500 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/2016BKGMC/DY/ee_ht2500.root");
-
     //-------------
     // Open Tree
     //-------------
@@ -149,50 +198,9 @@ void Ratio_HT_apply_nTrack()
 
     TFile *DYfile = new TFile("./../ee_DY_emjet_half.root");
 
-    TH1D *h_HT_eventCout = ((TH1D *)DYincli->Get("Event_Variable/h_HT_eventCout"));
-    TH1D *DYHT100_sumevt = ((TH1D *)DYHT100->Get("Event_Variable/h_totevent"));
-    TH1D *DYHT200_sumevt = ((TH1D *)DYHT200->Get("Event_Variable/h_totevent"));
-    TH1D *DYHT400_sumevt = ((TH1D *)DYHT400->Get("Event_Variable/h_totevent"));
-    TH1D *DYHT600_sumevt = ((TH1D *)DYHT600->Get("Event_Variable/h_totevent"));
-    TH1D *DYHT800_sumevt = ((TH1D *)DYHT800->Get("Event_Variable/h_totevent"));
-    TH1D *DYHT1200_sumevt = ((TH1D *)DYHT1200->Get("Event_Variable/h_totevent"));
-    TH1D *DYHT2500_sumevt = ((TH1D *)DYHT2500->Get("Event_Variable/h_totevent"));
-
     TH1D *h_DY_bfake_rate = ((TH1D *)DYfile->Get("HT_bjet_fakeRate"));
     TH1D *h_DY_cfake_rate = ((TH1D *)DYfile->Get("HT_cjet_fakeRate"));
     TH1D *h_DY_lightfake_rate = ((TH1D *)DYfile->Get("HT_light_fakeRate"));
-
-    int DYHT100_totevt = DYHT100_sumevt->Integral();
-    int DYHT200_totevt = DYHT200_sumevt->Integral();
-    int DYHT400_totevt = DYHT400_sumevt->Integral();
-    int DYHT600_totevt = DYHT600_sumevt->Integral();
-    int DYHT800_totevt = DYHT800_sumevt->Integral();
-    int DYHT1200_totevt = DYHT1200_sumevt->Integral();
-    int DYHT2500_totevt = DYHT2500_sumevt->Integral();
-
-    int HT0_70_event = h_HT_eventCout->GetBinContent(2);
-    int HT70_100_event = h_HT_eventCout->GetBinContent(3);
-    int HT100_200_event = h_HT_eventCout->GetBinContent(4);
-    int HT200_400_event = h_HT_eventCout->GetBinContent(5);
-    int HT400_600_event = h_HT_eventCout->GetBinContent(6);
-    int HT600_800_event = h_HT_eventCout->GetBinContent(7);
-    int HT800_1200_event = h_HT_eventCout->GetBinContent(8);
-    int HT1200_2500_event = h_HT_eventCout->GetBinContent(9);
-    int HT2500_Inf_event = h_HT_eventCout->GetBinContent(10);
-
-    //--------------------
-    // Define the HTWeight
-    //--------------------
-
-    double HT0Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT0CS / (HT0_70_event)) * 1000 * 2;
-    double HT70Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT70CS / (HT70_100_event)) * 1000 * 2;
-    double HT100Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT100CS / (DYHT100_totevt + HT100_200_event)) * 1000 * 2;
-    double HT200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT200CS / (DYHT200_totevt + HT200_400_event)) * 1000 * 2;
-    double HT400Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT400CS / (DYHT400_totevt + HT400_600_event)) * 1000 * 2;
-    double HT600Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT600CS / (DYHT600_totevt + HT600_800_event)) * 1000 * 2;
-    double HT800Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT800CS / (DYHT800_totevt + HT800_1200_event)) * 1000 * 2;
-    double HT1200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT1200CS / (DYHT1200_totevt + HT1200_2500_event)) * 1000 * 2;
-    double HT2500Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT2500CS / (DYHT2500_totevt + HT2500_Inf_event)) * 1000 * 2;
 
     //-------------
     //  nTracks
@@ -446,6 +454,8 @@ void Ratio_HT_apply_nTrack()
     v_ht1200_Jetpartonflavor->clear();
     v_ht2500_Jetpartonflavor->clear();
 
+    bool debug = false;
+
     TTree *Treeh0;
     DYincli_2->GetObject("h2", Treeh0);
     Treeh0->SetBranchAddress("I_weight", &I_ht0_weight);
@@ -463,334 +473,40 @@ void Ratio_HT_apply_nTrack()
     for (int evt = 0; evt < Treeh0->GetEntries(); evt++)
     {
         Treeh0->GetEntry(evt);
-        if (I_ht0_weight != 1)
+        for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
         {
-            cout << "bug" << endl;
-        }
-        if (HT < 70)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
+            for_inclusive_DY_sample(HT, 5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], I_ht0_weight, h_DY_nTracks_bjet);
+            for_inclusive_DY_sample(HT, 4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], I_ht0_weight, h_DY_nTracks_cjet);
+            for_inclusive_DY_sample(HT, 0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], I_ht0_weight, h_DY_nTracks_light);
+            //----------------------------
+            // apply bin by bin fake rate
+            //----------------------------
+            double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1);
+            double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1);
+            double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1);
+            for_inclusive_DY_sample(HT, 5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight * I_ht0_weight, h_DY_nTracks_bjet_bybin_CR);
+            for_inclusive_DY_sample(HT, 4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight * I_ht0_weight, h_DY_nTracks_cjet_bybin_CR);
+            for_inclusive_DY_sample(HT, 0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight * I_ht0_weight, h_DY_nTracks_light_bybin_CR);
+            //----------------------------
+            // apply fit fake rate curve
+            //----------------------------
+            double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]);
+            double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]);
+            double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]);
+            for_inclusive_DY_sample(HT, 5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight * I_ht0_weight, h_DY_nTracks_bjet_CR);
+            for_inclusive_DY_sample(HT, 4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight * I_ht0_weight, h_DY_nTracks_cjet_CR);
+            for_inclusive_DY_sample(HT, 0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight * I_ht0_weight, h_DY_nTracks_light_CR);
+            //----------------------------
+            // Signal Region
+            //----------------------------
+            if ((*v_ht0_alpha)[i] < 0.15)
             {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT0Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT0Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT0Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT0Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT0Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT0Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT0Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT0Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT0Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT0Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT0Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT0Weight, h_DY_nTracks_light_cut);
-                }
+                for_inclusive_DY_sample(HT, 5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], I_ht0_weight, h_DY_nTracks_bjet_cut);
+                for_inclusive_DY_sample(HT, 4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], I_ht0_weight, h_DY_nTracks_cjet_cut);
+                for_inclusive_DY_sample(HT, 0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], I_ht0_weight, h_DY_nTracks_light_cut);
             }
         }
-        else if (HT >= 70 && HT < 100)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
-            {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT70Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT70Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT70Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT70Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT70Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT70Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT70Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT70Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT70Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT70Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT70Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT70Weight, h_DY_nTracks_light_cut);
-                }
-            }
-        }
-        else if (HT >= 100 && HT < 200)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
-            {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT100Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT100Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT100Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT100Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT100Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT100Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT100Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT100Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT100Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT100Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT100Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT100Weight, h_DY_nTracks_light_cut);
-                }
-            }
-        }
-        else if (HT >= 200 && HT < 400)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
-            {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT200Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT200Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT200Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT200Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT200Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT200Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT200Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT200Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT200Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT200Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT200Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT200Weight, h_DY_nTracks_light_cut);
-                }
-            }
-        }
-        else if (HT >= 400 && HT < 600)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
-            {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT400Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT400Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT400Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT400Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT400Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT400Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT400Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT400Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT400Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT400Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT400Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT400Weight, h_DY_nTracks_light_cut);
-                }
-            }
-        }
-        else if (HT >= 600 && HT < 800)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
-            {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT600Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT600Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT600Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT600Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT600Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT600Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT600Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT600Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT600Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT600Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT600Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT600Weight, h_DY_nTracks_light_cut);
-                }
-            }
-        }
-        else if (HT >= 800 && HT < 1200)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
-            {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT800Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT800Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT800Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT800Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT800Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT800Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT800Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT800Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT800Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT800Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT800Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT800Weight, h_DY_nTracks_light_cut);
-                }
-            }
-        }
-        else if (HT >= 1200 && HT < 2500)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
-            {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT1200Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT1200Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT1200Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT1200Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT1200Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT1200Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT1200Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT1200Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT1200Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT1200Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT1200Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT1200Weight, h_DY_nTracks_light_cut);
-                }
-            }
-        }
-        else if (HT >= 2500)
-        {
-            for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
-            {
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT2500Weight, h_DY_nTracks_bjet);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT2500Weight, h_DY_nTracks_cjet);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT2500Weight, h_DY_nTracks_light);
-                //----------------------------
-                // apply bin by bin fake rate
-                //----------------------------
-                double bin_bjetWeight = h_DY_bfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT2500Weight;
-                double bin_cjetWeight = h_DY_cfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT2500Weight;
-                double bin_lightjetWeight = h_DY_lightfake_rate->GetBinContent((*v_ht0_nTrack)[i] + 1) * HT2500Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_bjetWeight, h_DY_nTracks_bjet_bybin_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_cjetWeight, h_DY_nTracks_cjet_bybin_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], bin_lightjetWeight, h_DY_nTracks_light_bybin_CR);
-                //----------------------------
-                // apply fit fake rate curve
-                //----------------------------
-                double rootfit_bjetWeight = bjet_background((*v_ht0_nTrack)[i]) * HT2500Weight;
-                double rootfit_cjetWeight = cjet_background((*v_ht0_nTrack)[i]) * HT2500Weight;
-                double rootfit_lightjetWeight = lightjet_background((*v_ht0_nTrack)[i]) * HT2500Weight;
-                for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
-                for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
-                for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
-                //----------------------------
-                // Signal Region
-                //----------------------------
-                if ((*v_ht0_alpha)[i] < 0.15)
-                {
-                    for_signalflavor_jet(5, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT2500Weight, h_DY_nTracks_bjet_cut);
-                    for_signalflavor_jet(4, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT2500Weight, h_DY_nTracks_cjet_cut);
-                    for_signalflavor_jet(0, (*v_ht0_Jethadronflavor)[i], (*v_ht0_nTrack)[i], HT2500Weight, h_DY_nTracks_light_cut);
-                }
-            }
-        }
+
     } // End of DY_inclusive
     TTree *T_tree2;
     DYHT100_2->GetObject("h2", T_tree2);
@@ -835,6 +551,23 @@ void Ratio_HT_apply_nTrack()
             for_signalflavor_jet(5, (*v_ht100_Jethadronflavor)[i], (*v_ht100_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(4, (*v_ht100_Jethadronflavor)[i], (*v_ht100_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(0, (*v_ht100_Jethadronflavor)[i], (*v_ht100_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
+            //---------------------------------
+            // Debug light flavor
+            //---------------------------------
+            if (debug)
+            {
+                cout << debug << endl;
+                if ((*v_ht100_Jethadronflavor)[i] == 0 && (*v_ht100_nTrack)[i] == 1)
+                {
+                    if (rootfit_lightjetWeight > bin_lightjetWeight)
+                    {
+                        cout << "bug 100" << endl;
+                        cout << debug << endl;
+                        // cout << "i = " <<
+                    }
+                }
+            }
+
             //----------------------------
             // Signal Region
             //----------------------------
@@ -889,6 +622,21 @@ void Ratio_HT_apply_nTrack()
             for_signalflavor_jet(5, (*v_ht200_Jethadronflavor)[i], (*v_ht200_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(4, (*v_ht200_Jethadronflavor)[i], (*v_ht200_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(0, (*v_ht200_Jethadronflavor)[i], (*v_ht200_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
+            //---------------------------------
+            // Debug light flavor
+            //---------------------------------
+            if (debug)
+            {
+                if ((*v_ht200_Jethadronflavor)[i] == 0 && (*v_ht200_nTrack)[i] == 1)
+                {
+                    if (rootfit_lightjetWeight > bin_lightjetWeight)
+                    {
+                        cout << "bug 200" << endl;
+
+                        // cout << "i = " <<
+                    }
+                }
+            }
             //----------------------------
             // Signal Region
             //----------------------------
@@ -943,6 +691,21 @@ void Ratio_HT_apply_nTrack()
             for_signalflavor_jet(5, (*v_ht400_Jethadronflavor)[i], (*v_ht400_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(4, (*v_ht400_Jethadronflavor)[i], (*v_ht400_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(0, (*v_ht400_Jethadronflavor)[i], (*v_ht400_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
+            //---------------------------------
+            // Debug light flavor
+            //---------------------------------
+            if (debug)
+            {
+                if ((*v_ht400_Jethadronflavor)[i] == 0 && (*v_ht400_nTrack)[i] == 1)
+                {
+                    if (rootfit_lightjetWeight > bin_lightjetWeight)
+                    {
+                        cout << "bug 400" << endl;
+
+                        // cout << "i = " <<
+                    }
+                }
+            }
             //----------------------------
             // Signal Region
             //----------------------------
@@ -997,6 +760,21 @@ void Ratio_HT_apply_nTrack()
             for_signalflavor_jet(5, (*v_ht600_Jethadronflavor)[i], (*v_ht600_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(4, (*v_ht600_Jethadronflavor)[i], (*v_ht600_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(0, (*v_ht600_Jethadronflavor)[i], (*v_ht600_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
+            //---------------------------------
+            // Debug light flavor
+            //---------------------------------
+            if (debug)
+            {
+                if ((*v_ht600_Jethadronflavor)[i] == 0 && (*v_ht600_nTrack)[i] == 1)
+                {
+                    if (rootfit_lightjetWeight > bin_lightjetWeight)
+                    {
+                        cout << "bug 600" << endl;
+
+                        // cout << "i = " <<
+                    }
+                }
+            }
             //----------------------------
             // Signal Region
             //----------------------------
@@ -1051,6 +829,21 @@ void Ratio_HT_apply_nTrack()
             for_signalflavor_jet(5, (*v_ht800_Jethadronflavor)[i], (*v_ht800_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(4, (*v_ht800_Jethadronflavor)[i], (*v_ht800_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(0, (*v_ht800_Jethadronflavor)[i], (*v_ht800_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
+            //---------------------------------
+            // Debug light flavor
+            //---------------------------------
+            if (debug)
+            {
+                if ((*v_ht800_Jethadronflavor)[i] == 0 && (*v_ht800_nTrack)[i] == 1)
+                {
+                    if (rootfit_lightjetWeight > bin_lightjetWeight)
+                    {
+                        cout << "bug 800" << endl;
+
+                        // cout << "i = " <<
+                    }
+                }
+            }
             //----------------------------
             // Signal Region
             //----------------------------
@@ -1105,6 +898,22 @@ void Ratio_HT_apply_nTrack()
             for_signalflavor_jet(5, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(4, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(0, (*v_ht1200_Jethadronflavor)[i], (*v_ht1200_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
+
+            //---------------------------------
+            // Debug light flavor
+            //---------------------------------
+            if (debug)
+            {
+                if ((*v_ht1200_Jethadronflavor)[i] == 0 && (*v_ht1200_nTrack)[i] == 1)
+                {
+                    if (rootfit_lightjetWeight > bin_lightjetWeight)
+                    {
+                        cout << "bug 1200" << endl;
+
+                        // cout << "i = " <<
+                    }
+                }
+            }
             //----------------------------
             // Signal Region
             //----------------------------
@@ -1160,6 +969,21 @@ void Ratio_HT_apply_nTrack()
             for_signalflavor_jet(5, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_nTrack)[i], rootfit_bjetWeight, h_DY_nTracks_bjet_CR);
             for_signalflavor_jet(4, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_nTrack)[i], rootfit_cjetWeight, h_DY_nTracks_cjet_CR);
             for_signalflavor_jet(0, (*v_ht2500_Jethadronflavor)[i], (*v_ht2500_nTrack)[i], rootfit_lightjetWeight, h_DY_nTracks_light_CR);
+            //---------------------------------
+            // Debug light flavor
+            //---------------------------------
+            if (debug)
+            {
+                if ((*v_ht2500_Jethadronflavor)[i] == 0 && (*v_ht2500_nTrack)[i] == 1)
+                {
+                    if (rootfit_lightjetWeight > bin_lightjetWeight)
+                    {
+                        cout << "bug 2500" << endl;
+
+                        // cout << "i = " <<
+                    }
+                }
+            }
             //----------------------------
             // Signal Region
             //----------------------------
@@ -1179,7 +1003,7 @@ void Ratio_HT_apply_nTrack()
     h_DY_nTracks_light_cut->GetXaxis()->SetTitle("Jet track multiplicity");
     // h_DY_nTracks_light_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    //h_DY_nTracks_light_CR->SetTitle("light jet (DY)");
+    // h_DY_nTracks_light_CR->SetTitle("light jet (DY)");
     h_DY_nTracks_light_CR->GetYaxis()->SetTitle("nJet");
     h_DY_nTracks_light_CR->GetXaxis()->SetTitle("Jet track multiplicity");
     h_DY_nTracks_light_CR->GetXaxis()->SetTitleOffset(1.5);
@@ -1206,7 +1030,7 @@ void Ratio_HT_apply_nTrack()
     h_DY_nTracks_cjet_cut->GetXaxis()->SetTitle("Jet track multiplicity");
     // h_DY_nTracks_cjet_cut->GetXaxis()->SetTitleOffset(1.5);
 
-    //h_DY_nTracks_cjet_CR->SetTitle("cjet jet (DY)");
+    // h_DY_nTracks_cjet_CR->SetTitle("cjet jet (DY)");
     h_DY_nTracks_cjet_CR->GetYaxis()->SetTitle("nJet");
     h_DY_nTracks_cjet_CR->GetXaxis()->SetTitle("Jet track multiplicity");
     h_DY_nTracks_cjet_CR->GetXaxis()->SetTitleOffset(1.5);
@@ -1224,7 +1048,7 @@ void Ratio_HT_apply_nTrack()
     gPad->SetTopMargin(0 - 0.3);
     gPad->SetBottomMargin(0.02);
     gPad->SetRightMargin(0.04);
-    TH1D *Ratioresult = (TH1D *)h_DY_nTracks_bjet_CR->Clone("Ratioresult");
+    TH1D *Ratioresult = (TH1D *)h_DY_nTracks_light_CR->Clone("Ratioresult");
     h_DY_nTracks_bjet_CR->SetLabelSize(0);
     h_DY_nTracks_cjet_CR->SetLabelSize(0);
     h_DY_nTracks_light_CR->SetLabelSize(0);
@@ -1254,7 +1078,7 @@ void Ratio_HT_apply_nTrack()
     l0->Draw();
     gStyle->SetOptStat(0);
 
-    Ratioresult->Divide(h_DY_nTracks_bjet_CR, h_DY_nTracks_bjet_cut);
+    Ratioresult->Divide(h_DY_nTracks_light_CR, h_DY_nTracks_light_cut);
     Ratioresult->SetLineWidth(2);
     c1->cd(2);
     gPad->SetRightMargin(0.04);
@@ -1283,7 +1107,7 @@ void Ratio_HT_apply_nTrack()
             ratio_FM = 0;
             Error = 0;
         }
-        cout << "Error = " << Error << endl;
+
         // cout << " i = " << i << " fit_content = " << fit_content << "MC_content = " << MC_content << " ratio_FM =  " << ratio_FM << endl;
         Ratioresult->SetBinContent(i, ratio_FM);
         Ratioresult->SetBinError(i, Error);
