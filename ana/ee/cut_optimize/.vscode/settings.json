@@ -16,6 +16,13 @@
         "cmath": "cpp",
         "ee_HT_produce_half.C": "cpp",
         "DY_rootfit.C": "cpp",
-        "Ratio_HT_apply_JetPt.C": "cpp"
+        "Ratio_HT_apply_JetPt.C": "cpp",
+        "iostream": "cpp",
+        "Ratio_HT_apply_nTrack.C": "cpp",
+        "ostream": "cpp",
+        "new": "cpp",
+        "ee_Top_produce_half.C": "cpp",
+        "ee_var.C": "cpp",
+        "Ratio_Top_apply_nTrack.C": "cpp"
     }
 }

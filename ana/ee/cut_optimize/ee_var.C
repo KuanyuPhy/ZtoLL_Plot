@@ -16,11 +16,11 @@
 #include "./../../lib/Cross_section.h"
 #include "./../../lib/setNCUStyle.C"
 using namespace std;
-void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "./ee_DY_emjet.root")
+void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile1 = "./ee_DY_emjet.root")
 {
     setNCUStyle(true);
     TFile *DYprocess = TFile::Open(inputfile);
-    TFile *Topprocess = new TFile("./top/ee_Top_emjet.root");
+    TFile *Topprocess = new TFile("./top/ee_Top_emjet_half.root");
     TFile *Dibosonprocess = new TFile("./diboson/ee_Diboson_emjet.root");
     TFile *Tribosonprocess = new TFile("./triboson/ee_Triboson_emjet.root");
 
@@ -61,7 +61,6 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "
     TH1D *HT_bjet_fakeRate = ((TH1D *)DYprocess->Get("HT_bjet_fakeRate"));
 
     // TH1D *HT_exclu_bjet_fakeRate = ((TH1D *)DYprocess->Get("HT_exclu_bjet_fakeRate"));
-    TH1D *HT_heavy_nogluon_fakeRate = ((TH1D *)DYprocess->Get("HT_heavy_nogluon_fakeRate"));
     TH1D *HT_light_fakeRate = ((TH1D *)DYprocess->Get("HT_light_fakeRate"));
     TH1D *Top_fakeRate = ((TH1D *)Topprocess->Get("Top_fakeRate"));
     TH1D *Top_heavy_fakeRate = ((TH1D *)Topprocess->Get("Top_heavy_fakeRate"));
@@ -127,7 +126,6 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "
     TopnTracks_cut->SetLineWidth(2);
 
     HT_fakeRate->SetLineWidth(2);
-    HT_heavy_nogluon_fakeRate->SetLineWidth(2);
     HT_heavy_fakeRate->SetLineWidth(2);
     HT_light_fakeRate->SetLineWidth(2);
     Top_fakeRate->SetLineWidth(2);
@@ -146,8 +144,6 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "
     Sig1_3Dsig->SetLineWidth(2);
     Sig50_3Dsig->SetLineWidth(2);
     Sig150_3Dsig->SetLineWidth(2);
-
-    // HT_heavy_nogluon_fakeRate->Draw();
 
     DYmet->SetFillColor(kOrange - 3);
     DYnTracks->SetFillColor(kOrange - 3);
@@ -234,7 +230,6 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "
 
     DYnTracks_heavy_nogluon->SetLineColor(kAzure + 7);
     DYnTracks_heavy_nogluon_cut->SetLineColor(kAzure + 7);
-    HT_heavy_nogluon_fakeRate->SetLineColor(kAzure + 7);
     DYnTracks_heavy_nogluon->SetFillColor(kAzure + 7);
     DYnTracks_heavy_nogluon_cut->SetFillColor(kAzure + 7);
     Tribosonmet->SetFillColor(kMagenta - 3);
@@ -289,8 +284,7 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "
     //------------------
     //     fake rate
     //------------------
-    // 1. no flavor
-    
+/*
     HT_fakeRate->GetYaxis()->SetTitle("fake rate");
     HT_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
     HT_fakeRate->Draw();
@@ -302,6 +296,7 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "
     l0->AddEntry(Top_fakeRate, "Top process", "l");
     l0->Draw();
     c1->SaveAs("fakerate.png");
+*/
     // 2. heavy light flavor
     /*
     c1->Divide(2, 1);
@@ -327,46 +322,51 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "
     l2->AddEntry(HT_light_fakeRate, "Drell-Yan light", "l");
     l2->AddEntry(Top_light_fakeRate, "Top process light", "l");
     l2->Draw();
-    c1->SaveAs("h_l_fakerate.png");
+    //c1->SaveAs("h_l_fakerate.png");
     */
-    /*
+    
     // 3. b, c light flavor
     c1->Divide(3, 1);
     c1->cd(1);
+    HT_bjet_fakeRate->SetTitle("fake rate vs track multiplicity");
     HT_bjet_fakeRate->GetYaxis()->SetTitle("fake rate");
     HT_bjet_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
     HT_bjet_fakeRate->Draw();
     Top_bjet_fakeRate->Draw("same");
     TLegend *l2 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    l2->SetHeader("b flavor");
     l2->SetBorderSize(0);
     l2->SetTextSize(0.03);
-    l2->AddEntry(HT_bjet_fakeRate, "Drell-Yan b jet", "l");
-    l2->AddEntry(Top_bjet_fakeRate, "Top process b jet", "l");
+    l2->AddEntry(HT_bjet_fakeRate, "Drell-Yan", "l");
+    l2->AddEntry(Top_bjet_fakeRate, "Top process", "l");
     l2->Draw();
     c1->cd(2);
+    HT_cjet_fakeRate->SetTitle("fake rate vs track multiplicity");
     HT_cjet_fakeRate->GetYaxis()->SetTitle("fake rate");
     HT_cjet_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
     HT_cjet_fakeRate->Draw();
     Top_cjet_fakeRate->Draw("same");
     TLegend *l3 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    l3->SetHeader("c flavor");
     l3->SetBorderSize(0);
     l3->SetTextSize(0.03);
-    l3->AddEntry(HT_cjet_fakeRate, "Drell-Yan c jet", "l");
-    l3->AddEntry(Top_cjet_fakeRate, "Top process c jet", "l");
+    l3->AddEntry(HT_cjet_fakeRate, "Drell-Yan", "l");
+    l3->AddEntry(Top_cjet_fakeRate, "Top process", "l");
     l3->Draw();
     c1->cd(3);
+    HT_light_fakeRate->SetTitle("fake rate vs track multiplicity");
     HT_light_fakeRate->GetYaxis()->SetTitle("fake rate");
     HT_light_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
     HT_light_fakeRate->Draw();
     Top_light_fakeRate->Draw("same");
     TLegend *l4 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    l4->SetHeader("light flavor");
     l4->SetBorderSize(0);
     l4->SetTextSize(0.03);
-    l4->AddEntry(HT_light_fakeRate, "Drell-Yan light", "l");
-    l4->AddEntry(Top_light_fakeRate, "Top process light", "l");
+    l4->AddEntry(HT_light_fakeRate, "Drell-Yan", "l");
+    l4->AddEntry(Top_light_fakeRate, "Top process", "l");
     l4->Draw();
-    */
-    
+       
     /*
     DYnTracks->GetXaxis()->SetTitle("Jet track multiplicity");
     DYnTracks->GetYaxis()->SetTitle("Normalized");
@@ -409,12 +409,10 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet.root", TString outputfile1 = "
     */
     /*
     HT_heavy_fakeRate->Draw(" ");
-    HT_heavy_nogluon_fakeRate->Draw("same");
     Top_heavy_fakeRate->Draw("same");
     TLegend *l2 = new TLegend(0.60, 0.55, 0.90, 0.90);
     l2->SetBorderSize(0);
     l2->SetTextSize(0.03);
-    l2->AddEntry(HT_heavy_nogluon_fakeRate, "Drell-Yan heavy (without gluon)", "l");
     l2->AddEntry(HT_heavy_fakeRate, "Drell-Yan heavy", "l");
     l2->AddEntry(Top_heavy_fakeRate, "Top process heavy", "l");
     // l1->AddEntry(DibosonnTracks, "Diboson process", "l");

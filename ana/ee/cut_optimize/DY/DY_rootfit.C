@@ -89,10 +89,10 @@ void DY_rootfit()
     h_fake_rate->SetLineWidth(3);
     // h_fake_rate->Draw();
     //  gPad->SetLogy();
-    // TF1 *f1 = new TF1("f1", rootfitcPDF, 1., binmax, npar);
-    TF1 *f2 = new TF1("f2", "TMath::Exp(4.13657e-01+ -6.60339e-01 * x + 1.50643e-02 * x * x + -2.92786e-04 * x * x * x) + 2.23573e-05 + 5.61427e-06 * x", 1, 50);
-    f2->SetLineWidth(2);
-    f2->SetLineColor(kGreen-4);
+    TF1 *f1 = new TF1("f1", rootfitcPDF, 1., binmax, npar);
+    // TF1 *f2 = new TF1("f2", "TMath::Exp(4.13657e-01+ -6.60339e-01 * x + 1.50643e-02 * x * x + -2.92786e-04 * x * x * x) + 2.23573e-05 + 5.61427e-06 * x", 1, 50);
+    // f2->SetLineWidth(2);
+    // f2->SetLineColor(kGreen - 4);
 
     // f1->SetParameters(3.15257e-01, -9.46826e-01, 5.67463e-02, -1.78427e-03, 1.58125e-04);
     // f1->SetParameters(4.13657e-01, -6.60339e-01, 1.50643e-02,-2.92786e-04, 2.23746e-05,5.61494e-06);
@@ -106,13 +106,13 @@ void DY_rootfit()
     gPad->SetRightMargin(0.04);
     h_fake_rate->SetLabelSize(0);
     h_fake_rate->Draw();
-    f2->Draw("same");
-    // h_fake_rate->Fit("f1", "MFR+");
+    // f2->Draw("same");
+    h_fake_rate->Fit("f1", "MFR+");
     //  h_fake_rate->Fit("f2","FR+");
-    // cout << "chi value: " << f1->GetChisquare() << endl;
-    // cout << "NDF : " << f1->GetNDF() << endl;
+    cout << "chi value: " << f1->GetChisquare() << endl;
+    cout << "NDF : " << f1->GetNDF() << endl;
     //  cout << "NDF : " << h_fake_rate->GetNbinsX() << endl;
-    // cout << "chi square: " << f1->GetChisquare() / f1->GetNDF() << endl;
+    cout << "chi square: " << f1->GetChisquare() / f1->GetNDF() << endl;
     gStyle->SetOptStat(0);
     gStyle->SetOptFit(1111);
 
@@ -120,15 +120,24 @@ void DY_rootfit()
     RatioTop->Sumw2();
     for (int i = 1; i <= binmax; i++)
     {
-        float points = h_fake_rate->GetBinContent(i);
+        float points = h_fake_rate->GetBinContent(i + 1);
         float fitresult = lightjet_background(i);
+        double Error = sqrt(pow(sqrt(fitresult) / fitresult, 2) + pow(sqrt(points) / points, 2));
+        // cout << "Error = " << Error << endl;
         double ratio = fitresult / points;
+        if (isnan(abs(Error)) || points == 0)
+        {
+            Error = 0.;
+            // cout << "points = " << points << endl;
+            // cout << "fitresult = " << fitresult << endl;
+        }
         if (points == 0)
         {
             ratio = 0;
         }
         // cout << "i = " << i << " ratio = " << ratio << " points = " << points << endl;
-        RatioTop->SetBinContent(i, ratio);
+        RatioTop->SetBinContent(i + 1, ratio);
+        // RatioTop->SetBinError(i, Error);
     }
 
     c1->cd(2);
@@ -142,5 +151,4 @@ void DY_rootfit()
     RatioTop->GetYaxis()->SetTitle("Fit / points");
     RatioTop->GetXaxis()->SetTitle("nTracks");
     RatioTop->Draw();
-    
 }
