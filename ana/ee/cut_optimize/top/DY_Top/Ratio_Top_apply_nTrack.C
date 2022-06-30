@@ -807,12 +807,13 @@ void Ratio_Top_apply_nTrack()
     h_Top_nTracks_light_CR->SetLabelSize(0);
     h_Top_nTracks_light_CR->GetXaxis()->SetRangeUser(0, lightbinmax);
     //h_Top_nTracks_light_CR->Draw("hist e ");
-    h_Top_nTracks_cjet_cut->Draw("hist e same");
-    h_Top_nTracks_cjet_bybin_CR->Draw("hist e  same");
+    h_Top_nTracks_light_bybin_CR->Draw("hist e  same");
+    h_Top_nTracks_light_cut->Draw("hist e same");
+    
     
     
     TLegend *l0 = new TLegend(0.45, 0.4, 0.80, 0.80);
-    l0->SetHeader("Top process (c Jet)");
+    l0->SetHeader("Top process (light Jet)");
     l0->SetBorderSize(0);
     l0->SetTextSize(0.03);
     l0->AddEntry(h_Top_nTracks_bjet_cut, "Top SR", "l");

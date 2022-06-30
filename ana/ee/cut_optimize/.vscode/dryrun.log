@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/kuanyu/Documents/CMS/ZtoLL_Plot/ana/ee/cut_optimize'
+ 
+rm -f *.o ee_HT_inclusive *~ src/*.o;  echo "Clear.."
+ 
+c++ -O2 -Wall -fPIC -pthread -std=c++17 -m64 -I/home/kuanyu/root7/root-6.26.04_build/include -pthread -std=c++17 -m64 -I/home/kuanyu/root7/root-6.26.04_build/include   -c -o ee_HT_inclusive.o ee_HT_inclusive.C
+cc -O2 -m64  ee_HT_inclusive.o   -o ee_HT_inclusive
+make: Leaving directory '/home/kuanyu/Documents/CMS/ZtoLL_Plot/ana/ee/cut_optimize'
+ 

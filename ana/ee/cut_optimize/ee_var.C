@@ -77,6 +77,18 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     TH1D *Top_nTracks_cjet = ((TH1D *)Topprocess->Get("h_Top_nTracks_cjet"));
     TH1D *Top_nTracks_cjet_cut = ((TH1D *)Topprocess->Get("h_Top_nTracks_cjet_cut"));
 
+    // For light jet
+    TH1D *h_DY_alpha3D_light = ((TH1D *)DYprocess->Get("h_DY_alpha3D_light"));
+    TH1D *h_Top_alpha3D_light = ((TH1D *)Topprocess->Get("h_Top_alpha3D_light"));
+
+    TH1D *HT_bjet_PtfakeRate = ((TH1D *)DYprocess->Get("HT_bjet_PtfakeRate"));
+    TH1D *HT_cjet_PtfakeRate = ((TH1D *)DYprocess->Get("HT_cjet_PtfakeRate"));
+    TH1D *HT_light_PtfakeRate = ((TH1D *)DYprocess->Get("HT_light_PtfakeRate"));
+    TH1D *HT_heavy_PtfakeRate = ((TH1D *)DYprocess->Get("HT_heavy_PtfakeRate"));
+    TH1D *Top_bjet_PtfakeRate = ((TH1D *)Topprocess->Get("Top_bjetPT_fakeRate"));
+    TH1D *Top_cjet_PtfakeRate = ((TH1D *)Topprocess->Get("Top_cjetPT_fakeRate"));
+    TH1D *Top_light_PtfakeRate = ((TH1D *)Topprocess->Get("Top_lightPT_fakeRate"));
+    TH1D *Top_heavy_PtfakeRate = ((TH1D *)Topprocess->Get("Top_heavyPT_fakeRate"));
     // For 2D IP
     TH1D *HT_IP2D = ((TH1D *)DYprocess->Get("h_DY_IP2D"));
     TH1D *Top_IP2D = ((TH1D *)Topprocess->Get("h_Top_IP2D"));
@@ -145,12 +157,16 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     Sig50_3Dsig->SetLineWidth(2);
     Sig150_3Dsig->SetLineWidth(2);
 
+    h_DY_alpha3D_light->SetLineWidth(2);
+    h_Top_alpha3D_light->SetLineWidth(2);
+
     DYmet->SetFillColor(kOrange - 3);
     DYnTracks->SetFillColor(kOrange - 3);
     DYnTracks_heavy->SetFillColor(kOrange - 3);
     DYnTracks_light->SetFillColor(kOrange - 3);
     DYnTracks_heavy_cut->SetFillColor(kOrange - 3);
     DYnTracks_light_cut->SetFillColor(kOrange - 3);
+    h_DY_alpha3D_light->SetLineColor(kOrange - 3);
     DYnTracks_cut->SetFillColor(kOrange - 3);
     HT_IP2D->SetFillColor(kOrange - 3);
     // HT_3Dsig->SetFillColor(kOrange - 3);
@@ -182,6 +198,10 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     HT_heavy_fakeRate->SetLineColor(kOrange - 3);
     HT_light_fakeRate->SetLineColor(kOrange - 3);
     DYnTracks->SetLineColor(kOrange - 3);
+    HT_bjet_PtfakeRate->SetLineColor(kOrange - 3);
+    HT_cjet_PtfakeRate->SetLineColor(kOrange - 3);
+    HT_light_PtfakeRate->SetLineColor(kOrange - 3);
+    HT_heavy_PtfakeRate->SetLineColor(kOrange - 3);
     Topmet->SetFillColor(kGreen + 3);
     TopnTracks->SetFillColor(kGreen + 3);
     TopnTracks_heavy->SetFillColor(kGreen + 3);
@@ -189,6 +209,7 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     TopnTracks_heavy_cut->SetFillColor(kGreen + 3);
     TopnTracks_light_cut->SetFillColor(kGreen + 3);
     TopnTracks_cut->SetFillColor(kGreen + 3);
+    h_Top_alpha3D_light->SetLineColor(kGreen + 3);
     Top_IP2D->SetFillColor(kGreen + 3);
     // Top_3Dsig->SetFillColor(kGreen + 3);
     Topmet->SetFillStyle(3001);
@@ -204,8 +225,10 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     TopnTracks_heavy->SetLineColor(kGreen + 3);
     Top_bjet_fakeRate->SetLineColor(kGreen + 3);
     Top_cjet_fakeRate->SetLineColor(kGreen + 3);
+    Top_cjet_PtfakeRate->SetLineColor(kGreen + 3);
     Top_nTracks_cjet->SetLineColor(kGreen + 3);
     Top_nTracks_cjet_cut->SetLineColor(kGreen + 3);
+
     // Top_exclu_bjet_fakeRate->SetLineColor(kGreen + 3);
     TopnTracks_light->SetLineColor(kGreen + 3);
     TopnTracks_heavy_cut->SetLineColor(kGreen + 3);
@@ -213,7 +236,9 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     Top_fakeRate->SetLineColor(kGreen + 3);
     Top_heavy_fakeRate->SetLineColor(kGreen + 3);
     Top_bjet_fakeRate->SetLineColor(kGreen + 3);
+    Top_bjet_PtfakeRate->SetLineColor(kGreen + 3);
     Top_light_fakeRate->SetLineColor(kGreen + 3);
+    Top_light_PtfakeRate->SetLineColor(kGreen + 3);
     Top_IP2D->SetLineColor(kGreen + 3);
     Top_3Dsig->SetLineColor(kGreen + 3);
 
@@ -251,6 +276,22 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     TribosonnTracks->SetFillStyle(3001);
 
     auto c1 = new TCanvas("c1", "", 1000, 1000);
+    //-----------------
+    // alpha 3D
+    //-----------------
+    h_DY_alpha3D_light->GetYaxis()->SetTitle("nJets/Normalized");
+    h_DY_alpha3D_light->GetXaxis()->SetTitle("#alpha_{3D}");
+    h_DY_alpha3D_light->DrawNormalized("hist same");
+    h_Top_alpha3D_light->DrawNormalized("hist same");
+    TLegend *l1 = new TLegend(0.60, 0.55, 0.90, 0.90);
+    l1->SetHeader("Cut on barrel region");
+    l1->SetBorderSize(0);
+    l1->SetTextSize(0.03);
+    l1->AddEntry(h_DY_alpha3D_light, "Drell-Yan", "l");
+    l1->AddEntry(h_Top_alpha3D_light, "Top process", "l");
+    l1->Draw();
+
+
     /*
     //--------------
     //     3DSig
@@ -284,19 +325,19 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     //------------------
     //     fake rate
     //------------------
-/*
-    HT_fakeRate->GetYaxis()->SetTitle("fake rate");
-    HT_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
-    HT_fakeRate->Draw();
-    Top_fakeRate->Draw("same");
-    TLegend *l0 = new TLegend(0.60, 0.55, 0.90, 0.90);
-    l0->SetBorderSize(0);
-    l0->SetTextSize(0.03);
-    l0->AddEntry(HT_fakeRate, "Drell-Yan", "l");
-    l0->AddEntry(Top_fakeRate, "Top process", "l");
-    l0->Draw();
-    c1->SaveAs("fakerate.png");
-*/
+    /*
+        HT_fakeRate->GetYaxis()->SetTitle("fake rate");
+        HT_fakeRate->GetXaxis()->SetTitle("Jet track multiplicity");
+        HT_fakeRate->Draw();
+        Top_fakeRate->Draw("same");
+        TLegend *l0 = new TLegend(0.60, 0.55, 0.90, 0.90);
+        l0->SetBorderSize(0);
+        l0->SetTextSize(0.03);
+        l0->AddEntry(HT_fakeRate, "Drell-Yan", "l");
+        l0->AddEntry(Top_fakeRate, "Top process", "l");
+        l0->Draw();
+        c1->SaveAs("fakerate.png");
+    */
     // 2. heavy light flavor
     /*
     c1->Divide(2, 1);
@@ -324,8 +365,9 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     l2->Draw();
     //c1->SaveAs("h_l_fakerate.png");
     */
-    
+
     // 3. b, c light flavor
+    /*
     c1->Divide(3, 1);
     c1->cd(1);
     HT_bjet_fakeRate->SetTitle("fake rate vs track multiplicity");
@@ -366,7 +408,19 @@ void ee_var(TString inputfile = "./DY/ee_DY_emjet_half.root", TString outputfile
     l4->AddEntry(HT_light_fakeRate, "Drell-Yan", "l");
     l4->AddEntry(Top_light_fakeRate, "Top process", "l");
     l4->Draw();
-       
+    */
+    /*
+    c1->cd(4);
+    Top_heavy_PtfakeRate->SetLineWidth(2);
+    HT_heavy_PtfakeRate->SetLineWidth(2);
+    Top_heavy_PtfakeRate->SetTitle("heavy flavor (b, c)");
+    //Top_heavy_PtfakeRate->SetTitle("fake rate vs track multiplicity");
+    Top_heavy_PtfakeRate->GetYaxis()->SetTitle("fake rate");
+    Top_heavy_PtfakeRate->GetXaxis()->SetTitle("Jet Pt");
+    HT_heavy_PtfakeRate->Draw();
+    Top_heavy_PtfakeRate->Draw("same");
+    */
+
     /*
     DYnTracks->GetXaxis()->SetTitle("Jet track multiplicity");
     DYnTracks->GetYaxis()->SetTitle("Normalized");

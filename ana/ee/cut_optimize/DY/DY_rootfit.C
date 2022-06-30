@@ -23,7 +23,7 @@ using namespace std;
 int npar = 6;
 Double_t rootfitPDF(double *x, double *par)
 {
-    return ((TMath::Exp(par[0] + par[1] * x[0] + par[2] * x[0] * x[0])) + par[3] + par[4] * x[0]);
+    return ((TMath::Exp(par[0] + par[1] * x[0] * x[0] + par[2] * x[0])) + par[3] + par[4] * x[0]);
     // return ((TMath::Exp(par[0] + par[1] * x[0] + par[2] * x[0] * x[0])) + par[3] );
     // return ((TMath::Exp(par[0] + par[1] * x[0]* x[0])) + par[2] * x[0] * x[0] + par[3] * x[0] + par[4]);
     // return ((TMath::Exp(par[0] + par[1] * x[0])) + (1 + par[2] * x[0] + par[3] * (2 * x[0] * x[0] - 1)));
@@ -32,41 +32,39 @@ Double_t rootfitPDF(double *x, double *par)
 }
 Double_t rootfitcPDF(double *x, double *par)
 {
-    // Double_t fit_val = (TMath::Exp(par[0] + par[1] * x[0] + par[2] * x[0] * x[0])) + par[3] + par[4] * x[0] + par[5] * x[0];
-    Double_t fit_val = (TMath::Exp(par[0] + par[1] * x[0] + par[2] * x[0] * x[0] + par[3] * x[0] * x[0] * x[0])) + par[4] + par[5] * x[0];
+    Double_t fit_val = ((TMath::Exp(par[0] + par[1] * x[0] + par[2] * x[0] * x[0] + par[3] * x[0] * x[0] * x[0])) + par[4] + par[5] * x[0]);
+    // Double_t fit_val = (TMath::Exp(par[0] + par[1] * x[0] + par[2] * x[0] * x[0] + par[3] * x[0] * x[0] * x[0])) + par[4] + par[5] * x[0];
     return fit_val;
 }
 Double_t bjet_background(Double_t x)
 {
-    double par0 = -0.203738;
-    double par1 = -0.342211;
-    double par2 = 0.00870887;
-    double par3 = 0.0263022;
-    double par4 = -0.00253953;
-    Double_t weight = ((TMath::Exp(par0 + par1 * x + par2 * x * x)) + par3 + par4 * x);
+    double par0 = -2.20561e-01;
+    double par1 = -3.35302e-01;
+    double par2 = 1.48207e-02;
+    double par3 = -6.83255e-04;
+    double par4 = 2.13010e-03;
+    Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4);
     return weight;
 }
 Double_t cjet_background(Double_t x)
 {
-    double par0 = 2.88868e-01;
-    double par1 = -9.26222e-01;
-    double par2 = 5.29108e-02;
-    double par3 = -1.49987e-03;
-    double par4 = -6.16131e-04;
-    double par5 = 3.31859e-05;
-    Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
-
+    double par0 = 3.20915e-01;
+    double par1 = -9.51465e-01;
+    double par2 = 5.77686e-02;
+    double par3 = -1.85558e-03;
+    double par4 = 1.96915e-04;
+    Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4);
     return weight;
 }
 Double_t lightjet_background(float x)
 {
 
-    double par0 = 4.13657e-01;
-    double par1 = -6.60339e-01;
-    double par2 = 1.50643e-02;
-    double par3 = -2.92786e-04;
-    double par4 = 2.23573e-05;
-    double par5 = 5.61427e-06;
+    double par0 = 4.34949e-01;
+    double par1 = -6.81086e-01;
+    double par2 = 2.04019e-02;
+    double par3 = -7.37354e-04;
+    double par4 = 6.43088e-04;
+    double par5 = -6.73695e-06;
     Double_t weight = (TMath::Exp(par0 + par1 * x + par2 * x * x + par3 * x * x * x) + par4 + par5 * x);
     return weight;
 }
@@ -89,15 +87,16 @@ void DY_rootfit()
     h_fake_rate->SetLineWidth(3);
     // h_fake_rate->Draw();
     //  gPad->SetLogy();
-    TF1 *f1 = new TF1("f1", rootfitcPDF, 1., binmax, npar);
+    TF1 *f1 = new TF1("f1", rootfitcPDF, 1., 50, npar);
+    f1->SetParameters(4.34949e-01, -6.81086e-01, 2.04019e-02, -7.37352e-04, 6.43091e-04, -6.73691e-06);
     // TF1 *f2 = new TF1("f2", "TMath::Exp(4.13657e-01+ -6.60339e-01 * x + 1.50643e-02 * x * x + -2.92786e-04 * x * x * x) + 2.23573e-05 + 5.61427e-06 * x", 1, 50);
     // f2->SetLineWidth(2);
     // f2->SetLineColor(kGreen - 4);
-
-    // f1->SetParameters(3.15257e-01, -9.46826e-01, 5.67463e-02, -1.78427e-03, 1.58125e-04);
-    // f1->SetParameters(4.13657e-01, -6.60339e-01, 1.50643e-02,-2.92786e-04, 2.23746e-05,5.61494e-06);
-    // TF1 *f1 = new TF1("f1", "expo", 1.,10);
-    // TF1 *f2 = new TF1("f2", "pol", 10, binmax);
+    // f1->SetParameters(-4.06683e-01, -2.27664e-01, -9.29217e-03, 3.16429e-04);
+    // f1->SetParameters(-4.50952e-01, -5.21077e-01, -6.54527e-04, -3.95195e-04, 6.54262e-04,-1.35057e-05);
+    //  f1->SetParameters(4.13657e-01, -6.60339e-01, 1.50643e-02,-2.92786e-04, 2.23746e-05,5.61494e-06);
+    //  TF1 *f1 = new TF1("f1", "expo", 1.,10);
+    //  TF1 *f2 = new TF1("f2", "pol", 10, binmax);
     auto c1 = new TCanvas("c1", "", 700, 700);
     c1->Divide(1, 2, 0.01, 0);
     c1->cd(1);
@@ -115,12 +114,18 @@ void DY_rootfit()
     cout << "chi square: " << f1->GetChisquare() / f1->GetNDF() << endl;
     gStyle->SetOptStat(0);
     gStyle->SetOptFit(1111);
-
-    TH1D *RatioTop = new TH1D("RatioTop", "", 50, 0, 50);
+    const Int_t XBINS = 20;
+    Double_t xEdges[XBINS + 1] = {1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12., 13., 14., 15., 16.,
+                                  17., 18., 19., 20., 50.};
+    TH1D *RatioTop = new TH1D("RatioTop", "", XBINS, xEdges);
     RatioTop->Sumw2();
-    for (int i = 1; i <= binmax; i++)
+    for (int i = 1; i <= 50; i++)
     {
-        float points = h_fake_rate->GetBinContent(i + 1);
+        if (i > 20)
+        {
+            float points = h_fake_rate->GetBinContent(20);
+        }
+        float points = h_fake_rate->GetBinContent(i);
         float fitresult = lightjet_background(i);
         double Error = sqrt(pow(sqrt(fitresult) / fitresult, 2) + pow(sqrt(points) / points, 2));
         // cout << "Error = " << Error << endl;
@@ -136,7 +141,7 @@ void DY_rootfit()
             ratio = 0;
         }
         // cout << "i = " << i << " ratio = " << ratio << " points = " << points << endl;
-        RatioTop->SetBinContent(i + 1, ratio);
+        RatioTop->SetBinContent(i, ratio);
         // RatioTop->SetBinError(i, Error);
     }
 

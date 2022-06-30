@@ -23,6 +23,17 @@
         "new": "cpp",
         "ee_Top_produce_half.C": "cpp",
         "ee_var.C": "cpp",
-        "Ratio_Top_apply_nTrack.C": "cpp"
-    }
+        "Ratio_Top_apply_nTrack.C": "cpp",
+        "Ratio_Top_apply_JetPt.C": "cpp",
+        "ana_fasya.C": "cpp",
+        "ee_HT_var_plot.C": "cpp",
+        "ee_diboson_produce.C": "cpp",
+        "ee_Triboson_produce.C": "cpp",
+        "ee_met.C": "cpp",
+        "ee_HT_half.C": "cpp",
+        "ee_HT_nem.C": "cpp",
+        "ee_HT_inclusive.C": "cpp",
+        "ana_Ztoee_trk.C": "cpp"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools"
 }

@@ -10,23 +10,23 @@
 #include <TStyle.h>
 #include "./../../../lib/Cross_section.h"
 using namespace std;
-void ee_diboson_produce(TString inputfile = "./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZTo2e2mu.root", TString outputfile1 = "./ee_Diboson_emjet.root")
+void ee_diboson_produce(TString inputfile = "./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZ_2e2mu.root", TString outputfile1 = "./ee_Diboson_emjet.root")
 {
     TFile *diboson_gg_ZZ_2e2mu = TFile::Open(inputfile);
-    TFile *diboson_gg_ZZ_2e2nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZTo2e2nu.root");
-    TFile *diboson_gg_ZZ_2e2tau = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZTo2e2tau.root");
-    TFile *diboson_gg_ZZ_2mu2nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZTo2mu2nu.root");
-    TFile *diboson_gg_ZZ_2mu2tau = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZTo2mu2tau.root");
-    TFile *diboson_gg_ZZ_4e = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZTo4e.root");
-    TFile *diboson_gg_ZZ_4mu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZTo4mu.root");
-    TFile *diboson_gg_ZZ_4tau = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZTo4tau.root");
-    TFile *diboson_gg_WW_2L2Nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_WWTo2L2Nu.root");
-    TFile *diboson_qq_WW_2L2Nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_WWTo2L2Nu.root");
-    TFile *diboson_qq_WZ_2L2Q = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_WZTo2L2Q.root");
-    TFile *diboson_qq_WZ_3LNu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_WZTo3LNu.root");
-    TFile *diboson_qq_ZZ_2L2Nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_ZZTo2L2Nu.root");
-    TFile *diboson_qq_ZZ_2L2Q = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_ZZTo2L2Q.root");
-    TFile *diboson_qq_ZZ_4L = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_ZZTo4L.root");
+    TFile *diboson_gg_ZZ_2e2nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZ_2e2nu.root");
+    TFile *diboson_gg_ZZ_2e2tau = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZ_2e2tau.root");
+    TFile *diboson_gg_ZZ_2mu2nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZ_2mu2nu.root");
+    TFile *diboson_gg_ZZ_2mu2tau = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZ_2mu2tau.root");
+    TFile *diboson_gg_ZZ_4e = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZ_4e.root");
+    TFile *diboson_gg_ZZ_4mu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZ_4mu.root");
+    TFile *diboson_gg_ZZ_4tau = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_ZZ_4tau.root");
+    TFile *diboson_gg_WW_2L2Nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_gg_WW_2L2Nu.root");
+    TFile *diboson_qq_WW_2L2Nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_qq_WW_2L2Nu.root");
+    TFile *diboson_qq_WZ_2L2Q = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_qq_WZ_2L2Q.root");
+    TFile *diboson_qq_WZ_3LNu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_qq_WZ_3LNu.root");
+    TFile *diboson_qq_ZZ_2L2Nu = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_qq_ZZ_2L2Nu.root");
+    TFile *diboson_qq_ZZ_2L2Q = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_qq_ZZ_2L2Q.root");
+    TFile *diboson_qq_ZZ_4L = new TFile("./../../../../../../root_file/Ztoee/2016BKGMC/diboson/diboson_qq_ZZ_4L.root");
 
     TH1D *gg_ZZ_2e2mu_sumevt = ((TH1D *)diboson_gg_ZZ_2e2mu->Get("Event_Variable/h_totevent"));
     TH1D *gg_ZZ_2e2nu_sumevt = ((TH1D *)diboson_gg_ZZ_2e2nu->Get("Event_Variable/h_totevent"));

@@ -83,7 +83,7 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
         h_Top_alpha[i]->Sumw2();
     }
 
-    TH1D *h_Top_Met = new TH1D("h_Top_Met", "", 50, 0, 500);
+    TH1D *h_Top_Met = new TH1D("h_Top_Met", "", 10, 0, 500);
     h_Top_Met->GetXaxis()->SetTitle("");
     h_Top_Met->GetYaxis()->SetTitle("");
     h_Top_Met->Sumw2();
@@ -158,52 +158,52 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     h_Top_nTracks_light_cut->GetYaxis()->SetTitle("");
     h_Top_nTracks_light_cut->Sumw2();
 
-    TH1D *h_Top_jetpt = new TH1D("h_Top_jetpt", "", 50, 0, 500);
+    TH1D *h_Top_jetpt = new TH1D("h_Top_jetpt", "", 20, 0, 1000);
     h_Top_jetpt->GetXaxis()->SetTitle("");
     h_Top_jetpt->GetYaxis()->SetTitle("");
     h_Top_jetpt->Sumw2();
 
-    TH1D *h_Top_jetpt_heavy = new TH1D("h_Top_jetpt_heavy", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_heavy = new TH1D("h_Top_jetpt_heavy", "", 20, 0, 1000);
     h_Top_jetpt_heavy->GetXaxis()->SetTitle("");
     h_Top_jetpt_heavy->GetYaxis()->SetTitle("");
     h_Top_jetpt_heavy->Sumw2();
 
-    TH1D *h_Top_jetpt_bjet = new TH1D("h_Top_jetpt_bjet", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_bjet = new TH1D("h_Top_jetpt_bjet", "", 20, 0, 1000);
     h_Top_jetpt_bjet->GetXaxis()->SetTitle("");
     h_Top_jetpt_bjet->GetYaxis()->SetTitle("");
     h_Top_jetpt_bjet->Sumw2();
 
-    TH1D *h_Top_jetpt_cjet = new TH1D("h_Top_jetpt_cjet", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_cjet = new TH1D("h_Top_jetpt_cjet", "", 20, 0, 1000);
     h_Top_jetpt_cjet->GetXaxis()->SetTitle("");
     h_Top_jetpt_cjet->GetYaxis()->SetTitle("");
     h_Top_jetpt_cjet->Sumw2();
 
-    TH1D *h_Top_jetpt_light = new TH1D("h_Top_jetpt_light", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_light = new TH1D("h_Top_jetpt_light", "", 20, 0, 1000);
     h_Top_jetpt_light->GetXaxis()->SetTitle("");
     h_Top_jetpt_light->GetYaxis()->SetTitle("");
     h_Top_jetpt_light->Sumw2();
 
-    TH1D *h_Top_jetpt_cut = new TH1D("h_Top_jetpt_cut", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_cut = new TH1D("h_Top_jetpt_cut", "", 20, 0, 1000);
     h_Top_jetpt_cut->GetXaxis()->SetTitle("");
     h_Top_jetpt_cut->GetYaxis()->SetTitle("");
     h_Top_jetpt_cut->Sumw2();
 
-    TH1D *h_Top_jetpt_heavy_cut = new TH1D("h_Top_jetpt_heavy_cut", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_heavy_cut = new TH1D("h_Top_jetpt_heavy_cut", "", 20, 0, 1000);
     h_Top_jetpt_heavy_cut->GetXaxis()->SetTitle("");
     h_Top_jetpt_heavy_cut->GetYaxis()->SetTitle("");
     h_Top_jetpt_heavy_cut->Sumw2();
 
-    TH1D *h_Top_jetpt_bjet_cut = new TH1D("h_Top_jetpt_bjet_cut", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_bjet_cut = new TH1D("h_Top_jetpt_bjet_cut", "", 20, 0, 1000);
     h_Top_jetpt_bjet_cut->GetXaxis()->SetTitle("");
     h_Top_jetpt_bjet_cut->GetYaxis()->SetTitle("");
     h_Top_jetpt_bjet_cut->Sumw2();
 
-    TH1D *h_Top_jetpt_cjet_cut = new TH1D("h_Top_jetpt_cjet_cut", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_cjet_cut = new TH1D("h_Top_jetpt_cjet_cut", "", 20, 0, 1000);
     h_Top_jetpt_cjet_cut->GetXaxis()->SetTitle("");
     h_Top_jetpt_cjet_cut->GetYaxis()->SetTitle("");
     h_Top_jetpt_cjet_cut->Sumw2();
 
-    TH1D *h_Top_jetpt_light_cut = new TH1D("h_Top_jetpt_light_cut", "", 50, 0, 500);
+    TH1D *h_Top_jetpt_light_cut = new TH1D("h_Top_jetpt_light_cut", "", 20, 0, 1000);
     h_Top_jetpt_light_cut->GetXaxis()->SetTitle("");
     h_Top_jetpt_light_cut->GetYaxis()->SetTitle("");
     h_Top_jetpt_light_cut->Sumw2();
@@ -543,6 +543,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_TTTo2L2Nu_nTrack->size(); i++)
         {
+            if (abs((*v_TTTo2L2Nu_JetEta)[i]) > 1.)
+                continue;
             h_Top_nTracks->Fill((*v_TTTo2L2Nu_nTrack)[i], TTTo2L2Nu_eventWeight);
             h_Top_jetpt->Fill((*v_TTTo2L2Nu_JetPT)[i], TTTo2L2Nu_eventWeight);
             h_Top_jeteta->Fill((*v_TTTo2L2Nu_JetEta)[i], TTTo2L2Nu_eventWeight);
@@ -558,10 +560,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
             for_signalflavor_jet(4, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetEta)[i], TTTo2L2Nu_eventWeight, h_Top_jeteta_cjet);
             for_signalflavor_jet(4, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_alpha)[i], TTTo2L2Nu_eventWeight, h_Top_alpha3D_cjet);
             // For heavy flavor
-            for_doubleflavor_jet(4, 5, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_nTrack)[i], TTTo2L2Nu_eventWeight, h_Top_nTracks_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetPT)[i], TTTo2L2Nu_eventWeight, h_Top_jetpt_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetEta)[i], TTTo2L2Nu_eventWeight, h_Top_jeteta_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_alpha)[i], TTTo2L2Nu_eventWeight, h_Top_alpha3D_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_nTrack)[i], TTTo2L2Nu_eventWeight, h_Top_nTracks_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetPT)[i], TTTo2L2Nu_eventWeight, h_Top_jetpt_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetEta)[i], TTTo2L2Nu_eventWeight, h_Top_jeteta_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_alpha)[i], TTTo2L2Nu_eventWeight, h_Top_alpha3D_heavy);
             // For light flavor
             for_signalflavor_jet(0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_nTrack)[i], TTTo2L2Nu_eventWeight, h_Top_nTracks_light);
             for_signalflavor_jet(0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetPT)[i], TTTo2L2Nu_eventWeight, h_Top_jetpt_light);
@@ -587,10 +589,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
                 for_signalflavor_jet(4, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetEta)[i], TTTo2L2Nu_eventWeight, h_Top_jeteta_cjet_cut);
                 for_signalflavor_jet(4, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_alpha)[i], TTTo2L2Nu_eventWeight, h_Top_alpha3D_cjet_cut);
                 // For heavy flavor
-                for_doubleflavor_jet(4, 5, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_nTrack)[i], TTTo2L2Nu_eventWeight, h_Top_nTracks_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetPT)[i], TTTo2L2Nu_eventWeight, h_Top_jetpt_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetEta)[i], TTTo2L2Nu_eventWeight, h_Top_jeteta_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_alpha)[i], TTTo2L2Nu_eventWeight, h_Top_alpha3D_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_nTrack)[i], TTTo2L2Nu_eventWeight, h_Top_nTracks_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetPT)[i], TTTo2L2Nu_eventWeight, h_Top_jetpt_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetEta)[i], TTTo2L2Nu_eventWeight, h_Top_jeteta_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_alpha)[i], TTTo2L2Nu_eventWeight, h_Top_alpha3D_heavy_cut);
                 // For light flavor
                 for_signalflavor_jet(0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_nTrack)[i], TTTo2L2Nu_eventWeight, h_Top_nTracks_light_cut);
                 for_signalflavor_jet(0, (*v_TTTo2L2Nu_Jethadronflavor)[i], (*v_TTTo2L2Nu_JetPT)[i], TTTo2L2Nu_eventWeight, h_Top_jetpt_light_cut);
@@ -631,6 +633,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     for (int evt = 0; evt < T_ST_tW_top_tree->GetEntries(); evt++)
     {
         T_ST_tW_top_tree->GetEntry(evt);
+        // if (f_ST_tW_top_met < 90)
+        //     continue;
         double ST_tW_top_eventWeight = I_ST_tW_top_weight * ST_tW_topWeight;
         //-----------------
         // Event var : Met
@@ -641,6 +645,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ST_tW_top_nTrack->size(); i++)
         {
+            if (abs((*v_ST_tW_top_JetEta)[i]) > 1.)
+                continue;
             h_Top_nTracks->Fill((*v_ST_tW_top_nTrack)[i], ST_tW_top_eventWeight);
             h_Top_jetpt->Fill((*v_ST_tW_top_JetPT)[i], ST_tW_top_eventWeight);
             h_Top_jeteta->Fill((*v_ST_tW_top_JetEta)[i], ST_tW_top_eventWeight);
@@ -656,10 +662,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
             for_signalflavor_jet(4, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetEta)[i], ST_tW_top_eventWeight, h_Top_jeteta_cjet);
             for_signalflavor_jet(4, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_alpha)[i], ST_tW_top_eventWeight, h_Top_alpha3D_cjet);
             // For heavy flavor
-            for_doubleflavor_jet(4, 5, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_nTrack)[i], ST_tW_top_eventWeight, h_Top_nTracks_heavy);
-            for_doubleflavor_jet(4, 5, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetPT)[i], ST_tW_top_eventWeight, h_Top_jetpt_heavy);
-            for_doubleflavor_jet(4, 5, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetEta)[i], ST_tW_top_eventWeight, h_Top_jeteta_heavy);
-            for_doubleflavor_jet(4, 5, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_alpha)[i], ST_tW_top_eventWeight, h_Top_alpha3D_heavy);
+            for_doubleflavor_jet(4, 0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_nTrack)[i], ST_tW_top_eventWeight, h_Top_nTracks_heavy);
+            for_doubleflavor_jet(4, 0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetPT)[i], ST_tW_top_eventWeight, h_Top_jetpt_heavy);
+            for_doubleflavor_jet(4, 0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetEta)[i], ST_tW_top_eventWeight, h_Top_jeteta_heavy);
+            for_doubleflavor_jet(4, 0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_alpha)[i], ST_tW_top_eventWeight, h_Top_alpha3D_heavy);
             // For light flavor
             for_signalflavor_jet(0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_nTrack)[i], ST_tW_top_eventWeight, h_Top_nTracks_light);
             for_signalflavor_jet(0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetPT)[i], ST_tW_top_eventWeight, h_Top_jetpt_light);
@@ -685,10 +691,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
                 for_signalflavor_jet(4, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetEta)[i], ST_tW_top_eventWeight, h_Top_jeteta_cjet_cut);
                 for_signalflavor_jet(4, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_alpha)[i], ST_tW_top_eventWeight, h_Top_alpha3D_cjet_cut);
                 // For heavy flavor
-                for_doubleflavor_jet(4, 5, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_nTrack)[i], ST_tW_top_eventWeight, h_Top_nTracks_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetPT)[i], ST_tW_top_eventWeight, h_Top_jetpt_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetEta)[i], ST_tW_top_eventWeight, h_Top_jeteta_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_alpha)[i], ST_tW_top_eventWeight, h_Top_alpha3D_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_nTrack)[i], ST_tW_top_eventWeight, h_Top_nTracks_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetPT)[i], ST_tW_top_eventWeight, h_Top_jetpt_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetEta)[i], ST_tW_top_eventWeight, h_Top_jeteta_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_alpha)[i], ST_tW_top_eventWeight, h_Top_alpha3D_heavy_cut);
                 // For light flavor
                 for_signalflavor_jet(0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_nTrack)[i], ST_tW_top_eventWeight, h_Top_nTracks_light_cut);
                 for_signalflavor_jet(0, (*v_ST_tW_top_Jethadronflavor)[i], (*v_ST_tW_top_JetPT)[i], ST_tW_top_eventWeight, h_Top_jetpt_light_cut);
@@ -729,6 +735,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     for (int evt = 0; evt < T_ST_tW_antitop_tree->GetEntries(); evt++)
     {
         T_ST_tW_antitop_tree->GetEntry(evt);
+        // if (f_ST_tW_antitop_met < 90)
+        //     continue;
         double ST_tW_antitop_eventWeight = I_ST_tW_antitop_weight * ST_tW_antitopWeight;
         //-----------------
         // Event var : Met
@@ -739,6 +747,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ST_tW_antitop_nTrack->size(); i++)
         {
+            if (abs((*v_ST_tW_antitop_JetEta)[i]) > 1.)
+                continue;
             h_Top_nTracks->Fill((*v_ST_tW_antitop_nTrack)[i], ST_tW_antitop_eventWeight);
             h_Top_jetpt->Fill((*v_ST_tW_antitop_JetPT)[i], ST_tW_antitop_eventWeight);
             h_Top_jeteta->Fill((*v_ST_tW_antitop_JetEta)[i], ST_tW_antitop_eventWeight);
@@ -754,15 +764,16 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
             for_signalflavor_jet(4, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetEta)[i], ST_tW_antitop_eventWeight, h_Top_jeteta_cjet);
             for_signalflavor_jet(4, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_alpha)[i], ST_tW_antitop_eventWeight, h_Top_alpha3D_cjet);
             // For heavy flavor
-            for_doubleflavor_jet(4, 5, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_nTrack)[i], ST_tW_antitop_eventWeight, h_Top_nTracks_heavy);
-            for_doubleflavor_jet(4, 5, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetPT)[i], ST_tW_antitop_eventWeight, h_Top_jetpt_heavy);
-            for_doubleflavor_jet(4, 5, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetEta)[i], ST_tW_antitop_eventWeight, h_Top_jeteta_heavy);
-            for_doubleflavor_jet(4, 5, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_alpha)[i], ST_tW_antitop_eventWeight, h_Top_alpha3D_heavy);
+            for_doubleflavor_jet(4, 0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_nTrack)[i], ST_tW_antitop_eventWeight, h_Top_nTracks_heavy);
+            for_doubleflavor_jet(4, 0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetPT)[i], ST_tW_antitop_eventWeight, h_Top_jetpt_heavy);
+            for_doubleflavor_jet(4, 0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetEta)[i], ST_tW_antitop_eventWeight, h_Top_jeteta_heavy);
+            for_doubleflavor_jet(4, 0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_alpha)[i], ST_tW_antitop_eventWeight, h_Top_alpha3D_heavy);
             // For light flavor
             for_signalflavor_jet(0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_nTrack)[i], ST_tW_antitop_eventWeight, h_Top_nTracks_light);
             for_signalflavor_jet(0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetPT)[i], ST_tW_antitop_eventWeight, h_Top_jetpt_light);
             for_signalflavor_jet(0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetEta)[i], ST_tW_antitop_eventWeight, h_Top_jeteta_light);
             for_signalflavor_jet(0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_alpha)[i], ST_tW_antitop_eventWeight, h_Top_alpha3D_light);
+            
             //---------------------
             // Signal Region
             //---------------------
@@ -783,10 +794,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
                 for_signalflavor_jet(4, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetEta)[i], ST_tW_antitop_eventWeight, h_Top_jeteta_cjet_cut);
                 for_signalflavor_jet(4, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_alpha)[i], ST_tW_antitop_eventWeight, h_Top_alpha3D_cjet_cut);
                 // For heavy flavor
-                for_doubleflavor_jet(4, 5, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_nTrack)[i], ST_tW_antitop_eventWeight, h_Top_nTracks_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetPT)[i], ST_tW_antitop_eventWeight, h_Top_jetpt_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetEta)[i], ST_tW_antitop_eventWeight, h_Top_jeteta_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_alpha)[i], ST_tW_antitop_eventWeight, h_Top_alpha3D_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_nTrack)[i], ST_tW_antitop_eventWeight, h_Top_nTracks_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetPT)[i], ST_tW_antitop_eventWeight, h_Top_jetpt_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetEta)[i], ST_tW_antitop_eventWeight, h_Top_jeteta_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_alpha)[i], ST_tW_antitop_eventWeight, h_Top_alpha3D_heavy_cut);
                 // For light flavor
                 for_signalflavor_jet(0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_nTrack)[i], ST_tW_antitop_eventWeight, h_Top_nTracks_light_cut);
                 for_signalflavor_jet(0, (*v_ST_tW_antitop_Jethadronflavor)[i], (*v_ST_tW_antitop_JetPT)[i], ST_tW_antitop_eventWeight, h_Top_jetpt_light_cut);
@@ -827,6 +838,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     for (int evt = 0; evt < T_TTWJetsToQQ_tree->GetEntries(); evt++)
     {
         T_TTWJetsToQQ_tree->GetEntry(evt);
+        // if (f_TTWJetsToQQ_met < 90)
+        //     continue;
         double TTWJetsToQQ_eventWeight = I_TTWJetsToQQ_weight * TTWJetsToQQWeight;
         //-----------------
         // Event var : Met
@@ -837,6 +850,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_TTWJetsToQQ_nTrack->size(); i++)
         {
+            if (abs((*v_TTWJetsToQQ_JetEta)[i]) > 1.)
+                continue;
             h_Top_nTracks->Fill((*v_TTWJetsToQQ_nTrack)[i], TTWJetsToQQ_eventWeight);
             h_Top_jetpt->Fill((*v_TTWJetsToQQ_JetPT)[i], TTWJetsToQQ_eventWeight);
             h_Top_jeteta->Fill((*v_TTWJetsToQQ_JetEta)[i], TTWJetsToQQ_eventWeight);
@@ -852,10 +867,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
             for_signalflavor_jet(4, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetEta)[i], TTWJetsToQQ_eventWeight, h_Top_jeteta_cjet);
             for_signalflavor_jet(4, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_alpha)[i], TTWJetsToQQ_eventWeight, h_Top_alpha3D_cjet);
             // For heavy flavor
-            for_doubleflavor_jet(4, 5, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_nTrack)[i], TTWJetsToQQ_eventWeight, h_Top_nTracks_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetPT)[i], TTWJetsToQQ_eventWeight, h_Top_jetpt_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetEta)[i], TTWJetsToQQ_eventWeight, h_Top_jeteta_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_alpha)[i], TTWJetsToQQ_eventWeight, h_Top_alpha3D_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_nTrack)[i], TTWJetsToQQ_eventWeight, h_Top_nTracks_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetPT)[i], TTWJetsToQQ_eventWeight, h_Top_jetpt_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetEta)[i], TTWJetsToQQ_eventWeight, h_Top_jeteta_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_alpha)[i], TTWJetsToQQ_eventWeight, h_Top_alpha3D_heavy);
             // For light flavor
             for_signalflavor_jet(0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_nTrack)[i], TTWJetsToQQ_eventWeight, h_Top_nTracks_light);
             for_signalflavor_jet(0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetPT)[i], TTWJetsToQQ_eventWeight, h_Top_jetpt_light);
@@ -881,10 +896,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
                 for_signalflavor_jet(4, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetEta)[i], TTWJetsToQQ_eventWeight, h_Top_jeteta_cjet_cut);
                 for_signalflavor_jet(4, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_alpha)[i], TTWJetsToQQ_eventWeight, h_Top_alpha3D_cjet_cut);
                 // For heavy flavor
-                for_doubleflavor_jet(4, 5, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_nTrack)[i], TTWJetsToQQ_eventWeight, h_Top_nTracks_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetPT)[i], TTWJetsToQQ_eventWeight, h_Top_jetpt_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetEta)[i], TTWJetsToQQ_eventWeight, h_Top_jeteta_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_alpha)[i], TTWJetsToQQ_eventWeight, h_Top_alpha3D_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_nTrack)[i], TTWJetsToQQ_eventWeight, h_Top_nTracks_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetPT)[i], TTWJetsToQQ_eventWeight, h_Top_jetpt_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetEta)[i], TTWJetsToQQ_eventWeight, h_Top_jeteta_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_alpha)[i], TTWJetsToQQ_eventWeight, h_Top_alpha3D_heavy_cut);
                 // For light flavor
                 for_signalflavor_jet(0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_nTrack)[i], TTWJetsToQQ_eventWeight, h_Top_nTracks_light_cut);
                 for_signalflavor_jet(0, (*v_TTWJetsToQQ_Jethadronflavor)[i], (*v_TTWJetsToQQ_JetPT)[i], TTWJetsToQQ_eventWeight, h_Top_jetpt_light_cut);
@@ -925,6 +940,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     for (int evt = 0; evt < T_TTZToQQ_tree->GetEntries(); evt++)
     {
         T_TTZToQQ_tree->GetEntry(evt);
+        // if (f_TTZToQQ_met < 90)
+        //     continue;
         double TTZToQQ_eventWeight = I_TTZToQQ_weight * TTZToQQWeight;
         //-----------------
         // Event var : Met
@@ -935,6 +952,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_TTZToQQ_nTrack->size(); i++)
         {
+            if (abs((*v_TTZToQQ_JetEta)[i]) > 1.)
+                continue;
             h_Top_nTracks->Fill((*v_TTZToQQ_nTrack)[i], TTZToQQ_eventWeight);
             h_Top_jetpt->Fill((*v_TTZToQQ_JetPT)[i], TTZToQQ_eventWeight);
             h_Top_jeteta->Fill((*v_TTZToQQ_JetEta)[i], TTZToQQ_eventWeight);
@@ -950,10 +969,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
             for_signalflavor_jet(4, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetEta)[i], TTZToQQ_eventWeight, h_Top_jeteta_cjet);
             for_signalflavor_jet(4, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_alpha)[i], TTZToQQ_eventWeight, h_Top_alpha3D_cjet);
             // For heavy flavor
-            for_doubleflavor_jet(4, 5, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_nTrack)[i], TTZToQQ_eventWeight, h_Top_nTracks_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetPT)[i], TTZToQQ_eventWeight, h_Top_jetpt_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetEta)[i], TTZToQQ_eventWeight, h_Top_jeteta_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_alpha)[i], TTZToQQ_eventWeight, h_Top_alpha3D_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_nTrack)[i], TTZToQQ_eventWeight, h_Top_nTracks_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetPT)[i], TTZToQQ_eventWeight, h_Top_jetpt_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetEta)[i], TTZToQQ_eventWeight, h_Top_jeteta_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_alpha)[i], TTZToQQ_eventWeight, h_Top_alpha3D_heavy);
             // For light flavor
             for_signalflavor_jet(0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_nTrack)[i], TTZToQQ_eventWeight, h_Top_nTracks_light);
             for_signalflavor_jet(0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetPT)[i], TTZToQQ_eventWeight, h_Top_jetpt_light);
@@ -979,10 +998,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
                 for_signalflavor_jet(4, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetEta)[i], TTZToQQ_eventWeight, h_Top_jeteta_cjet_cut);
                 for_signalflavor_jet(4, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_alpha)[i], TTZToQQ_eventWeight, h_Top_alpha3D_cjet_cut);
                 // For heavy flavor
-                for_doubleflavor_jet(4, 5, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_nTrack)[i], TTZToQQ_eventWeight, h_Top_nTracks_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetPT)[i], TTZToQQ_eventWeight, h_Top_jetpt_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetEta)[i], TTZToQQ_eventWeight, h_Top_jeteta_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_alpha)[i], TTZToQQ_eventWeight, h_Top_alpha3D_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_nTrack)[i], TTZToQQ_eventWeight, h_Top_nTracks_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetPT)[i], TTZToQQ_eventWeight, h_Top_jetpt_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetEta)[i], TTZToQQ_eventWeight, h_Top_jeteta_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_alpha)[i], TTZToQQ_eventWeight, h_Top_alpha3D_heavy_cut);
                 // For light flavor
                 for_signalflavor_jet(0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_nTrack)[i], TTZToQQ_eventWeight, h_Top_nTracks_light_cut);
                 for_signalflavor_jet(0, (*v_TTZToQQ_Jethadronflavor)[i], (*v_TTZToQQ_JetPT)[i], TTZToQQ_eventWeight, h_Top_jetpt_light_cut);
@@ -1023,6 +1042,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     for (int evt = 0; evt < T_TTZToLLNuNu_tree->GetEntries(); evt++)
     {
         T_TTZToLLNuNu_tree->GetEntry(evt);
+        // if (f_TTZToLLNuNu_met < 90)
+        //     continue;
         double TTZToLLNuNu_eventWeight = I_TTZToLLNuNu_weight * TTZToLLNuNuWeight;
         //-----------------
         // Event var : Met
@@ -1033,6 +1054,8 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_TTZToLLNuNu_nTrack->size(); i++)
         {
+            if (abs((*v_TTZToLLNuNu_JetEta)[i]) > 1.)
+                continue;
             h_Top_nTracks->Fill((*v_TTZToLLNuNu_nTrack)[i], TTZToLLNuNu_eventWeight);
             h_Top_jetpt->Fill((*v_TTZToLLNuNu_JetPT)[i], TTZToLLNuNu_eventWeight);
             h_Top_jeteta->Fill((*v_TTZToLLNuNu_JetEta)[i], TTZToLLNuNu_eventWeight);
@@ -1048,10 +1071,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
             for_signalflavor_jet(4, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetEta)[i], TTZToLLNuNu_eventWeight, h_Top_jeteta_cjet);
             for_signalflavor_jet(4, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_alpha)[i], TTZToLLNuNu_eventWeight, h_Top_alpha3D_cjet);
             // For heavy flavor
-            for_doubleflavor_jet(4, 5, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_nTrack)[i], TTZToLLNuNu_eventWeight, h_Top_nTracks_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetPT)[i], TTZToLLNuNu_eventWeight, h_Top_jetpt_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetEta)[i], TTZToLLNuNu_eventWeight, h_Top_jeteta_heavy);
-            for_doubleflavor_jet(4, 5, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_alpha)[i], TTZToLLNuNu_eventWeight, h_Top_alpha3D_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_nTrack)[i], TTZToLLNuNu_eventWeight, h_Top_nTracks_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetPT)[i], TTZToLLNuNu_eventWeight, h_Top_jetpt_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetEta)[i], TTZToLLNuNu_eventWeight, h_Top_jeteta_heavy);
+            for_doubleflavor_jet(4, 0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_alpha)[i], TTZToLLNuNu_eventWeight, h_Top_alpha3D_heavy);
             // For light flavor
             for_signalflavor_jet(0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_nTrack)[i], TTZToLLNuNu_eventWeight, h_Top_nTracks_light);
             for_signalflavor_jet(0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetPT)[i], TTZToLLNuNu_eventWeight, h_Top_jetpt_light);
@@ -1077,10 +1100,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
                 for_signalflavor_jet(4, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetEta)[i], TTZToLLNuNu_eventWeight, h_Top_jeteta_cjet_cut);
                 for_signalflavor_jet(4, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_alpha)[i], TTZToLLNuNu_eventWeight, h_Top_alpha3D_cjet_cut);
                 // For heavy flavor
-                for_doubleflavor_jet(4, 5, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_nTrack)[i], TTZToLLNuNu_eventWeight, h_Top_nTracks_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetPT)[i], TTZToLLNuNu_eventWeight, h_Top_jetpt_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetEta)[i], TTZToLLNuNu_eventWeight, h_Top_jeteta_heavy_cut);
-                for_doubleflavor_jet(4, 5, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_alpha)[i], TTZToLLNuNu_eventWeight, h_Top_alpha3D_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_nTrack)[i], TTZToLLNuNu_eventWeight, h_Top_nTracks_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetPT)[i], TTZToLLNuNu_eventWeight, h_Top_jetpt_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetEta)[i], TTZToLLNuNu_eventWeight, h_Top_jeteta_heavy_cut);
+                for_doubleflavor_jet(4, 0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_alpha)[i], TTZToLLNuNu_eventWeight, h_Top_alpha3D_heavy_cut);
                 // For light flavor
                 for_signalflavor_jet(0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_nTrack)[i], TTZToLLNuNu_eventWeight, h_Top_nTracks_light_cut);
                 for_signalflavor_jet(0, (*v_TTZToLLNuNu_Jethadronflavor)[i], (*v_TTZToLLNuNu_JetPT)[i], TTZToLLNuNu_eventWeight, h_Top_jetpt_light_cut);
@@ -1141,6 +1164,9 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     Top_lightPT_fakeRate->GetXaxis()->SetTitle("Jet PT");
     Top_lightPT_fakeRate->SetLineWidth(2);
 
+    TH1D *Top_heavyPT_fakeRate = (TH1D *)h_Top_jetpt_heavy_cut->Clone("Top_heavyPT_fakeRate");
+    Top_heavyPT_fakeRate->Divide(h_Top_jetpt_heavy_cut, h_Top_jetpt_heavy, 1, 1, "b");
+
     TH1D *Top_bjetPT_fakeRate = (TH1D *)h_Top_jetpt_bjet_cut->Clone("Top_bjetPT_fakeRate");
     Top_bjetPT_fakeRate->Divide(h_Top_jetpt_bjet_cut, h_Top_jetpt_bjet, 1, 1, "b");
     Top_bjetPT_fakeRate->SetTitle("Top process b flavor fake rate");
@@ -1177,7 +1203,9 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     Top_cjetEta_fakeRate->GetYaxis()->SetTitle("fake rate");
     Top_cjetEta_fakeRate->GetXaxis()->SetTitle("Jet #eta");
     Top_cjetEta_fakeRate->SetLineWidth(2);
+
     auto c1 = new TCanvas("c1", "", 700, 700);
+    h_Top_Met->Draw();
     // c1->Divide(3, 1);
     // c1->cd(1);
     /*
@@ -1202,11 +1230,11 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     Top_lightEta_fakeRate->SetLineColor(kGreen);
     Top_bjetEta_fakeRate->SetLineColor(kRed);
     Top_cjetEta_fakeRate->SetLineColor(kBlack);
-    Top_bjet_fakeRate->Draw("text45");
-    // Top_bjetEta_fakeRate->Draw("same");
-    // Top_cjetEta_fakeRate->Draw("same");
-    // gPad->SetLogy();
-    // gStyle->SetOptStat(0);
+    // Top_bjet_fakeRate->Draw("text45");
+    //  Top_bjetEta_fakeRate->Draw("same");
+    //  Top_cjetEta_fakeRate->Draw("same");
+    //  gPad->SetLogy();
+    //  gStyle->SetOptStat(0);
     TLegend *l0 = new TLegend(0.65, 0.6, 0.90, 0.80);
     l0->SetBorderSize(0);
     l0->SetTextSize(0.03);
@@ -1299,6 +1327,10 @@ void ee_Top_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Z
     h_Top_alpha3D_bjet_cut->Write();
     h_Top_alpha3D_cjet_cut->Write();
     h_Top_alpha3D_light_cut->Write();
+    Top_lightPT_fakeRate->Write();
+    Top_bjetPT_fakeRate->Write();
+    Top_cjetPT_fakeRate->Write();
+    Top_heavyPT_fakeRate->Write();
     outfile_HT0->Close();
 }
 int main(int argc, char *argv[])

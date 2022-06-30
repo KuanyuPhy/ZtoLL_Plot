@@ -13,14 +13,14 @@
 //#include "./../../../lib/diff_region.C"
 using namespace std;
 
-void for_signalflavor_jet(int flavor, float hadronflavor, float tmp, float Weight, TH1F *h_tmp)
+void for_signalflavor_jet(int flavor, float hadronflavor, float tmp, float Weight, TH1D *h_tmp)
 {
     if (hadronflavor == flavor)
     {
         h_tmp->Fill(tmp, Weight);
     }
 }
-void for_doubleflavor_jet(int flavor1, float flavor2, float hadronflavor, float tmp, float Weight, TH1F *h_tmp)
+void for_doubleflavor_jet(int flavor1, float flavor2, float hadronflavor, float tmp, float Weight, TH1D *h_tmp)
 {
     if (hadronflavor == flavor1 || hadronflavor == flavor2)
     {
@@ -28,41 +28,56 @@ void for_doubleflavor_jet(int flavor1, float flavor2, float hadronflavor, float 
     }
 }
 
-void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2_1.root", TString outputfile1 = "./ee_Sig_emjet.root")
+void ee_Sig_produce(TString inputfile = "/home/kuanyu/Documents/root_file/Ztoee/Mx2_1.root", TString outputfile1 = "./ee_Sig_emjet.root")
 {
     TFile *Sig_Mx2_1 = TFile::Open(inputfile);
-    TFile *Sig_Mx2_50 = new TFile("./../../../../../../root_file/Ztoee/Mx2_50.root");
-    TFile *Sig_Mx2_150 = new TFile("./../../../../../../root_file/Ztoee/Mx2_150.root");
+    TFile *Sig_Mx2_50 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/Mx2_50.root");
+    TFile *Sig_Mx2_150 = new TFile("/home/kuanyu/Documents/root_file/Ztoee/Mx2_150.root");
 
-    TH1F *h_Sig1_Chi3Dlog = new TH1F("h_Sig1_Chi3Dlog", "", 100, -10, 10);
+    TH1D *h_Sig1_Chi3Dlog = new TH1D("h_Sig1_Chi3Dlog", "", 100, -10, 10);
     h_Sig1_Chi3Dlog->GetXaxis()->SetTitle("");
     h_Sig1_Chi3Dlog->GetYaxis()->SetTitle("");
     h_Sig1_Chi3Dlog->Sumw2();
 
-    TH1F *h_Sig50_Chi3Dlog = new TH1F("h_Sig50_Chi3Dlog", "", 100, -10, 10);
+    TH1D *h_Sig50_Chi3Dlog = new TH1D("h_Sig50_Chi3Dlog", "", 100, -10, 10);
     h_Sig50_Chi3Dlog->GetXaxis()->SetTitle("");
     h_Sig50_Chi3Dlog->GetYaxis()->SetTitle("");
     h_Sig50_Chi3Dlog->Sumw2();
 
-    TH1F *h_Sig150_Chi3Dlog = new TH1F("h_Sig150_Chi3Dlog", "", 100, -10, 10);
+    TH1D *h_Sig150_Chi3Dlog = new TH1D("h_Sig150_Chi3Dlog", "", 100, -10, 10);
     h_Sig150_Chi3Dlog->GetXaxis()->SetTitle("");
     h_Sig150_Chi3Dlog->GetYaxis()->SetTitle("");
     h_Sig150_Chi3Dlog->Sumw2();
 
-    TH1F *h_Sig1_IP2D = new TH1F("h_Sig1_IP2D", "", 200, -20, 20);
+    TH1D *h_Sig1_IP2D = new TH1D("h_Sig1_IP2D", "", 200, -20, 20);
     h_Sig1_IP2D->GetXaxis()->SetTitle("");
     h_Sig1_IP2D->GetYaxis()->SetTitle("");
     h_Sig1_IP2D->Sumw2();
 
-    TH1F *h_Sig50_IP2D = new TH1F("h_Sig50_IP2D", "", 200, -20, 20);
+    TH1D *h_Sig50_IP2D = new TH1D("h_Sig50_IP2D", "", 200, -20, 20);
     h_Sig50_IP2D->GetXaxis()->SetTitle("");
     h_Sig50_IP2D->GetYaxis()->SetTitle("");
     h_Sig50_IP2D->Sumw2();
 
-    TH1F *h_Sig150_IP2D = new TH1F("h_Sig150_IP2D", "", 200, -20, 20);
+    TH1D *h_Sig150_IP2D = new TH1D("h_Sig150_IP2D", "", 200, -20, 20);
     h_Sig150_IP2D->GetXaxis()->SetTitle("");
     h_Sig150_IP2D->GetYaxis()->SetTitle("");
     h_Sig150_IP2D->Sumw2();
+
+    TH1D *h_Sig1_Met = new TH1D("h_Sig1_Met", "", 50, 0, 500);
+    h_Sig1_Met->GetXaxis()->SetTitle("");
+    h_Sig1_Met->GetYaxis()->SetTitle("");
+    h_Sig1_Met->Sumw2();
+
+    TH1D *h_Sig50_Met = new TH1D("h_Sig50_Met", "", 50, 0, 500);
+    h_Sig50_Met->GetXaxis()->SetTitle("");
+    h_Sig50_Met->GetYaxis()->SetTitle("");
+    h_Sig50_Met->Sumw2();
+
+    TH1D *h_Sig150_Met = new TH1D("h_Sig150_Met", "", 50, 0, 500);
+    h_Sig150_Met->GetXaxis()->SetTitle("");
+    h_Sig150_Met->GetYaxis()->SetTitle("");
+    h_Sig150_Met->Sumw2();
 
     Int_t I_Mx2_1_nThinJets;
     Int_t I_Mx2_50_nThinJets;
@@ -71,6 +86,10 @@ void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2
     Int_t I_Mx2_1_weight;
     Int_t I_Mx2_50_weight;
     Int_t I_Mx2_150_weight;
+
+    float f_Mx2_1_met;
+    float f_Mx2_50_met;
+    float f_Mx2_150_met;
 
     vector<float> *v_Mx2_1_Chi3Dlog = new vector<float>();
     vector<float> *v_Mx2_50_Chi3Dlog = new vector<float>();
@@ -131,6 +150,7 @@ void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2
     TTree *T_Mx2_1_tree;
     Sig_Mx2_1->GetObject("T_tree", T_Mx2_1_tree);
     T_Mx2_1_tree->SetBranchAddress("I_weight", &I_Mx2_1_weight);
+    T_Mx2_1_tree->SetBranchAddress("f_Met", &f_Mx2_1_met);
     T_Mx2_1_tree->SetBranchAddress("I_nThinJets", &I_Mx2_1_nThinJets);
     T_Mx2_1_tree->SetBranchAddress("v_N_Tracks", &v_Mx2_1_nTrack);
     T_Mx2_1_tree->SetBranchAddress("v_IP2D", &v_Mx2_1_2DIP);
@@ -142,6 +162,7 @@ void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2
     for (int evt = 0; evt < T_Mx2_1_tree->GetEntries(); evt++)
     {
         T_Mx2_1_tree->GetEntry(evt);
+        h_Sig1_Met->Fill(f_Mx2_1_met, I_Mx2_1_weight);
         //----------
         //  3DSig
         //----------
@@ -161,6 +182,7 @@ void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2
     TTree *T_Mx2_50_tree;
     Sig_Mx2_50->GetObject("T_tree", T_Mx2_50_tree);
     T_Mx2_50_tree->SetBranchAddress("I_weight", &I_Mx2_50_weight);
+    T_Mx2_50_tree->SetBranchAddress("f_Met", &f_Mx2_50_met);
     T_Mx2_50_tree->SetBranchAddress("I_nThinJets", &I_Mx2_50_nThinJets);
     T_Mx2_50_tree->SetBranchAddress("v_N_Tracks", &v_Mx2_50_nTrack);
     T_Mx2_50_tree->SetBranchAddress("v_IP2D", &v_Mx2_50_2DIP);
@@ -172,6 +194,7 @@ void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2
     for (int evt = 0; evt < T_Mx2_50_tree->GetEntries(); evt++)
     {
         T_Mx2_50_tree->GetEntry(evt);
+        h_Sig50_Met->Fill(f_Mx2_50_met, I_Mx2_50_weight);
         //----------
         //  3DSig
         //----------
@@ -190,6 +213,7 @@ void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2
     TTree *T_Mx2_150_tree;
     Sig_Mx2_150->GetObject("T_tree", T_Mx2_150_tree);
     T_Mx2_150_tree->SetBranchAddress("I_weight", &I_Mx2_150_weight);
+    T_Mx2_150_tree->SetBranchAddress("f_Met", &f_Mx2_150_met);
     T_Mx2_150_tree->SetBranchAddress("I_nThinJets", &I_Mx2_150_nThinJets);
     T_Mx2_150_tree->SetBranchAddress("v_N_Tracks", &v_Mx2_150_nTrack);
     T_Mx2_150_tree->SetBranchAddress("v_IP2D", &v_Mx2_150_2DIP);
@@ -201,6 +225,7 @@ void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2
     for (int evt = 0; evt < T_Mx2_150_tree->GetEntries(); evt++)
     {
         T_Mx2_150_tree->GetEntry(evt);
+        h_Sig150_Met->Fill(f_Mx2_150_met, I_Mx2_150_weight);
         //----------
         //  3DSig
         //----------
@@ -225,6 +250,10 @@ void ee_Sig_produce(TString inputfile = "./../../../../../../root_file/Ztoee/Mx2
     h_Sig50_Chi3Dlog->Write();
     h_Sig150_IP2D->Write();
     h_Sig150_Chi3Dlog->Write();
+    h_Sig1_Met->Write();
+    h_Sig50_Met->Write();
+    h_Sig150_Met->Write();
+    
     outfile_HT0->Close();
 }
 int main(int argc, char *argv[])
