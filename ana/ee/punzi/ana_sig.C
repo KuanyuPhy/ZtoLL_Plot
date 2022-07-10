@@ -82,13 +82,11 @@ void ana_sig()
             // Scan Met
             //-------------------
             // h_Mx2_1_Met->Fill(f_Mx1_Met);
-            h_pass_Mx2_1->Fill(i);
+            h_pass_Mx2_1->Fill(i, I_Mx1_weight);
             // cout << "Met cut"<<i*10<<endl;
             if (f_Mx1_Met > metcut)
             {
-                // cout << "metcut = " << metcut << endl;
-                // cout << "Met = " << f_Mx1_Met << endl;
-                h_pass_Mx2_1_nMetcut->Fill(i);
+                h_pass_Mx2_1_nMetcut->Fill(i, I_Mx1_weight);
             }
             else
             {
@@ -119,14 +117,14 @@ void ana_sig()
             //-------------------
             // Scan Met
             //-------------------
-            // h_Mx2_1_Met->Fill(f_Mx50_Met);
-            h_pass_Mx2_50->Fill(i);
+            // h_Mx2_50_Met->Fill(f_Mx50_Met);
+            h_pass_Mx2_50->Fill(i, I_Mx50_weight);
             // cout << "Met cut"<<i*10<<endl;
             if (f_Mx50_Met > metcut)
             {
                 // cout << "metcut = " << metcut << endl;
                 // cout << "Met = " << f_Mx1_Met << endl;
-                h_pass_Mx2_50_nMetcut->Fill(i);
+                h_pass_Mx2_50_nMetcut->Fill(i, I_Mx50_weight);
             }
             else
             {
@@ -158,22 +156,21 @@ void ana_sig()
             //-------------------
             // Scan Met
             //-------------------
-            h_Mx2_1_Met->Fill(f_Mx150_Met);
-            h_pass_Mx2_150->Fill(i);
+            // h_Mx2_150_Met->Fill(f_Mx150_Met);
+            h_pass_Mx2_150->Fill(i, I_Mx150_weight);
             // cout << "Met cut"<<i*10<<endl;
             if (f_Mx150_Met > metcut)
             {
                 // cout << "metcut = " << metcut << endl;
                 // cout << "Met = " << f_Mx1_Met << endl;
-                h_pass_Mx2_150_nMetcut->Fill(i);
+                h_pass_Mx2_150_nMetcut->Fill(i, I_Mx150_weight);
             }
             else
             {
                 continue;
             }
         } // End of Mx2_150 Entries loop
-    }     // End of 50 loops
-    // h_Mx2_1_Met->Draw();
+    }     // End of 150 loops
 
     TH1D *h_Mx2_1_eff = (TH1D *)h_pass_Mx2_1_nMetcut->Clone("h_Mx2_1_eff");
     h_Mx2_1_eff->Divide(h_pass_Mx2_1_nMetcut, h_pass_Mx2_1, 1, 1);
@@ -183,16 +180,16 @@ void ana_sig()
 
     TH1D *h_Mx2_150_eff = (TH1D *)h_pass_Mx2_150_nMetcut->Clone("h_Mx2_150_eff");
     h_Mx2_150_eff->Divide(h_pass_Mx2_150_nMetcut, h_pass_Mx2_150, 1, 1);
-    
+
     auto c1 = new TCanvas("c", "BPRE");
     c1->Divide(3, 1);
     c1->cd(1);
-    h_Mx2_1_eff->Draw("text45");
+    h_Mx2_1_eff->Draw("");
     c1->cd(2);
-    h_Mx2_50_eff->Draw("text45");
+    h_Mx2_50_eff->Draw("");
     c1->cd(3);
-    h_Mx2_150_eff->Draw("text45");
-    
+    h_Mx2_150_eff->Draw("");
+
     TString outputfile1 = "./ee_Sig_punzi.root";
     TFile *outfile_HT0 = TFile::Open(outputfile1, "RECREATE");
     h_Mx2_1_eff->Write();

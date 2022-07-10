@@ -550,81 +550,27 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
 
     Int_t I_ht0_weight, I_ht70_weight, I_ht100_weight, I_ht200_weight, I_ht400_weight, I_ht600_weight, I_ht800_weight, I_ht1200_weight, I_ht2500_weight;
 
-    float_t I_ht0_met, I_ht70_met, I_ht100_met, I_ht200_met, I_ht400_met, I_ht600_met, I_ht800_met, I_ht1200_met, I_ht2500_met;
+    float_t f_ht0_met, f_ht70_met, f_ht100_met, f_ht200_met, f_ht400_met, f_ht600_met, f_ht800_met, f_ht1200_met, f_ht2500_met;
 
     vector<float> *v_ht0_alpha = new vector<float>();
-    vector<float> *v_ht0_alpha2 = new vector<float>();
-    vector<float> *v_ht0_alpha3 = new vector<float>();
-    vector<float> *v_ht0_alpha4 = new vector<float>();
     vector<float> *v_ht70_alpha = new vector<float>();
-    vector<float> *v_ht70_alpha2 = new vector<float>();
-    vector<float> *v_ht70_alpha3 = new vector<float>();
-    vector<float> *v_ht70_alpha4 = new vector<float>();
     vector<float> *v_ht100_alpha = new vector<float>();
-    vector<float> *v_ht100_alpha2 = new vector<float>();
-    vector<float> *v_ht100_alpha3 = new vector<float>();
-    vector<float> *v_ht100_alpha4 = new vector<float>();
     vector<float> *v_ht200_alpha = new vector<float>();
-    vector<float> *v_ht200_alpha2 = new vector<float>();
-    vector<float> *v_ht200_alpha3 = new vector<float>();
-    vector<float> *v_ht200_alpha4 = new vector<float>();
     vector<float> *v_ht400_alpha = new vector<float>();
-    vector<float> *v_ht400_alpha2 = new vector<float>();
-    vector<float> *v_ht400_alpha3 = new vector<float>();
-    vector<float> *v_ht400_alpha4 = new vector<float>();
     vector<float> *v_ht600_alpha = new vector<float>();
-    vector<float> *v_ht600_alpha2 = new vector<float>();
-    vector<float> *v_ht600_alpha3 = new vector<float>();
-    vector<float> *v_ht600_alpha4 = new vector<float>();
     vector<float> *v_ht800_alpha = new vector<float>();
-    vector<float> *v_ht800_alpha2 = new vector<float>();
-    vector<float> *v_ht800_alpha3 = new vector<float>();
-    vector<float> *v_ht800_alpha4 = new vector<float>();
     vector<float> *v_ht1200_alpha = new vector<float>();
-    vector<float> *v_ht1200_alpha2 = new vector<float>();
-    vector<float> *v_ht1200_alpha3 = new vector<float>();
-    vector<float> *v_ht1200_alpha4 = new vector<float>();
     vector<float> *v_ht2500_alpha = new vector<float>();
-    vector<float> *v_ht2500_alpha2 = new vector<float>();
-    vector<float> *v_ht2500_alpha3 = new vector<float>();
-    vector<float> *v_ht2500_alpha4 = new vector<float>();
 
     v_ht0_alpha->clear();
-    v_ht0_alpha2->clear();
-    v_ht0_alpha3->clear();
-    v_ht0_alpha4->clear();
     v_ht70_alpha->clear();
-    v_ht70_alpha2->clear();
-    v_ht70_alpha3->clear();
-    v_ht70_alpha4->clear();
     v_ht100_alpha->clear();
-    v_ht100_alpha2->clear();
-    v_ht100_alpha3->clear();
-    v_ht100_alpha4->clear();
     v_ht200_alpha->clear();
-    v_ht200_alpha2->clear();
-    v_ht200_alpha3->clear();
-    v_ht200_alpha4->clear();
     v_ht400_alpha->clear();
-    v_ht400_alpha2->clear();
-    v_ht400_alpha3->clear();
-    v_ht400_alpha4->clear();
     v_ht600_alpha->clear();
-    v_ht600_alpha2->clear();
-    v_ht600_alpha3->clear();
-    v_ht600_alpha4->clear();
     v_ht800_alpha->clear();
-    v_ht800_alpha2->clear();
-    v_ht800_alpha3->clear();
-    v_ht800_alpha4->clear();
     v_ht1200_alpha->clear();
-    v_ht1200_alpha2->clear();
-    v_ht1200_alpha3->clear();
-    v_ht1200_alpha4->clear();
     v_ht2500_alpha->clear();
-    v_ht2500_alpha2->clear();
-    v_ht2500_alpha3->clear();
-    v_ht2500_alpha4->clear();
 
     vector<float> *v_ht0_Chi3Dlog = new vector<float>();
     vector<float> *v_ht70_Chi3Dlog = new vector<float>();
@@ -770,15 +716,12 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     DYincli_1->GetObject("h1", h1);
     h1->SetBranchAddress("I_weight", &I_ht0_weight);
     h1->SetBranchAddress("f_HT", &HT);
-    h1->SetBranchAddress("f_Met", &I_ht0_met);
+    h1->SetBranchAddress("f_Met", &f_ht0_met);
     h1->SetBranchAddress("I_nJets", &I_ht0_nThinJets);
     h1->SetBranchAddress("v_N_Tracks", &v_ht0_nTrack);
     h1->SetBranchAddress("v_IP2D", &v_ht0_2DIP);
     h1->SetBranchAddress("v_Chi3Dlog", &v_ht0_Chi3Dlog);
     h1->SetBranchAddress("v_fakealpha", &v_ht0_alpha);
-    h1->SetBranchAddress("v_fakealpha2", &v_ht0_alpha2);
-    h1->SetBranchAddress("v_fakealpha3", &v_ht0_alpha3);
-    h1->SetBranchAddress("v_fakealpha4", &v_ht0_alpha4);
     h1->SetBranchAddress("v_fakeJetPt", &v_ht0_JetPt);
     h1->SetBranchAddress("v_fakeJetEta", &v_ht0_JetEta);
     h1->SetBranchAddress("v_fakeJethadronflavor", &v_ht0_Jethadronflavor);
@@ -786,18 +729,19 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     for (int evt = 0; evt < h1->GetEntries(); evt++)
     {
         h1->GetEntry(evt);
-
+        if (f_ht0_met < 120)
+        {
+            continue;
+        }
         //-----------------
         // Event var : Met
         //-----------------
-        for_inclusive_DY_var(HT, I_ht0_met, I_ht0_weight, h_DY_Met);
+        for_inclusive_DY_var(HT, f_ht0_met, I_ht0_weight, h_DY_Met);
         //-------------------------------------------------------------
         // Jet var : different flavor  nTracks, JetPt, JetEta, alpha3D
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ht0_nTrack->size(); i++)
         {
-            if (abs((*v_ht0_JetEta)[i]) > 1.)
-                continue;
             for_inclusive_DY_var(HT, (*v_ht0_nTrack)[i], I_ht0_weight, h_DY_nTracks);
             for_inclusive_DY_var(HT, (*v_ht0_JetPt)[i], I_ht0_weight, h_DY_JetPt);
             for_inclusive_DY_var(HT, (*v_ht0_JetEta)[i], I_ht0_weight, h_DY_JetEta);
@@ -867,13 +811,10 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     T_tree2->SetBranchAddress("I_weight", &I_ht100_weight);
     T_tree2->SetBranchAddress("I_nJets", &I_ht100_nThinJets);
     T_tree2->SetBranchAddress("v_N_Tracks", &v_ht100_nTrack);
-    T_tree2->SetBranchAddress("f_Met", &I_ht100_met);
+    T_tree2->SetBranchAddress("f_Met", &f_ht100_met);
     T_tree2->SetBranchAddress("v_IP2D", &v_ht100_2DIP);
     T_tree2->SetBranchAddress("v_Chi3Dlog", &v_ht100_Chi3Dlog);
     T_tree2->SetBranchAddress("v_fakealpha", &v_ht100_alpha);
-    T_tree2->SetBranchAddress("v_fakealpha2", &v_ht100_alpha2);
-    T_tree2->SetBranchAddress("v_fakealpha3", &v_ht100_alpha3);
-    T_tree2->SetBranchAddress("v_fakealpha4", &v_ht100_alpha4);
     T_tree2->SetBranchAddress("v_fakeJetPt", &v_ht100_JetPt);
     T_tree2->SetBranchAddress("v_fakeJetEta", &v_ht100_JetEta);
     T_tree2->SetBranchAddress("v_fakeJethadronflavor", &v_ht100_Jethadronflavor);
@@ -881,20 +822,20 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     for (int evt = 0; evt < T_tree2->GetEntries(); evt++)
     {
         T_tree2->GetEntry(evt);
-        // if (I_ht100_met < 90)
-        //     continue;
+        if (f_ht100_met < 120)
+        {
+            continue;
+        }
         double HT100_eventWeight = I_ht100_weight * HT100Weight;
         //-----------------
         // Event var : Met
         //-----------------
-        for_var_jet(I_ht100_met, HT100_eventWeight, h_DY_Met);
+        for_var_jet(f_ht100_met, HT100_eventWeight, h_DY_Met);
         //-------------------------------------------------------------
         // Jet var : different flavor  nTracks, JetPt, JetEta, alpha3D
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ht100_nTrack->size(); i++)
         {
-            if (abs((*v_ht100_JetEta)[i]) > 1.)
-                continue;
             for_var_jet((*v_ht100_nTrack)[i], HT100_eventWeight, h_DY_nTracks);
             for_var_jet((*v_ht100_JetPt)[i], HT100_eventWeight, h_DY_JetPt);
             for_var_jet((*v_ht100_JetEta)[i], HT100_eventWeight, h_DY_JetEta);
@@ -964,13 +905,10 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     T_tree3->SetBranchAddress("I_weight", &I_ht200_weight);
     T_tree3->SetBranchAddress("I_nJets", &I_ht200_nThinJets);
     T_tree3->SetBranchAddress("v_N_Tracks", &v_ht200_nTrack);
-    T_tree3->SetBranchAddress("f_Met", &I_ht200_met);
+    T_tree3->SetBranchAddress("f_Met", &f_ht200_met);
     T_tree3->SetBranchAddress("v_IP2D", &v_ht200_2DIP);
     T_tree3->SetBranchAddress("v_Chi3Dlog", &v_ht200_Chi3Dlog);
     T_tree3->SetBranchAddress("v_fakealpha", &v_ht200_alpha);
-    T_tree3->SetBranchAddress("v_fakealpha2", &v_ht200_alpha2);
-    T_tree3->SetBranchAddress("v_fakealpha3", &v_ht200_alpha3);
-    T_tree3->SetBranchAddress("v_fakealpha4", &v_ht200_alpha4);
     T_tree3->SetBranchAddress("v_fakeJetPt", &v_ht200_JetPt);
     T_tree3->SetBranchAddress("v_fakeJetEta", &v_ht200_JetEta);
     T_tree3->SetBranchAddress("v_fakeJethadronflavor", &v_ht200_Jethadronflavor);
@@ -978,20 +916,20 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     for (int evt = 0; evt < T_tree3->GetEntries(); evt++)
     {
         T_tree3->GetEntry(evt);
-        // if (I_ht200_met < 90)
-        //     continue;
+        if (f_ht200_met < 120)
+        {
+            continue;
+        }
         double HT200_eventWeight = I_ht200_weight * HT200Weight;
         //-----------------
         // Event var : Met
         //-----------------
-        for_var_jet(I_ht200_met, HT200_eventWeight, h_DY_Met);
+        for_var_jet(f_ht200_met, HT200_eventWeight, h_DY_Met);
         //-------------------------------------------------------------
         // Jet var : different flavor  nTracks, JetPt, JetEta, alpha3D
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ht200_nTrack->size(); i++)
         {
-            if (abs((*v_ht200_JetEta)[i]) > 1.)
-                continue;
             for_var_jet((*v_ht200_nTrack)[i], HT200_eventWeight, h_DY_nTracks);
             for_var_jet((*v_ht200_JetPt)[i], HT200_eventWeight, h_DY_JetPt);
             for_var_jet((*v_ht200_JetEta)[i], HT200_eventWeight, h_DY_JetEta);
@@ -1061,13 +999,10 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     T_tree4->SetBranchAddress("I_weight", &I_ht400_weight);
     T_tree4->SetBranchAddress("I_nJets", &I_ht400_nThinJets);
     T_tree4->SetBranchAddress("v_N_Tracks", &v_ht400_nTrack);
-    T_tree4->SetBranchAddress("f_Met", &I_ht400_met);
+    T_tree4->SetBranchAddress("f_Met", &f_ht400_met);
     T_tree4->SetBranchAddress("v_IP2D", &v_ht400_2DIP);
     T_tree4->SetBranchAddress("v_Chi3Dlog", &v_ht400_Chi3Dlog);
     T_tree4->SetBranchAddress("v_fakealpha", &v_ht400_alpha);
-    T_tree4->SetBranchAddress("v_fakealpha2", &v_ht400_alpha2);
-    T_tree4->SetBranchAddress("v_fakealpha3", &v_ht400_alpha3);
-    T_tree4->SetBranchAddress("v_fakealpha4", &v_ht400_alpha4);
     T_tree4->SetBranchAddress("v_fakeJetPt", &v_ht400_JetPt);
     T_tree4->SetBranchAddress("v_fakeJetEta", &v_ht400_JetEta);
     T_tree4->SetBranchAddress("v_fakeJethadronflavor", &v_ht400_Jethadronflavor);
@@ -1075,20 +1010,20 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     for (int evt = 0; evt < T_tree4->GetEntries(); evt++)
     {
         T_tree4->GetEntry(evt);
-        // if (I_ht400_met < 90)
-        //     continue;
+        if (f_ht400_met < 120)
+        {
+            continue;
+        }
         double HT400_eventWeight = I_ht400_weight * HT400Weight;
         //-----------------
         // Event var : Met
         //-----------------
-        for_var_jet(I_ht400_met, HT400_eventWeight, h_DY_Met);
+        for_var_jet(f_ht400_met, HT400_eventWeight, h_DY_Met);
         //-------------------------------------------------------------
         // Jet var : different flavor  nTracks, JetPt, JetEta, alpha3D
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ht400_nTrack->size(); i++)
         {
-            if (abs((*v_ht400_JetEta)[i]) > 1.)
-                continue;
             for_var_jet((*v_ht400_nTrack)[i], HT400_eventWeight, h_DY_nTracks);
             for_var_jet((*v_ht400_JetPt)[i], HT400_eventWeight, h_DY_JetPt);
             for_var_jet((*v_ht400_JetEta)[i], HT400_eventWeight, h_DY_JetEta);
@@ -1158,13 +1093,10 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     T_tree5->SetBranchAddress("I_weight", &I_ht600_weight);
     T_tree5->SetBranchAddress("I_nJets", &I_ht600_nThinJets);
     T_tree5->SetBranchAddress("v_N_Tracks", &v_ht600_nTrack);
-    T_tree5->SetBranchAddress("f_Met", &I_ht600_met);
+    T_tree5->SetBranchAddress("f_Met", &f_ht600_met);
     T_tree5->SetBranchAddress("v_IP2D", &v_ht600_2DIP);
     T_tree5->SetBranchAddress("v_Chi3Dlog", &v_ht600_Chi3Dlog);
     T_tree5->SetBranchAddress("v_fakealpha", &v_ht600_alpha);
-    T_tree5->SetBranchAddress("v_fakealpha2", &v_ht600_alpha2);
-    T_tree5->SetBranchAddress("v_fakealpha3", &v_ht600_alpha3);
-    T_tree5->SetBranchAddress("v_fakealpha4", &v_ht600_alpha4);
     T_tree5->SetBranchAddress("v_fakeJetPt", &v_ht600_JetPt);
     T_tree5->SetBranchAddress("v_fakeJetEta", &v_ht600_JetEta);
     T_tree5->SetBranchAddress("v_fakeJethadronflavor", &v_ht600_Jethadronflavor);
@@ -1172,20 +1104,20 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     for (int evt = 0; evt < T_tree5->GetEntries(); evt++)
     {
         T_tree5->GetEntry(evt);
-        // if (I_ht600_met < 90)
-        //     continue;
+        if (f_ht600_met < 120)
+        {
+            continue;
+        }
         double HT600_eventWeight = I_ht600_weight * HT600Weight;
         //-----------------
         // Event var : Met
         //-----------------
-        for_var_jet(I_ht600_met, HT600_eventWeight, h_DY_Met);
+        for_var_jet(f_ht600_met, HT600_eventWeight, h_DY_Met);
         //-------------------------------------------------------------
         // Jet var : different flavor  nTracks, JetPt, JetEta, alpha3D
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ht600_nTrack->size(); i++)
         {
-            if (abs((*v_ht600_JetEta)[i]) > 1.)
-                continue;
             for_var_jet((*v_ht600_nTrack)[i], HT600_eventWeight, h_DY_nTracks);
             for_var_jet((*v_ht600_JetPt)[i], HT600_eventWeight, h_DY_JetPt);
             for_var_jet((*v_ht600_JetEta)[i], HT600_eventWeight, h_DY_JetEta);
@@ -1255,13 +1187,10 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     T_tree6->SetBranchAddress("I_weight", &I_ht800_weight);
     T_tree6->SetBranchAddress("I_nJets", &I_ht800_nThinJets);
     T_tree6->SetBranchAddress("v_N_Tracks", &v_ht800_nTrack);
-    T_tree6->SetBranchAddress("f_Met", &I_ht800_met);
+    T_tree6->SetBranchAddress("f_Met", &f_ht800_met);
     T_tree6->SetBranchAddress("v_IP2D", &v_ht800_2DIP);
     T_tree6->SetBranchAddress("v_Chi3Dlog", &v_ht800_Chi3Dlog);
     T_tree6->SetBranchAddress("v_fakealpha", &v_ht800_alpha);
-    T_tree6->SetBranchAddress("v_fakealpha2", &v_ht800_alpha2);
-    T_tree6->SetBranchAddress("v_fakealpha3", &v_ht800_alpha3);
-    T_tree6->SetBranchAddress("v_fakealpha4", &v_ht800_alpha4);
     T_tree6->SetBranchAddress("v_fakeJetPt", &v_ht800_JetPt);
     T_tree6->SetBranchAddress("v_fakeJetEta", &v_ht800_JetEta);
     T_tree6->SetBranchAddress("v_fakeJethadronflavor", &v_ht800_Jethadronflavor);
@@ -1269,20 +1198,20 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     for (int evt = 0; evt < T_tree6->GetEntries(); evt++)
     {
         T_tree6->GetEntry(evt);
-        // if (I_ht800_met < 90)
-        //     continue;
+        if (f_ht800_met < 120)
+        {
+            continue;
+        }
         double HT800_eventWeight = I_ht800_weight * HT800Weight;
         //-----------------
         // Event var : Met
         //-----------------
-        for_var_jet(I_ht800_met, HT800_eventWeight, h_DY_Met);
+        for_var_jet(f_ht800_met, HT800_eventWeight, h_DY_Met);
         //-------------------------------------------------------------
         // Jet var : different flavor  nTracks, JetPt, JetEta, alpha3D
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ht800_nTrack->size(); i++)
         {
-            if (abs((*v_ht800_JetEta)[i]) > 1.)
-                continue;
             for_var_jet((*v_ht800_nTrack)[i], HT800_eventWeight, h_DY_nTracks);
             for_var_jet((*v_ht800_JetPt)[i], HT800_eventWeight, h_DY_JetPt);
             for_var_jet((*v_ht800_JetEta)[i], HT800_eventWeight, h_DY_JetEta);
@@ -1352,13 +1281,10 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     T_tree7->SetBranchAddress("I_weight", &I_ht1200_weight);
     T_tree7->SetBranchAddress("I_nJets", &I_ht1200_nThinJets);
     T_tree7->SetBranchAddress("v_N_Tracks", &v_ht1200_nTrack);
-    T_tree7->SetBranchAddress("f_Met", &I_ht1200_met);
+    T_tree7->SetBranchAddress("f_Met", &f_ht1200_met);
     T_tree7->SetBranchAddress("v_IP2D", &v_ht1200_2DIP);
     T_tree7->SetBranchAddress("v_Chi3Dlog", &v_ht1200_Chi3Dlog);
     T_tree7->SetBranchAddress("v_fakealpha", &v_ht1200_alpha);
-    T_tree7->SetBranchAddress("v_fakealpha2", &v_ht1200_alpha2);
-    T_tree7->SetBranchAddress("v_fakealpha3", &v_ht1200_alpha3);
-    T_tree7->SetBranchAddress("v_fakealpha4", &v_ht1200_alpha4);
     T_tree7->SetBranchAddress("v_fakeJetPt", &v_ht1200_JetPt);
     T_tree7->SetBranchAddress("v_fakeJetEta", &v_ht1200_JetEta);
     T_tree7->SetBranchAddress("v_fakeJethadronflavor", &v_ht1200_Jethadronflavor);
@@ -1366,20 +1292,20 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     for (int evt = 0; evt < T_tree7->GetEntries(); evt++)
     {
         T_tree7->GetEntry(evt);
-        // if (I_ht1200_met < 90)
-        //     continue;
+        if (f_ht1200_met < 120)
+        {
+            continue;
+        }
         double HT1200_eventWeight = I_ht1200_weight * HT1200Weight;
         //-----------------
         // Event var : Met
         //-----------------
-        for_var_jet(I_ht1200_met, HT1200_eventWeight, h_DY_Met);
+        for_var_jet(f_ht1200_met, HT1200_eventWeight, h_DY_Met);
         //-------------------------------------------------------------
         // Jet var : different flavor  nTracks, JetPt, JetEta, alpha3D
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ht1200_nTrack->size(); i++)
         {
-            if (abs((*v_ht1200_JetEta)[i]) > 1.)
-                continue;
             for_var_jet((*v_ht1200_nTrack)[i], HT1200_eventWeight, h_DY_nTracks);
             for_var_jet((*v_ht1200_JetPt)[i], HT1200_eventWeight, h_DY_JetPt);
             for_var_jet((*v_ht1200_JetEta)[i], HT1200_eventWeight, h_DY_JetEta);
@@ -1450,13 +1376,10 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     T_tree8->SetBranchAddress("I_weight", &I_ht2500_weight);
     T_tree8->SetBranchAddress("I_nJets", &I_ht2500_nThinJets);
     T_tree8->SetBranchAddress("v_N_Tracks", &v_ht2500_nTrack);
-    T_tree8->SetBranchAddress("f_Met", &I_ht2500_met);
+    T_tree8->SetBranchAddress("f_Met", &f_ht2500_met);
     T_tree8->SetBranchAddress("v_IP2D", &v_ht2500_2DIP);
     T_tree8->SetBranchAddress("v_Chi3Dlog", &v_ht2500_Chi3Dlog);
     T_tree8->SetBranchAddress("v_fakealpha", &v_ht2500_alpha);
-    T_tree8->SetBranchAddress("v_fakealpha2", &v_ht2500_alpha2);
-    T_tree8->SetBranchAddress("v_fakealpha3", &v_ht2500_alpha3);
-    T_tree8->SetBranchAddress("v_fakealpha4", &v_ht2500_alpha4);
     T_tree8->SetBranchAddress("v_fakeJetPt", &v_ht2500_JetPt);
     T_tree8->SetBranchAddress("v_fakeJetEta", &v_ht2500_JetEta);
     T_tree8->SetBranchAddress("v_fakeJethadronflavor", &v_ht2500_Jethadronflavor);
@@ -1464,20 +1387,20 @@ void ee_HT_produce_half(TString inputfile = "/home/kuanyu/Documents/root_file/Zt
     for (int evt = 0; evt < T_tree8->GetEntries(); evt++)
     {
         T_tree8->GetEntry(evt);
-        // if (I_ht2500_met < 90)
-        //     continue;
+        if (f_ht2500_met < 120)
+        {
+            continue;
+        }
         double HT2500_eventWeight = I_ht2500_weight * HT2500Weight;
         //-----------------
         // Event var : Met
         //-----------------
-        for_var_jet(I_ht2500_met, HT2500_eventWeight, h_DY_Met);
+        for_var_jet(f_ht2500_met, HT2500_eventWeight, h_DY_Met);
         //-------------------------------------------------------------
         // Jet var : different flavor  nTracks, JetPt, JetEta, alpha3D
         //-------------------------------------------------------------
         for (size_t i = 0; i < v_ht2500_nTrack->size(); i++)
         {
-            if (abs((*v_ht2500_JetEta)[i]) > 1.)
-                continue;
             for_var_jet((*v_ht2500_nTrack)[i], HT2500_eventWeight, h_DY_nTracks);
             for_var_jet((*v_ht2500_JetPt)[i], HT2500_eventWeight, h_DY_JetPt);
             for_var_jet((*v_ht2500_JetEta)[i], HT2500_eventWeight, h_DY_JetEta);

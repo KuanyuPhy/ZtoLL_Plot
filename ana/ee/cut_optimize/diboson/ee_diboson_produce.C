@@ -1032,8 +1032,6 @@ void ee_diboson_produce(TString inputfile = "./../../../../../../root_file/Ztoee
     for (int evt = 0; evt < T_event11->GetEntries(); evt++)
     {
         T_event11->GetEntry(evt);
-        if (I_qq_WZ_3LNu_nThinJets < 2)
-            continue;
         h_diboson_Met->Fill(f_qq_WZ_3LNu_met, f_qq_WZ_3LNu_weight * diboson_qq_WZ_3LNu_Weight);
         for (size_t i = 0; i < v_qq_WZ_3LNu_alpha->size(); i++)
         {
@@ -1088,7 +1086,6 @@ void ee_diboson_produce(TString inputfile = "./../../../../../../root_file/Ztoee
     for (int evt = 0; evt < T_event12->GetEntries(); evt++)
     {
         T_event12->GetEntry(evt);
-
         h_diboson_Met->Fill(f_qq_ZZ_2L2Nu_met, f_qq_ZZ_2L2Nu_weight * diboson_qq_ZZ_2L2Nu_Weight);
         for (size_t i = 0; i < v_qq_ZZ_2L2Nu_alpha->size(); i++)
         {

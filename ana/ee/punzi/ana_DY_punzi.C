@@ -52,15 +52,15 @@ int HT2500_Inf_event = h_HT_eventCout->GetBinContent(10);
 //---------------------
 // Define the HTWeight
 //---------------------
-double HT0Weight = (GlobalConstants::Lumi2016) * ((GlobalConstants::HT0CS) / (HT0_70_event)) * 1000 * 2;
-double HT70Weight = (GlobalConstants::Lumi2016) * ((GlobalConstants::HT70CS) / (HT70_100_event)) * 1000 * 2;
-double HT100Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT100CS / (DYHT100_totevt + HT100_200_event)) * 1000 * 2;
-double HT200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT200CS / (DYHT200_totevt + HT200_400_event)) * 1000 * 2;
-double HT400Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT400CS / (DYHT400_totevt + HT400_600_event)) * 1000 * 2;
-double HT600Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT600CS / (DYHT600_totevt + HT600_800_event)) * 1000 * 2;
-double HT800Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT800CS / (DYHT800_totevt + HT800_1200_event)) * 1000 * 2;
-double HT1200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT1200CS / (DYHT1200_totevt + HT1200_2500_event)) * 1000 * 2;
-double HT2500Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT2500CS / (DYHT2500_totevt + HT2500_Inf_event)) * 1000 * 2;
+double HT0Weight = (GlobalConstants::Lumi2016) * ((GlobalConstants::HT0CS) / (HT0_70_event)) * 1000;
+double HT70Weight = (GlobalConstants::Lumi2016) * ((GlobalConstants::HT70CS) / (HT70_100_event)) * 1000;
+double HT100Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT100CS / (DYHT100_totevt + HT100_200_event)) * 1000;
+double HT200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT200CS / (DYHT200_totevt + HT200_400_event)) * 1000;
+double HT400Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT400CS / (DYHT400_totevt + HT400_600_event)) * 1000;
+double HT600Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT600CS / (DYHT600_totevt + HT600_800_event)) * 1000;
+double HT800Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT800CS / (DYHT800_totevt + HT800_1200_event)) * 1000;
+double HT1200Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT1200CS / (DYHT1200_totevt + HT1200_2500_event)) * 1000;
+double HT2500Weight = (GlobalConstants::Lumi2016) * (GlobalConstants::HT2500CS / (DYHT2500_totevt + HT2500_Inf_event)) * 1000;
 
 void for_inclusive_sample(float HT, float i_tmp, double Weight, TH1D *h_tmp)
 {
@@ -102,14 +102,20 @@ void for_inclusive_sample(float HT, float i_tmp, double Weight, TH1D *h_tmp)
     }
 }
 
-void ana_DY_punzi()
+void ana_DY_punzi(const char *scanMet_step = "tmp", TString outputfile = "./output/tmp.root")
 {
+
+    //---------------------
+    // Met cut
+    //---------------------
+    float metcut = atoi(scanMet_step) * 10;
+    cout << "metcut" << metcut << endl;
 
     TH1D *h_pass_DY = new TH1D("h_pass_DY", "", 50, 0, 50);
     h_pass_DY->Sumw2();
 
-    TH1D *h_pass_DY_nMetcut = new TH1D("h_pass_DY_nMetcut", "", 50, 0, 50);
-    h_pass_DY_nMetcut->Sumw2();
+    TH1D *h_pass_Bg_nMetcut = new TH1D("h_pass_Bg_nMetcut", "", 50, 0, 50);
+    h_pass_Bg_nMetcut->Sumw2();
 
     float_t HT;
 
@@ -139,227 +145,260 @@ void ana_DY_punzi()
     v_ht1200_alpha->clear();
     v_ht2500_alpha->clear();
 
-    for (int i = 1; i <= 1; i++)
+    TTree *T_inclusive;
+    DYincli->GetObject("T_tree", T_inclusive);
+    T_inclusive->SetBranchAddress("I_weight", &I_ht0_weight);
+    T_inclusive->SetBranchAddress("f_HT", &HT);
+    T_inclusive->SetBranchAddress("f_Met", &f_ht0_Met);
+    T_inclusive->SetBranchAddress("v_fakealpha", &v_ht0_alpha);
+    for (int evt = 0; evt < T_inclusive->GetEntries(); evt++)
     {
-        cout << "i" << i << endl;
-        float metcut = i * 10;
-
-        TTree *T_inclusive;
-        DYincli->GetObject("T_tree", T_inclusive);
-        T_inclusive->SetBranchAddress("I_weight", &I_ht0_weight);
-        T_inclusive->SetBranchAddress("f_HT", &HT);
-        T_inclusive->SetBranchAddress("f_Met", &f_ht0_Met);
-        T_inclusive->SetBranchAddress("v_fakealpha", &v_ht0_alpha);
-        for (int evt = 0; evt < T_inclusive->GetEntries(); evt++)
+        T_inclusive->GetEntry(evt);
+        bool alpha_cut = true;
+        for (int i = 0; i < v_ht0_alpha->size(); i++)
         {
-            T_inclusive->GetEntry(evt);
-            bool alpha_cut = true;
-            for (int i = 0; i < v_ht0_alpha->size(); i++)
+            if ((*v_ht0_alpha)[i] > 0.15)
             {
-                if ((*v_ht0_alpha)[i] > 0.15)
-                {
-                    alpha_cut = false;
-                    break;
-                }
+                alpha_cut = false;
+                break;
             }
-            if (!alpha_cut)
-            {
-                continue;
-            }
-            //-------------------
-            // Scan Met
-            //-------------------
-            for_inclusive_sample(HT, i, I_ht0_weight, h_pass_DY);
-            // if (f_ht0_Met > metcut)
-            //{
-            //     for_inclusive_sample(HT, i, I_ht0_weight, h_pass_DY_nMetcut);
-            // }
         }
-        TTree *T_HT100;
-        DYHT100->GetObject("T_tree", T_HT100);
-        T_HT100->SetBranchAddress("I_weight", &I_ht100_weight);
-        T_HT100->SetBranchAddress("f_Met", &f_ht100_Met);
-        T_HT100->SetBranchAddress("v_fakealpha", &v_ht100_alpha);
-        for (int evt = 0; evt < T_HT100->GetEntries(); evt++)
+        if (!alpha_cut)
         {
-            T_HT100->GetEntry(evt);
-            bool alpha_cut = true;
-            for (int i = 0; i < v_ht100_alpha->size(); i++)
-            {
-                if ((*v_ht100_alpha)[i] > 0.15)
-                {
-                    alpha_cut = false;
-                    break;
-                }
-            }
-            if (!alpha_cut)
-            {
-                continue;
-            }
-            //-------------------
-            // Scan Met
-            //-------------------
-            h_pass_DY->Fill(i, I_ht100_weight * HT100Weight);
+            continue;
         }
-        TTree *T_HT200;
-        DYHT200->GetObject("T_tree", T_HT200);
-        T_HT200->SetBranchAddress("I_weight", &I_ht200_weight);
-        T_HT200->SetBranchAddress("f_Met", &f_ht200_Met);
-        T_HT200->SetBranchAddress("v_fakealpha", &v_ht200_alpha);
-        for (int evt = 0; evt < T_HT200->GetEntries(); evt++)
+        //-------------------
+        // Scan Met
+        //-------------------
+        // for_inclusive_sample(HT, i, I_ht0_weight, h_pass_DY);
+        if (f_ht0_Met > metcut)
         {
-            T_HT200->GetEntry(evt);
-            bool alpha_cut = true;
-            for (int i = 0; i < v_ht200_alpha->size(); i++)
-            {
-                if ((*v_ht200_alpha)[i] > 0.15)
-                {
-                    alpha_cut = false;
-                    break;
-                }
-            }
-            if (!alpha_cut)
-            {
-                continue;
-            }
-            //-------------------
-            // Scan Met
-            //-------------------
-            h_pass_DY->Fill(i, I_ht200_weight * HT200Weight);
-        }
-        TTree *T_HT400;
-        DYHT400->GetObject("T_tree", T_HT400);
-        T_HT400->SetBranchAddress("I_weight", &I_ht400_weight);
-        T_HT400->SetBranchAddress("f_Met", &f_ht400_Met);
-        T_HT400->SetBranchAddress("v_fakealpha", &v_ht400_alpha);
-        for (int evt = 0; evt < T_HT400->GetEntries(); evt++)
-        {
-            T_HT400->GetEntry(evt);
-            bool alpha_cut = true;
-            for (int i = 0; i < v_ht400_alpha->size(); i++)
-            {
-                if ((*v_ht400_alpha)[i] > 0.15)
-                {
-                    alpha_cut = false;
-                    break;
-                }
-            }
-            if (!alpha_cut)
-            {
-                continue;
-            }
-            //-------------------
-            // Scan Met
-            //-------------------
-            h_pass_DY->Fill(i, I_ht400_weight * HT400Weight);
-        }
-        TTree *T_HT600;
-        DYHT600->GetObject("T_tree", T_HT600);
-        T_HT600->SetBranchAddress("I_weight", &I_ht600_weight);
-        T_HT600->SetBranchAddress("f_Met", &f_ht600_Met);
-        T_HT600->SetBranchAddress("v_fakealpha", &v_ht600_alpha);
-        for (int evt = 0; evt < T_HT600->GetEntries(); evt++)
-        {
-            T_HT600->GetEntry(evt);
-            bool alpha_cut = true;
-            for (int i = 0; i < v_ht600_alpha->size(); i++)
-            {
-                if ((*v_ht600_alpha)[i] > 0.15)
-                {
-                    alpha_cut = false;
-                    break;
-                }
-            }
-            if (!alpha_cut)
-            {
-                continue;
-            }
-            //-------------------
-            // Scan Met
-            //-------------------
-            h_pass_DY->Fill(i, I_ht600_weight * HT600Weight);
-        }
-        TTree *T_HT800;
-        DYHT800->GetObject("T_tree", T_HT800);
-        T_HT800->SetBranchAddress("I_weight", &I_ht800_weight);
-        T_HT800->SetBranchAddress("f_Met", &f_ht800_Met);
-        T_HT800->SetBranchAddress("v_fakealpha", &v_ht800_alpha);
-        for (int evt = 0; evt < T_HT800->GetEntries(); evt++)
-        {
-            T_HT800->GetEntry(evt);
-            bool alpha_cut = true;
-            for (int i = 0; i < v_ht800_alpha->size(); i++)
-            {
-                if ((*v_ht800_alpha)[i] > 0.15)
-                {
-                    alpha_cut = false;
-                    break;
-                }
-            }
-            if (!alpha_cut)
-            {
-                continue;
-            }
-            //-------------------
-            // Scan Met
-            //-------------------
-            h_pass_DY->Fill(i, I_ht800_weight * HT800Weight);
-        }
-        TTree *T_HT1200;
-        DYHT1200->GetObject("T_tree", T_HT1200);
-        T_HT1200->SetBranchAddress("I_weight", &I_ht1200_weight);
-        T_HT1200->SetBranchAddress("f_Met", &f_ht1200_Met);
-        T_HT1200->SetBranchAddress("v_fakealpha", &v_ht1200_alpha);
-        for (int evt = 0; evt < T_HT1200->GetEntries(); evt++)
-        {
-            T_HT1200->GetEntry(evt);
-            bool alpha_cut = true;
-            for (int i = 0; i < v_ht1200_alpha->size(); i++)
-            {
-                if ((*v_ht1200_alpha)[i] > 0.15)
-                {
-                    alpha_cut = false;
-                    break;
-                }
-            }
-            if (!alpha_cut)
-            {
-                continue;
-            }
-            //-------------------
-            // Scan Met
-            //-------------------
-            h_pass_DY->Fill(i, I_ht1200_weight * HT1200Weight);
-        }
-        TTree *T_HT2500;
-        DYHT2500->GetObject("T_tree", T_HT2500);
-        T_HT2500->SetBranchAddress("I_weight", &I_ht2500_weight);
-        T_HT2500->SetBranchAddress("f_Met", &f_ht2500_Met);
-        T_HT2500->SetBranchAddress("v_fakealpha", &v_ht2500_alpha);
-        for (int evt = 0; evt < T_HT2500->GetEntries(); evt++)
-        {
-            T_HT2500->GetEntry(evt);
-            bool alpha_cut = true;
-            for (int i = 0; i < v_ht2500_alpha->size(); i++)
-            {
-                if ((*v_ht2500_alpha)[i] > 0.15)
-                {
-                    alpha_cut = false;
-                    break;
-                }
-            }
-            if (!alpha_cut)
-            {
-                continue;
-            }
-            //-------------------
-            // Scan Met
-            //-------------------
-            h_pass_DY->Fill(i, I_ht2500_weight * HT2500Weight);
+            for_inclusive_sample(HT, atoi(scanMet_step), I_ht0_weight, h_pass_Bg_nMetcut);
         }
     }
-    TString outputfile1 = "./ee_DY_punzi.root";
-    TFile *outfile_HT0 = TFile::Open(outputfile1, "RECREATE");
-    h_pass_DY->Write();
+    TTree *T_HT100;
+    DYHT100->GetObject("T_tree", T_HT100);
+    T_HT100->SetBranchAddress("I_weight", &I_ht100_weight);
+    T_HT100->SetBranchAddress("f_Met", &f_ht100_Met);
+    T_HT100->SetBranchAddress("v_fakealpha", &v_ht100_alpha);
+    for (int evt = 0; evt < T_HT100->GetEntries(); evt++)
+    {
+        T_HT100->GetEntry(evt);
+        bool alpha_cut = true;
+        for (int i = 0; i < v_ht100_alpha->size(); i++)
+        {
+            if ((*v_ht100_alpha)[i] > 0.15)
+            {
+                alpha_cut = false;
+                break;
+            }
+        }
+        if (!alpha_cut)
+        {
+            continue;
+        }
+        //-------------------
+        // Scan Met
+        //-------------------
+        //h_pass_DY->Fill(i, I_ht100_weight * HT100Weight);
+        if (f_ht100_Met > metcut)
+        {
+            h_pass_Bg_nMetcut->Fill(atoi(scanMet_step), I_ht100_weight * HT100Weight);
+        }
+    }
+    TTree *T_HT200;
+    DYHT200->GetObject("T_tree", T_HT200);
+    T_HT200->SetBranchAddress("I_weight", &I_ht200_weight);
+    T_HT200->SetBranchAddress("f_Met", &f_ht200_Met);
+    T_HT200->SetBranchAddress("v_fakealpha", &v_ht200_alpha);
+    for (int evt = 0; evt < T_HT200->GetEntries(); evt++)
+    {
+        T_HT200->GetEntry(evt);
+        bool alpha_cut = true;
+        for (int i = 0; i < v_ht200_alpha->size(); i++)
+        {
+            if ((*v_ht200_alpha)[i] > 0.15)
+            {
+                alpha_cut = false;
+                break;
+            }
+        }
+        if (!alpha_cut)
+        {
+            continue;
+        }
+        //-------------------
+        // Scan Met
+        //-------------------
+        //h_pass_DY->Fill(i, I_ht200_weight * HT200Weight);
+        if (f_ht200_Met > metcut)
+        {
+            h_pass_Bg_nMetcut->Fill(atoi(scanMet_step), I_ht200_weight * HT200Weight);
+        }
+    }
+    TTree *T_HT400;
+    DYHT400->GetObject("T_tree", T_HT400);
+    T_HT400->SetBranchAddress("I_weight", &I_ht400_weight);
+    T_HT400->SetBranchAddress("f_Met", &f_ht400_Met);
+    T_HT400->SetBranchAddress("v_fakealpha", &v_ht400_alpha);
+    for (int evt = 0; evt < T_HT400->GetEntries(); evt++)
+    {
+        T_HT400->GetEntry(evt);
+        bool alpha_cut = true;
+        for (int i = 0; i < v_ht400_alpha->size(); i++)
+        {
+            if ((*v_ht400_alpha)[i] > 0.15)
+            {
+                alpha_cut = false;
+                break;
+            }
+        }
+        if (!alpha_cut)
+        {
+            continue;
+        }
+        //-------------------
+        // Scan Met
+        //-------------------
+        //h_pass_DY->Fill(i, I_ht400_weight * HT400Weight);
+        if (f_ht400_Met > metcut)
+        {
+            h_pass_Bg_nMetcut->Fill(atoi(scanMet_step), I_ht400_weight * HT400Weight);
+        }
+    }
+    TTree *T_HT600;
+    DYHT600->GetObject("T_tree", T_HT600);
+    T_HT600->SetBranchAddress("I_weight", &I_ht600_weight);
+    T_HT600->SetBranchAddress("f_Met", &f_ht600_Met);
+    T_HT600->SetBranchAddress("v_fakealpha", &v_ht600_alpha);
+    for (int evt = 0; evt < T_HT600->GetEntries(); evt++)
+    {
+        T_HT600->GetEntry(evt);
+        bool alpha_cut = true;
+        for (int i = 0; i < v_ht600_alpha->size(); i++)
+        {
+            if ((*v_ht600_alpha)[i] > 0.15)
+            {
+                alpha_cut = false;
+                break;
+            }
+        }
+        if (!alpha_cut)
+        {
+            continue;
+        }
+        //-------------------
+        // Scan Met
+        //-------------------
+        //h_pass_DY->Fill(i, I_ht600_weight * HT600Weight);
+        if (f_ht600_Met > metcut)
+        {
+            h_pass_Bg_nMetcut->Fill(atoi(scanMet_step), I_ht600_weight * HT600Weight);
+        }
+    }
+    TTree *T_HT800;
+    DYHT800->GetObject("T_tree", T_HT800);
+    T_HT800->SetBranchAddress("I_weight", &I_ht800_weight);
+    T_HT800->SetBranchAddress("f_Met", &f_ht800_Met);
+    T_HT800->SetBranchAddress("v_fakealpha", &v_ht800_alpha);
+    for (int evt = 0; evt < T_HT800->GetEntries(); evt++)
+    {
+        T_HT800->GetEntry(evt);
+        bool alpha_cut = true;
+        for (int i = 0; i < v_ht800_alpha->size(); i++)
+        {
+            if ((*v_ht800_alpha)[i] > 0.15)
+            {
+                alpha_cut = false;
+                break;
+            }
+        }
+        if (!alpha_cut)
+        {
+            continue;
+        }
+        //-------------------
+        // Scan Met
+        //-------------------
+        //h_pass_DY->Fill(i, I_ht800_weight * HT800Weight);
+        if (f_ht800_Met > metcut)
+        {
+            h_pass_Bg_nMetcut->Fill(atoi(scanMet_step), I_ht800_weight * HT800Weight);
+        }
+    }
+    TTree *T_HT1200;
+    DYHT1200->GetObject("T_tree", T_HT1200);
+    T_HT1200->SetBranchAddress("I_weight", &I_ht1200_weight);
+    T_HT1200->SetBranchAddress("f_Met", &f_ht1200_Met);
+    T_HT1200->SetBranchAddress("v_fakealpha", &v_ht1200_alpha);
+    for (int evt = 0; evt < T_HT1200->GetEntries(); evt++)
+    {
+        T_HT1200->GetEntry(evt);
+        bool alpha_cut = true;
+        for (int i = 0; i < v_ht1200_alpha->size(); i++)
+        {
+            if ((*v_ht1200_alpha)[i] > 0.15)
+            {
+                alpha_cut = false;
+                break;
+            }
+        }
+        if (!alpha_cut)
+        {
+            continue;
+        }
+        //-------------------
+        // Scan Met
+        //-------------------
+        //h_pass_DY->Fill(i, I_ht1200_weight * HT1200Weight);
+        if (f_ht1200_Met > metcut)
+        {
+            h_pass_Bg_nMetcut->Fill(atoi(scanMet_step), I_ht1200_weight * HT1200Weight);
+        }
+    }
+    TTree *T_HT2500;
+    DYHT2500->GetObject("T_tree", T_HT2500);
+    T_HT2500->SetBranchAddress("I_weight", &I_ht2500_weight);
+    T_HT2500->SetBranchAddress("f_Met", &f_ht2500_Met);
+    T_HT2500->SetBranchAddress("v_fakealpha", &v_ht2500_alpha);
+    for (int evt = 0; evt < T_HT2500->GetEntries(); evt++)
+    {
+        T_HT2500->GetEntry(evt);
+        bool alpha_cut = true;
+        for (int i = 0; i < v_ht2500_alpha->size(); i++)
+        {
+            if ((*v_ht2500_alpha)[i] > 0.15)
+            {
+                alpha_cut = false;
+                break;
+            }
+        }
+        if (!alpha_cut)
+        {
+            continue;
+        }
+        //-------------------
+        // Scan Met
+        //-------------------
+        //h_pass_DY->Fill(i, I_ht2500_weight * HT2500Weight);
+        if (f_ht2500_Met > metcut)
+        {
+            h_pass_Bg_nMetcut->Fill(atoi(scanMet_step), I_ht2500_weight * HT2500Weight);
+        }
+    }
+
+    TFile *outfile_HT0 = TFile::Open(outputfile, "RECREATE");
+    h_pass_Bg_nMetcut->Write();
     outfile_HT0->Close();
+}
+int main(int argc, char *argv[])
+{
+    if (argc == 3)
+    {
+        ana_DY_punzi(argv[1], argv[2]);
+    }
+    else
+    {
+        cout << "ERROR" << endl;
+    }
 }

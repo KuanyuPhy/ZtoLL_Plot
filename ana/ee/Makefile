@@ -50,3 +50,22 @@ ee_Top_half: $(objects)
 
 clean:
 	        @rm -f *.o ee_Top_half *~ src/*.o;  echo "Clear.."
+
+Tasks:     clean ee_Diboson_half
+
+SOURCE_FILES := $(shell ls -1 ee_Diboson_half.C)
+
+# build object files 
+objects       = $(patsubst %.C,%.o,$(SOURCE_FILES))
+
+%.o: %.cc
+	$(CXX) $(OPT) -Wno-unused-variable  -Wunused-but-set-variable $(CXXFLAGS) $(INCLUDE1) $(INCLUDE2) $(INCLUDE3) -o $@ -c $<
+
+LIBOBJS = $(patsubst %.C,%.o,$(SOURCE_FILES))
+
+ee_Diboson_half: $(objects)
+	        $(LD) $(LDFLAGS) $^ $(LIBS) $(OutPutOpt)$@
+
+clean:
+	        @rm -f *.o ee_Diboson_half *~ src/*.o;  echo "Clear.."
+

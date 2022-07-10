@@ -1,8 +1,8 @@
 #ifndef CROSS_SECTION
 #define CROSS_SECTION
-// ====
+// ==================
 // Cross_Srction: pb
-// ====
+// ==================
 class GlobalConstants
 {
 public:
@@ -47,7 +47,6 @@ public:
     static constexpr float qq_ZZ_2L2Nu = 0.564;
     static constexpr float qq_ZZ_2L2Q = 3.220;
     static constexpr float qq_ZZ_4L = 1.256;
-
     // For Triboson Background
     static constexpr float WWZ_TuneCUETP8M1 = 0.16510;
     static constexpr float WZZ_TuneCUETP8M1 = 0.05565;
